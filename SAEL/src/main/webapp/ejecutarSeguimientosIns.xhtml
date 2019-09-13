@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>.::SAEL::. Seguimiento de Aprendices</title>
+                <link rel="shortcut icon" href="favicon.ico"/>
+            </f:facet>
+        </h:head>
+        <h:body>
+                    <h:graphicImage url="images/banner_sael.jpg" width="100%" height="100%" alt="Logo Sael"  style="vertical-align: top;"/> 
+                <p:panel>
+                <p:panelGrid> 
+                    <p:row>
+                        <p:column style="vertical-align: top;"> 
+                    <h:form>
+                         <p:menu>
+                            <p:submenu label="Menú">                                
+                                <p:menuitem value="Inicio" url="indexInstructor.xhtml" />
+                                <p:menuitem value="Alistar Seguimiento" url="gestionSeguimientosIns.xhtml" />
+                                <p:menuitem value="Ejecutar Seguimiento" url="ejecutarSeguimientosIns.xhtml" />
+                                <p:menuitem value="Aprendices" url="gestionAprendicesIns.xhtml" />
+                                <p:menuitem value="Instructores" url="gestionInstructoresIns.xhtml" />
+                                <p:menuitem value="Reportes" url="reportesSaelIns.xhtml" />
+                                <p:menuitem value="Cambio Contraseña" url="CambiaPasswordInst.xhtml" />
+                                <p:menuitem value="Cerrar Sesión" actionListener="#{usuariosSaelVista.cerrarSesion_action}" />
+                            </p:submenu>                    
+                        </p:menu>
+                    </h:form>
+                        </p:column>
+                        <p:column>
+                    <h:form id="formulario"> 
+                        <p:panel id="panel">
+                            <p:messages id="mensajes" showDetail="true" /> 
+                            <p:growl id="growl" showDetail="true" sticky="true" /> 
+                            <h:outputText value="Los seguimientos preparados para ejecución son los siguientes." />
+                            <p:dataTable id="listaSeguimientos" var="seguimientos" value="#{gestionarSeguimientoVista.listaSeguimientosA}" selection="#{gestionarSeguimientoVista.selectedSeguimiento}"
+                                         selectionMode="single" rowKey="#{seguimientos.codigoseguimiento}" emptyMessage="No hay Seguimientos Listos para ser Ejecutados!">
+                                <p:ajax event="rowSelect" listener="#{gestionarSeguimientoVista.onRowSelectSeguiA}"   
+                                        update=":formulario:panelSeguimientos" /> 
+                                <p:column sortBy="#{seguimientos.codigoseguimiento}">
+                                    <f:facet name="header">
+                                        <h:outputText  value="Código" />                            
+                                    </f:facet>
+                                    <h:outputText  value="#{seguimientos.codigoseguimiento}" />                          
+                                </p:column>
+
+                                <p:column sortBy="#{seguimientos.fechaseguimiento}">
+                                    <f:facet name="header" >
+                                        <h:outputText  value="Fecha" />                            
+                                    </f:facet>
+                                    <h:outputText  value="#{seguimientos.fechaseguimiento}" />                          
+                                </p:column>
+
+                                <p:column sortBy="#{seguimientos.horaseguimiento}">
+                                    <f:facet name="header" >
+                                        <h:outputText  value="Hora" />                            
+                                    </f:facet>
+                                    <h:outputText  value="#{seguimientos.horaseguimiento}" />                          
+                                </p:column>
+                                                                
+                                <p:column sortBy="#{seguimientos.lugarseguimiento}">
+                                    <f:facet name="header" >
+                                        <h:outputText  value="Lugar" />                            
+                                    </f:facet>
+                                    <h:outputText  value="#{seguimientos.lugarseguimiento}" />                          
+                                </p:column>       
+                                
+                                <p:column sortBy="#{seguimientos.estadoseguimiento}">
+                                    <f:facet name="header" >
+                                        <h:outputText  value="Estado" />                            
+                                    </f:facet>
+                                    <h:outputText  value="#{seguimientos.estadoseguimiento}" />                          
+                                </p:column> 
+                                
+                                <p:column sortBy="#{seguimientos.fichaTitulacion.ficha}">
+                                    <f:facet name="header" >
+                                        <h:outputText  value="Ficha" />                            
+                                    </f:facet>
+                                    <h:outputText  value="#{seguimientos.fichaTitulacion.ficha}" />                          
+                                </p:column> 
+
+                            </p:dataTable> 
+                            <p:panel id="panelSeguimientos" header="Información Seguimiento"> 
+                                <p:panelGrid  columns="2" style="width: 82%;">   
+                                     <p:panelGrid  columns="2" id="paFicha"> 
+                                        <h:outputText value="Ficha:"/>
+                                        <p:inputText id="txtFicha" binding="#{gestionarSeguimientoVista.txtFicha}" readonly="true"/>        
+
+                                        <h:outputText value="Jornada:"/>
+                                        <p:inputText id="txtJornada" binding="#{gestionarSeguimientoVista.txtJornada}" disabled="true"/>
+
+                                        <h:outputText value="Programa:"/>
+                                        <p:inputTextarea id="txtPrograma" rows="5" cols="25" autoResize="false" binding="#{gestionarSeguimientoVista.txtPrograma}"  disabled="true"></p:inputTextarea>
+                                    </p:panelGrid>
+                                    <p:panelGrid  columns="2"> 
+                                        <h:outputText value="Código:"/>
+                                        <p:inputText id="txtCodigo" binding="#{gestionarSeguimientoVista.txtCodigo}" readonly="true"/>
+
+                                        <h:outputText value="Fecha:"/> 
+                                        <p:calendar  id="txtFecha" binding="#{gestionarSeguimientoVista.txtFecha}" pattern="yyyy-MM-dd" disabled="true" />
+                                        
+                                        <h:outputText value="Hora:"/>
+                                        <p:calendar id="txtHora" binding="#{gestionarSeguimientoVista.txtHora}" pattern="HH:mm" timeOnly="true" disabled="true" /> 
+
+
+                                        <h:outputText value="Lugar:"/>
+                                        <p:inputText id="txtLugar" binding="#{gestionarSeguimientoVista.txtLugar}" disabled="true"/>
+                                        
+                                        <h:outputText value="Estado:"/>
+                                        <p:selectOneMenu disabled="true" id="cmbEstadoSeguimiento" binding="#{gestionarSeguimientoVista.cmbEstadoSeguimiento}" >
+                                                <f:selectItem itemLabel="PROGRAMADO" itemValue="PROGRAMADO" />
+                                                <f:selectItem itemLabel="EJECUTADO" itemValue="EJECUTADO" />
+                                        </p:selectOneMenu>
+                                    </p:panelGrid>
+                                       <p:panelGrid  columns="2" id="paFase"> 
+                                        <h:outputText value="Fase de Proyecto:"/>
+                                        <p:inputTextarea id="txtFase" rows="5" cols="25" autoResize="false" binding="#{gestionarSeguimientoVista.txtFase}" disabled="true"></p:inputTextarea>
+                                   
+                                         <h:outputText value="Competencias:"/>
+                                         <p:inputTextarea id="txtCompetencias" rows="5" cols="25" autoResize="false" binding="#{gestionarSeguimientoVista.txtCompetencias}" disabled="true"></p:inputTextarea>
+                                   
+                                         </p:panelGrid>
+                                    <p:panelGrid  columns="2" id="paObs"> 
+                                       <h:outputText value="Observaciones Generales respecto al grupo:"/>
+                                       <p:inputTextarea id="txtObservaciones" rows="5" cols="25" autoResize="false" binding="#{gestionarSeguimientoVista.txtObservaciones}" disabled="true"></p:inputTextarea>
+                                    </p:panelGrid>
+                                </p:panelGrid>   
+                            </p:panel> 
+                             <br />
+                            <h:outputText value="De la siguiente lista de Personal del centro seleccione los asistentes al comité y a la derecha indique el cargo que asumieron en el seguimiento." />
+                            <br /><br />
+                            <p:panel id="panelAsistentes" header="Personal del Centro"> 
+                          <p:messages id="mensajes2" showDetail="true" />
+                            <p:panelGrid  columns="2" id="paGrupo"> 
+                                <p:dataTable id="listaAprendices" var="asistentes" value="#{gestionarSeguimientoVista.listaPersonal}" selection="#{gestionarSeguimientoVista.selectedPersonal}"
+                                             selectionMode="single" rowKey="#{asistentes.documento}" paginator="true" rows="5" emptyMessage="No hay Personal registrado!">
+                                    <p:ajax event="rowSelect" listener="#{gestionarSeguimientoVista.onRowSelectPersonal}"   
+                                        update=":formulario:panelAsistente" /> 
+                                    <p:column sortBy="#{asistentes.documento}" filterBy="#{asistentes.documento}" filterMatchMode="contains">
+                                    <f:facet name="header">
+                                        <h:outputText  value="Documento" />                            
+                                    </f:facet>
+                                        <h:outputText  value="#{asistentes.documento}" />                          
+                                </p:column>
+
+                                    <p:column sortBy="#{asistentes.nombre}" filterBy="#{asistentes.nombre}">
+                                    <f:facet name="header" >
+                                        <h:outputText  value="Nombre" />                            
+                                    </f:facet>
+                                    <h:outputText  value="#{asistentes.nombre}" />                          
+                                </p:column>
+
+                                    <p:column sortBy="#{asistentes.apellido}" filterBy="#{asistentes.apellido}">
+                                    <f:facet name="header" >
+                                        <h:outputText  value="Apellido" />                            
+                                    </f:facet>
+                                        <h:outputText  value="#{asistentes.apellido}" />                          
+                                </p:column>
+                            </p:dataTable>
+                                <p:panelGrid  columns="2" id="panelAsistente"> 
+                                        <h:outputText value="Documento:"/>
+                                        <p:inputText id="txtDocumento" binding="#{gestionarSeguimientoVista.txtDocumento}" disabled="true"/>        
+
+                                        <h:outputText value="Nombre:"/>
+                                        <p:inputText id="txtNombreCompleto" binding="#{gestionarSeguimientoVista.txtNombreCompleto}" disabled="true"/>        
+
+                                        <h:outputText value="Tipo Novedad:"/>
+                                        <p:selectOneMenu id="cmbCargo" binding="#{gestionarSeguimientoVista.cmbCargo}" >
+                                               <f:selectItem itemLabel="Seleccione" itemValue="" noSelectionOption="true"/>
+                                               <f:selectItem itemLabel="Instructor Líder" itemValue="Instructor Líder" noSelectionOption="true"/>
+                                               <f:selectItem itemLabel="Instructor Técnico" itemValue="Instructor Técnico" noSelectionOption="true"/>
+                                               <f:selectItem itemLabel="Coordinador Académico" itemValue="Coordinador Académico" noSelectionOption="true"/>
+                                               <f:selectItem itemLabel="Vocero (a)" itemValue="Vocero (a)" noSelectionOption="true"/>
+                                               <f:selectItem itemLabel="Representante Bienestar" itemValue="Representante Bienestar" noSelectionOption="true"/>
+                                               <f:selectItem itemLabel="Capellán" itemValue="Capellán" noSelectionOption="true"/>
+                                        </p:selectOneMenu>
+                                        
+                                        <f:facet name="footer"> 
+                                        <div align="center">
+                                            <p:commandButton id="btnRegistrarAsistente" value="Registrar" binding="#{gestionarSeguimientoVista.btnRegistrarAsistente}" action="#{gestionarSeguimientoVista.registrar_action_asistente}" disabled="true" update="panelAsistentes" />
+                                            <p:commandButton id="btnRetirarAsistente" value="Retirar" binding="#{gestionarSeguimientoVista.btnRetirarAsistente}" action="#{gestionarSeguimientoVista.retirar_action_asistente}" disabled="true" update="panelAsistentes" />
+                                            <p:commandButton id="btnLimpiarAsistente" value="Limpiar" binding="#{gestionarSeguimientoVista.btnLimpiarAsistente}" action="#{gestionarSeguimientoVista.limpiar_actionAsistente}" update="panelAsistentes" />
+                                        </div>
+                                    </f:facet>
+                                </p:panelGrid>
+                                <p:panelGrid  columns="2" id="panelFS">
+                                     <f:facet name="footer"> 
+                                        <div align="center">
+                                            <p:commandButton id="btnEjecutarSeguimiento" value="Finalizar Seguimiento" binding="#{gestionarSeguimientoVista.btnFinalizarSeguimiento}" action="#{gestionarSeguimientoVista.finalizar_seguimiento_action}" disabled="true" update="panelAsistentes" />
+                                            </div>
+                                    </f:facet>
+                                </p:panelGrid>
+                            </p:panelGrid>
+                            </p:panel>
+                        </p:panel>
+                    </h:form>
+                        </p:column>
+                    </p:row>
+                </p:panelGrid>
+                </p:panel>
+                    <div align="center" >
+                        <h:graphicImage url="images/pie_sael.jpg" width="100%" height="100%" alt="LogoSAEL" style="vertical-align: bottom;"/>
+                    </div>
+            <!-- Dialogo de confirmacion para el boton eliminar -->
+            <h:form id="formDialog" > 
+                <p:confirmDialog id="confirmDialog" message="Está Seguro de Eliminar el Seguimiento?"  
+                                 header="Confirmación" severity="alert" widgetVar="confirmation">  
+                    <p:commandButton id="confirm" value="Si" oncomplete="confirmation.hide()" update=":formulario:panel"  
+                                     actionListener="#{gestionarSeguimientoVista.onEliminacionConfirm}" />  
+                    <p:commandButton id="decline" value="No" onclick="PF('confirmation').hide()" type="button" />   
+
+                </p:confirmDialog> 
+            </h:form>
+        </h:body>
+
+    </f:view>
+</html>

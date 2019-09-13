@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7f899f1b-b39e-4523-bbf6-50723bdb3d6d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="240"/>
+	<parameter name="numeroseguimiento" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Proyectos\\gepad\\trunk\\GEPAD\\web\\sael\\reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from seguimiento where codigoseguimiento=$P{numeroseguimiento}]]>
+	</queryString>
+	<field name="codigoseguimiento" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numeroactaseguimiento" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fechaseguimiento" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="faseseguimiento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="competenciasseguimiento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="obsseguimiento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="conclusionesseguimiento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="compromisosseguimiento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ciudadseguimiento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lugarseguimiento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="horaseguimiento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="horafinseguimiento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estadoseguimiento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fichatitulacion" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="135" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="79" uuid="0a81763f-0fd6-4077-adf6-aed9ab67a286"/>
+			</rectangle>
+			<line>
+				<reportElement x="87" y="0" width="1" height="79" uuid="341439c6-696b-429b-80ea-0ccc7028fe25"/>
+			</line>
+			<staticText>
+				<reportElement x="248" y="23" width="100" height="20" uuid="f5f7033b-6b9e-4c57-ab6d-3a2fe50d253f"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ACTA No. ]]></text>
+			</staticText>
+			<image>
+				<reportElement x="6" y="2" width="96" height="73" uuid="1ba1f500-ba4a-473d-bbed-f836293fb2a8"/>
+				<imageExpression><![CDATA["C:\\Proyectos\\gepad\\trunk\\GEPAD\\web\\sael\\reportes\\sena.png"]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement x="0" y="79" width="555" height="55" uuid="16c971c7-7902-4dc9-ab9c-a839b0f82dce"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="199" y="96" width="196" height="20" uuid="b1dda74d-5222-411e-a124-717ce3278921"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ACTA COMITÉ ACADÉMICO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="308" y="23" width="100" height="20" uuid="ad00168e-8123-4d6e-a639-acf33261ac35"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numeroactaseguimiento}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="341" splitType="Stretch">
+			<line>
+				<reportElement x="177" y="0" width="1" height="76" uuid="7c1edd82-483b-438e-b422-61118b312b93"/>
+			</line>
+			<line>
+				<reportElement x="348" y="0" width="1" height="40" uuid="3f80f00a-3d08-474b-acd6-56f08d1fae88"/>
+			</line>
+			<line>
+				<reportElement x="0" y="40" width="555" height="1" uuid="4baf6ee3-0884-40a9-a477-c3575454df30"/>
+			</line>
+			<line>
+				<reportElement x="0" y="75" width="555" height="1" uuid="1b6bdb4b-0717-4e57-80af-9d2892b9690e"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="0" width="131" height="20" uuid="d1d5cc57-f068-4a72-a973-0c17e3d05cdd"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CIUDAD Y FECHA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="177" y="0" width="131" height="20" uuid="f0e0481b-03ef-40e1-8d0f-396a66db4be0"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HORA INICIO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="349" y="0" width="131" height="20" uuid="becc596f-6393-4b77-97ff-4e632c4f7cd7"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HORA FIN:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="41" width="131" height="20" uuid="bb102620-22bb-4e7a-bc58-6054d8769a76"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LUGAR:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="76" width="131" height="20" uuid="bea8ff9b-0d0e-4d6a-9d90-dcbd940d1b19"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TEMAS:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="115" width="555" height="41" uuid="569dfa0c-1274-4127-80a0-f6aa7ae65d68"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="115" width="189" height="20" uuid="7b659162-97ee-4172-8e7a-d96f57ff7ece"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OBJETIVO (S) DE LA REUNIÓN:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="156" width="555" height="72" uuid="84e16526-36e6-443c-9c1d-e3322fab9b0c"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="156" width="189" height="20" uuid="93f51134-87f8-4ddf-8290-645e870504ed"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESARROLLO DE LA REUNIÓN:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="6" y="21" width="54" height="20" uuid="8cd91207-5fcf-4cc9-928b-3cdb27e74891"/>
+				<textFieldExpression><![CDATA[$F{ciudadseguimiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="60" y="21" width="100" height="20" uuid="d9b889a0-437b-4f79-89d3-3413df2e9d45"/>
+				<textFieldExpression><![CDATA[$F{fechaseguimiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="178" y="21" width="100" height="20" uuid="903ab83a-7c97-44c6-b8d7-803f52ca3e77"/>
+				<textFieldExpression><![CDATA[$F{horaseguimiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="349" y="20" width="100" height="20" uuid="8b3ac2d7-465f-4979-984a-a63e1e9d20c5"/>
+				<textFieldExpression><![CDATA[$F{horafinseguimiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="182" y="49" width="100" height="20" uuid="7bed3a03-2a97-4419-bb4e-2c4a3488df7f"/>
+				<textFieldExpression><![CDATA[$F{lugarseguimiento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="131" y="76" width="218" height="20" uuid="ee753533-7817-409f-948f-e30f79307e1e"/>
+				<text><![CDATA[Evaluar el proceso del grupo con ficha]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="323" y="76" width="39" height="20" uuid="a266db03-6937-40bc-befe-4fd253bac818"/>
+				<textFieldExpression><![CDATA[$F{fichatitulacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="362" y="76" width="100" height="20" uuid="ef3d54ad-9392-4f40-9811-ce4efc4c0d61"/>
+				<text><![CDATA[ en la Competencia:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="6" y="96" width="100" height="20" uuid="4378cba5-2e1b-4ebe-be35-24b5568af968"/>
+				<textFieldExpression><![CDATA[$F{competenciasseguimiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="176" width="555" height="36" uuid="f7e49f4f-fe25-4903-a2e9-5f83fff0e678"/>
+				<textFieldExpression><![CDATA[$F{obsseguimiento}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="14" y="242" width="533" height="93" uuid="5867916f-936a-417f-a2a9-ea2acb4903f3"/>
+				<subreportParameter name="numeroseguimiento">
+					<subreportParameterExpression><![CDATA[$F{codigoseguimiento}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "reporteAprendices.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageHeader>
+	<columnFooter>
+		<band height="183" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="106" uuid="c7bb18fb-03bb-41bf-91f9-37e555a7833e"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="189" height="20" uuid="5a02295d-3c8a-471d-8672-9115a8682e5f"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONCLUSIONES:]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="90" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="86" uuid="99062784-45db-41c4-8a74-20670abf285f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="189" height="20" uuid="95581cdb-c91e-4fbf-bd8c-255b9073173b"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COMPROMISOS:]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

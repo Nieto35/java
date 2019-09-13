@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="533" pageHeight="93" columnWidth="533" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="00904011-613c-4466-973f-c115a6f60144">
+	<property name="ireport.zoom" value="1.6105100000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="numeroseguimiento" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[select novedad.nombrenovedad, personal.nombrepersonal, personal.apellidopersonal, seguimientoaprendiz.rendimientoseguimiento, seguimientoaprendiz.estrategiaseguimiento from personal, aprendiz, seguimientoaprendiz, novedad where seguimientoaprendiz.numeroseguimiento=$P{numeroseguimiento} and personal.documentopersonal=aprendiz.documentoaprendiz and seguimientoaprendiz.numeronovedad=novedad.numeronovedad and seguimientoaprendiz.documentoaprendiz=aprendiz.documentoaprendiz;]]>
+	</queryString>
+	<field name="nombrenovedad" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombrepersonal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellidopersonal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rendimientoseguimiento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estrategiaseguimiento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="413c98a0-133e-499f-9f70-9208ade78b94"/>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="20" uuid="dcc90db4-c438-4496-a19f-4580e13b2637"/>
+				<text><![CDATA[APELLIDO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="1" width="100" height="20" uuid="6c9e5208-72ef-405d-a1ac-80b5aa2b2dd8"/>
+				<text><![CDATA[TIPO NOVEDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="342" y="1" width="100" height="20" uuid="93e6af07-212d-4899-a1fe-9b0033915aaa"/>
+				<text><![CDATA[RENDIMIENTO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="5f8764d3-4313-4ec2-99c9-90e8c903d519"/>
+				<textFieldExpression><![CDATA[$F{nombrepersonal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="ac87ad8b-deeb-40b9-8a96-7271aab30ba0"/>
+				<textFieldExpression><![CDATA[$F{apellidopersonal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="100" height="20" uuid="0a097ea3-7643-4084-aa57-ffcf90afa5b4"/>
+				<textFieldExpression><![CDATA[$F{nombrenovedad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="342" y="0" width="100" height="20" uuid="c530cc2c-5e64-4511-9516-9d4000e60e20"/>
+				<textFieldExpression><![CDATA[$F{rendimientoseguimiento}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
