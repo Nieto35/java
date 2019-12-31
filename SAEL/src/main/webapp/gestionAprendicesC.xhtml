@@ -7,167 +7,147 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <f:view contentType="text/html">
         <h:head>
-            <f:facet name="first">
-                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>.::SAEL::. Seguimiento de Aprendices</title>
-                <link rel="shortcut icon" href="favicon.ico"/>
-            </f:facet>
+            <ui:include src="templates/head.xhtml"/>
         </h:head>
         <h:body>
-            <h:graphicImage url="images/banner_sael.jpg" width="100%" height="100%" alt="LogoAspera"  style="vertical-align: top;"/> 
+            <ui:include src="templates/header.xhtml"/>
             <p:panel>
-                <p:panelGrid> 
+                <p:panelGrid style="width: 100%;"> 
                     <p:row>
-                        <p:column style="vertical-align: top;"> 
+                        <ui:include src="templates/menuCoordinador.xhtml"/>
+                        <!-- dialogo de ayuda -->
+                        <p:dialog id="modalDialog" width="80%" header="Ayuda" widgetVar="helpDialog" showEffect="fade" hideEffect="bounce" modal="true" dynamic="true">  
+                            <p align="justify">                       
+                                En esta página usted podrá:<br/><br/>
+                                <b>-Crear, modificar, eliminar y consultar aprendices:</b> ésta opción solo está disponible para usuarios de tipo Coordinador. 
+                                Para crear un aprendiz basta con digitar su documento de identificación y luego presionar la tecla TAB(Tabulación) o Enter. 
+                                SAEL verificará que no exista un aprendiz con ese mismo documento. Si existe cargará sus datos y sino usted deberá continuar
+                                llenando el formulario. Luego de clic en el botón Crear. Para modificar o eliminar un aprendiz existente seleccionelo 
+                                de la tabla inferior.
+                                <br/><br/>
+                                <b>-Cargue masivo de aprendices:</b> para crear varios aprendices masivamente desde un archivo de Excel de clic en el botón Selecccionar. 
+                                Luego busque el archivo el cual deberá tener extensión <strong>.XLS</strong>. SAEL leerá el archivo y luego mostrará el resultado del cargue masivo. 
+                                También indicará en que filas del archivo hay errores. Para ver un ejemplo de la estructura que debe tener el archivo de clic en el enlace Ver Ejemplo. 
+                                <br/><br/> 
+                                <b>-Consultar y filtrar aprendices:</b> en la tabla de resultados se pueden visualizar todos los aprendices existentes. 
+                                Si desea filtrar los resultados basta con digitar en la columna Identificación un número especifico, de igual forma se puede utilizar 
+                                el filtro por Nombre, Apellido, Ficha y Programa.<br/>                    
+                            </p>
+                        </p:dialog>
 
-                            <h:form>
-                                <p:menu>
-                                    <p:submenu label="Menú">                                
-                                        <p:menuitem value="Inicio" url="indexCoordinador.xhtml" />
-                                        <p:menuitem value="Programar Seguimiento" url="gestionSeguimientosC.xhtml" />
-                                        <p:menuitem value="Aprendices" url="gestionAprendicesC.xhtml" />
-                                        <p:menuitem value="Instructores" url="gestionInstructoresC.xhtml" />
-                                        <p:menuitem value="Lideres Fichas" url="gestionLideresC.xhtml" />
-                                        <p:menuitem value="Reportes" url="reportesSaelC.xhtml" />
-                                        <p:menuitem value="Cambio Contraseña" url="CambiaPasswordCoord.xhtml" />
-                                        <p:menuitem value="Cerrar Sesión" actionListener="#{usuariosSaelVista.cerrarSesion_action}" />
-                                    </p:submenu>                       
-                                </p:menu>
-                            </h:form>
-
-                            <!-- dialogo de ayuda -->
-                            <p:dialog id="modalDialog" header="Ayuda" widgetVar="helpDialog" showEffect="fade" hideEffect="bounce" modal="true" dynamic="true">  
-                                <p align="justify">                       
-                                    En esta página usted podrá:<br/><br/>
-                                    <b>-Crear, Modificar, Eliminar y Consultar Aprendices:</b> ésta opción solo está disponible para usuarios de tipo Coordinador. 
-                                    Para crear un aprendiz basta con digitar su documento de identificación y luego presionar la tecla TAB(Tabulación) o Enter. 
-                                    ASPERA verificará que no exista un aprendiz con ese mismo documento. Si existe cargará sus datos y sino usted deberá continuar
-                                    llenando el formulario. Luego de clic en el botón Crear. Para modificar o eliminar un aprendiz existente seleccionelo 
-                                    de la tabla inferior.
-                                    <br/><br/>
-                                    <b>-Cargue Masivo de Aprendices:</b> para crear varios aprendices masivamente desde un archivo de Excel de clic en el botón Selecccionar. 
-                                    Luego busque el archivo el cual deberá tener extensión <strong>.XLS</strong>. ASPERA leerá el archivo y luego mostrará el resultado del cargue masivo. 
-                                    También indicará en que filas del archivo hay errores. Para ver un ejemplo de la estructura que debe tener el archivo de clic en el enlace Ver Ejemplo. 
-                                    <br/><br/> 
-                                    <b>-Consultar y Filtrar Aprendices:</b> en la tabla de resultados se pueden visualizar todos los aprendices existentes. 
-                                    Si desea filtrar los resultados basta con digitar en la columna Identificación un número especifico, de igual forma se puede utilizar 
-                                    el filtro por Nombre, Apellido, Ficha y Programa.<br/>                    
-                                </p>
-                            </p:dialog>
-
-                            <!-- dialogo de ejemplo cargue -->
-                            <p:dialog id="modalDialogEjemplo" header="Ejemplo Archivo de Cargue" widgetVar="cargueDialog" showEffect="fade" hideEffect="bounce" modal="true" dynamic="true">  
-                                <p align="justify">                       
-                                    El archivo de Excel para cargar masivamente los aprendices debe tener la extesión .XLS y debe tener la siguiente estructura:<br/><br/>
-                                    <div align="center">
-                                        <h:graphicImage url="/aspera/images/ejemploCargueAprendices.JPG" alt="Cargue Aprendices"/>
-                                    </div>                    
-                                    <br/>                    
-                                </p>
-                            </p:dialog>
-                        </p:column>
+                        <!-- dialogo de ejemplo cargue -->
+                        <p:dialog id="modalDialogEjemplo" header="Ejemplo Archivo de Cargue" widgetVar="cargueDialog" showEffect="fade" hideEffect="bounce" modal="true" dynamic="true">  
+                            <p align="justify">                       
+                                El archivo de Excel para cargar masivamente los aprendices debe tener la extensión .XLS y debe tener la siguiente estructura:<br/><br/>
+                                <div align="center">
+                                    <h:graphicImage url="/images/ejemploCargueAprendices.JPG" alt="Cargue Aprendices"/>
+                                </div>                    
+                                <br/>                    
+                            </p>
+                        </p:dialog>
+                   
                         <p:column>
                             <h:form id="formulario"> 
-                                <p:panel id="panel">                            
+                                <p:panel id="panelAprendices" header="Aprendices">                            
                                     <p:messages id="mensajes" showDetail="true" /> 
                                     <p:growl id="growl" showDetail="true" sticky="true" /> 
-                                    <p:panel id="panelAprendices" header="Aprendices"> 
-                                        <f:facet name="actions">
-                                            <p:commandLink onclick="PF('helpDialog').show();" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon ui-icon-help" /></p:commandLink>
-                                        </f:facet>
-                                        <p:panelGrid  columns="2" style="width: 82%;">   
-                                            <p:panelGrid  columns="2"> 
-                                                <h:outputText value="Identificación:"/>
-                                                <p:inputText id="txtIdentificacion" binding="#{aprendizVista.txtIdentificacion}">
-                                                    <p:ajax listener="#{aprendizVista.txtIdentificacion_listener}" update="panelAprendices,pnlBotones" />
-                                                </p:inputText>
+                                    <f:facet name="actions">
+                                        <p:commandLink onclick="PF('helpDialog').show();" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon ui-icon-help" /></p:commandLink>
+                                    </f:facet>
+                                    <p:panelGrid  columns="2" style="width: 100%;">   
+                                        <p:panelGrid  columns="2"> 
+                                            <h:outputText value="Identificación:"/>
+                                            <p:inputText id="txtIdentificacion" binding="#{aprendizVista.txtIdentificacion}">
+                                                <p:ajax listener="#{aprendizVista.txtIdentificacionListener}" update="panelAprendices,pnlBotones" />
+                                            </p:inputText>
 
-                                                <h:outputText value="Nombre:"/>
-                                                <p:inputText id="txtNombre" binding="#{aprendizVista.txtNombre}" />
+                                            <h:outputText value="Nombres:" />
+                                            <p:inputText id="txtNombre" binding="#{aprendizVista.txtNombre}"  />
 
-                                                <h:outputText value="Apellido:"/>
-                                                <p:inputText id="txtApellido" binding="#{aprendizVista.txtApellido}" />
+                                            <h:outputText value="Apellidos:"/>
+                                            <p:inputText id="txtApellido" binding="#{aprendizVista.txtApellido}" />
 
-                                                <h:outputText value="Teléfono"/>
-                                                <p:inputText id="txtTelefono" binding="#{aprendizVista.txtTelefono}" />
+                                            <h:outputText value="Teléfono"/>
+                                            <p:inputText id="txtTelefono" binding="#{aprendizVista.txtTelefono}" />
 
-                                                <h:outputText value="Correo:"/>
-                                                <p:inputText id="txtCorreo" binding="#{aprendizVista.txtCorreo}" />
-
-                                                <h:outputText value="Contraseña:"/>
-                                                <p:password id="passClave" binding="#{aprendizVista.passClave}" feedback="true"/>
-                                            </p:panelGrid>
-                                            <p:panelGrid  columns="2" id="paFicha"> 
-                                                <h:outputText value="Ficha:"/>
-                                                <p:inputText id="txtFicha" binding="#{aprendizVista.txtFicha}" >
-                                                    <p:ajax listener="#{aprendizVista.txtFicha_listener}" update="paFicha,pnlBotones,formulario" />
-                                                </p:inputText>            
-
-                                                <h:outputText value="Jornada:"/>
-                                                <p:inputText id="txtJornada" binding="#{aprendizVista.txtJornada}" disabled="true"/>
-
-                                                <h:outputText value="Programa:"/>
-                                                <p:inputTextarea id="txtPrograma" rows="5" cols="25" autoResize="false" binding="#{aprendizVista.txtPrograma}"  disabled="true"></p:inputTextarea>
-                                            </p:panelGrid>
+                                            <h:outputText value="Correo personal:"/>
+                                            <p:inputText id="txtCorreo" binding="#{aprendizVista.txtCorreo}" /> 
+                                            
+                                            <h:outputText value="Correo institucional:"/>
+                                            <p:inputText id="txtCorreoInstitucional" binding="#{aprendizVista.txtCorreoInstitucional}" /> 
                                         </p:panelGrid>
+                                        <p:panelGrid  columns="2" id="paFicha"> 
+                                            <h:outputText value="Ficha:"/>
+                                            <p:inputText id="txtFicha" binding="#{aprendizVista.txtFicha}" >
+                                                <p:ajax listener="#{aprendizVista.txtFichaListener}" update="paFicha,pnlBotones,formulario" />
+                                            </p:inputText>            
 
-                                        <p:panelGrid id="pnlBotones" columns="4" style="width: 82%;">
-                                            <f:facet name="footer"> 
-                                                <div align="center"> 
-                                                    <p:commandButton id="btnCrear" value="Crear" binding="#{aprendizVista.btnRegistrar}" action="#{aprendizVista.registrar_action}" update="formulario" />
-                                                    <p:commandButton id="btnModificar" value="Modificar" binding="#{aprendizVista.btnModificar}" action="#{aprendizVista.modificar_action}" update="formulario" disabled="true" />
-                                                    <p:commandButton id="btnEliminar" value="Eliminar" binding="#{aprendizVista.btnEliminar}" onclick="PF('confirmation').show();" type="button" disabled="true" />
-                                                    <p:commandButton id="btnLimpiar" value="Limpiar" binding="#{aprendizVista.btnLimpiar}" action="#{aprendizVista.limpiar_action}" update="formulario" />
-                                                </div>
-                                            </f:facet>
-                                        </p:panelGrid>   
-                                    </p:panel> 
-                                    <p:panel id="panelUpload" header="Cargue Masivo de Aprendices">
+                                            <h:outputText value="Jornada:"/>
+                                            <p:inputText id="txtJornada" binding="#{aprendizVista.txtJornada}" disabled="true"/>
+
+                                            <h:outputText value="Programa:"/>
+                                            <p:inputTextarea id="txtPrograma" rows="5" cols="25" autoResize="false" binding="#{aprendizVista.txtPrograma}"  disabled="true"></p:inputTextarea>
+                                        </p:panelGrid>
+                                    </p:panelGrid>
+
+                                    <p:panelGrid id="pnlBotones" columns="4" style="width: 100%;">
+                                        <f:facet name="footer"> 
+                                            <div align="center"> 
+                                                <p:commandButton id="btnCrear" value="Crear" binding="#{aprendizVista.btnCrear}" action="#{aprendizVista.crearAction}" update="formulario" />
+                                                <p:commandButton id="btnModificar" value="Modificar" binding="#{aprendizVista.btnModificar}" action="#{aprendizVista.modificarAction}" update="formulario" disabled="true" />
+                                                <p:commandButton id="btnEliminar" value="Eliminar" binding="#{aprendizVista.btnEliminar}" onclick="PF('confirmation').show();" type="button" disabled="true" />
+                                                <p:commandButton id="btnLimpiar" value="Limpiar" binding="#{aprendizVista.btnLimpiar}" action="#{aprendizVista.limpiarAction}" update="formulario" />
+                                            </div>
+                                        </f:facet>
+                                    </p:panelGrid>   
+                                    
+                                    <p:panel id="panelUpload" header="Cargue masivo de aprendices">
                                         <p:commandLink id="linkEjemplo" update="panelUpload" onclick="PF('cargueDialog').show();" style="cursor: help;" >  
-                                            <h:outputText value="Ver Ejemplo" style="color: #168216; font-weight: bold;"/> 
+                                            <h:outputText value="Ver ejemplo" style="color: #168216; font-weight: bold;"/> 
                                         </p:commandLink>
-                                        <p:fileUpload label="Seleccionar" invalidFileMessage="El Archivo deber ser de Extensión .XLS" fileUploadListener="#{aprendizVista.handleFileUpload}" mode="advanced"  update="mensajeArchivo" auto="true" allowTypes="/(\.|\/)(xls)$/"/> 
+                                        <p:fileUpload label="Seleccionar" invalidFileMessage="El archivo deber ser de extensión .XLS" fileUploadListener="#{aprendizVista.handleFileUpload}" mode="advanced"  update="mensajeArchivo" auto="true" allowTypes="/(\.|\/)(xls)$/"/> 
                                         <p:messages id="mensajeArchivo" showDetail="true" /> 
                                     </p:panel>
                                     <br />
-                                    <h:outputText value="Si Desea Buscar un Aprendiz digite el Dato en el Filtro Respectivo" />
+                                    <h:outputText value="Si desea buscar un aprendiz digite el dato en el filtro respectivo" />
                                     <br /><br />
                                     <p:dataTable id="listaAprendices" var="aprendices" filteredValue="#{aprendizVista.listaAprendices}" value="#{aprendizVista.listaAprendices}" selection="#{aprendizVista.selectedAprendiz}"
-                                                 selectionMode="single" rowKey="#{aprendices.documento.documento}" paginator="true" rows="5" emptyMessage="No hay Aprendices!" 
+                                                 selectionMode="single" rowKey="#{aprendices.documentoaprendiz}" paginator="true" rows="5" emptyMessage="No hay Aprendices!" 
                                                  >
                                         <p:ajax event="rowSelect" listener="#{aprendizVista.onRowSelect}"   
                                                 update=":formulario:pnlBotones,:formulario:panelAprendices" /> 
-                                        <p:column sortBy="#{aprendices.documento.documento}" filterBy="#{aprendices.documento.documento}" filterMatchMode="contains">
+                                        <p:column sortBy="#{aprendices.documentoaprendiz}" filterBy="#{aprendices.documentoaprendiz}" filterMatchMode="contains">
                                             <f:facet name="header">
                                                 <h:outputText  value="Identificación" />                            
                                             </f:facet>
-                                            <h:outputText  value="#{aprendices.documento.documento}" />                          
+                                            <h:outputText  value="#{aprendices.documentoaprendiz}" />                          
                                         </p:column>
 
-                                        <p:column sortBy="#{aprendices.documento.nombre}" filterBy="#{aprendices.documento.nombre}">
+                                        <p:column sortBy="#{aprendices.personal.nombrepersonal}" filterBy="#{aprendices.personal.nombrepersonal}">
                                             <f:facet name="header" >
                                                 <h:outputText  value="Nombre" />                            
                                             </f:facet>
-                                            <h:outputText  value="#{aprendices.documento.nombre}" />                          
+                                            <h:outputText  value="#{aprendices.personal.nombrepersonal}" />                          
                                         </p:column>
 
-                                        <p:column sortBy="#{aprendices.documento.apellido}" filterBy="#{aprendices.documento.apellido}">
+                                        <p:column sortBy="#{aprendices.personal.apellidopersonal}" filterBy="#{aprendices.personal.apellidopersonal}">
                                             <f:facet name="header" >
                                                 <h:outputText  value="Apellido" />                            
                                             </f:facet>
-                                            <h:outputText  value="#{aprendices.documento.apellido}" />                          
+                                            <h:outputText  value="#{aprendices.personal.apellidopersonal}" />                          
                                         </p:column>
 
-                                        <p:column sortBy="#{aprendices.fichaTitulacion.ficha}" filterBy="#{aprendices.fichaTitulacion.ficha}">
+                                        <!--p:column sortBy="#/*{aprendices.fichaTitulacion.ficha}" filterBy="#/*{aprendices.fichaTitulacion.ficha}">
                                             <f:facet name="header" >
                                                 <h:outputText  value="Ficha" />                            
                                             </f:facet>
-                                            <h:outputText  value="#{aprendices.fichaTitulacion.ficha}" />                          
-                                        </p:column>         
+                                            <h:outputText  value="#/*{aprendices.fichaTitulacion.ficha}" />                          
+                                        </p:column-->         
 
                                     </p:dataTable> 
                                     <!--Panel Exportar -->
@@ -193,14 +173,12 @@ and open the template in the editor.
                     </p:row>
                 </p:panelGrid>
             </p:panel>
-            <div align="center">
-                <h:graphicImage url="images/pie_sael.jpg" width="100%" height="100%" alt="LogoSAEL"  style="vertical-align: bottom;"/>
-            </div>
+            <ui:include src="templates/footer.xhtml"/>
             <!-- Dialogo de confirmacion para el boton eliminar -->
             <h:form id="formDialog" > 
-                <p:confirmDialog id="confirmDialog" message="Está Seguro de Eliminar el Aprendiz?"  
+                <p:confirmDialog id="confirmDialog" message="Está seguro de eliminar el aprendiz?"  
                                  header="Confirmación" severity="alert" widgetVar="confirmation">  
-                    <p:commandButton id="confirm" value="Si" oncomplete="confirmation.hide()" update=":formulario:panel"  
+                    <p:commandButton id="confirm" value="Si" oncomplete="confirmation.hide()" update=":formulario:panelAprendices"  
                                      actionListener="#{aprendizVista.onEliminacionConfirm}" />  
                     <p:commandButton id="decline" value="No" onclick="PF('confirmation').hide()" type="button" />   
 

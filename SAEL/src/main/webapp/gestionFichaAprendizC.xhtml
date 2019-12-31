@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <ui:include src="templates/head.xhtml"/>
+        </h:head>
+        <h:body>
+            <ui:include src="templates/header.xhtml"/>
+            <p:panel>
+                <p:panelGrid style="width: 100%;"> 
+                    <p:row>
+                        <ui:include src="templates/menuCoordinador.xhtml"/>
+                        <!-- dialogo de ayuda -->
+                        <p:dialog id="modalDialog" width="80%" header="Ayuda" widgetVar="helpDialog" showEffect="fade" hideEffect="bounce" modal="true" dynamic="true">  
+                            <p align="justify">                       
+                            En esta página usted podrá:<br/><br/>
+                            <b>-Crear, modificar, eliminar y consultar aprendices:</b> ésta opción solo está disponible para usuarios de tipo Coordinador. 
+                            Para crear un aprendiz basta con digitar su documento de identificación y luego presionar la tecla TAB(Tabulación) o Enter. 
+                            SAEL verificará que no exista un aprendiz con ese mismo documento. Si existe cargará sus datos y sino usted deberá continuar
+                            llenando el formulario. Luego de clic en el botón Crear. Para modificar o eliminar un aprendiz existente seleccionelo 
+                            de la tabla inferior.
+                            <br/><br/>
+                            <b>-Cargue masivo de aprendices:</b> para crear varios aprendices masivamente desde un archivo de Excel de clic en el botón Selecccionar. 
+                            Luego busque el archivo el cual deberá tener extensión <strong>.XLS</strong>. SAEL leerá el archivo y luego mostrará el resultado del cargue masivo. 
+                            También indicará en que filas del archivo hay errores. Para ver un ejemplo de la estructura que debe tener el archivo de clic en el enlace Ver Ejemplo. 
+                            <br/><br/> 
+                            <b>-Consultar y filtrar aprendices:</b> en la tabla de resultados se pueden visualizar todos los aprendices existentes. 
+                            Si desea filtrar los resultados basta con digitar en la columna Identificación un número especifico, de igual forma se puede utilizar 
+                            el filtro por Nombre, Apellido, Ficha y Programa.<br/>                    
+                            </p>
+                        </p:dialog>
+                    
+                        <p:column>
+                            <h:form id="formulario"> 
+                                <p:panel id="panelFichas" header="Asignar estado de ficha a aprendiz">                                    
+                                    <p:messages id="mensajes" showDetail="true" closable="true" /> 
+                                    <f:facet name="actions">
+                                        <p:commandLink onclick="PF('helpDialog').show();" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon ui-icon-help" /></p:commandLink>
+                                    </f:facet>
+                                    <p:panelGrid  columns="2" style="width: 100%;">   
+                                        <p:panelGrid  columns="2" id="paFicha" style="width: 100%;"> 
+                                            <h:outputText value="Ficha:"/>
+                                            <p:inputText id="txtFicha" binding="#{fichaAprendizVista.txtFicha}" >
+                                                <p:ajax listener="#{fichaAprendizVista.txtFichaListener}" update="paFicha" />
+                                            </p:inputText>  
+                                            
+                                            <h:outputText value="Programa:"/>
+                                            <p:outputLabel id="txtPrograma" value="#{fichaAprendizVista.txtPrograma}" />
+                                            
+                                            <h:outputText value="Estado de formación:"/>
+                                            <p:selectOneMenu id="cmbEstado" binding="#{fichaAprendizVista.cmbEstado}" style="width: 90%;">
+                                                <f:selectItems value="#{fichaAprendizVista.listaEstados}" />
+                                            </p:selectOneMenu>
+                                        </p:panelGrid>
+                                        <p:panelGrid  columns="2" style="width: 100%;">                                               
+
+                                            <h:outputText value="Identificación:"/>
+                                            <p:inputText id="txtDocumento" binding="#{fichaAprendizVista.txtDocumento}" >
+                                                <p:ajax listener="#{fichaAprendizVista.txtDocumentoListener}" update=":formulario:txtNombreAprendiz" />
+                                            </p:inputText>
+                                            
+                                            <h:outputText value="Nombre:"/> 
+                                            <p:outputLabel id="txtNombreAprendiz" value="#{fichaAprendizVista.txtNombreAprendiz}" />
+                                        </p:panelGrid>
+
+                                        <f:facet name="footer"> 
+                                            <div align="center"> 
+                                                <p:commandButton id="btnModificar" disabled="true" value="Modificar" binding="#{fichaAprendizVista.btnModificar}" action="#{fichaAprendizVista.modificarAction}" update="formulario" />
+                                                <p:commandButton id="btnLimpiar" value="Limpiar" binding="#{fichaAprendizVista.btnLimpiar}" action="#{fichaAprendizVista.limpiarAction}" update="formulario" />
+                                            </div>
+                                        </f:facet>
+                                    </p:panelGrid>   
+                                    
+                                    <br />
+                                    <h:outputText value="Si desea buscar una ficha digite el dato en el filtro respectivo" />
+                                    <br /><br />                                
+                                    <p:dataTable id="listaFichas" var="ficha" value="#{fichaAprendizVista.listaFichas}" selection="#{fichaAprendizVista.selectedFicha}"
+                                                 selectionMode="single" rowKey="#{ficha.numeroficha}" paginator="true" rows="5" emptyMessage="No hay Fichas encontradas!" style="text-align: center;">
+                                        <p:ajax event="rowSelect" listener="#{fichaAprendizVista.onRowSelect}"   
+                                            update=":formulario:paFicha" />                                        
+                                        
+                                        
+                                        <p:column sortBy="#{ficha.numeroficha}" filterBy="#{ficha.numeroficha}" filterMatchMode="contains">
+                                            <f:facet name="header">
+                                                <h:outputText  value="Ficha" />                            
+                                            </f:facet>
+                                            <h:outputText  value="#{ficha.numeroficha}" />                          
+                                        </p:column>
+                                        
+                                        <p:column sortBy="#{ficha.codigoprograma.nombreprograma}" filterBy="#{ficha.codigoprograma.nombreprograma}" filterMatchMode="contains">
+                                            <f:facet name="header">
+                                                <h:outputText  value="Programa" />                            
+                                            </f:facet>
+                                            <h:outputText  value="#{ficha.codigoprograma.nombreprograma}" />                          
+                                        </p:column> 
+                                    </p:dataTable>                                     
+
+                                </p:panel>                                
+                                
+                            </h:form>
+                        </p:column>
+                    </p:row>
+                </p:panelGrid>
+            </p:panel>
+            <ui:include src="templates/footer.xhtml"/>
+            
+        </h:body>
+
+    </f:view>
+</html>

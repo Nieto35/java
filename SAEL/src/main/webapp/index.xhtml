@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
    
     <f:view contentType="text/html">
         <h:head>            
@@ -15,9 +16,7 @@
         </h:head>
 
         <h:body>    
-            <div align="center">
-                <h:graphicImage url="images/banner_sael.jpg" width="100%" height="100%" alt="LogoEDI"  />
-            </div>
+            <ui:include src="templates/header.xhtml"/>
             <h:form id="formLogin">  
                 <p:panel id="panel">                    
                     <div align="center"> 
@@ -28,32 +27,26 @@
                             </f:facet> 
 
                             <h:outputText value="Tipo:"/>                           
-                            <p:selectOneMenu id="cmbTipo"  >
-                                <f:selectItem itemLabel="COORDINADOR" itemValue="COORDINADOR" />
-                                <f:selectItem itemLabel="INSTRUCTOR" itemValue="INSTRUCTOR" />
-                                <f:selectItem itemLabel="APRENDIZ" itemValue="APRENDIZ" />                                  
+                            <p:selectOneMenu id="cmbTipo"  binding="#{usuarioVista.cmbTipo}">
+                                <f:selectItems value="#{usuarioVista.listaTiposUsuario}" />                                  
                             </p:selectOneMenu>                            
                                
                             <h:outputText value="Usuario:"/>
-                            <p:inputText id="txtUsuario"   />
+                            <p:inputText id="txtUsuario"  binding="#{usuarioVista.txtUsuario}"/>
 
                             <h:outputText value="Contraseña:"/>
-                            <p:password id="passUsuario"  /> 
+                            <p:password id="passUsuario" binding="#{usuarioVista.passUsuario}"  /> 
 
                             <f:facet name="footer"> 
                                 <div align="center"> 
-                                    <p:commandButton id="btnIngresar"  value="Ingresar" update="panel" />  
-                                    <p:commandButton id="btnLimpiar"  value="Limpiar" update="panel" />
+                                    <p:commandButton id="btnIngresar" action="#{usuarioVista.ingresarAction}" value="Ingresar" update="panel" />  
+                                    <p:commandButton id="btnLimpiar" action="#{usuarioVista.limpiarAction}"  value="Limpiar" update="panel" />
                                 </div>
                             </f:facet>  
                         </p:panelGrid>                         
-                        <br/>                        
-                        <h:link value="Regresar a GEPAD" outcome="/index" style="color: #168216; font-weight: bold; font-size: 16pt;"  />                                                 
                     </div>   
                 </p:panel>
-                <div align="center" class="banner" >
-                    <h:graphicImage url="images/pie_sael.jpg" width="100%" height="100%" alt="LogoAspera"  />
-                </div>
+                <ui:include src="templates/footer.xhtml"/>
             </h:form>
         </h:body>
 

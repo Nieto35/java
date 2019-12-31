@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <body>
+        <ui:composition>    
+            <p:column style="vertical-align: top; width: 10%;"> 
+                <h:form>
+                    <h3>Menú</h3>
+                    <p:tieredMenu>                                                   
+                        <p:menuitem value="Inicio" url="indexCoordinador.xhtml" />
+                        <p:menuitem value="Programar Seguimiento" url="gestionSeguimientosC.xhtml" />
+                        <p:menuitem value="Aprendices" url="gestionAprendicesC.xhtml" />
+                        <p:menuitem value="Instructores" url="gestionInstructoresC.xhtml" />
+                        <p:submenu label="Fichas"> 
+                            <p:menuitem value="Gestión" url="gestionFichasC.xhtml" />
+                            <p:menuitem value="Asignar estado a aprendices" url="gestionFichaAprendizC.xhtml" />
+                        </p:submenu> 
+                        <p:menuitem value="Reportes" url="reportesSaelC.xhtml" />
+                        <p:menuitem value="Cambio Contraseña" url="CambiaPasswordCoord.xhtml" />
+                        <p:menuitem value="Cerrar Sesión" actionListener="#{usuarioVista.cerrarSesionAction}" />                                           
+                    </p:tieredMenu>
+                </h:form>
+            </p:column>
+        </ui:composition>
+    </body>
+</html>

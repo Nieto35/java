@@ -1,0 +1,466 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package co.edu.sena.sael.vista;
+
+import co.edu.sena.sael.logica.AprendizLogicaLocal;
+import co.edu.sena.sael.logica.FichaTitulacionLogicaLocal;
+import co.edu.sena.sael.logica.PersonalLogicaLocal;
+import co.edu.sena.sael.logica.PertenecefichaLogicaLocal;
+import co.edu.sena.sael.modelo.Aprendiz;
+import co.edu.sena.sael.modelo.Fichatitulacion;
+import co.edu.sena.sael.modelo.Personal;
+import co.edu.sena.sael.modelo.Perteneceficha;
+import co.edu.sena.sael.modelo.PertenecefichaPK;
+import co.edu.sena.sael.utils.Constantes;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+import org.primefaces.component.commandbutton.CommandButton;
+import org.primefaces.component.inputtext.InputText;
+import org.primefaces.component.inputtextarea.InputTextarea;
+import org.primefaces.event.SelectEvent;
+
+/**
+ *
+ * @author Felipe
+ */
+public class AprendizVista {
+
+    @EJB
+    private AprendizLogicaLocal aprendizLogica;
+    @EJB
+    private PersonalLogicaLocal personalLogica;    
+    @EJB
+    private FichaTitulacionLogicaLocal fichaLogica;
+    @EJB
+    private PertenecefichaLogicaLocal pertenecefichaLogica;
+    
+    private InputText txtIdentificacion;
+    private InputText txtNombre;
+    private InputText txtApellido;
+    private InputText txtCorreo;
+    private InputText txtCorreoInstitucional;
+    private InputText txtTelefono;
+    private InputText txtFicha;
+    private InputText txtJornada;
+    private InputTextarea txtPrograma;
+    private CommandButton btnCrear;
+    private CommandButton btnModificar;
+    private CommandButton btnEliminar;
+    private CommandButton btnLimpiar;
+    private Aprendiz selectedAprendiz;
+    private List<Aprendiz> listaAprendices = null;
+    
+    /**
+     * Creates a new instance of AprendizVista
+     */
+    public AprendizVista() {
+    }
+
+    public InputText getTxtIdentificacion() {
+        return txtIdentificacion;
+    }
+
+    public void setTxtIdentificacion(InputText txtIdentificacion) {
+        this.txtIdentificacion = txtIdentificacion;
+    }
+
+    public InputText getTxtNombre() {
+        return txtNombre;
+    }
+
+    public void setTxtNombre(InputText txtNombre) {
+        this.txtNombre = txtNombre;
+    }
+
+    public InputText getTxtApellido() {
+        return txtApellido;
+    }
+
+    public void setTxtApellido(InputText txtApellido) {
+        this.txtApellido = txtApellido;
+    }
+
+    public InputText getTxtCorreo() {
+        return txtCorreo;
+    }
+
+    public void setTxtCorreo(InputText txtCorreo) {
+        this.txtCorreo = txtCorreo;
+    }
+
+    public InputText getTxtTelefono() {
+        return txtTelefono;
+    }
+
+    public void setTxtTelefono(InputText txtTelefono) {
+        this.txtTelefono = txtTelefono;
+    }
+
+    public InputText getTxtFicha() {
+        return txtFicha;
+    }
+
+    public void setTxtFicha(InputText txtFicha) {
+        this.txtFicha = txtFicha;
+    }
+
+    public InputText getTxtJornada() {
+        return txtJornada;
+    }
+
+    public void setTxtJornada(InputText txtJornada) {
+        this.txtJornada = txtJornada;
+    }
+
+    public InputTextarea getTxtPrograma() {
+        return txtPrograma;
+    }
+
+    public void setTxtPrograma(InputTextarea txtPrograma) {
+        this.txtPrograma = txtPrograma;
+    }    
+
+    public CommandButton getBtnCrear() {
+        return btnCrear;
+    }
+
+    public void setBtnCrear(CommandButton btnCrear) {
+        this.btnCrear = btnCrear;
+    }
+
+    public CommandButton getBtnModificar() {
+        return btnModificar;
+    }
+
+    public void setBtnModificar(CommandButton btnModificar) {
+        this.btnModificar = btnModificar;
+    }
+
+    public CommandButton getBtnEliminar() {
+        return btnEliminar;
+    }
+
+    public void setBtnEliminar(CommandButton btnEliminar) {
+        this.btnEliminar = btnEliminar;
+    }
+
+    public CommandButton getBtnLimpiar() {
+        return btnLimpiar;
+    }
+
+    public void setBtnLimpiar(CommandButton btnLimpiar) {
+        this.btnLimpiar = btnLimpiar;
+    }
+
+    public Aprendiz getSelectedAprendiz() {
+        return selectedAprendiz;
+    }
+
+    public void setSelectedAprendiz(Aprendiz selectedAprendiz) {
+        this.selectedAprendiz = selectedAprendiz;
+    }
+
+    public InputText getTxtCorreoInstitucional() {
+        return txtCorreoInstitucional;
+    }
+
+    public void setTxtCorreoInstitucional(InputText txtCorreoInstitucional) {
+        this.txtCorreoInstitucional = txtCorreoInstitucional;
+    }
+
+    public List<Aprendiz> getListaAprendices() {
+        if (listaAprendices == null) {
+            try {
+                setListaAprendices(aprendizLogica.consultar());
+            } catch (Exception ex) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: ", ex.getMessage()));
+            }
+        }
+        
+        return listaAprendices;
+    }
+
+    public void setListaAprendices(List<Aprendiz> listaAprendices) {
+        this.listaAprendices = listaAprendices;
+    }
+    
+    public void crearAction()
+    {
+        
+        try {
+            Aprendiz nuevoAprendiz = new Aprendiz();
+            Long docAprendiz = Long.parseLong(txtIdentificacion.getValue().toString());
+            Personal nuevoPersonal = new Personal();
+            nuevoPersonal.setDocumentopersonal(docAprendiz);
+            nuevoPersonal.setNombrepersonal(txtNombre.getValue().toString().toUpperCase());
+            nuevoPersonal.setApellidopersonal(txtApellido.getValue().toString().toUpperCase());
+            nuevoPersonal.setCorreopersonal(txtCorreo.getValue().toString().toUpperCase());
+            nuevoPersonal.setCorreoinstitucionalpersonal(txtCorreoInstitucional.getValue().toString().toUpperCase());
+            nuevoPersonal.setTelefonopersonal(txtTelefono.getValue().toString());
+            //se asigna por defecto como contraseña el numero de documento
+            nuevoPersonal.setClavepersonal(String.valueOf(docAprendiz));                
+
+            //revisa la variable de sesion
+            String existePersonal = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("existePersonal");
+            if ("no".equals(existePersonal)) {
+                personalLogica.insertar(nuevoPersonal);
+            } else {
+                personalLogica.modificar(nuevoPersonal);    //por si el usuario cambia algún dato del personal
+            }
+            
+            nuevoAprendiz.setDocumentoaprendiz(nuevoPersonal.getDocumentopersonal());
+            nuevoAprendiz.setPersonal(nuevoPersonal); 
+            aprendizLogica.registrar(nuevoAprendiz);
+
+            Integer ficha = Integer.parseInt(getTxtFicha().getValue().toString());
+            Fichatitulacion fichaA = fichaLogica.consultarPorId(ficha);
+
+            PertenecefichaPK pertenecefichaPK=new PertenecefichaPK();
+            pertenecefichaPK.setDocumentoaprendiz(nuevoAprendiz.getDocumentoaprendiz());
+            pertenecefichaPK.setNumeroficha(fichaA.getNumeroficha());
+
+            Perteneceficha perteneceficha=new Perteneceficha();
+            perteneceficha.setAprendiz(nuevoAprendiz);
+            perteneceficha.setFichatitulacion(fichaA);
+            perteneceficha.setPertenecefichaPK(pertenecefichaPK);
+            //asigna estado en formacion por defecto
+            perteneceficha.setEstadoperteneceficha(Constantes.FICHA_ESTADO_1);
+
+            pertenecefichaLogica.insertar(perteneceficha);
+
+            limpiarAction();
+
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Mensaje: ", "El aprendiz se creó con éxito"));
+        } catch (Exception e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: ", e.getMessage()));
+        }
+        
+        setListaAprendices(null);
+        
+    }
+    
+    public void modificarAction() {
+        //System.out.println("Modificar Aprendiz");        
+        try {
+            Long docAprendiz = Long.parseLong(txtIdentificacion.getValue().toString());
+
+            //Modificar       
+            Aprendiz aprendiz = new Aprendiz();
+            Personal miPersonal = new Personal();
+            miPersonal.setDocumentopersonal(docAprendiz);
+            miPersonal.setNombrepersonal(txtNombre.getValue().toString().toUpperCase());
+            miPersonal.setApellidopersonal(txtApellido.getValue().toString().toUpperCase());
+            miPersonal.setCorreopersonal(txtCorreo.getValue().toString().toUpperCase());
+            miPersonal.setCorreoinstitucionalpersonal(txtCorreoInstitucional.getValue().toString().toUpperCase());
+            miPersonal.setTelefonopersonal(txtTelefono.getValue().toString());
+            personalLogica.modificar(miPersonal);
+
+            aprendiz.setDocumentoaprendiz(miPersonal.getDocumentopersonal());
+            aprendiz.setPersonal(miPersonal);
+            aprendizLogica.modificar(aprendiz);
+
+            Integer ficha = Integer.parseInt(getTxtFicha().getValue().toString());
+            Fichatitulacion fichaA = fichaLogica.consultarPorId(ficha);
+
+            PertenecefichaPK pertenecefichaPK=new PertenecefichaPK();
+            pertenecefichaPK.setDocumentoaprendiz(aprendiz.getDocumentoaprendiz());
+            pertenecefichaPK.setNumeroficha(fichaA.getNumeroficha());
+
+            Perteneceficha perteneceficha=new Perteneceficha();
+            perteneceficha.setAprendiz(aprendiz);
+            perteneceficha.setFichatitulacion(fichaA);
+            perteneceficha.setPertenecefichaPK(pertenecefichaPK);
+            //TODO: verificar este estado de donde viene
+            perteneceficha.setEstadoperteneceficha("EN FORMACION");
+
+            pertenecefichaLogica.modificar(perteneceficha);                
+
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Mensaje: ", "El aprendiz se modificó con éxito"));
+        } catch (Exception e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: ", e.getMessage()));
+        }
+        
+        setListaAprendices(null);
+    }
+    
+    public void borrarAction() {
+        //System.out.println("Borrar Aprendiz");        
+        try {
+            Long docAprendiz = Long.parseLong(txtIdentificacion.getValue().toString());
+            //Borrar                
+            Aprendiz aprendiz = new Aprendiz();
+            aprendiz.setDocumentoaprendiz(docAprendiz);
+            aprendizLogica.eliminar(aprendiz);
+
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Mensaje: ", "El aprendiz se eliminó con éxito"));
+            limpiarAction();
+        } catch (Exception e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: ", e.getMessage()));
+        }       
+        
+        setListaAprendices(null);
+    }
+    
+    public void limpiarAction() {
+        //System.out.println("Limpiar registro");        
+        txtIdentificacion.setValue("");
+        txtNombre.setValue("");
+        txtApellido.setValue("");
+        txtTelefono.setValue("");
+        txtCorreo.setValue("");
+        txtCorreoInstitucional.setValue("");
+        txtFicha.setValue("");
+        txtJornada.setValue("");
+        txtPrograma.setValue("");
+        btnEliminar.setDisabled(true);
+        btnModificar.setDisabled(true);
+        btnCrear.setDisabled(false);        
+    }
+    
+    
+    public void txtIdentificacionListener() {
+        //System.out.println("Entro al listener del Aprendiz");        
+        Aprendiz apre = null;
+        Personal entityPersonal = null;
+        try {
+            Long documentoAprendiz = Long.parseLong(txtIdentificacion.getValue().toString());
+            entityPersonal = personalLogica.consultarPorId(documentoAprendiz);
+            apre = aprendizLogica.consultarPorId(documentoAprendiz);
+        } catch (Exception ex) {
+            Logger.getLogger(AprendizVista.class.getName()).log(Level.SEVERE, null, ex);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: ", "El documento debe ser númerico!"));
+        }
+
+        if (entityPersonal == null) //si la persona no existe
+        {
+            txtNombre.setValue("");
+            txtApellido.setValue("");
+            txtCorreo.setValue("");
+            txtCorreoInstitucional.setValue("");
+            txtTelefono.setValue("");
+            txtFicha.setValue("");
+            txtJornada.setValue("");
+            txtPrograma.setValue("");
+
+            btnCrear.setDisabled(false);
+            btnEliminar.setDisabled(true);
+            btnModificar.setDisabled(true);
+           
+            //guarda variable de sesion, indicando que no existe el personal
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("existePersonal", "no");
+        } else if (apre == null) //si la persona existe pero no como aprendiz
+        {
+            txtNombre.setValue(entityPersonal.getNombrepersonal());
+            txtApellido.setValue(entityPersonal.getApellidopersonal());
+            txtCorreo.setValue(entityPersonal.getCorreopersonal());
+            txtCorreoInstitucional.setValue(entityPersonal.getCorreoinstitucionalpersonal());
+            txtTelefono.setValue(entityPersonal.getTelefonopersonal());
+
+            btnModificar.setDisabled(true);
+            btnEliminar.setDisabled(true);
+            btnCrear.setDisabled(false);
+            //el personal ya existe por tanto guarda el estado en una variable de sesion            
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("existePersonal", "si");
+        } else //si ya existe como aprendiz
+        {
+            txtIdentificacion.setValue(apre.getDocumentoaprendiz());
+            txtNombre.setValue(apre.getPersonal().getNombrepersonal());
+            txtApellido.setValue(apre.getPersonal().getApellidopersonal());
+            txtCorreo.setValue(apre.getPersonal().getCorreopersonal());
+            txtCorreoInstitucional.setValue(entityPersonal.getCorreoinstitucionalpersonal());
+            txtTelefono.setValue(apre.getPersonal().getTelefonopersonal());
+            /*txtFicha.setValue(apre.getFichatitulacion().getFicha());
+            txtJornada.setValue(apre.getFichaTitulacion().getJornada());
+            txtPrograma.setValue(apre.getFichaTitulacion().getCodigoPrograma().getNombre());
+            */btnCrear.setDisabled(true);
+
+            btnEliminar.setDisabled(false);
+            btnModificar.setDisabled(false);
+            btnCrear.setDisabled(true);
+            //el personal ya existe y como aprendiz por tanto guarda el estado en una variable de sesion     
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("existePersonal", "si");
+        }       
+
+    }
+    
+    public void txtFichaListener() {
+        //System.out.println("Entro al listener de la Ficha");        
+        try {
+            Integer numeroFicha = Integer.parseInt(getTxtFicha().getValue().toString());
+            Fichatitulacion ft = fichaLogica.consultarPorId(numeroFicha);
+            if (ft == null) {
+                txtJornada.setValue("");
+                txtPrograma.setValue("");
+
+                if (btnModificar.isDisabled()) {
+                    btnCrear.setDisabled(true);
+                }
+
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso: ", "La ficha No está registrada!"));
+            } else {
+                txtFicha.setValue(ft.getNumeroficha());
+                txtJornada.setValue(ft.getJornadaficha());
+                txtPrograma.setValue(ft.getCodigoprograma().getNombreprograma());
+
+                if (btnModificar.isDisabled()) {
+                    btnCrear.setDisabled(false);
+                    btnEliminar.setDisabled(true);
+                } else {
+                    btnCrear.setDisabled(true);
+                    btnEliminar.setDisabled(false);
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(AprendizVista.class.getName()).log(Level.SEVERE, null, ex);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: ", ex.getMessage()));
+        }
+        
+    }
+    
+    public void onEliminacionConfirm(ActionEvent actionEvent) {
+        borrarAction();
+    }
+    
+    public void onRowSelect(SelectEvent event) {
+        //System.out.println("Selecciono el Aprendiz");        
+        try {
+            Aprendiz apre = (Aprendiz) event.getObject();       
+            txtIdentificacion.setValue(apre.getDocumentoaprendiz());
+            txtNombre.setValue(apre.getPersonal().getNombrepersonal());
+            txtApellido.setValue(apre.getPersonal().getApellidopersonal());
+            txtCorreo.setValue(apre.getPersonal().getCorreopersonal());
+            txtCorreoInstitucional.setValue(apre.getPersonal().getCorreoinstitucionalpersonal());
+            txtTelefono.setValue(apre.getPersonal().getTelefonopersonal());
+            //TODO: revisar
+
+            Perteneceficha fichaActiva=pertenecefichaLogica.consultarFichaActiva(apre);
+            if(fichaActiva==null)
+            {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso: ", "El aprendiz no tiene una ficha EN FORMACION"));
+            }
+            else
+            {
+                txtFicha.setValue(fichaActiva.getFichatitulacion().getNumeroficha());
+                txtJornada.setValue(fichaActiva.getFichatitulacion().getJornadaficha());
+                txtPrograma.setValue(fichaActiva.getFichatitulacion().getCodigoprograma().getNombreprograma());
+            }          
+            
+
+            btnCrear.setDisabled(true);
+            btnEliminar.setDisabled(false);
+            btnModificar.setDisabled(false);
+        } catch (Exception e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: ", e.getMessage()));
+        }
+                
+    }
+    
+}
