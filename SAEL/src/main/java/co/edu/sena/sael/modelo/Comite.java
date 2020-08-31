@@ -34,8 +34,7 @@ public class Comite implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected ComitePK comitePK;
-    @Size(max = 50)
-    @Column(name = "cargocomite")
+    @Column(name = "cargocomite",length =50)
     private String cargocomite;
     @JoinColumn(name = "documentopersonal", referencedColumnName = "documentopersonal", insertable = false, updatable = false)
     @ManyToOne(optional = false)

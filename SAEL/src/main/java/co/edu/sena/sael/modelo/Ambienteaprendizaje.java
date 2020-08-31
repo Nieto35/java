@@ -45,15 +45,13 @@ public class Ambienteaprendizaje implements Serializable {
     @Basic(optional = false)
     @Column(name = "codigoambiente")
     private Integer codigoambiente;
-    @Size(max = 50)
-    @Column(name = "nombreambiente")
+    @Column(name = "nombreambiente",length =50)
     private String nombreambiente;
     @Column(name = "capacidadambiente")
     private Integer capacidadambiente;
     @Column(name = "areaambiente")
     private Integer areaambiente;
-    @Size(max = 50)
-    @Column(name = "estadoambiente")
+    @Column(name = "estadoambiente",length =50)
     private String estadoambiente;
     @JoinColumn(name = "numerosede", referencedColumnName = "numerosede")
     @ManyToOne

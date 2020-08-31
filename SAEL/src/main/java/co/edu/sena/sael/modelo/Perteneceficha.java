@@ -34,8 +34,7 @@ public class Perteneceficha implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected PertenecefichaPK pertenecefichaPK;
-    @Size(max = 50)
-    @Column(name = "estadoperteneceficha")
+    @Column(name = "estadoperteneceficha",length =50)
     private String estadoperteneceficha;
     @JoinColumn(name = "documentoaprendiz", referencedColumnName = "documentoaprendiz", insertable = false, updatable = false)
     @ManyToOne(optional = false)

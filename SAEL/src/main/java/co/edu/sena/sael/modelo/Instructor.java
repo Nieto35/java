@@ -41,19 +41,16 @@ public class Instructor implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "documentoinstructor")
+    @Column(name = "documentoinstructor",nullable = false)
     private Long documentoinstructor;
-    @Size(max = 50)
-    @Column(name = "tipoinstructor")
+    @Column(name = "tipoinstructor",length =50)
     private String tipoinstructor;
     @Lob
     @Size(max = 65535)
     @Column(name = "perfilocupacionalinstructor")
     private String perfilocupacionalinstructor;
     @Lob
-    @Size(max = 65535)
-    @Column(name = "logrosinstructor")
+    @Column(name = "logrosinstructor",length =65535)
     private String logrosinstructor;
     @ManyToMany(mappedBy = "instructorCollection")
     private Collection<Fichatitulacion> fichatitulacionCollection;

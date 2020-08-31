@@ -36,8 +36,7 @@ public class Guarda implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "documentoguarda")
+    @Column(name = "documentoguarda",nullable = false)
     private Long documentoguarda;
     @OneToMany(mappedBy = "idguarda")
     private Collection<Usodeambiente> usodeambienteCollection;

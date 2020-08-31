@@ -37,8 +37,7 @@ public class Regional implements Serializable {
     @Basic(optional = false)
     @Column(name = "codigoregional")
     private Integer codigoregional;
-    @Size(max = 50)
-    @Column(name = "nombreregional")
+    @Column(name = "nombreregional",length =50)
     private String nombreregional;
 
     public Regional() {

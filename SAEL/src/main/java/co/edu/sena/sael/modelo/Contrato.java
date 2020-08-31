@@ -42,8 +42,7 @@ public class Contrato implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "numerocontrato")
+    @Column(name = "numerocontrato",nullable = false)
     private Integer numerocontrato;
     @Column(name = "fechainiciocontrato")
     @Temporal(TemporalType.DATE)
@@ -52,11 +51,9 @@ public class Contrato implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechafincontrato;
     @Lob
-    @Size(max = 65535)
-    @Column(name = "objetocontrato")
+    @Column(name = "objetocontrato",length =65535)
     private String objetocontrato;
-    @Size(max = 50)
-    @Column(name = "estadocontrato")
+    @Column(name = "estadocontrato",length =50)
     private String estadocontrato;
     @Column(name = "valortotalcontrato")
     private Integer valortotalcontrato;

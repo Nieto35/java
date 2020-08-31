@@ -19,12 +19,10 @@ import javax.validation.constraints.NotNull;
 public class HablaidiomaPK implements Serializable {
 
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "documentoinstructor")
+    @Column(name = "documentoinstructor",nullable = false)
     private long documentoinstructor;
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "codigoidioma")
+    @Column(name = "codigoidioma",nullable = false)
     private int codigoidioma;
 
     public HablaidiomaPK() {

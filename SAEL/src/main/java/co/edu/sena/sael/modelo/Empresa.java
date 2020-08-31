@@ -38,17 +38,13 @@ public class Empresa implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "numeroempresa")
+    @Column(name = "numeroempresa",nullable = false)
     private Long numeroempresa;
-    @Size(max = 50)
-    @Column(name = "nombreempresa")
+    @Column(name = "nombreempresa",length =50)
     private String nombreempresa;
-    @Size(max = 50)
-    @Column(name = "direccionempresa")
+    @Column(name = "direccionempresa",length =50)
     private String direccionempresa;
-    @Size(max = 50)
-    @Column(name = "telefonoempresa")
+    @Column(name = "telefonoempresa",length =50)
     private String telefonoempresa;
     @OneToMany(mappedBy = "numeroempresa")
     private Collection<Eproductiva> eproductivaCollection;

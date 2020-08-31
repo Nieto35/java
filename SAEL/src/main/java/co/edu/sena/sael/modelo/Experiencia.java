@@ -45,11 +45,9 @@ public class Experiencia implements Serializable {
     @Basic(optional = false)
     @Column(name = "codigoexperiencia")
     private Integer codigoexperiencia;
-    @Size(max = 50)
-    @Column(name = "empresaexperiencia")
+    @Column(name = "empresaexperiencia",length =50)
     private String empresaexperiencia;
-    @Size(max = 50)
-    @Column(name = "ocupacionexperiencia")
+    @Column(name = "ocupacionexperiencia",length =50)
     private String ocupacionexperiencia;
     @Column(name = "fechaingresoexperiencia")
     @Temporal(TemporalType.DATE)

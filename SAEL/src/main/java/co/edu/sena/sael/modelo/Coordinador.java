@@ -38,11 +38,9 @@ public class Coordinador implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "documentocoordinador")
+    @Column(name = "documentocoordinador",nullable = false)
     private Long documentocoordinador;
-    @Size(max = 50)
-    @Column(name = "tipocoordinador")
+    @Column(name = "tipocoordinador",length =50)
     private String tipocoordinador;
     @OneToMany(mappedBy = "documentocoordinador")
     private Collection<Permiso> permisoCollection;

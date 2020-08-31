@@ -43,8 +43,7 @@ public class Area implements Serializable {
     @Basic(optional = false)
     @Column(name = "codigoarea")
     private Integer codigoarea;
-    @Size(max = 50)
-    @Column(name = "nombrearea")
+    @Column(name = "nombrearea",length =50)
     private String nombrearea;
     @OneToMany(mappedBy = "codigoarea")
     private Collection<Turno> turnoCollection;

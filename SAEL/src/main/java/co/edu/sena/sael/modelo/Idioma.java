@@ -41,8 +41,7 @@ public class Idioma implements Serializable {
     @Basic(optional = false)
     @Column(name = "codigoidioma")
     private Integer codigoidioma;
-    @Size(max = 50)
-    @Column(name = "nombreidioma")
+    @Column(name = "nombreidioma",length =50)
     private String nombreidioma;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idioma")
     private Collection<Hablaidioma> hablaidiomaCollection;

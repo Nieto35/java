@@ -36,8 +36,7 @@ public class Particular implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "documentocliente")
+    @Column(name = "documentocliente",nullable = false)
     private Long documentocliente;
     @OneToMany(mappedBy = "documentocliente")
     private Collection<Turno> turnoCollection;

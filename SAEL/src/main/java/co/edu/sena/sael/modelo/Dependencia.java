@@ -40,8 +40,7 @@ public class Dependencia implements Serializable {
     @Basic(optional = false)
     @Column(name = "codigodependencia")
     private Integer codigodependencia;
-    @Size(max = 100)
-    @Column(name = "nombredependencia")
+    @Column(name = "nombredependencia",length =100)
     private String nombredependencia;
     @OneToMany(mappedBy = "codigodependencia")
     private Collection<Area> areaCollection;

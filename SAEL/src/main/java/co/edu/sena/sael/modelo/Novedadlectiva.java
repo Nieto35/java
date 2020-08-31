@@ -40,8 +40,7 @@ public class Novedadlectiva implements Serializable {
     @Basic(optional = false)
     @Column(name = "numeronovedad")
     private Integer numeronovedad;
-    @Size(max = 50)
-    @Column(name = "nombrenovedad")
+    @Column(name = "nombrenovedad",length =50)
     private String nombrenovedad;
     @OneToMany(mappedBy = "numeronovedad")
     private Collection<Seguimientoaprendiz> seguimientoaprendizCollection;

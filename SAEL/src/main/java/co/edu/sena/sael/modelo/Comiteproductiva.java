@@ -48,11 +48,9 @@ public class Comiteproductiva implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechacomite;
     @Lob
-    @Size(max = 65535)
-    @Column(name = "observacionescomite")
+    @Column(name = "observacionescomite",length =65535)
     private String observacionescomite;
-    @Size(max = 50)
-    @Column(name = "actacomite")
+    @Column(name = "actacomite",length =50)
     private String actacomite;
     @JoinColumn(name = "codigoeproductiva", referencedColumnName = "codigoeproductiva")
     @ManyToOne

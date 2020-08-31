@@ -39,11 +39,9 @@ public class Aprendiz implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "documentoaprendiz")
+    @Column(name = "documentoaprendiz",nullable = false)
     private Long documentoaprendiz;
-    @Size(max = 50)
-    @Column(name = "estadoaprendiz")
+    @Column(name = "estadoaprendiz",length =50)
     private String estadoaprendiz;
     @OneToMany(mappedBy = "documentoaprendiz")
     private Collection<Inasistencia> inasistenciaCollection;

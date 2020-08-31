@@ -37,8 +37,7 @@ public class Funcionario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "documentofuncionario")
+    @Column(name = "documentofuncionario",nullable = false)
     private Long documentofuncionario;
     @JoinColumn(name = "codigoarea", referencedColumnName = "codigoarea")
     @ManyToOne(optional = false)

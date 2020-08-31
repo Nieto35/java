@@ -59,19 +59,15 @@ public class Eproductiva implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechafineproductiva;
     @Lob
-    @Size(max = 65535)
-    @Column(name = "funcioneseproductiva")
+    @Column(name = "funcioneseproductiva",length =65535)
     private String funcioneseproductiva;
-    @Size(max = 50)
-    @Column(name = "estadoeproductiva")
+    @Column(name = "estadoeproductiva",length =50)
     private String estadoeproductiva;
     @Column(name = "documentocoformador")
     private BigInteger documentocoformador;
-    @Size(max = 50)
-    @Column(name = "etapaeproductiva")
+    @Column(name = "etapaeproductiva",length =50)
     private String etapaeproductiva;
-    @Size(max = 50)
-    @Column(name = "bitacoraseproductiva")
+    @Column(name = "bitacoraseproductiva",length =50)
     private String bitacoraseproductiva;
     @OneToMany(mappedBy = "codigoeproductiva")
     private Collection<Comiteproductiva> comiteproductivaCollection;

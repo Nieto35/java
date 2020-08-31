@@ -50,42 +50,30 @@ public class Personal implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "documentopersonal")
+    @Column(name = "documentopersonal",nullable = false)
     private Long documentopersonal;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "nombrepersonal")
+    @Column(name = "nombrepersonal",nullable = false,length =100)
     private String nombrepersonal;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "apellidopersonal")
+    @Column(name = "apellidopersonal",nullable = false,length =100)
     private String apellidopersonal;
-    @Size(max = 100)
-    @Column(name = "direccionpersonal")
+    @Column(name = "direccionpersonal",length =100)
     private String direccionpersonal;
-    @Size(max = 100)
-    @Column(name = "correopersonal")
+    @Column(name = "correopersonal",length =100)
     private String correopersonal;
-    @Size(max = 100)
-    @Column(name = "telefonopersonal")
+    @Column(name = "telefonopersonal",length =100)
     private String telefonopersonal;
-    @Size(max = 255)
-    @Column(name = "clavepersonal")
+    @Column(name = "clavepersonal",length =255)
     private String clavepersonal;
     @Column(name = "fechanacimientopersonal")
     @Temporal(TemporalType.DATE)
     private Date fechanacimientopersonal;
-    @Size(max = 50)
-    @Column(name = "lugarnacimientopersonal")
+    @Column(name = "lugarnacimientopersonal",length =50)
     private String lugarnacimientopersonal;
-    @Size(max = 100)
-    @Column(name = "fotopersonal")
+    @Column(name = "fotopersonal",length =100)
     private String fotopersonal;
-    @Size(max = 100)
-    @Column(name = "correoinstitucionalpersonal")
+    @Column(name = "correoinstitucionalpersonal",length =100)
     private String correoinstitucionalpersonal;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "personal")
     private Collection<Comite> comiteCollection;
