@@ -39,14 +39,14 @@ CREATE TABLE IF NOT EXISTS `ambienteaprendizaje` (
 -- Volcando estructura para tabla gepad.aprendiz
 CREATE TABLE IF NOT EXISTS `aprendiz` (
   `documentoaprendiz` bigint(20) NOT NULL,
-  `estadoaprendiz` varchar(50) DEFAULT NULL,
+  `estado` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`documentoaprendiz`),
   CONSTRAINT `FK_aprendiz_personal` FOREIGN KEY (`documentoaprendiz`) REFERENCES `personal` (`documentopersonal`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla gepad.aprendiz: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `aprendiz` DISABLE KEYS */;
-REPLACE INTO `aprendiz` (`documentoaprendiz`, `estadoaprendiz`) VALUES
+REPLACE INTO `aprendiz` (`documentoaprendiz`, `estado`) VALUES
 	(52183274, 'FORMACION'),
 	(1116235891, 'FORMACION');
 /*!40000 ALTER TABLE `aprendiz` ENABLE KEYS */;
@@ -154,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `coformador` (
 CREATE TABLE IF NOT EXISTS `comite` (
   `documentopersonal` bigint(20) NOT NULL,
   `numeroseguimiento` int(11) NOT NULL,
-  `cargocomite` varchar(50) DEFAULT NULL,
+  `cargo` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`documentopersonal`,`numeroseguimiento`),
   KEY `FK_comite_seguimiento` (`numeroseguimiento`),
   CONSTRAINT `FK_comite_personal` FOREIGN KEY (`documentopersonal`) REFERENCES `personal` (`documentopersonal`),
@@ -205,14 +205,14 @@ CREATE TABLE IF NOT EXISTS `contrato` (
 -- Volcando estructura para tabla gepad.coordinador
 CREATE TABLE IF NOT EXISTS `coordinador` (
   `documentocoordinador` bigint(20) NOT NULL,
-  `tipocoordinador` varchar(50) DEFAULT NULL,
+  `tipo` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`documentocoordinador`),
   CONSTRAINT `FK_coordinador_personal` FOREIGN KEY (`documentocoordinador`) REFERENCES `personal` (`documentopersonal`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla gepad.coordinador: ~4 rows (aproximadamente)
 /*!40000 ALTER TABLE `coordinador` DISABLE KEYS */;
-REPLACE INTO `coordinador` (`documentocoordinador`, `tipocoordinador`) VALUES
+REPLACE INTO `coordinador` (`documentocoordinador`, `tipo`) VALUES
 	(14888888, 'ACADEMICO'),
 	(14889925, 'ACADEMICO'),
 	(14890737, 'SUBDIRECTOR'),
@@ -315,7 +315,7 @@ CREATE TABLE IF NOT EXISTS `experiencia` (
 -- Volcando estructura para tabla gepad.fichatitulacion
 CREATE TABLE IF NOT EXISTS `fichatitulacion` (
   `numeroficha` int(11) NOT NULL,
-  `jornadaficha` varchar(50) DEFAULT NULL,
+  `jornada` varchar(50) DEFAULT NULL,
   `codigoprograma` int(11) DEFAULT NULL,
   `numerosede` int(11) DEFAULT NULL,
   `fechainicio` date DEFAULT NULL,
@@ -332,7 +332,7 @@ CREATE TABLE IF NOT EXISTS `fichatitulacion` (
 
 -- Volcando datos para la tabla gepad.fichatitulacion: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `fichatitulacion` DISABLE KEYS */;
-REPLACE INTO `fichatitulacion` (`numeroficha`, `jornadaficha`, `codigoprograma`, `numerosede`, `fechainicio`, `fechafin`, `documentoinstructor`) VALUES
+REPLACE INTO `fichatitulacion` (`numeroficha`, `jornada`, `codigoprograma`, `numerosede`, `fechainicio`, `fechafin`, `documentoinstructor`) VALUES
 	(156565, 'NOCTURNA', 228106, NULL, '2019-11-03', '2019-11-13', 6137989),
 	(1134299, 'DIURNA', 228106, NULL, '2017-08-04', '2017-08-04', 6137989),
 	(1838890, 'MIXTA', 228106, NULL, '2019-11-04', '2019-11-20', 14802285);
@@ -513,16 +513,16 @@ REPLACE INTO `ingreso` (`numeroingreso`, `fechaingreso`, `horaingreso`, `fechasa
 -- Volcando estructura para tabla gepad.instructor
 CREATE TABLE IF NOT EXISTS `instructor` (
   `documentoinstructor` bigint(20) NOT NULL,
-  `tipoinstructor` varchar(50) DEFAULT NULL,
-  `perfilocupacionalinstructor` text DEFAULT NULL,
-  `logrosinstructor` text DEFAULT NULL,
-  PRIMARY KEY (`documentoinstructor`),
+  `tipo` varchar(50) DEFAULT NULL,
+  `perfilocupacional` text DEFAULT NULL,
+  `logros` text DEFAULT NULL,
+  PRIMARY KEY (`documentoinstructor`) USING BTREE,
   CONSTRAINT `FK_instructor_personal` FOREIGN KEY (`documentoinstructor`) REFERENCES `personal` (`documentopersonal`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla gepad.instructor: ~218 rows (aproximadamente)
 /*!40000 ALTER TABLE `instructor` DISABLE KEYS */;
-REPLACE INTO `instructor` (`documentoinstructor`, `tipoinstructor`, `perfilocupacionalinstructor`, `logrosinstructor`) VALUES
+REPLACE INTO `instructor` (`documentoinstructor`, `tipo`, `perfilocupacional`, `logros`) VALUES
 	(1000, 'CONTRATISTA', NULL, NULL),
 	(2000, 'PLANTA', NULL, NULL),
 	(3000, 'CONTRATISTA', NULL, NULL),
@@ -746,7 +746,7 @@ REPLACE INTO `instructor` (`documentoinstructor`, `tipoinstructor`, `perfilocupa
 -- Volcando estructura para tabla gepad.novedadlectiva
 CREATE TABLE IF NOT EXISTS `novedadlectiva` (
   `numeronovedad` int(11) NOT NULL AUTO_INCREMENT,
-  `nombrenovedad` varchar(50) DEFAULT NULL,
+  `nombre` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`numeronovedad`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -813,22 +813,22 @@ REPLACE INTO `permiso` (`codigopermiso`, `fechapermiso`, `horadesdepermiso`, `ho
 -- Volcando estructura para tabla gepad.personal
 CREATE TABLE IF NOT EXISTS `personal` (
   `documentopersonal` bigint(20) NOT NULL,
-  `nombrepersonal` varchar(100) NOT NULL,
-  `apellidopersonal` varchar(100) NOT NULL,
-  `direccionpersonal` varchar(100) DEFAULT NULL,
-  `correopersonal` varchar(100) DEFAULT NULL,
-  `telefonopersonal` varchar(100) DEFAULT NULL,
-  `clavepersonal` varchar(255) DEFAULT NULL,
-  `fechanacimientopersonal` date DEFAULT NULL,
-  `lugarnacimientopersonal` varchar(50) DEFAULT NULL,
-  `fotopersonal` varchar(100) DEFAULT NULL,
-  `correoinstitucionalpersonal` varchar(100) DEFAULT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `apellido` varchar(100) NOT NULL,
+  `direccion` varchar(100) DEFAULT NULL,
+  `correo` varchar(100) DEFAULT NULL,
+  `telefono` varchar(100) DEFAULT NULL,
+  `clave` varchar(255) DEFAULT NULL,
+  `fechanacimiento` date DEFAULT NULL,
+  `lugarnacimiento` varchar(50) DEFAULT NULL,
+  `foto` varchar(100) DEFAULT NULL,
+  `correoinstitucional` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`documentopersonal`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla gepad.personal: ~268 rows (aproximadamente)
 /*!40000 ALTER TABLE `personal` DISABLE KEYS */;
-REPLACE INTO `personal` (`documentopersonal`, `nombrepersonal`, `apellidopersonal`, `direccionpersonal`, `correopersonal`, `telefonopersonal`, `clavepersonal`, `fechanacimientopersonal`, `lugarnacimientopersonal`, `fotopersonal`, `correoinstitucionalpersonal`) VALUES
+REPLACE INTO `personal` (`documentopersonal`, `nombre`, `apellido`, `direccion`, `correo`, `telefono`, `clave`, `fechanacimiento`, `lugarnacimiento`, `foto`, `correoinstitucional`) VALUES
 	(1000, 'Freddy', 'Mercury', NULL, 'freddy@mail.com', '315', '1000', NULL, NULL, NULL, NULL),
 	(2000, 'Axl', 'Rose', NULL, 'axl@mail.com', '316', '2000', NULL, NULL, NULL, NULL),
 	(3000, 'Saul', 'Hudson', NULL, 'saul@mail.com', '320', '3000', NULL, NULL, NULL, NULL),
@@ -1103,7 +1103,7 @@ REPLACE INTO `personal` (`documentopersonal`, `nombrepersonal`, `apellidopersona
 CREATE TABLE IF NOT EXISTS `perteneceficha` (
   `documentoaprendiz` bigint(20) NOT NULL,
   `numeroficha` int(11) NOT NULL,
-  `estadoperteneceficha` varchar(50) DEFAULT NULL,
+  `estado` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`documentoaprendiz`,`numeroficha`),
   KEY `FK_perteneceficha_fichatitulacion` (`numeroficha`),
   CONSTRAINT `FK_perteneceficha_aprendiz` FOREIGN KEY (`documentoaprendiz`) REFERENCES `aprendiz` (`documentoaprendiz`),
@@ -1112,20 +1112,20 @@ CREATE TABLE IF NOT EXISTS `perteneceficha` (
 
 -- Volcando datos para la tabla gepad.perteneceficha: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `perteneceficha` DISABLE KEYS */;
-REPLACE INTO `perteneceficha` (`documentoaprendiz`, `numeroficha`, `estadoperteneceficha`) VALUES
+REPLACE INTO `perteneceficha` (`documentoaprendiz`, `numeroficha`, `estado`) VALUES
 	(1116235891, 1134299, 'EN FORMACION');
 /*!40000 ALTER TABLE `perteneceficha` ENABLE KEYS */;
 
 -- Volcando estructura para tabla gepad.programa
 CREATE TABLE IF NOT EXISTS `programa` (
   `codigoprograma` int(10) NOT NULL,
-  `nombreprograma` varchar(100) DEFAULT NULL,
+  `nombre` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`codigoprograma`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla gepad.programa: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `programa` DISABLE KEYS */;
-REPLACE INTO `programa` (`codigoprograma`, `nombreprograma`) VALUES
+REPLACE INTO `programa` (`codigoprograma`, `nombre`) VALUES
 	(228106, 'ADSI');
 /*!40000 ALTER TABLE `programa` ENABLE KEYS */;
 
@@ -1215,16 +1215,16 @@ CREATE TABLE IF NOT EXISTS `sede` (
 -- Volcando estructura para tabla gepad.seguimiento
 CREATE TABLE IF NOT EXISTS `seguimiento` (
   `codigoseguimiento` int(11) NOT NULL AUTO_INCREMENT,
-  `numeroseguimiento` int(11) DEFAULT NULL,
-  `observacion` text DEFAULT NULL,
-  `fechaseguimiento` date DEFAULT NULL,
-  `faseseguimiento` varchar(50) DEFAULT NULL,
-  `conclusionesseguimiento` text DEFAULT NULL,
-  `compromisosseguimiento` text DEFAULT NULL,
-  `lugarseguimiento` varchar(50) DEFAULT NULL,
-  `horainicioseguimiento` time DEFAULT NULL,
-  `horafinseguimiento` time DEFAULT NULL,
-  `estadoseguimiento` varchar(50) DEFAULT NULL,
+  `reconocimiento` text DEFAULT NULL,
+  `observaciones` text DEFAULT NULL,
+  `fecha` date DEFAULT NULL,
+  `objetivos` varchar(50) DEFAULT NULL,
+  `conclusiones` text DEFAULT NULL,
+  `compromisos` text DEFAULT NULL,
+  `lugar` varchar(50) DEFAULT NULL,
+  `horainicio` time DEFAULT NULL,
+  `horafin` time DEFAULT NULL,
+  `estado` varchar(50) DEFAULT NULL,
   `numeroficha` int(11) DEFAULT NULL,
   `motivocancelacion` text DEFAULT NULL,
   PRIMARY KEY (`codigoseguimiento`),
