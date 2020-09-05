@@ -15,7 +15,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -37,8 +36,7 @@ public class Regional implements Serializable {
     @Basic(optional = false)
     @Column(name = "codigoregional")
     private Integer codigoregional;
-    @Size(max = 50)
-    @Column(name = "nombreregional")
+    @Column(name = "nombreregional",length = 50)// @Size(max = 50)
     private String nombreregional;
 
     public Regional() {

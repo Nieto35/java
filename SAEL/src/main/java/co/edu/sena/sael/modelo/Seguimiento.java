@@ -24,7 +24,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -58,23 +57,18 @@ public class Seguimiento implements Serializable {
     @Column(name = "fechaseguimiento")
     @Temporal(TemporalType.DATE)
     private Date fechaseguimiento;
-    @Size(max = 50)
-    @Column(name = "faseseguimiento")
+    @Column(name = "faseseguimiento", length = 50)//@Size(max = 50)
     private String faseseguimiento;
     @Lob
-    @Size(max = 65535)
-    @Column(name = "observacionesseguimiento")
+    @Column(name = "observacionesseguimiento", length = 65535)//@Size(max = 65535)
     private String observacionesseguimiento;
-    @Lob
-    @Size(max = 65535)
-    @Column(name = "conclusionesseguimiento")
+    @Lob 
+    @Column(name = "conclusionesseguimiento", length = 65535 )//@Size(max = 65535)
     private String conclusionesseguimiento;
     @Lob
-    @Size(max = 65535)
-    @Column(name = "compromisosseguimiento")
+    @Column(name = "compromisosseguimiento", length = 65535 )//@Size(max = 65535)
     private String compromisosseguimiento;
-    @Size(max = 50)
-    @Column(name = "lugarseguimiento")
+    @Column(name = "lugarseguimiento", length = 50 )//@Size(max = 50)
     private String lugarseguimiento;
     @Column(name = "horainicioseguimiento")
     @Temporal(TemporalType.TIME)
@@ -82,8 +76,7 @@ public class Seguimiento implements Serializable {
     @Column(name = "horafinseguimiento")
     @Temporal(TemporalType.TIME)
     private Date horafinseguimiento;
-    @Size(max = 50)
-    @Column(name = "estadoseguimiento")
+    @Column(name = "estadoseguimiento",length = 50 )//@Size(max = 50)
     private String estadoseguimiento;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "seguimiento")
     private Collection<Comite> comiteCollection;

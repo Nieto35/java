@@ -48,11 +48,9 @@ public class Visita implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechavisita;
     @Lob
-    @Size(max = 65535)
-    @Column(name = "observacionesvisita")
-    private String observacionesvisita;
-    @Size(max = 50)
-    @Column(name = "estadovisita")
+    @Column(name = "observacionesvisita",length = 65535)// @Size(max = 65535)
+    private String observacionesvisita; 
+    @Column(name = "estadovisita", length = 50)// @Size(max = 50)
     private String estadovisita;
     @JoinColumn(name = "codigoeproductiva", referencedColumnName = "codigoeproductiva")
     @ManyToOne
