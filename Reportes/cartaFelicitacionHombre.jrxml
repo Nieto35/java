@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.13.0.final using JasperReports Library version 6.13.0-46ada4d1be8f3c5985fd0b6146f3ed44caed6f05  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="felicitacionH" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="46c2d2b7-966c-4e16-b1e2-43cba27aa54f">
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="1" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="87" splitType="Stretch">
+			<image>
+				<reportElement x="240" y="2" width="90" height="83" uuid="58efb88d-49b6-4ca2-a3fc-6d472c35dea0"/>
+				<imageExpression><![CDATA["C:/Users/sebas/OneDrive/Escritorio/logoSena.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="73" splitType="Stretch">
+			<staticText>
+				<reportElement x="280" y="20" width="100" height="20" uuid="6bc9ce1d-ad0f-4f34-b9a3-b80caf1e5e5b"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[76-9125-1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="40" width="39" height="20" uuid="87a8bb23-ed78-4dd7-90f8-b5b5a3e7efde"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Tuluá, ]]></text>
+			</staticText>
+			<textField pattern="d MMMM  yyyy">
+				<reportElement x="310" y="40" width="130" height="19" uuid="db908173-b525-4b57-83d4-bae219f93d1b"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="497" splitType="Stretch">
+			<staticText>
+				<reportElement x="220" y="150" width="111" height="15" uuid="cd0d9012-9c60-41ec-b82c-70390392c4b5"/>
+				<textElement>
+					<font fontName="arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Asunto: Felicitaciones]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="180" width="410" height="180" uuid="73f7ec58-0d33-4179-9c71-3519507b9361">
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+					<paragraph lineSpacingSize="3.0" rightIndent="1"/>
+				</textElement>
+				<text><![CDATA[Atento saludo, 
+
+Teniendo en cuenta el acta no. 178 del Comité de Evaluación y Seguimiento realizada el 22 de junio de 2018 en etapa lectiva, del programa de formación Tecnología en Contabilidad y Finanzas, con número de ficha 1020501, se acordó FELICITARLO por ser un aprendiz que ha demostrado exitosamente sus grandes capacidades intelectuales, siendo proactivo, participativo, respetuoso, solidario y cumplidor de sus deberes académicos y disciplinarios. 
+
+Felicitaciones una vez más y continua por el mismo camino, el cual te llevara al éxito. 
+
+
+Cordialmente,
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="440" width="111" height="15" uuid="83fc3abe-0eaa-4fd9-98e3-43c65fede025"/>
+				<textElement>
+					<font fontName="arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Transcriptor: Ivonne Garcés]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="455" width="130" height="15" uuid="304e382f-f718-4cc1-b065-d8dffde5a722"/>
+				<textElement>
+					<font fontName="arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Revisó: Jhon Fernando Villada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="390" width="111" height="15" uuid="38152d51-d9d1-4fd8-bd1d-e5e026dd1445"/>
+				<textElement>
+					<font fontName="arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Transcriptor: Ivonne Garcés]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="405" width="130" height="15" uuid="f40d2cd0-27cc-41dd-bd0d-0be71cf46836"/>
+				<textElement>
+					<font fontName="arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Revisó: Jhon Fernando Villada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="30" width="179" height="15" uuid="b6414a16-dc7a-4ba0-b879-5b26e42821e1"/>
+				<textElement>
+					<font fontName="arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Keynner Camilo Rodríguez Ocoro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="45" width="111" height="15" uuid="98aac4b5-c82d-41f1-a7c2-38af5f9f366a"/>
+				<textElement>
+					<font fontName="arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Aprendiz]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="60" width="199" height="15" uuid="824dd2e7-2c72-4e7b-99eb-42ee6ae87133"/>
+				<textElement>
+					<font fontName="arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Tecnología en Contabilidad y Finanzas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="75" width="111" height="15" uuid="7b198289-d700-40b8-9f78-e52daf65006e"/>
+				<textElement>
+					<font fontName="arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Ficha: 1020501]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="90" width="111" height="15" uuid="9f8da1cf-e25a-4f29-a28c-d767abb79f00"/>
+				<textElement>
+					<font fontName="arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Sena CLEM Tuluá]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="105" width="111" height="15" uuid="a5b334d3-896b-45d8-af30-dbd3addf7130"/>
+				<textElement>
+					<font fontName="arial" size="11"/>
+				</textElement>
+				<text><![CDATA[17 de abril del 2020]]></text>
+			</staticText>
+			<image>
+				<reportElement x="513" y="380" width="48" height="116" uuid="54094a93-c308-466d-8733-2b94b2040db0"/>
+				<imageExpression><![CDATA["C:/Users/sebas/OneDrive/Escritorio/icontec.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="86" splitType="Stretch">
+			<line>
+				<reportElement x="108" y="48" width="345" height="1" uuid="d9521b0b-c011-4f62-9ff8-3d4c06b68e39"/>
+			</line>
+			<staticText>
+				<reportElement x="230" y="0" width="111" height="15" uuid="6d37f4d0-f472-4be6-b966-6766a103392c"/>
+				<textElement textAlignment="Center">
+					<font fontName="arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Ministerio de Trabajo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="175" y="15" width="220" height="15" uuid="fd2912aa-c6b9-42b8-8833-c34e6c72872d"/>
+				<textElement textAlignment="Center">
+					<font fontName="arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SERVICIO NACIONAL DE APRENDIZAJE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="30" width="330" height="15" uuid="bfa53b1c-5db9-4224-8ce3-263384ae6535"/>
+				<textElement textAlignment="Center">
+					<font fontName="arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Regional Valle / Centro Latinoamericano de Especies Menores SENA CLEM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="87" y="63" width="386" height="15" uuid="d7250668-516e-4c0e-bfc7-70eb750efe81"/>
+				<textElement textAlignment="Center">
+					<font fontName="arial" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[www.sena.edu.co - Línea gratuita nacional: 01 8000 9 10 270   GD-F-011 V04 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="48" width="381" height="15" uuid="8047dd5d-8f18-43d3-8b8f-85b52b2a10a9"/>
+				<textElement textAlignment="Center">
+					<font fontName="arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Dirección kilómetro 1 vía Tuluá - Buga, Ciudad Tuluá. - PBX (57 2) 2249664]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="512" y="63" width="50" height="23" uuid="00222c60-827e-45e0-b486-74d9a2c357fb"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pag " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
