@@ -9,7 +9,6 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -19,12 +18,10 @@ import javax.validation.constraints.NotNull;
 public class HablaidiomaPK implements Serializable {
 
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "documentoinstructor")
+    @Column(name = "documentoinstructor", nullable = false)//@NotNull
     private long documentoinstructor;
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "codigoidioma")
+    @Column(name = "codigoidioma", nullable = false)//@NotNull
     private int codigoidioma;
 
     public HablaidiomaPK() {

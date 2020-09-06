@@ -20,8 +20,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -29,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
  *
  * @author Felipe
  */
-@Entity
+@Entity 
 @Table(name = "instructor")
 @XmlRootElement
 @NamedQueries({
@@ -41,19 +39,15 @@ public class Instructor implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "documentoinstructor")
+    @Column(name = "documentoinstructor", nullable = false)//@NotNull
     private Long documentoinstructor;
-    @Size(max = 50)
-    @Column(name = "tipoinstructor")
+    @Column(name = "tipoinstructor", length = 50)//@Size
     private String tipoinstructor;
     @Lob
-    @Size(max = 65535)
-    @Column(name = "perfilocupacionalinstructor")
+    @Column(name = "perfilocupacionalinstructor",length = 65535)//@Size
     private String perfilocupacionalinstructor;
     @Lob
-    @Size(max = 65535)
-    @Column(name = "logrosinstructor")
+    @Column(name = "logrosinstructor",length = 65535)//@Size
     private String logrosinstructor;
     @ManyToMany(mappedBy = "instructorCollection")
     private Collection<Fichatitulacion> fichatitulacionCollection;

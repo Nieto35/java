@@ -15,8 +15,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -37,17 +35,13 @@ public class Coformador implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "documentocoformador")
+    @Column(name = "documentocoformador", nullable = false)//@NotNull
     private Long documentocoformador;
-    @Size(max = 50)
-    @Column(name = "nombrecoformador")
+    @Column(name = "nombrecoformador", length = 50)//@Size
     private String nombrecoformador;
-    @Size(max = 50)
-    @Column(name = "telefonocoformador")
+    @Column(name = "telefonocoformador", length = 50)//@Size
     private String telefonocoformador;
-    @Size(max = 50)
-    @Column(name = "cargocoformador")
+    @Column(name = "cargocoformador", length = 50)//@Size
     private String cargocoformador;
     @JoinColumn(name = "numeroempresa", referencedColumnName = "numeroempresa")
     @ManyToOne

@@ -24,7 +24,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -59,19 +58,15 @@ public class Eproductiva implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechafineproductiva;
     @Lob
-    @Size(max = 65535)
-    @Column(name = "funcioneseproductiva")
+    @Column(name = "funcioneseproductiva", length = 65535)//@Size
     private String funcioneseproductiva;
-    @Size(max = 50)
-    @Column(name = "estadoeproductiva")
+    @Column(name = "estadoeproductiva", length = 50)//@Size
     private String estadoeproductiva;
     @Column(name = "documentocoformador")
     private BigInteger documentocoformador;
-    @Size(max = 50)
-    @Column(name = "etapaeproductiva")
+    @Column(name = "etapaeproductiva", length = 50)//@Size
     private String etapaeproductiva;
-    @Size(max = 50)
-    @Column(name = "bitacoraseproductiva")
+    @Column(name = "bitacoraseproductiva", length = 50)//@Size
     private String bitacoraseproductiva;
     @OneToMany(mappedBy = "codigoeproductiva")
     private Collection<Comiteproductiva> comiteproductivaCollection;

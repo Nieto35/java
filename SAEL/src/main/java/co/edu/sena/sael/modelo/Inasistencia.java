@@ -20,7 +20,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -49,8 +48,7 @@ public class Inasistencia implements Serializable {
     private Date fechainasistencia;
     @Column(name = "horasinasistencia")
     private Integer horasinasistencia;
-    @Size(max = 50)
-    @Column(name = "excusainasistencia")
+    @Column(name = "excusainasistencia",length = 50)//@Size
     private String excusainasistencia;
     @JoinColumn(name = "documentoaprendiz", referencedColumnName = "documentoaprendiz")
     @ManyToOne
