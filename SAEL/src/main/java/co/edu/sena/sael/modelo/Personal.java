@@ -20,8 +20,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -50,42 +48,30 @@ public class Personal implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "documentopersonal")
+    @Column(name = "documentopersonal", nullable = false)// @NotNull
     private Long documentopersonal;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "nombrepersonal")
+    @Column(name = "nombrepersonal",nullable = false, length = 100)//@NotNull,@Size
     private String nombrepersonal;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "apellidopersonal")
+    @Column(name = "apellidopersonal",nullable = false, length = 100)//@NotNull,@Size)
     private String apellidopersonal;
-    @Size(max = 100)
-    @Column(name = "direccionpersonal")
+    @Column(name = "direccionpersonal",length = 100)//@size
     private String direccionpersonal;
-    @Size(max = 100)
-    @Column(name = "correopersonal")
+    @Column(name = "correopersonal",length = 100)//@size)
     private String correopersonal;
-    @Size(max = 100)
-    @Column(name = "telefonopersonal")
-    private String telefonopersonal;
-    @Size(max = 255)
-    @Column(name = "clavepersonal")
+    @Column(name = "telefonopersonal",length = 100)//@size)
+    private String telefonopersonal;   
+    @Column(name = "clavepersonal",length = 255)//@size)
     private String clavepersonal;
     @Column(name = "fechanacimientopersonal")
     @Temporal(TemporalType.DATE)
-    private Date fechanacimientopersonal;
-    @Size(max = 50)
-    @Column(name = "lugarnacimientopersonal")
-    private String lugarnacimientopersonal;
-    @Size(max = 100)
-    @Column(name = "fotopersonal")
+    private Date fechanacimientopersonal; 
+    @Column(name = "lugarnacimientopersonal",length = 50)//@size)
+    private String lugarnacimientopersonal;  
+    @Column(name = "fotopersonal",length = 100)//@size)
     private String fotopersonal;
-    @Size(max = 100)
-    @Column(name = "correoinstitucionalpersonal")
+    @Column(name = "correoinstitucionalpersonal",length = 100)//@size)
     private String correoinstitucionalpersonal;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "personal")
     private Collection<Comite> comiteCollection;

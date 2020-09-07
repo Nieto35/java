@@ -17,7 +17,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -40,8 +39,7 @@ public class Novedadlectiva implements Serializable {
     @Basic(optional = false)
     @Column(name = "numeronovedad")
     private Integer numeronovedad;
-    @Size(max = 50)
-    @Column(name = "nombrenovedad")
+    @Column(name = "nombrenovedad", length = 50)//@Size
     private String nombrenovedad;
     @OneToMany(mappedBy = "numeronovedad")
     private Collection<Seguimientoaprendiz> seguimientoaprendizCollection;

@@ -20,7 +20,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -43,8 +42,7 @@ public class Area implements Serializable {
     @Basic(optional = false)
     @Column(name = "codigoarea")
     private Integer codigoarea;
-    @Size(max = 50)
-    @Column(name = "nombrearea")
+    @Column(name = "nombrearea", length = 50)//@Size
     private String nombrearea;
     @OneToMany(mappedBy = "codigoarea")
     private Collection<Turno> turnoCollection;

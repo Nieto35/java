@@ -6,7 +6,6 @@
 package co.edu.sena.sael.persistencia;
 
 import co.edu.sena.sael.modelo.Perteneceficha;
-import co.edu.sena.sael.modelo.PertenecefichaPK;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

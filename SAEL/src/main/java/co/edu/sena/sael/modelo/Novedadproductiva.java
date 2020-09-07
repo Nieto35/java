@@ -47,8 +47,7 @@ public class Novedadproductiva implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechanovedad;
     @Lob
-    @Size(max = 65535)
-    @Column(name = "observacionesnovedad")
+    @Column(name = "observacionesnovedad", length = 65535)//@Size
     private String observacionesnovedad;
     @JoinColumn(name = "codigoeproductiva", referencedColumnName = "codigoeproductiva")
     @ManyToOne

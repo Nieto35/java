@@ -18,7 +18,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -42,11 +41,9 @@ public class Elemento implements Serializable {
     @Column(name = "codigoelemento")
     private Integer codigoelemento;
     @Lob
-    @Size(max = 65535)
-    @Column(name = "descripcionelemento")
+    @Column(name = "descripcionelemento", length = 65535)//@Size
     private String descripcionelemento;
-    @Size(max = 50)
-    @Column(name = "serialelemento")
+    @Column(name = "serialelemento", length = 50)//@Size
     private String serialelemento;
     @OneToMany(mappedBy = "numeroelemento")
     private Collection<Ingreso> ingresoCollection;

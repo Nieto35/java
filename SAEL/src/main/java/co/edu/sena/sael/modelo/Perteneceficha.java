@@ -14,7 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -34,8 +33,7 @@ public class Perteneceficha implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected PertenecefichaPK pertenecefichaPK;
-    @Size(max = 50)
-    @Column(name = "estadoperteneceficha")
+    @Column(name = "estadoperteneceficha", length = 50) //size = 50
     private String estadoperteneceficha;
     @JoinColumn(name = "documentoaprendiz", referencedColumnName = "documentoaprendiz", insertable = false, updatable = false)
     @ManyToOne(optional = false)
