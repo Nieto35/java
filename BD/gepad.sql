@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
--- Host:                         localhost
--- Versión del servidor:         5.5.44 - MySQL Community Server (GPL)
+-- Host:                         127.0.0.1
+-- Versión del servidor:         10.4.11-MariaDB - mariadb.org binary distribution
 -- SO del servidor:              Win64
 -- HeidiSQL Versión:             9.4.0.5125
 -- --------------------------------------------------------
@@ -170,7 +170,7 @@ CREATE TABLE IF NOT EXISTS `comiteproductiva` (
   `numerocomite` int(11) NOT NULL AUTO_INCREMENT,
   `codigoeproductiva` int(11) DEFAULT NULL,
   `fechacomite` date DEFAULT NULL,
-  `observacionescomite` text,
+  `observacionescomite` text DEFAULT NULL,
   `actacomite` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`numerocomite`),
   KEY `FK_comiteproductiva_eproductivav` (`codigoeproductiva`),
@@ -186,7 +186,7 @@ CREATE TABLE IF NOT EXISTS `contrato` (
   `numerocontrato` int(11) NOT NULL,
   `fechainiciocontrato` date DEFAULT NULL,
   `fechafincontrato` date DEFAULT NULL,
-  `objetocontrato` text,
+  `objetocontrato` text DEFAULT NULL,
   `estadocontrato` varchar(50) DEFAULT NULL,
   `valortotalcontrato` int(11) DEFAULT NULL,
   `documentocoordinador` bigint(20) DEFAULT NULL,
@@ -236,7 +236,7 @@ INSERT INTO `dependencia` (`codigodependencia`, `nombredependencia`) VALUES
 -- Volcando estructura para tabla gepad.elemento
 CREATE TABLE IF NOT EXISTS `elemento` (
   `codigoelemento` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcionelemento` text,
+  `descripcionelemento` text DEFAULT NULL,
   `serialelemento` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`codigoelemento`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
@@ -271,7 +271,7 @@ CREATE TABLE IF NOT EXISTS `eproductiva` (
   `codigoeproductiva` int(11) NOT NULL AUTO_INCREMENT,
   `fechainicioeproductiva` date DEFAULT NULL,
   `fechafineproductiva` date DEFAULT NULL,
-  `funcioneseproductiva` text,
+  `funcioneseproductiva` text DEFAULT NULL,
   `estadoeproductiva` varchar(50) DEFAULT NULL,
   `documentoaprendiz` bigint(20) DEFAULT NULL,
   `codigotipopractica` int(11) DEFAULT NULL,
@@ -420,7 +420,7 @@ CREATE TABLE IF NOT EXISTS `guarda` (
   CONSTRAINT `FK_guarda_personal` FOREIGN KEY (`documentoguarda`) REFERENCES `personal` (`documentopersonal`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla gepad.guarda: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla gepad.guarda: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `guarda` DISABLE KEYS */;
 INSERT INTO `guarda` (`documentoguarda`) VALUES
 	(1116235892);
@@ -480,7 +480,7 @@ CREATE TABLE IF NOT EXISTS `ingreso` (
   `horaingreso` varchar(50) DEFAULT NULL,
   `fechasalida` date DEFAULT NULL,
   `horasalida` varchar(50) DEFAULT NULL,
-  `motivoingreso` text,
+  `motivoingreso` text DEFAULT NULL,
   `documentopersonal` bigint(20) DEFAULT NULL,
   `numeroelemento` int(11) DEFAULT NULL,
   PRIMARY KEY (`numeroingreso`),
@@ -514,13 +514,13 @@ INSERT INTO `ingreso` (`numeroingreso`, `fechaingreso`, `horaingreso`, `fechasal
 CREATE TABLE IF NOT EXISTS `instructor` (
   `documentoinstructor` bigint(20) NOT NULL,
   `tipoinstructor` varchar(50) DEFAULT NULL,
-  `perfilocupacionalinstructor` text,
-  `logrosinstructor` text,
+  `perfilocupacionalinstructor` text DEFAULT NULL,
+  `logrosinstructor` text DEFAULT NULL,
   PRIMARY KEY (`documentoinstructor`),
   CONSTRAINT `FK_instructor_personal` FOREIGN KEY (`documentoinstructor`) REFERENCES `personal` (`documentopersonal`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla gepad.instructor: ~243 rows (aproximadamente)
+-- Volcando datos para la tabla gepad.instructor: ~218 rows (aproximadamente)
 /*!40000 ALTER TABLE `instructor` DISABLE KEYS */;
 INSERT INTO `instructor` (`documentoinstructor`, `tipoinstructor`, `perfilocupacionalinstructor`, `logrosinstructor`) VALUES
 	(1000, 'CONTRATISTA', NULL, NULL),
@@ -759,7 +759,7 @@ CREATE TABLE IF NOT EXISTS `novedadproductiva` (
   `numeronovedad` int(11) NOT NULL AUTO_INCREMENT,
   `codigoeproductiva` int(11) DEFAULT NULL,
   `fechanovedad` date DEFAULT NULL,
-  `observacionesnovedad` text,
+  `observacionesnovedad` text DEFAULT NULL,
   PRIMARY KEY (`numeronovedad`),
   KEY `FK_novedadproductiva_eproductiva` (`codigoeproductiva`),
   CONSTRAINT `FK_novedadproductiva_eproductiva` FOREIGN KEY (`codigoeproductiva`) REFERENCES `eproductiva` (`codigoeproductiva`)
@@ -776,7 +776,7 @@ CREATE TABLE IF NOT EXISTS `particular` (
   CONSTRAINT `FK_clienteexterno_personal` FOREIGN KEY (`documentocliente`) REFERENCES `personal` (`documentopersonal`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla gepad.particular: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla gepad.particular: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `particular` DISABLE KEYS */;
 INSERT INTO `particular` (`documentocliente`) VALUES
 	(1116235892);
@@ -826,7 +826,7 @@ CREATE TABLE IF NOT EXISTS `personal` (
   PRIMARY KEY (`documentopersonal`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla gepad.personal: ~178 rows (aproximadamente)
+-- Volcando datos para la tabla gepad.personal: ~268 rows (aproximadamente)
 /*!40000 ALTER TABLE `personal` DISABLE KEYS */;
 INSERT INTO `personal` (`documentopersonal`, `nombrepersonal`, `apellidopersonal`, `direccionpersonal`, `correopersonal`, `telefonopersonal`, `clavepersonal`, `fechanacimientopersonal`, `lugarnacimientopersonal`, `fotopersonal`, `correoinstitucionalpersonal`) VALUES
 	(1000, 'Freddy', 'Mercury', NULL, 'freddy@mail.com', '315', '1000', NULL, NULL, NULL, NULL),
@@ -836,7 +836,7 @@ INSERT INTO `personal` (`documentopersonal`, `nombrepersonal`, `apellidopersonal
 	(5000, 'Till', 'Lindemann', NULL, 'till@mail.com', '300', '5000', NULL, NULL, NULL, NULL),
 	(425154, 'OMAR', 'MOTTA', NULL, 'OMAR@MAIL.COM', '', '5d8b9bc328fe94482ad05cef3af30bde', NULL, NULL, NULL, 'OMOTTA@SENA.EDU.CO'),
 	(3482453, 'DUBERLEY ', 'OSORIO PATIÑO', NULL, ' DLEYOSORIO@GMAIL.COM ', '3177685226', NULL, NULL, NULL, NULL, NULL),
-	(4408060, 'JORGE IVAN JIMENEZ SERNA', '', 'CARRERA 27BIS # 40-20', ' ivanjorgejimenezs@yahoo.es ', '3205204746', '4408060', NULL, 'Tulua', '', ' jojimenezs@sena.edu.co '),
+	(4408060, 'JORGE IVAN JIMENEZ SERNA', '', 'CARRERA 27BIS # 40-20', ' ivanjorgejimenezs@yahoo.es ', '3205204746', 'f70a0bd830c1e8fa329976607cd4aae9', NULL, 'Tulua', '', ' jojimenezs@sena.edu.co '),
 	(6137989, 'IVAN HUGO ', 'VELEZ MESSA', 'Carrera 7 No. 7-25', ' IHVELEZM@GMAIL.COM ', '3148328602', '6137989', NULL, 'BOLIVAR', '', ' ihvelez@sena.edu.co '),
 	(6198189, 'EDINSON RAMIREZ OROZCO', '', 'Calle 32 18a 10', ' mercacelsus@gmail.com ', '3117472039', '6198189', NULL, 'Tulua', '', ' erorozco@sena.edu.co '),
 	(6200685, 'ANDRES MAURICIO ARANA ESQUIVEL', '', 'Calle 31 No.42-20', ' mauroara44@hotmail.com ', '3178868381', '6200685', NULL, 'Tulua', '', ' aaranae@sena.edu.co '),
@@ -1110,7 +1110,7 @@ CREATE TABLE IF NOT EXISTS `perteneceficha` (
   CONSTRAINT `FK_perteneceficha_fichatitulacion` FOREIGN KEY (`numeroficha`) REFERENCES `fichatitulacion` (`numeroficha`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla gepad.perteneceficha: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla gepad.perteneceficha: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `perteneceficha` DISABLE KEYS */;
 INSERT INTO `perteneceficha` (`documentoaprendiz`, `numeroficha`, `estadoperteneceficha`) VALUES
 	(1116235891, 1134299, 'EN FORMACION');
@@ -1123,7 +1123,7 @@ CREATE TABLE IF NOT EXISTS `programa` (
   PRIMARY KEY (`codigoprograma`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla gepad.programa: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla gepad.programa: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `programa` DISABLE KEYS */;
 INSERT INTO `programa` (`codigoprograma`, `nombreprograma`) VALUES
 	(228106, 'ADSI');
@@ -1136,7 +1136,7 @@ CREATE TABLE IF NOT EXISTS `regional` (
   PRIMARY KEY (`codigoregional`)
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla gepad.regional: ~32 rows (aproximadamente)
+-- Volcando datos para la tabla gepad.regional: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `regional` DISABLE KEYS */;
 INSERT INTO `regional` (`codigoregional`, `nombreregional`) VALUES
 	(1, 'Amazonas'),
@@ -1218,9 +1218,9 @@ CREATE TABLE IF NOT EXISTS `seguimiento` (
   `numeroseguimiento` int(11) DEFAULT NULL,
   `fechaseguimiento` date DEFAULT NULL,
   `faseseguimiento` varchar(50) DEFAULT NULL,
-  `observacionesseguimiento` text,
-  `conclusionesseguimiento` text,
-  `compromisosseguimiento` text,
+  `observacionesseguimiento` text DEFAULT NULL,
+  `conclusionesseguimiento` text DEFAULT NULL,
+  `compromisosseguimiento` text DEFAULT NULL,
   `lugarseguimiento` varchar(50) DEFAULT NULL,
   `horainicioseguimiento` time DEFAULT NULL,
   `horafinseguimiento` time DEFAULT NULL,
@@ -1239,7 +1239,7 @@ CREATE TABLE IF NOT EXISTS `seguimiento` (
 CREATE TABLE IF NOT EXISTS `seguimientoaprendiz` (
   `documentoaprendiz` bigint(20) NOT NULL,
   `numeroseguimiento` int(11) NOT NULL,
-  `rendimientoseguimiento` text,
+  `rendimientoseguimiento` text DEFAULT NULL,
   `numeronovedad` int(11) DEFAULT NULL,
   PRIMARY KEY (`documentoaprendiz`,`numeroseguimiento`),
   KEY `FK_seguimientoaprendiz_novedad` (`numeronovedad`),
@@ -1268,11 +1268,11 @@ CREATE TABLE IF NOT EXISTS `tipoambiente` (
 CREATE TABLE IF NOT EXISTS `tipopractica` (
   `codigotipopractica` int(11) NOT NULL AUTO_INCREMENT,
   `nombretipopractica` varchar(50) DEFAULT NULL,
-  `descripciontipopractica` text,
+  `descripciontipopractica` text DEFAULT NULL,
   PRIMARY KEY (`codigotipopractica`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla gepad.tipopractica: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla gepad.tipopractica: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `tipopractica` DISABLE KEYS */;
 INSERT INTO `tipopractica` (`codigotipopractica`, `nombretipopractica`, `descripciontipopractica`) VALUES
 	(1, 'CONTRATO LABORAL', 'kjhkhjhj');
@@ -1287,9 +1287,9 @@ CREATE TABLE IF NOT EXISTS `turno` (
   `fechaturno` date DEFAULT NULL,
   `horaingresoturno` time DEFAULT NULL,
   `horasalidaturno` time DEFAULT NULL,
-  `motivoturno` text,
+  `motivoturno` text DEFAULT NULL,
   `estadoturno` varchar(50) DEFAULT NULL,
-  `observacionesturno` text,
+  `observacionesturno` text DEFAULT NULL,
   PRIMARY KEY (`codigoturno`),
   KEY `FK_turno_area` (`codigoarea`),
   KEY `FK_turno_particular` (`documentocliente`),
@@ -1312,7 +1312,7 @@ CREATE TABLE IF NOT EXISTS `usodeambiente` (
   `horaentradausoambiente` time DEFAULT NULL,
   `horasalidausoambiente` time DEFAULT NULL,
   `entregausoambiente` char(50) DEFAULT NULL,
-  `observacionesusoambiente` text,
+  `observacionesusoambiente` text DEFAULT NULL,
   `codigoreserva` int(11) DEFAULT NULL,
   PRIMARY KEY (`codigousoambiente`),
   KEY `FK_usodeambiente_guarda` (`idguarda`),
@@ -1336,7 +1336,7 @@ CREATE TABLE IF NOT EXISTS `visita` (
   `numerovisita` int(11) NOT NULL AUTO_INCREMENT,
   `codigoeproductiva` int(11) DEFAULT NULL,
   `fechavisita` date DEFAULT NULL,
-  `observacionesvisita` text,
+  `observacionesvisita` text DEFAULT NULL,
   `estadovisita` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`numerovisita`),
   KEY `FK_visita_eproductiva` (`codigoeproductiva`),
