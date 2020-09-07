@@ -420,7 +420,7 @@ CREATE TABLE IF NOT EXISTS `guarda` (
   CONSTRAINT `FK_guarda_personal` FOREIGN KEY (`documentoguarda`) REFERENCES `personal` (`documentopersonal`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla gepad.guarda: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla gepad.guarda: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `guarda` DISABLE KEYS */;
 INSERT INTO `guarda` (`documentoguarda`) VALUES
 	(1116235892);
@@ -776,7 +776,7 @@ CREATE TABLE IF NOT EXISTS `particular` (
   CONSTRAINT `FK_clienteexterno_personal` FOREIGN KEY (`documentocliente`) REFERENCES `personal` (`documentopersonal`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla gepad.particular: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla gepad.particular: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `particular` DISABLE KEYS */;
 INSERT INTO `particular` (`documentocliente`) VALUES
 	(1116235892);
@@ -835,76 +835,76 @@ INSERT INTO `personal` (`documentopersonal`, `nombrepersonal`, `apellidopersonal
 	(4000, 'Bob', 'Dylan', NULL, 'bob@mail.com', '311', '4000', NULL, NULL, NULL, NULL),
 	(5000, 'Till', 'Lindemann', NULL, 'till@mail.com', '300', '5000', NULL, NULL, NULL, NULL),
 	(425154, 'OMAR', 'MOTTA', NULL, 'OMAR@MAIL.COM', '', '5d8b9bc328fe94482ad05cef3af30bde', NULL, NULL, NULL, 'OMOTTA@SENA.EDU.CO'),
-	(3482453, 'DUBERLEY ', 'OSORIO PATIÑO', NULL, ' DLEYOSORIO@GMAIL.COM ', '3177685226', NULL, NULL, NULL, NULL, NULL),
+	(3482453, 'DUBERLEY ', 'OSORIO PATIÑO', NULL, ' DLEYOSORIO@GMAIL.COM ', '3177685226', '45d483334777175e8bdc576563ef4322', NULL, NULL, NULL, NULL),
 	(4408060, 'JORGE IVAN JIMENEZ SERNA', '', 'CARRERA 27BIS # 40-20', ' ivanjorgejimenezs@yahoo.es ', '3205204746', 'f70a0bd830c1e8fa329976607cd4aae9', NULL, 'Tulua', '', ' jojimenezs@sena.edu.co '),
-	(6137989, 'IVAN HUGO ', 'VELEZ MESSA', 'Carrera 7 No. 7-25', ' IHVELEZM@GMAIL.COM ', '3148328602', '6137989', NULL, 'BOLIVAR', '', ' ihvelez@sena.edu.co '),
-	(6198189, 'EDINSON RAMIREZ OROZCO', '', 'Calle 32 18a 10', ' mercacelsus@gmail.com ', '3117472039', '6198189', NULL, 'Tulua', '', ' erorozco@sena.edu.co '),
-	(6200685, 'ANDRES MAURICIO ARANA ESQUIVEL', '', 'Calle 31 No.42-20', ' mauroara44@hotmail.com ', '3178868381', '6200685', NULL, 'Tulua', '', ' aaranae@sena.edu.co '),
-	(6356646, 'EDUAR FIERRO PEÑA', '', 'Calle 11 No.13-59', 'fierropena@hotmail.com', '3154765161', '6356646', NULL, 'UNION', '', 'efierrop@sena.edu.co'),
-	(6498352, 'HOMERO ALFONSO DUQUE ZULUAGA', '', 'Diagonal 26 c3 t oeste 18', 'hoalduzu@misena.edu.co', '3173830677', '6498352', NULL, 'TULUA', '', 'hduque@sena.edu.co'),
-	(6498528, 'ALEXANDER BUITRAGO MEDINA ', '', 'Carrera 37 # 28a44', 'alexbuitrag@gmail.com', '3104341405', '6498528', NULL, 'Tulua', '', 'abuitragom@sena.edu.co'),
-	(6498998, 'JHON ABAD FLOREZ SEPULVEDA', '', 'Carrera 39 No. 28-43', ' abadedf@hotmail.com ', '3233623012', '6498998', NULL, 'Tulua', '', ' jflorezs@sena.edu.co '),
-	(6499389, 'JORGE OLMEDO GUEVARA BELALCAZAR', '', 'CALLE 17 30-57 ', ' Jogb0610@hotmail.com ', '3162295698', '6499389', NULL, 'Tulua', '', ' jguevarab@sena.edu.co '),
-	(6499423, 'HUGO NELSON CORDOBA VELASQUEZ', '', 'Calle 41A 26-134', ' hugocordoba@hotmail.com ', '3185922864', '6499423', NULL, 'Tulua', '', ' hcordobav@sena.edu.co '),
-	(6500262, 'DIEGO FERNANDO TIRADO HERNANDEZ', '', 'Calle 14 No.20-30', ' tiradoo585@hotmail.com ', '3164645249', '6500262', NULL, 'Tulua', '', ' dtirado@sena.edu.co '),
+	(6137989, 'IVAN HUGO ', 'VELEZ MESSA', 'Carrera 7 No. 7-25', ' IHVELEZM@GMAIL.COM ', '3148328602', 'd8f47aa722a348a1dd4a090a6b2e0eed', NULL, 'BOLIVAR', '', ' ihvelez@sena.edu.co '),
+	(6198189, 'EDINSON RAMIREZ OROZCO', '', 'Calle 32 18a 10', ' mercacelsus@gmail.com ', '3117472039', '3374e38f2cb112206072e64ef1d190b6', NULL, 'Tulua', '', ' erorozco@sena.edu.co '),
+	(6200685, 'ANDRES MAURICIO ARANA ESQUIVEL', '', 'Calle 31 No.42-20', ' mauroara44@hotmail.com ', '3178868381', 'aaaa242d7806e4d080bd195687673102', NULL, 'Tulua', '', ' aaranae@sena.edu.co '),
+	(6356646, 'EDUAR FIERRO PEÑA', '', 'Calle 11 No.13-59', 'fierropena@hotmail.com', '3154765161', '30b4568525ebb90d7e732dabe4625c62', NULL, 'UNION', '', 'efierrop@sena.edu.co'),
+	(6498352, 'HOMERO ALFONSO DUQUE ZULUAGA', '', 'Diagonal 26 c3 t oeste 18', 'hoalduzu@misena.edu.co', '3173830677', 'c6ccd1d94a15f5c90eeb91bc0d56555c', NULL, 'TULUA', '', 'hduque@sena.edu.co'),
+	(6498528, 'ALEXANDER BUITRAGO MEDINA ', '', 'Carrera 37 # 28a44', 'alexbuitrag@gmail.com', '3104341405', '36075c61bbf9c5cb203da2a4d2522ccd', NULL, 'Tulua', '', 'abuitragom@sena.edu.co'),
+	(6498998, 'JHON ABAD FLOREZ SEPULVEDA', '', 'Carrera 39 No. 28-43', ' abadedf@hotmail.com ', '3233623012', 'd4e4fdb03f2bf735dc6c32481f9be97c', NULL, 'Tulua', '', ' jflorezs@sena.edu.co '),
+	(6499389, 'JORGE OLMEDO GUEVARA BELALCAZAR', '', 'CALLE 17 30-57 ', ' Jogb0610@hotmail.com ', '3162295698', '2d1c710738a4be572b1822f7d79c7577', NULL, 'Tulua', '', ' jguevarab@sena.edu.co '),
+	(6499423, 'HUGO NELSON CORDOBA VELASQUEZ', '', 'Calle 41A 26-134', ' hugocordoba@hotmail.com ', '3185922864', '914efcc439fd2918ead27622ec9eab4e', NULL, 'Tulua', '', ' hcordobav@sena.edu.co '),
+	(6500262, 'DIEGO FERNANDO TIRADO HERNANDEZ', '', 'Calle 14 No.20-30', ' tiradoo585@hotmail.com ', '3164645249', 'cdfbdd78f50ef0e20809b983f678733d', NULL, 'Tulua', '', ' dtirado@sena.edu.co '),
 	(6501796, 'RAMON ANTONIO ARANGO AGUDELO', '', 'Carrera 5 No. 7-80', ' ramon1664@hotmail.com ', '3174451621', '6501796', NULL, 'La Marina', '', ' rarangoa@sena.edu.co '),
-	(9152761, 'DAVID CARABALLO PEREZ', '', 'Carrera 34 No.25-22', ' dacape0304@hotmail.es ', '3103860790', '9152761', NULL, 'Tulua', '', ' dcaraballop@sena.edu.co '),
-	(10292173, 'EDWIN MAURICIO VELASCO GUERRERO', '', 'Calle 4 d 36-33', 'edwinvelasco@misena.edu.co', '3128271163', '10292173', NULL, 'Popayan', '', 'emvelasco@sena.edu.co'),
-	(12187322, 'JOSE ALIRIO MUÑOZ CARDOSO', '', 'Calle 3 No. 7-04', ' jamc_1957@hotmail.com ', '3017350077', '12187322', NULL, 'Ginebra', '', ' jamunozca@sena.edu.co '),
-	(14704807, 'JOHN HANER VARGAS ACEVEDO', '', 'Calle 71 26-104', ' hanersin@hotmail.com ', '3166095541', '14704807', NULL, 'Palmira', '', ' johvargasa@sena.edu.co '),
-	(14795060, 'HECTOR MARIO MONTAÑO GRAJALES', '', 'Carrera 5a 21-46', ' mariomongra12@gmail.com ', '3185201949', '14795060', NULL, 'Tulua', '', ' hmontanog@sena.edu.co '),
-	(14795372, 'DANNY ALBERTO MUÑOZ TRUJILLO', '', 'Tres esquinas vereda la caballera', 'dannyalbertomuoz@hotmail.com', '3137421652', '14795372', NULL, 'TULUA', '', 'dmunozt@sena.edu.co'),
-	(14796175, 'LUIS FERNANDO LOPEZ ', '', 'Carrera 35 29-20 ', 'l_f_l82@hotmail.com', '3107286677', '14796175', NULL, 'Tulua', '', 'luflopez@sena.edu.co'),
-	(14796542, 'OSCAR VICENTE OTALVORA CIFUENTES', '', 'Calle 43 33-07', ' otalvora60@gmail.com ', '3178588127', '14796542', NULL, 'Tulua', '', ' ootalvorac@sena.edu.co '),
-	(14799364, 'GERMAN ALONSO CASTILLO ORJUELA', '', 'Carrera 31 No.25-37', 'germancastillo1984@hotmail.com', '3175765396', '14799364', NULL, 'Tulua', '', 'gcastilloo@sena.edu.co'),
-	(14801705, 'JULIAN ADOLFO ALCALDE LOZANO', '', 'Carrera 21 No.22-73', ' alcalde110@gmail.com ', '3104020842', '14801705', NULL, 'Tulua', '', ' jalcalde@sena.edu.co '),
+	(9152761, 'DAVID CARABALLO PEREZ', '', 'Carrera 34 No.25-22', ' dacape0304@hotmail.es ', '3103860790', '9785d16872d5020b1c2b762935eee9f0', NULL, 'Tulua', '', ' dcaraballop@sena.edu.co '),
+	(10292173, 'EDWIN MAURICIO VELASCO GUERRERO', '', 'Calle 4 d 36-33', 'edwinvelasco@misena.edu.co', '3128271163', '7bd4776963f54ea152301b6170269bf0', NULL, 'Popayan', '', 'emvelasco@sena.edu.co'),
+	(12187322, 'JOSE ALIRIO MUÑOZ CARDOSO', '', 'Calle 3 No. 7-04', ' jamc_1957@hotmail.com ', '3017350077', 'd5450166e57028ad846be82af36045a7', NULL, 'Ginebra', '', ' jamunozca@sena.edu.co '),
+	(14704807, 'JOHN HANER VARGAS ACEVEDO', '', 'Calle 71 26-104', ' hanersin@hotmail.com ', '3166095541', '20dc01f68bcd11fbe175e9658d429b1e', NULL, 'Palmira', '', ' johvargasa@sena.edu.co '),
+	(14795060, 'HECTOR MARIO MONTAÑO GRAJALES', '', 'Carrera 5a 21-46', ' mariomongra12@gmail.com ', '3185201949', 'f6d29a0d001eae4eba0ed01305265dcb', NULL, 'Tulua', '', ' hmontanog@sena.edu.co '),
+	(14795372, 'DANNY ALBERTO MUÑOZ TRUJILLO', '', 'Tres esquinas vereda la caballera', 'dannyalbertomuoz@hotmail.com', '3137421652', '7ec83669d5fa1a464a437d98a5456f98', NULL, 'TULUA', '', 'dmunozt@sena.edu.co'),
+	(14796175, 'LUIS FERNANDO LOPEZ ', '', 'Carrera 35 29-20 ', 'l_f_l82@hotmail.com', '3107286677', '977724654f8b7096af088e10cd47b338', NULL, 'Tulua', '', 'luflopez@sena.edu.co'),
+	(14796542, 'OSCAR VICENTE OTALVORA CIFUENTES', '', 'Calle 43 33-07', ' otalvora60@gmail.com ', '3178588127', '8d00bc6f3a73bc661a2fbffd9824bc94', NULL, 'Tulua', '', ' ootalvorac@sena.edu.co '),
+	(14799364, 'GERMAN ALONSO CASTILLO ORJUELA', '', 'Carrera 31 No.25-37', 'germancastillo1984@hotmail.com', '3175765396', 'ee8cefa42b92285a34f7063dd01bf279', NULL, 'Tulua', '', 'gcastilloo@sena.edu.co'),
+	(14801705, 'JULIAN ADOLFO ALCALDE LOZANO', '', 'Carrera 21 No.22-73', ' alcalde110@gmail.com ', '3104020842', 'b7fd08797891495f2c9857dd57ef980f', NULL, 'Tulua', '', ' jalcalde@sena.edu.co '),
 	(14802285, 'ANDRÉS FELIPE', 'ESCOBAR', NULL, 'ANFELES@MISENA.EDU.CO', '311', '6306bc219380d72098bdb2bb3ffe3f73', NULL, NULL, NULL, 'AFESCOBARV@SENA.EDU.CO'),
-	(14878719, 'JAMES DOMINGUEZ ARAGON', '', 'Carrera 30 No.14a-71', ' jamesdominguezaragon@hotmail.com ', '3166803426', '14878719', NULL, 'Buga', '', ' jdomingueza@sena.edu.co '),
-	(14882452, 'ADRIANO SARRIA SALGUERO', '', 'Carrera 3 No.2-18', ' adrianosarria@hotmail.com ', '3206521702', '14882452', NULL, 'Yotoco', '', ' asarrias@sena.edu.co '),
-	(14885750, 'FERNANDO FIGUEROA PAYAN', '', 'Calle 14 sur 10-15', 'ffp002@gmail.com', '3217181456', '14885750', NULL, 'Buga', '', 'ffigueroa@sena.edu.co'),
+	(14878719, 'JAMES DOMINGUEZ ARAGON', '', 'Carrera 30 No.14a-71', ' jamesdominguezaragon@hotmail.com ', '3166803426', '6059932a20c75e0d2c3a1ad4c093a33e', NULL, 'Buga', '', ' jdomingueza@sena.edu.co '),
+	(14882452, 'ADRIANO SARRIA SALGUERO', '', 'Carrera 3 No.2-18', ' adrianosarria@hotmail.com ', '3206521702', '4848e3a1ecab27015752041b9e7b98d2', NULL, 'Yotoco', '', ' asarrias@sena.edu.co '),
+	(14885750, 'FERNANDO FIGUEROA PAYAN', '', 'Calle 14 sur 10-15', 'ffp002@gmail.com', '3217181456', 'ad2bf39fccefa0264699db9e90fca675', NULL, 'Buga', '', 'ffigueroa@sena.edu.co'),
 	(14888888, 'MARIA CRISTINA', 'LEMUS PEREZ', NULL, 'MCLEMUS@SENA.EDU.CO', '312333333', '202cb962ac59075b964b07152d234b70', NULL, NULL, NULL, NULL),
-	(14889459, 'FREDY HENAO LOPEZ', '', 'Calle 5 No. 2-22', ' fred-hl@hotmail.com ', '3156615004', '14889459', NULL, 'Buga', '', ' fhenaol@sena.edu.co '),
-	(14889925, 'DARIO GERMAN', 'MARTINEZ MONTOYA', NULL, 'DGMARTINEZ@SENA.EDU.CO', '312555555', '14889925', NULL, NULL, NULL, NULL),
-	(14890585, 'NELSON ALBERTO TORRES ARCE', '', 'CALLE 2 SUR 4-25', 'natorrez@misena.edu.co', '3153755286', '14890585', NULL, 'Buga', '', 'ntorresa@sena.edu.co'),
-	(14890737, 'GERMÁN', 'SUÁREZ GARCÍA', '', 'GERMAN.SUAREZ@SENA.EDU.CO', '314567800', '14890737', NULL, '', '', NULL),
-	(14891011, 'FERNANDO LEON LOPEZ TORO', '', 'Carrera 9 9sur35', 'ferloto3@gmail.com', '3186849392', '14891011', NULL, 'Buga', '', 'flopezt@sena.edu.co'),
-	(14891226, 'RAFAEL ENRIQUE ARIAS FIGUEROA', '', 'Carrera 36a No.31-47', ' ariasgro2@hotmail.com ', '3136138039', '14891226', NULL, 'Tulua', '', ' reariasf@sena.edu.co '),
-	(14891933, 'GERMAN ANTONIO DUQUE BEDOYA', '', 'Carrera 25b #44-55', 'germandb5@gmail.com', '3212821372', '14891933', NULL, 'Buga', '', 'gaduque@sena.edu.co'),
-	(14892405, 'FABIAN ALEXANDER ANGEL ANGEL', '', 'Carrera 1c1 No.68-33', ' angelfa41@gmail.com ', '3113343719', '14892405', NULL, 'Cali', '', ' fangel@sena.edu.co '),
-	(14892979, 'HOOVER ZULETA RENDON', '', 'Carrera 26 no. 18-95', ' hoover.zuleta@gmail.com ', '3153461791', '14892979', NULL, 'Buga', '', ' hzuletar@sena.edu.co '),
-	(14893993, 'CARLOS ARTURO ALVARADO RENGIFO', '', 'Calle 7asur No.16-68', ' calirengifo@hotmail.com ', '3175524334', '14893993', NULL, 'Buga', '', ' calvarador@sena.edu.co '),
-	(14894090, 'ANNWAR SUDKY ABDALLAH MILLAN', '', 'Calle 3 sur # 4-28', 'valletronics@gmail.com', '3166777776', '14894090', NULL, 'Buga', '', 'aabdallah@sena.edu.co'),
-	(14895079, 'JOSE FERNANDO AYALA MOLINA', '', 'Carrera 7 No.5sur -35', ' sempiterno3@yahoo.es ', '3165604930', '14895079', NULL, 'Buga', '', ' jayalam@sena.edu.co '),
-	(14895433, 'JUAN CARLOS BETANCOURTH BOLIVAR', '', 'CARRERA 8 # 7-13', 'juancbb@misena.edu.co', '3006583125', '14895433', NULL, 'Buga', '', 'jbetancourth@sena.edu.co'),
-	(14896559, 'JHON ALEXANDER ZULUAGA ARCE', '', 'Carrera 3 8sur20', ' jazuluaga955@misena.edu.co ', '3008358077', '14896559', NULL, 'BUGA', '', ' azuluagaa@sena.edu.co '),
-	(14897229, 'ALBETH MARTINEZ VALENCIA', '', 'Calle 12 10-29', ' a@misena.edu.co ', '3186163033', '14897229', NULL, 'Buga', '', ' amartinezva@sena.edu.co '),
-	(14898070, 'HERY FABIAN VIAFARA MILLAN', '', 'carrera 4 6-20', ' heryfabian@hotmail.com ', '3157030863', '14898070', NULL, 'Buga', '', ' hviafara@sena.edu.co '),
-	(15918435, 'JUAN CARLOS VARGAS AGUIRRE', '', 'Calle 31 43-32', ' juan-pa06@hotmail.com ', '3188310480', '15918435', NULL, 'Tulua', '', ' juvargasa@sena.edu.co '),
-	(16222766, 'JHONNY ALEXANDER NUÑEZ FLOREZ', '', 'Carrera 11 No.14-70', 'jhonny-42florez@hotmail.com', '3107295879', '16222766', NULL, 'Cartago', '', 'janunez@sena.edu.co'),
-	(16234415, 'ALEXANDER ALDANA MEJIA', '', 'Carrera 1Norte No.25-81', ' aaldana5@misena.edu.co ', '3206069393', '16234415', NULL, 'Cartago', '', ' aaldanam@sena.edu.co '),
-	(16260064, 'JORGE LUIS MONDRAGON SAA', '', 'Km 6 Via al Paraiso Corregimiento Santa Elena', 'jorgeluismondragonsaa@hotmail.com', '3208096588', '16260064', NULL, 'Cerrito', '', 'jmondragon@sena.edu.co'),
-	(16280474, 'JORGE ELIECER RIVADENEIRA GONZALEZ', '', 'Calle 65 No. 31c-17', ' jrivadeneirag@misena.edu.co ', '3218458040', '16280474', NULL, 'Palmira', '', ' jrivadeneirag@sena.edu.co '),
-	(16348821, 'HUMBERTO MEJIA VALLEJO', '', 'Calle 22 No. 19-29', ' bambuqueando@hotmail.com ', '3217735019', '16348821', NULL, 'Tulua', '', ' hmejiav@sena.edu.co '),
-	(16358684, 'CARLOS ARTURO BEJARANO MENDOZA', '', 'Carrera 22No. 39-36', ' carlinbeja@hotmail.com ', '3113070323', '16358684', NULL, 'Tulua', '', ' cbejaranom@sena.edu.co '),
-	(16366537, 'HUGO FERNANDO ZULUAGA OSPINA', '', 'Bosques de maracaibo manza 3 casa 12', ' hugo-zuluaga@hotmail.com ', '3104642230', '16366537', NULL, 'Tulua', '', ' hzuluagao@sena.edu.co '),
-	(16367151, 'MAURICIO POLANCO HUERTAS', '', 'Carrera 30 36-95', 'maopolan69@hotmail.com', '3178488764', '16367151', NULL, 'Tulua', '', 'mpolanco@sena.edu.co'),
-	(16367533, 'JHON JAIRO CORTES QUINTERO', '', 'Calle 37c # 44-149', 'jjcortes335@misena.edu.co', '3183900171', '16367533', NULL, 'Tulua', '', 'jjcortes@sena.edu.co'),
-	(16368987, 'FERNANDO ALONSO ARIAS RAMIREZ', '', 'Carrera 26a 39-49', ' kalokery@hotmail.com ', '3177780725', '16368987', NULL, 'Tulua', '', ' afernandoa@sena.edu.co '),
-	(16552383, 'JUAN CAMILO LEMOS GIL', '', 'carrera 7 norte 6-78', ' jclemosg@gmail.com ', '3003050126', '16552383', NULL, 'Roldanillo', '', ' cgilj@sena.edu.co '),
-	(16590486, 'RAMON ELIAS ALVIS MORALES', '', 'Carrera 11 12-59', ' ramonalvis@hotmail.com ', '3174282994', '16590486', NULL, 'La Unión', '', ' remorales@sena.edu.co '),
-	(16613100, 'JAIME ARCE BURBANO', '', 'CALLE 16 2-95', 'jarceburbano@misena.edu.co', '3113263300', '16613100', NULL, 'Toro', '', 'jarceb@sena.edu.co'),
-	(16796521, 'LUIS HERNANDO VARONA VILLEGAS', '', 'Calle 22 32-36', ' luishernandovarona@hotmail.com ', '3154970486', '16796521', NULL, 'Tulua', '', ' lvaronav@sena.edu.co '),
-	(17658884, 'CARLOS AUGUSTO GAVIRIA ALBAÑIL', '', 'CARRERA 27 A 22-00', 'carlosgaviria2204@gmail.com', '3203433068', '17658884', NULL, 'Armenia', '', 'cgaviria@sena.edu.co'),
-	(21811664, 'BEATRIZ ELENA VERA CADAVID', '', 'Calle 16a 25-29', 'beatriz_71@hotmail.com', '3187813644', '21811664', NULL, 'TULUA', '', 'bverac@sena.edu.co'),
-	(25286245, 'MARIA DEL MAR ILLERA CAJIAO', '', 'Calle 37 27a18', ' mariadelmarillera@hotmail.com ', '3173763441', '25286245', NULL, 'Tulua', '', ' millera@sena.edu.co '),
-	(26471980, 'ESMERALDA RODRIGUEZ ROJAS', '', 'Carrera 36 30-77', 'esmeraldarr@misena.edu.co', '3182581250', '26471980', NULL, 'Tulua', '', 'erodriguezro@sena.edu.co'),
-	(29142993, 'OLGA SOFIA GONZALEZ ARIAS', '', 'Cr 3a C 20a-08', 'sofygonzalez2911@gmail.com', '3186773636', '29142993', NULL, 'Andalucia', '', 'osgonzaleza@sena.edu.co'),
-	(29185945, 'ADELA ISABEL ANDRADE COLONIA', '', 'Carrera 2 No.4-46', ' adelaisabela@hotmail.com ', '3163185574', '29185945', NULL, 'BOLIVAR', '', ' adandradec@sena.edu.co '),
-	(29186692, 'VIVIANNA MORALES JIMENEZ', '', 'Carrera 25a No.44-25', ' vimoji28@hotmail.com ', '3103886762', '29186692', NULL, 'Tulua', '', ' vmoralesj@sena.edu.co '),
-	(29186804, 'PAOLA ANDREA RESTREPO CASTAÑO', '', 'Carrera 24 a39-74', ' panreca16@hotmail.com ', '3174428424', '29186804', NULL, 'Tulua', '', ' prestrepoc@sena.edu.co '),
-	(29186941, 'MARIA ANDREA DE LA TORRE VIDARTE', '', 'Calle 28A 37A-04', ' matv_dela14@hotmail.com ', '3103999382', '29186941', NULL, 'Tulua', '', ' mtorrev@sena.edu.co '),
-	(29282067, 'ANA NEYDA GOMEZ DE ECHEVERRY', '', 'Calle10sur No. 3-92', ' leyda49@gmail.com ', '3176390023', '29282067', NULL, 'Buga', '', ' angomezd@sena.edu.co '),
-	(29284823, 'JESSICA ANDREA AMAYA LASSO', '', 'Calle 7 b sur 15-48', 'jessica_amayalasso@yahoo.com', '3163337622', '29284823', NULL, 'Buga', '', 'jamayal@sena.edu.co'),
+	(14889459, 'FREDY HENAO LOPEZ', '', 'Calle 5 No. 2-22', ' fred-hl@hotmail.com ', '3156615004', '81b7f9c01488360e19825daa5b589e22', NULL, 'Buga', '', ' fhenaol@sena.edu.co '),
+	(14889925, 'DARIO GERMAN', 'MARTINEZ MONTOYA', NULL, 'DGMARTINEZ@SENA.EDU.CO', '312555555', '9c79bc03a76fc56bccacb2b31ac49366', NULL, NULL, NULL, NULL),
+	(14890585, 'NELSON ALBERTO TORRES ARCE', '', 'CALLE 2 SUR 4-25', 'natorrez@misena.edu.co', '3153755286', '98958454fe618c2036e47bf912e315c0', NULL, 'Buga', '', 'ntorresa@sena.edu.co'),
+	(14890737, 'GERMÁN', 'SUÁREZ GARCÍA', '', 'GERMAN.SUAREZ@SENA.EDU.CO', '314567800', 'b172699eb39ff6681403a4ebaea69921', NULL, '', '', NULL),
+	(14891011, 'FERNANDO LEON LOPEZ TORO', '', 'Carrera 9 9sur35', 'ferloto3@gmail.com', '3186849392', 'c8c3657f5e8ba12101f5ae55a7772b96', NULL, 'Buga', '', 'flopezt@sena.edu.co'),
+	(14891226, 'RAFAEL ENRIQUE ARIAS FIGUEROA', '', 'Carrera 36a No.31-47', ' ariasgro2@hotmail.com ', '3136138039', '3fef4a1eebe3dc42a7a417884953573a', NULL, 'Tulua', '', ' reariasf@sena.edu.co '),
+	(14891933, 'GERMAN ANTONIO DUQUE BEDOYA', '', 'Carrera 25b #44-55', 'germandb5@gmail.com', '3212821372', 'e83b48277e4e03c90136f48071ff0b43', NULL, 'Buga', '', 'gaduque@sena.edu.co'),
+	(14892405, 'FABIAN ALEXANDER ANGEL ANGEL', '', 'Carrera 1c1 No.68-33', ' angelfa41@gmail.com ', '3113343719', 'f2cca8373c3961ce1a5703292807fd54', NULL, 'Cali', '', ' fangel@sena.edu.co '),
+	(14892979, 'HOOVER ZULETA RENDON', '', 'Carrera 26 no. 18-95', ' hoover.zuleta@gmail.com ', '3153461791', 'b91babf0c4b0d523f36e00a311e8ec90', NULL, 'Buga', '', ' hzuletar@sena.edu.co '),
+	(14893993, 'CARLOS ARTURO ALVARADO RENGIFO', '', 'Calle 7asur No.16-68', ' calirengifo@hotmail.com ', '3175524334', 'b1c7a3065a85854c1c03c122226ce9b7', NULL, 'Buga', '', ' calvarador@sena.edu.co '),
+	(14894090, 'ANNWAR SUDKY ABDALLAH MILLAN', '', 'Calle 3 sur # 4-28', 'valletronics@gmail.com', '3166777776', '1ab876fb8788bfc9ece40fcb6fbf1ba6', NULL, 'Buga', '', 'aabdallah@sena.edu.co'),
+	(14895079, 'JOSE FERNANDO AYALA MOLINA', '', 'Carrera 7 No.5sur -35', ' sempiterno3@yahoo.es ', '3165604930', 'f7abeadbedcfd70f2e5a338ffd2cbbd8', NULL, 'Buga', '', ' jayalam@sena.edu.co '),
+	(14895433, 'JUAN CARLOS BETANCOURTH BOLIVAR', '', 'CARRERA 8 # 7-13', 'juancbb@misena.edu.co', '3006583125', 'a8d789ea6131f572ef6ca5c78a8f8263', NULL, 'Buga', '', 'jbetancourth@sena.edu.co'),
+	(14896559, 'JHON ALEXANDER ZULUAGA ARCE', '', 'Carrera 3 8sur20', ' jazuluaga955@misena.edu.co ', '3008358077', '6fab2f1bc0cc74eb335b7938edd159a6', NULL, 'BUGA', '', ' azuluagaa@sena.edu.co '),
+	(14897229, 'ALBETH MARTINEZ VALENCIA', '', 'Calle 12 10-29', ' a@misena.edu.co ', '3186163033', '7441aa39e930a23e8415c1b3685b612f', NULL, 'Buga', '', ' amartinezva@sena.edu.co '),
+	(14898070, 'HERY FABIAN VIAFARA MILLAN', '', 'carrera 4 6-20', ' heryfabian@hotmail.com ', '3157030863', '53f207dba79e908ea57281932f6e8893', NULL, 'Buga', '', ' hviafara@sena.edu.co '),
+	(15918435, 'JUAN CARLOS VARGAS AGUIRRE', '', 'Calle 31 43-32', ' juan-pa06@hotmail.com ', '3188310480', '1c74f99bf7d8fcb6cc7e7cf4df9f6574', NULL, 'Tulua', '', ' juvargasa@sena.edu.co '),
+	(16222766, 'JHONNY ALEXANDER NUÑEZ FLOREZ', '', 'Carrera 11 No.14-70', 'jhonny-42florez@hotmail.com', '3107295879', '78ecef07eafe2ccfb2fd813b065e3bb7', NULL, 'Cartago', '', 'janunez@sena.edu.co'),
+	(16234415, 'ALEXANDER ALDANA MEJIA', '', 'Carrera 1Norte No.25-81', ' aaldana5@misena.edu.co ', '3206069393', 'f9e996ccae453cf922d9341f1da306a6', NULL, 'Cartago', '', ' aaldanam@sena.edu.co '),
+	(16260064, 'JORGE LUIS MONDRAGON SAA', '', 'Km 6 Via al Paraiso Corregimiento Santa Elena', 'jorgeluismondragonsaa@hotmail.com', '3208096588', 'c08e19e87e654b711b03bcdca6576a89', NULL, 'Cerrito', '', 'jmondragon@sena.edu.co'),
+	(16280474, 'JORGE ELIECER RIVADENEIRA GONZALEZ', '', 'Calle 65 No. 31c-17', ' jrivadeneirag@misena.edu.co ', '3218458040', '0de5b6504a7a9512a4d1538a8431e759', NULL, 'Palmira', '', ' jrivadeneirag@sena.edu.co '),
+	(16348821, 'HUMBERTO MEJIA VALLEJO', '', 'Calle 22 No. 19-29', ' bambuqueando@hotmail.com ', '3217735019', '1e82c9876299b2b587efb4ca2dd29144', NULL, 'Tulua', '', ' hmejiav@sena.edu.co '),
+	(16358684, 'CARLOS ARTURO BEJARANO MENDOZA', '', 'Carrera 22No. 39-36', ' carlinbeja@hotmail.com ', '3113070323', '26204b25a7ff614f2a5d5a5e6cc98f41', NULL, 'Tulua', '', ' cbejaranom@sena.edu.co '),
+	(16366537, 'HUGO FERNANDO ZULUAGA OSPINA', '', 'Bosques de maracaibo manza 3 casa 12', ' hugo-zuluaga@hotmail.com ', '3104642230', 'a0afeaa959d2c50aca9f04d4d21d1c10', NULL, 'Tulua', '', ' hzuluagao@sena.edu.co '),
+	(16367151, 'MAURICIO POLANCO HUERTAS', '', 'Carrera 30 36-95', 'maopolan69@hotmail.com', '3178488764', 'c2e56f5be8e933393d70691b456ca39b', NULL, 'Tulua', '', 'mpolanco@sena.edu.co'),
+	(16367533, 'JHON JAIRO CORTES QUINTERO', '', 'Calle 37c # 44-149', 'jjcortes335@misena.edu.co', '3183900171', '826269b020fe25dbe8dbdf83e95b6595', NULL, 'Tulua', '', 'jjcortes@sena.edu.co'),
+	(16368987, 'FERNANDO ALONSO ARIAS RAMIREZ', '', 'Carrera 26a 39-49', ' kalokery@hotmail.com ', '3177780725', 'd5006f441b204a43ed27ef42d8a50b24', NULL, 'Tulua', '', ' afernandoa@sena.edu.co '),
+	(16552383, 'JUAN CAMILO LEMOS GIL', '', 'carrera 7 norte 6-78', ' jclemosg@gmail.com ', '3003050126', '82956be31039e27b5e387b3c2bfbfa59', NULL, 'Roldanillo', '', ' cgilj@sena.edu.co '),
+	(16590486, 'RAMON ELIAS ALVIS MORALES', '', 'Carrera 11 12-59', ' ramonalvis@hotmail.com ', '3174282994', 'fe3a724e05c8a43aa86dd293d8c281f1', NULL, 'La Unión', '', ' remorales@sena.edu.co '),
+	(16613100, 'JAIME ARCE BURBANO', '', 'CALLE 16 2-95', 'jarceburbano@misena.edu.co', '3113263300', 'aad5cdaad586196ae3a2e109bfff9c4e', NULL, 'Toro', '', 'jarceb@sena.edu.co'),
+	(16796521, 'LUIS HERNANDO VARONA VILLEGAS', '', 'Calle 22 32-36', ' luishernandovarona@hotmail.com ', '3154970486', 'c94bc83a4a30e2235e310c2942742fef', NULL, 'Tulua', '', ' lvaronav@sena.edu.co '),
+	(17658884, 'CARLOS AUGUSTO GAVIRIA ALBAÑIL', '', 'CARRERA 27 A 22-00', 'carlosgaviria2204@gmail.com', '3203433068', '04c04c51c5efaa053e52d97e2c79f280', NULL, 'Armenia', '', 'cgaviria@sena.edu.co'),
+	(21811664, 'BEATRIZ ELENA VERA CADAVID', '', 'Calle 16a 25-29', 'beatriz_71@hotmail.com', '3187813644', 'ec96daf032c0273fb6d9a60aded73e54', NULL, 'TULUA', '', 'bverac@sena.edu.co'),
+	(25286245, 'MARIA DEL MAR ILLERA CAJIAO', '', 'Calle 37 27a18', ' mariadelmarillera@hotmail.com ', '3173763441', '4e5f957f16e27ee3bc86b613736d23a3', NULL, 'Tulua', '', ' millera@sena.edu.co '),
+	(26471980, 'ESMERALDA RODRIGUEZ ROJAS', '', 'Carrera 36 30-77', 'esmeraldarr@misena.edu.co', '3182581250', '71dcc45fc0b818cd6223838f2107c963', NULL, 'Tulua', '', 'erodriguezro@sena.edu.co'),
+	(29142993, 'OLGA SOFIA GONZALEZ ARIAS', '', 'Cr 3a C 20a-08', 'sofygonzalez2911@gmail.com', '3186773636', '4ca1b2b979a67ec898044924849ab530', NULL, 'Andalucia', '', 'osgonzaleza@sena.edu.co'),
+	(29185945, 'ADELA ISABEL ANDRADE COLONIA', '', 'Carrera 2 No.4-46', ' adelaisabela@hotmail.com ', '3163185574', '0d98d9287d9c5e5c7055183638c8167a', NULL, 'BOLIVAR', '', ' adandradec@sena.edu.co '),
+	(29186692, 'VIVIANNA MORALES JIMENEZ', '', 'Carrera 25a No.44-25', ' vimoji28@hotmail.com ', '3103886762', '1a73c6759dd5d74064c524b1a2f5f8af', NULL, 'Tulua', '', ' vmoralesj@sena.edu.co '),
+	(29186804, 'PAOLA ANDREA RESTREPO CASTAÑO', '', 'Carrera 24 a39-74', ' panreca16@hotmail.com ', '3174428424', 'a7d2ba9c95edc1b11879c782bc930990', NULL, 'Tulua', '', ' prestrepoc@sena.edu.co '),
+	(29186941, 'MARIA ANDREA DE LA TORRE VIDARTE', '', 'Calle 28A 37A-04', ' matv_dela14@hotmail.com ', '3103999382', '895ca09bcc8f6a93168a5677a7761953', NULL, 'Tulua', '', ' mtorrev@sena.edu.co '),
+	(29282067, 'ANA NEYDA GOMEZ DE ECHEVERRY', '', 'Calle10sur No. 3-92', ' leyda49@gmail.com ', '3176390023', '6d0ae81e5c984fc41c17350d5d5b8bf9', NULL, 'Buga', '', ' angomezd@sena.edu.co '),
+	(29284823, 'JESSICA ANDREA AMAYA LASSO', '', 'Calle 7 b sur 15-48', 'jessica_amayalasso@yahoo.com', '3163337622', '1fe18f8fd023561cff8f0e697c70cb7d', NULL, 'Buga', '', 'jamayal@sena.edu.co'),
 	(29287323, 'ANGELA MARIA GOMEZ PEÑA', '', 'Carrera 38 12c17', ' angelagomezp@gmail.com ', '3185230605', '29287323', NULL, 'Tulua', '', ' amgomezp@sena.edu.co '),
 	(29307769, 'YAMILED GONZALEZ ROJAS', '', 'Calle 3 sur 7/43', 'yamiled.gonzalez2@hotmail.com', '3164591756', '29307769', NULL, 'Bugalagrande', '', 'ygonzalezr@sena.edu.co'),
 	(29309904, 'SANDRA YULIETH GARCIA GONZALEZ', '', 'Diagonal 18 No.25AI-08', ' sayugar@misena.edu.co ', '3165374064', '29309904', NULL, 'Tulua', '', ' sgarciag@sena.edu.co '),
@@ -1110,7 +1110,7 @@ CREATE TABLE IF NOT EXISTS `perteneceficha` (
   CONSTRAINT `FK_perteneceficha_fichatitulacion` FOREIGN KEY (`numeroficha`) REFERENCES `fichatitulacion` (`numeroficha`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla gepad.perteneceficha: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla gepad.perteneceficha: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `perteneceficha` DISABLE KEYS */;
 INSERT INTO `perteneceficha` (`documentoaprendiz`, `numeroficha`, `estadoperteneceficha`) VALUES
 	(1116235891, 1134299, 'EN FORMACION');
@@ -1123,7 +1123,7 @@ CREATE TABLE IF NOT EXISTS `programa` (
   PRIMARY KEY (`codigoprograma`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla gepad.programa: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla gepad.programa: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `programa` DISABLE KEYS */;
 INSERT INTO `programa` (`codigoprograma`, `nombreprograma`) VALUES
 	(228106, 'ADSI');
@@ -1136,7 +1136,7 @@ CREATE TABLE IF NOT EXISTS `regional` (
   PRIMARY KEY (`codigoregional`)
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla gepad.regional: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla gepad.regional: ~32 rows (aproximadamente)
 /*!40000 ALTER TABLE `regional` DISABLE KEYS */;
 INSERT INTO `regional` (`codigoregional`, `nombreregional`) VALUES
 	(1, 'Amazonas'),
@@ -1272,7 +1272,7 @@ CREATE TABLE IF NOT EXISTS `tipopractica` (
   PRIMARY KEY (`codigotipopractica`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla gepad.tipopractica: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla gepad.tipopractica: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `tipopractica` DISABLE KEYS */;
 INSERT INTO `tipopractica` (`codigotipopractica`, `nombretipopractica`, `descripciontipopractica`) VALUES
 	(1, 'CONTRATO LABORAL', 'kjhkhjhj');
