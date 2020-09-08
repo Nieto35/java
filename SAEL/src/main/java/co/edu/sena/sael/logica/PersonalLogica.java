@@ -18,84 +18,55 @@ import org.apache.commons.codec.digest.DigestUtils;
  */
 @Stateless
 public class PersonalLogica implements PersonalLogicaLocal {
+
     @EJB
     private IPersonalDAO personalDAO;
 
     @Override
     public void insertar(Personal personal) throws Exception {
-        //validaciones
-        if(personal==null) {
-            throw new Exception("El Personal es nulo!");
-        }
+
+        validarDatos(personal);
         
-        if(personal.getDocumentopersonal()==null || personal.getDocumentopersonal()==0) {
-            throw new Exception("La identificación es obligatoria!");
-        }
-        
-        if(personal.getNombrepersonal()==null || personal.getNombrepersonal().equals("")==true) {
-            throw new Exception("El nombre es obligatorio!");
-        }    
-        
-        if(personal.getApellidopersonal()==null || personal.getApellidopersonal().equals("")==true) {
-            throw new Exception("El apellido es obligatorio!");
-        }
-        
-        if(personal.getClavepersonal()==null || personal.getClavepersonal().equals("")==true) {
+        if (personal.getClave() == null || personal.getClave().equals("") == true) {
             throw new Exception("La clave es obligatoria!");
         }
-        
+
         //consulta si el personal ya existe
-        Personal entity=personalDAO.consultarPorId(personal.getDocumentopersonal());
-        if(entity!=null){
-            throw new Exception("El personal ya existe!"); 
-        }    
-        
+        Personal entity = personalDAO.consultarPorId(personal.getDocumentopersonal());
+        if (entity != null) {
+            throw new Exception("El personal ya existe!");
+        }
+
         //se encripta la contraseña digitada
-        String passEncriptado=encriptarContraseña(personal.getClavepersonal());
-        personal.setClavepersonal(passEncriptado);
-        
+        String passEncriptado = encriptarContraseña(personal.getClave());
+        personal.setClave(passEncriptado);
+
         personalDAO.insertar(personal);
     }
 
     @Override
     public void modificar(Personal personal) throws Exception {
         //validaciones
-        if(personal==null) {
-            throw new Exception("El personal es nulo!");
-        }
         
-        if(personal.getDocumentopersonal()==null || personal.getDocumentopersonal()==0) {
-            throw new Exception("La identificación es obligatoria!");
-        }
-        
-        if(personal.getNombrepersonal()==null || personal.getNombrepersonal().equals("")==true) {
-            throw new Exception("El nombre es obligatorio!");
-        }    
-        
-        if(personal.getApellidopersonal()==null || personal.getApellidopersonal().equals("")==true) {
-            throw new Exception("El apellido es obligatorio!");
-        }
-        
-        /*if(personal.getClavepersonal()==null || personal.getClavepersonal().equals("")==true) {
+        validarDatos(personal);
+
+        /*if(personal.getClave()==null || personal.getClave().equals("")==true) {
             throw new Exception("La clave es obligatoria!");
         }*/
-                 
-
         //consulta si el personal ya Existe
-        Personal entityPersonal=personalDAO.consultarPorId(personal.getDocumentopersonal());
-        if(entityPersonal==null){
-            throw new Exception("El personal no existe!"); 
+        Personal entityPersonal = personalDAO.consultarPorId(personal.getDocumentopersonal());
+        if (entityPersonal == null) {
+            throw new Exception("El personal no existe!");
         }
-        
-        
-        entityPersonal.setNombrepersonal(personal.getNombrepersonal());
-        entityPersonal.setApellidopersonal(personal.getApellidopersonal());
-        entityPersonal.setCorreopersonal(personal.getCorreopersonal());
-        entityPersonal.setCorreoinstitucionalpersonal(personal.getCorreoinstitucionalpersonal());
-        entityPersonal.setTelefonopersonal(personal.getTelefonopersonal());
-        
+
+        entityPersonal.setNombre(personal.getNombre());
+        entityPersonal.setApellido(personal.getApellido());
+        entityPersonal.setCorreo(personal.getCorreo());
+        entityPersonal.setCorreoinstitucional(personal.getCorreoinstitucional());
+        entityPersonal.setTelefono(personal.getTelefono());
+
         //modificar
-        personalDAO.modificar(entityPersonal); 
+        personalDAO.modificar(entityPersonal);
     }
 
     @Override
@@ -105,10 +76,10 @@ public class PersonalLogica implements PersonalLogicaLocal {
 
     @Override
     public Personal consultarPorId(Long documento) throws Exception {
-        if(documento==null || documento==0){
+        if (documento == null || documento == 0) {
             throw new Exception("La Identificación es Obligatoria!");
         }
-        
+
         return personalDAO.consultarPorId(documento);
     }
 
@@ -117,38 +88,65 @@ public class PersonalLogica implements PersonalLogicaLocal {
         return personalDAO.consultar();
     }
     
+    
+    // valida la info del personal, ya sea aprendiz o instructor
     @Override
     public boolean validarDatosPersonal(Personal personal) throws Exception {
         //validaciones
-        if(personal==null) {
+        if (personal == null) {
             return false;
         }
-        
-        if(personal.getDocumentopersonal()==null || personal.getDocumentopersonal()==0) {
+
+        if (personal.getDocumentopersonal() == null || personal.getDocumentopersonal() == 0) {
             return false;
         }
-        
-        if(personal.getNombrepersonal()==null || personal.getNombrepersonal().equals("")==true) {
-            return false;
-        }    
-        
-        if(personal.getApellidopersonal()==null || personal.getApellidopersonal().equals("")==true) {
-            return false;
-        } 
-                
-        if(personal.getClavepersonal()==null || personal.getClavepersonal().equals("")==true) {
+
+        if (personal.getNombre() == null || personal.getNombre().equals("") == true) {
             return false;
         }
-        
+
+        if (personal.getApellido() == null || personal.getApellido().equals("") == true) {
+            return false;
+        }
+
+        if (personal.getClave() == null || personal.getClave().equals("") == true) {
+            return false;
+        }
+
         return true;
     }
     
+    /**
+     * valida los datos obligatorios a la hora de crear o modificar el personal
+     * @param personal
+     * @throws Exception 
+     */
+    public void validarDatos(Personal personal) throws Exception {
+        //validaciones
+        if (personal == null) {
+            throw new Exception("El Personal es nulo!");
+        }
+
+        if (personal.getDocumentopersonal() == null || personal.getDocumentopersonal() == 0) {
+            throw new Exception("La identificación es obligatoria!");
+        }
+
+        if (personal.getNombre() == null || personal.getNombre().equals("") == true) {
+            throw new Exception("El nombre es obligatorio!");
+        }
+
+        if (personal.getApellido() == null || personal.getApellido().equals("") == true) {
+            throw new Exception("El apellido es obligatorio!");
+        }
+
+
+    }
+
     public String encriptarContraseña(String password) {
         String encriptMD5 = DigestUtils.md5Hex(password);
         //System.out.println("md5:" + encriptMD5);
-        
+
         return encriptMD5;
     }
-    
-    
+
 }

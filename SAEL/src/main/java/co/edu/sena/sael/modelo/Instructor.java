@@ -20,14 +20,12 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "instructor")
@@ -35,26 +33,22 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Instructor.findAll", query = "SELECT i FROM Instructor i")
     , @NamedQuery(name = "Instructor.findByDocumentoinstructor", query = "SELECT i FROM Instructor i WHERE i.documentoinstructor = :documentoinstructor")
-    , @NamedQuery(name = "Instructor.findByTipoinstructor", query = "SELECT i FROM Instructor i WHERE i.tipoinstructor = :tipoinstructor")})
+    , @NamedQuery(name = "Instructor.findByTipo", query = "SELECT i FROM Instructor i WHERE i.tipo = :tipo")})
 public class Instructor implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "documentoinstructor")
+    @Column(name = "documentoinstructor", nullable = false)
     private Long documentoinstructor;
-    @Size(max = 50)
-    @Column(name = "tipoinstructor")
-    private String tipoinstructor;
+    @Column(name = "tipo", length = 50)
+    private String tipo;
     @Lob
-    @Size(max = 65535)
-    @Column(name = "perfilocupacionalinstructor")
-    private String perfilocupacionalinstructor;
+    @Column(name = "perfilocupacional", length = 65535)
+    private String perfilocupacional;
     @Lob
-    @Size(max = 65535)
-    @Column(name = "logrosinstructor")
-    private String logrosinstructor;
+    @Column(name = "logros", length = 65535)
+    private String logros;
     @ManyToMany(mappedBy = "instructorCollection")
     private Collection<Fichatitulacion> fichatitulacionCollection;
     @OneToMany(mappedBy = "documentoinstructor")
@@ -90,28 +84,28 @@ public class Instructor implements Serializable {
         this.documentoinstructor = documentoinstructor;
     }
 
-    public String getTipoinstructor() {
-        return tipoinstructor;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setTipoinstructor(String tipoinstructor) {
-        this.tipoinstructor = tipoinstructor;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
-    public String getPerfilocupacionalinstructor() {
-        return perfilocupacionalinstructor;
+    public String getPerfilocupacional() {
+        return perfilocupacional;
     }
 
-    public void setPerfilocupacionalinstructor(String perfilocupacionalinstructor) {
-        this.perfilocupacionalinstructor = perfilocupacionalinstructor;
+    public void setPerfilocupacional(String perfilocupacional) {
+        this.perfilocupacional = perfilocupacional;
     }
 
-    public String getLogrosinstructor() {
-        return logrosinstructor;
+    public String getLogros() {
+        return logros;
     }
 
-    public void setLogrosinstructor(String logrosinstructor) {
-        this.logrosinstructor = logrosinstructor;
+    public void setLogros(String logros) {
+        this.logros = logros;
     }
 
     @XmlTransient

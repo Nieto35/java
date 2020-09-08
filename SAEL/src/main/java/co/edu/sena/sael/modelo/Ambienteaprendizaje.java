@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "ambienteaprendizaje")
@@ -45,25 +45,31 @@ public class Ambienteaprendizaje implements Serializable {
     @Basic(optional = false)
     @Column(name = "codigoambiente")
     private Integer codigoambiente;
-    @Size(max = 50)
-    @Column(name = "nombreambiente")
+    
+    @Column(name = "nombreambiente", length = 50)
     private String nombreambiente;
+    
     @Column(name = "capacidadambiente")
     private Integer capacidadambiente;
+    
     @Column(name = "areaambiente")
     private Integer areaambiente;
-    @Size(max = 50)
-    @Column(name = "estadoambiente")
+    
+    @Column(name = "estadoambiente", length = 50)
     private String estadoambiente;
     @JoinColumn(name = "numerosede", referencedColumnName = "numerosede")
     @ManyToOne
+    
     private Sede numerosede;
     @JoinColumn(name = "codigotipoambiente", referencedColumnName = "codigotipoambiente")
     @ManyToOne
+    
     private Tipoambiente codigotipoambiente;
     @OneToMany(mappedBy = "codigoambiente")
+    
     private Collection<Usodeambiente> usodeambienteCollection;
     @OneToMany(mappedBy = "codigoambiente")
+    
     private Collection<Reservaambiente> reservaambienteCollection;
 
     public Ambienteaprendizaje() {

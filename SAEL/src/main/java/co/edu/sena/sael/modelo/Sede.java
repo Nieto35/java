@@ -19,13 +19,12 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "sede")
@@ -44,14 +43,11 @@ public class Sede implements Serializable {
     @Basic(optional = false)
     @Column(name = "numerosede")
     private Integer numerosede;
-    @Size(max = 50)
-    @Column(name = "nombresede")
+    @Column(name = "nombresede", length = 50)
     private String nombresede;
-    @Size(max = 50)
-    @Column(name = "direccionsede")
+    @Column(name = "direccionsede", length = 50)
     private String direccionsede;
-    @Size(max = 50)
-    @Column(name = "estadosede")
+    @Column(name = "estadosede", length = 50)
     private String estadosede;
     @OneToMany(mappedBy = "numerosede")
     private Collection<Ambienteaprendizaje> ambienteaprendizajeCollection;

@@ -17,13 +17,12 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "tipoambiente")
@@ -40,8 +39,7 @@ public class Tipoambiente implements Serializable {
     @Basic(optional = false)
     @Column(name = "codigotipoambiente")
     private Integer codigotipoambiente;
-    @Size(max = 50)
-    @Column(name = "descripciontipoambiente")
+    @Column(name = "descripciontipoambiente", length = 50)
     private String descripciontipoambiente;
     @OneToMany(mappedBy = "codigotipoambiente")
     private Collection<Ambienteaprendizaje> ambienteaprendizajeCollection;

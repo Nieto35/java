@@ -189,13 +189,13 @@ public class InstructorVista {
             Long documento = Long.parseLong(txtIdentificacion.getValue().toString());
             Personal nuevoPersonal = new Personal();
             nuevoPersonal.setDocumentopersonal(documento);
-            nuevoPersonal.setNombrepersonal(txtNombre.getValue().toString().toUpperCase());
-            nuevoPersonal.setApellidopersonal(txtApellido.getValue().toString().toUpperCase());
-            nuevoPersonal.setCorreopersonal(txtCorreo.getValue().toString().toUpperCase());
-            nuevoPersonal.setCorreoinstitucionalpersonal(txtCorreoInstitucional.getValue().toString().toUpperCase());
-            nuevoPersonal.setTelefonopersonal(txtTelefono.getValue().toString());            
+            nuevoPersonal.setNombre(txtNombre.getValue().toString().toUpperCase());
+            nuevoPersonal.setApellido(txtApellido.getValue().toString().toUpperCase());
+            nuevoPersonal.setCorreo(txtCorreo.getValue().toString().toUpperCase());
+            nuevoPersonal.setCorreoinstitucional(txtCorreoInstitucional.getValue().toString().toUpperCase());
+            nuevoPersonal.setTelefono(txtTelefono.getValue().toString());            
             //se asigna por defecto como contraseña el numero de documento
-            nuevoPersonal.setClavepersonal(String.valueOf(documento)); 
+            nuevoPersonal.setClave(String.valueOf(documento)); 
             
             //revisa la variable de sesion
             String existePersonal = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("existePersonal");
@@ -207,8 +207,8 @@ public class InstructorVista {
 
             instructor.setDocumentoinstructor(documento);
             instructor.setPersonal(nuevoPersonal);
-            instructor.setPerfilocupacionalinstructor(txtPerfilOcupacional.getValue().toString().toUpperCase());
-            instructor.setTipoinstructor(cmbTipoInstructor.getValue().toString());
+            instructor.setPerfilocupacional(txtPerfilOcupacional.getValue().toString().toUpperCase());
+            instructor.setTipo(cmbTipoInstructor.getValue().toString());
 
             instructorLogica.registrar(instructor);            
 
@@ -232,18 +232,18 @@ public class InstructorVista {
             Long documento = Long.parseLong(txtIdentificacion.getValue().toString());
             Personal miPersonal = new Personal();
             miPersonal.setDocumentopersonal(documento);
-            miPersonal.setNombrepersonal(txtNombre.getValue().toString().toUpperCase());
-            miPersonal.setApellidopersonal(txtApellido.getValue().toString().toUpperCase());
-            miPersonal.setCorreopersonal(txtCorreo.getValue().toString().toUpperCase());
-            miPersonal.setCorreoinstitucionalpersonal(txtCorreoInstitucional.getValue().toString().toUpperCase());
-            miPersonal.setTelefonopersonal(txtTelefono.getValue().toString().toUpperCase());
+            miPersonal.setNombre(txtNombre.getValue().toString().toUpperCase());
+            miPersonal.setApellido(txtApellido.getValue().toString().toUpperCase());
+            miPersonal.setCorreo(txtCorreo.getValue().toString().toUpperCase());
+            miPersonal.setCorreoinstitucional(txtCorreoInstitucional.getValue().toString().toUpperCase());
+            miPersonal.setTelefono(txtTelefono.getValue().toString().toUpperCase());
            
             personalLogica.modificar(miPersonal);
 
             instructor.setDocumentoinstructor(documento);
             instructor.setPersonal(miPersonal);
-            instructor.setTipoinstructor(cmbTipoInstructor.getValue().toString());
-            instructor.setPerfilocupacionalinstructor(txtPerfilOcupacional.getValue().toString().toUpperCase());
+            instructor.setTipo(cmbTipoInstructor.getValue().toString());
+            instructor.setPerfilocupacional(txtPerfilOcupacional.getValue().toString().toUpperCase());
 
             instructorLogica.modificar(instructor);
 
@@ -331,11 +331,11 @@ public class InstructorVista {
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("existePersonal", "no");
         } else if (entityInstructor == null) //si la persona existe pero no como instructor
         {
-            txtNombre.setValue(entityPersonal.getNombrepersonal());
-            txtApellido.setValue(entityPersonal.getApellidopersonal());
-            txtCorreo.setValue(entityPersonal.getCorreopersonal());
-            txtCorreoInstitucional.setValue(entityPersonal.getCorreoinstitucionalpersonal());
-            txtTelefono.setValue(entityPersonal.getTelefonopersonal());
+            txtNombre.setValue(entityPersonal.getNombre());
+            txtApellido.setValue(entityPersonal.getApellido());
+            txtCorreo.setValue(entityPersonal.getCorreo());
+            txtCorreoInstitucional.setValue(entityPersonal.getCorreoinstitucional());
+            txtTelefono.setValue(entityPersonal.getTelefono());
             txtPerfilOcupacional.setValue("");
             cmbTipoInstructor.setValue("-1");
 
@@ -347,13 +347,13 @@ public class InstructorVista {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso: ", "Existen datos personales, para crear el instructor complete sus datos y de clic en Crear"));
         } else //si ya existe como coordinador
         {
-            txtNombre.setValue(entityInstructor.getPersonal().getNombrepersonal());
-            txtApellido.setValue(entityInstructor.getPersonal().getApellidopersonal());
-            txtCorreo.setValue(entityInstructor.getPersonal().getCorreopersonal());
-            txtCorreoInstitucional.setValue(entityPersonal.getCorreoinstitucionalpersonal());
-            txtTelefono.setValue(entityInstructor.getPersonal().getTelefonopersonal()); 
-            txtPerfilOcupacional.setValue(entityInstructor.getPerfilocupacionalinstructor());
-            cmbTipoInstructor.setValue(entityInstructor.getTipoinstructor());
+            txtNombre.setValue(entityInstructor.getPersonal().getNombre());
+            txtApellido.setValue(entityInstructor.getPersonal().getApellido());
+            txtCorreo.setValue(entityInstructor.getPersonal().getCorreo());
+            txtCorreoInstitucional.setValue(entityPersonal.getCorreoinstitucional());
+            txtTelefono.setValue(entityInstructor.getPersonal().getTelefono()); 
+            txtPerfilOcupacional.setValue(entityInstructor.getPerfilocupacional());
+            cmbTipoInstructor.setValue(entityInstructor.getTipo());
 
             btnModificar.setDisabled(false);
             btnEliminar.setDisabled(false);
@@ -367,13 +367,13 @@ public class InstructorVista {
         // System.out.println("Selecciono el Instructor");        
         Instructor instructor = (Instructor) event.getObject();    
         txtIdentificacion.setValue(instructor.getDocumentoinstructor());
-        txtNombre.setValue(instructor.getPersonal().getNombrepersonal());
-        txtApellido.setValue(instructor.getPersonal().getApellidopersonal());
-        txtCorreo.setValue(instructor.getPersonal().getCorreopersonal());
-        txtCorreoInstitucional.setValue(instructor.getPersonal().getCorreoinstitucionalpersonal());
-        txtTelefono.setValue(instructor.getPersonal().getTelefonopersonal());
-        txtPerfilOcupacional.setValue(instructor.getPerfilocupacionalinstructor());
-        cmbTipoInstructor.setValue(instructor.getTipoinstructor());
+        txtNombre.setValue(instructor.getPersonal().getNombre());
+        txtApellido.setValue(instructor.getPersonal().getApellido());
+        txtCorreo.setValue(instructor.getPersonal().getCorreo());
+        txtCorreoInstitucional.setValue(instructor.getPersonal().getCorreoinstitucional());
+        txtTelefono.setValue(instructor.getPersonal().getTelefono());
+        txtPerfilOcupacional.setValue(instructor.getPerfilocupacional());
+        cmbTipoInstructor.setValue(instructor.getTipo());
 
         btnRegistrar.setDisabled(true);
         btnEliminar.setDisabled(false);

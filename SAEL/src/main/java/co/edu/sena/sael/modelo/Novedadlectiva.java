@@ -17,13 +17,12 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "novedadlectiva")
@@ -31,7 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Novedadlectiva.findAll", query = "SELECT n FROM Novedadlectiva n")
     , @NamedQuery(name = "Novedadlectiva.findByNumeronovedad", query = "SELECT n FROM Novedadlectiva n WHERE n.numeronovedad = :numeronovedad")
-    , @NamedQuery(name = "Novedadlectiva.findByNombrenovedad", query = "SELECT n FROM Novedadlectiva n WHERE n.nombrenovedad = :nombrenovedad")})
+    , @NamedQuery(name = "Novedadlectiva.findByNombre", query = "SELECT n FROM Novedadlectiva n WHERE n.nombre = :nombre")})
 public class Novedadlectiva implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -40,9 +39,8 @@ public class Novedadlectiva implements Serializable {
     @Basic(optional = false)
     @Column(name = "numeronovedad")
     private Integer numeronovedad;
-    @Size(max = 50)
-    @Column(name = "nombrenovedad")
-    private String nombrenovedad;
+    @Column(name = "nombre", length = 50)
+    private String nombre;
     @OneToMany(mappedBy = "numeronovedad")
     private Collection<Seguimientoaprendiz> seguimientoaprendizCollection;
 
@@ -61,12 +59,12 @@ public class Novedadlectiva implements Serializable {
         this.numeronovedad = numeronovedad;
     }
 
-    public String getNombrenovedad() {
-        return nombrenovedad;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombrenovedad(String nombrenovedad) {
-        this.nombrenovedad = nombrenovedad;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     @XmlTransient

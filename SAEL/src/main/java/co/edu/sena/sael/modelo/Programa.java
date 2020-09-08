@@ -15,14 +15,12 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "programa")
@@ -30,18 +28,16 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Programa.findAll", query = "SELECT p FROM Programa p")
     , @NamedQuery(name = "Programa.findByCodigoprograma", query = "SELECT p FROM Programa p WHERE p.codigoprograma = :codigoprograma")
-    , @NamedQuery(name = "Programa.findByNombreprograma", query = "SELECT p FROM Programa p WHERE p.nombreprograma = :nombreprograma")})
+    , @NamedQuery(name = "Programa.findByNombre", query = "SELECT p FROM Programa p WHERE p.nombre = :nombre")})
 public class Programa implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "codigoprograma")
+    @Column(name = "codigoprograma", nullable = false)
     private Integer codigoprograma;
-    @Size(max = 100)
-    @Column(name = "nombreprograma")
-    private String nombreprograma;
+    @Column(name = "nombre", length = 100)
+    private String nombre;
     @OneToMany(mappedBy = "codigoprograma")
     private Collection<Fichatitulacion> fichatitulacionCollection;
 
@@ -60,12 +56,12 @@ public class Programa implements Serializable {
         this.codigoprograma = codigoprograma;
     }
 
-    public String getNombreprograma() {
-        return nombreprograma;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreprograma(String nombreprograma) {
-        this.nombreprograma = nombreprograma;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     @XmlTransient

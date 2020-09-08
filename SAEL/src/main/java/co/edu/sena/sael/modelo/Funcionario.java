@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "funcionario")
@@ -37,12 +37,13 @@ public class Funcionario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "documentofuncionario")
+    @Column(name = "documentofuncionario", nullable = false)
     private Long documentofuncionario;
+    
     @JoinColumn(name = "codigoarea", referencedColumnName = "codigoarea")
     @ManyToOne(optional = false)
     private Area codigoarea;
+    
     @JoinColumn(name = "documentofuncionario", referencedColumnName = "documentopersonal", insertable = false, updatable = false)
     @OneToOne(optional = false)
     private Personal personal;
