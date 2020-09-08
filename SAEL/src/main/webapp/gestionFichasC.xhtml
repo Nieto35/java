@@ -111,11 +111,11 @@ and open the template in the editor.
                                             <h:outputText  value="#{ficha.numeroficha}" />                          
                                         </p:column>
                                         
-                                        <p:column sortBy="#{ficha.codigoprograma.nombreprograma}" filterBy="#{ficha.codigoprograma.nombreprograma}" filterMatchMode="contains">
+                                        <p:column sortBy="#{ficha.codigoprograma.nombre}" filterBy="#{ficha.codigoprograma.nombre}" filterMatchMode="contains">
                                             <f:facet name="header">
                                                 <h:outputText  value="Programa" />                            
                                             </f:facet>
-                                            <h:outputText  value="#{ficha.codigoprograma.nombreprograma}" />                          
+                                            <h:outputText  value="#{ficha.codigoprograma.nombre}" />                          
                                         </p:column>
 
                                         <p:column sortBy="#{ficha.documentoinstructor.documentoinstructor}" filterBy="#{ficha.documentoinstructor.documentoinstructor}">
@@ -125,18 +125,18 @@ and open the template in the editor.
                                             <h:outputText  value="#{ficha.documentoinstructor.documentoinstructor}" />                          
                                         </p:column>
 
-                                        <p:column sortBy="#{ficha.documentoinstructor.personal.nombrepersonal}" filterBy="#{ficha.documentoinstructor.personal.nombrepersonal}">
+                                        <p:column sortBy="#{ficha.documentoinstructor.personal.nombre}" filterBy="#{ficha.documentoinstructor.personal.nombre}">
                                             <f:facet name="header" >
                                                 <h:outputText  value="Nombres" />                            
                                             </f:facet>
-                                            <h:outputText  value="#{ficha.documentoinstructor.personal.nombrepersonal}" />                          
+                                            <h:outputText  value="#{ficha.documentoinstructor.personal.nombre}" />                          
                                         </p:column>
 
-                                        <p:column sortBy="#{ficha.documentoinstructor.personal.apellidopersonal}" filterBy="#{ficha.documentoinstructor.personal.apellidopersonal}">
+                                        <p:column sortBy="#{ficha.documentoinstructor.personal.apellido}" filterBy="#{ficha.documentoinstructor.personal.apellido}">
                                             <f:facet name="header" >
                                                 <h:outputText  value="Apellidos" />                            
                                             </f:facet>
-                                            <h:outputText  value="#{ficha.documentoinstructor.personal.apellidopersonal}" />                          
+                                            <h:outputText  value="#{ficha.documentoinstructor.personal.apellido}" />                          
                                         </p:column>       
 
                                     </p:dataTable> 
