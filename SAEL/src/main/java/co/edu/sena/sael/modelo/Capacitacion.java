@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "capacitacion")
@@ -46,20 +46,23 @@ public class Capacitacion implements Serializable {
     @Basic(optional = false)
     @Column(name = "codigocapacitacion")
     private Integer codigocapacitacion;
-    @Size(max = 100)
-    @Column(name = "nombrecapacitacion")
+    
+    @Column(name = "nombrecapacitacion", length = 100)
     private String nombrecapacitacion;
-    @Size(max = 100)
-    @Column(name = "institucioncapacitacion")
+
+    @Column(name = "institucioncapacitacion", length = 100)
     private String institucioncapacitacion;
+    
     @Column(name = "fechacapacitacion")
     @Temporal(TemporalType.DATE)
     private Date fechacapacitacion;
+    
     @Column(name = "tiempocapacitacion")
     private Integer tiempocapacitacion;
-    @Size(max = 50)
-    @Column(name = "tipotiempocapacitacion")
+
+    @Column(name = "tipotiempocapacitacion", length = 50)
     private String tipotiempocapacitacion;
+    
     @JoinColumn(name = "documentoinstructor", referencedColumnName = "documentoinstructor")
     @ManyToOne
     private Instructor documentoinstructor;

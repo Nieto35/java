@@ -200,13 +200,13 @@ public class AprendizVista {
             Long docAprendiz = Long.parseLong(txtIdentificacion.getValue().toString());
             Personal nuevoPersonal = new Personal();
             nuevoPersonal.setDocumentopersonal(docAprendiz);
-            nuevoPersonal.setNombrepersonal(txtNombre.getValue().toString().toUpperCase());
-            nuevoPersonal.setApellidopersonal(txtApellido.getValue().toString().toUpperCase());
-            nuevoPersonal.setCorreopersonal(txtCorreo.getValue().toString().toUpperCase());
-            nuevoPersonal.setCorreoinstitucionalpersonal(txtCorreoInstitucional.getValue().toString().toUpperCase());
-            nuevoPersonal.setTelefonopersonal(txtTelefono.getValue().toString());
+            nuevoPersonal.setNombre(txtNombre.getValue().toString().toUpperCase());
+            nuevoPersonal.setApellido(txtApellido.getValue().toString().toUpperCase());
+            nuevoPersonal.setCorreo(txtCorreo.getValue().toString().toUpperCase());
+            nuevoPersonal.setCorreoinstitucional(txtCorreoInstitucional.getValue().toString().toUpperCase());
+            nuevoPersonal.setTelefono(txtTelefono.getValue().toString());
             //se asigna por defecto como contraseña el numero de documento
-            nuevoPersonal.setClavepersonal(String.valueOf(docAprendiz));                
+            nuevoPersonal.setClave(String.valueOf(docAprendiz));                
 
             //revisa la variable de sesion
             String existePersonal = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("existePersonal");
@@ -232,7 +232,7 @@ public class AprendizVista {
             perteneceficha.setFichatitulacion(fichaA);
             perteneceficha.setPertenecefichaPK(pertenecefichaPK);
             //asigna estado en formacion por defecto
-            perteneceficha.setEstadoperteneceficha(Constantes.FICHA_ESTADO_1);
+            perteneceficha.setEstado(Constantes.FICHA_ESTADO_1);
 
             pertenecefichaLogica.insertar(perteneceficha);
 
@@ -256,11 +256,11 @@ public class AprendizVista {
             Aprendiz aprendiz = new Aprendiz();
             Personal miPersonal = new Personal();
             miPersonal.setDocumentopersonal(docAprendiz);
-            miPersonal.setNombrepersonal(txtNombre.getValue().toString().toUpperCase());
-            miPersonal.setApellidopersonal(txtApellido.getValue().toString().toUpperCase());
-            miPersonal.setCorreopersonal(txtCorreo.getValue().toString().toUpperCase());
-            miPersonal.setCorreoinstitucionalpersonal(txtCorreoInstitucional.getValue().toString().toUpperCase());
-            miPersonal.setTelefonopersonal(txtTelefono.getValue().toString());
+            miPersonal.setNombre(txtNombre.getValue().toString().toUpperCase());
+            miPersonal.setApellido(txtApellido.getValue().toString().toUpperCase());
+            miPersonal.setCorreo(txtCorreo.getValue().toString().toUpperCase());
+            miPersonal.setCorreoinstitucional(txtCorreoInstitucional.getValue().toString().toUpperCase());
+            miPersonal.setTelefono(txtTelefono.getValue().toString());
             personalLogica.modificar(miPersonal);
 
             aprendiz.setDocumentoaprendiz(miPersonal.getDocumentopersonal());
@@ -279,7 +279,7 @@ public class AprendizVista {
             perteneceficha.setFichatitulacion(fichaA);
             perteneceficha.setPertenecefichaPK(pertenecefichaPK);
             //TODO: verificar este estado de donde viene
-            perteneceficha.setEstadoperteneceficha("EN FORMACION");
+            perteneceficha.setEstado("EN FORMACION");
 
             pertenecefichaLogica.modificar(perteneceficha);                
 
@@ -358,11 +358,11 @@ public class AprendizVista {
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("existePersonal", "no");
         } else if (apre == null) //si la persona existe pero no como aprendiz
         {
-            txtNombre.setValue(entityPersonal.getNombrepersonal());
-            txtApellido.setValue(entityPersonal.getApellidopersonal());
-            txtCorreo.setValue(entityPersonal.getCorreopersonal());
-            txtCorreoInstitucional.setValue(entityPersonal.getCorreoinstitucionalpersonal());
-            txtTelefono.setValue(entityPersonal.getTelefonopersonal());
+            txtNombre.setValue(entityPersonal.getNombre());
+            txtApellido.setValue(entityPersonal.getApellido());
+            txtCorreo.setValue(entityPersonal.getCorreo());
+            txtCorreoInstitucional.setValue(entityPersonal.getCorreoinstitucional());
+            txtTelefono.setValue(entityPersonal.getTelefono());
 
             btnModificar.setDisabled(true);
             btnEliminar.setDisabled(true);
@@ -372,11 +372,11 @@ public class AprendizVista {
         } else //si ya existe como aprendiz
         {
             txtIdentificacion.setValue(apre.getDocumentoaprendiz());
-            txtNombre.setValue(apre.getPersonal().getNombrepersonal());
-            txtApellido.setValue(apre.getPersonal().getApellidopersonal());
-            txtCorreo.setValue(apre.getPersonal().getCorreopersonal());
-            txtCorreoInstitucional.setValue(entityPersonal.getCorreoinstitucionalpersonal());
-            txtTelefono.setValue(apre.getPersonal().getTelefonopersonal());
+            txtNombre.setValue(apre.getPersonal().getNombre());
+            txtApellido.setValue(apre.getPersonal().getApellido());
+            txtCorreo.setValue(apre.getPersonal().getCorreo());
+            txtCorreoInstitucional.setValue(entityPersonal.getCorreoinstitucional());
+            txtTelefono.setValue(apre.getPersonal().getTelefono());
             /*txtFicha.setValue(apre.getFichatitulacion().getFicha());
             txtJornada.setValue(apre.getFichaTitulacion().getJornada());
             txtPrograma.setValue(apre.getFichaTitulacion().getCodigoPrograma().getNombre());
@@ -407,8 +407,8 @@ public class AprendizVista {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso: ", "La ficha No está registrada!"));
             } else {
                 txtFicha.setValue(ft.getNumeroficha());
-                txtJornada.setValue(ft.getJornadaficha());
-                txtPrograma.setValue(ft.getCodigoprograma().getNombreprograma());
+                txtJornada.setValue(ft.getJornada());
+                txtPrograma.setValue(ft.getCodigoprograma().getNombre());
 
                 if (btnModificar.isDisabled()) {
                     btnCrear.setDisabled(false);
@@ -434,11 +434,11 @@ public class AprendizVista {
         try {
             Aprendiz apre = (Aprendiz) event.getObject();       
             txtIdentificacion.setValue(apre.getDocumentoaprendiz());
-            txtNombre.setValue(apre.getPersonal().getNombrepersonal());
-            txtApellido.setValue(apre.getPersonal().getApellidopersonal());
-            txtCorreo.setValue(apre.getPersonal().getCorreopersonal());
-            txtCorreoInstitucional.setValue(apre.getPersonal().getCorreoinstitucionalpersonal());
-            txtTelefono.setValue(apre.getPersonal().getTelefonopersonal());
+            txtNombre.setValue(apre.getPersonal().getNombre());
+            txtApellido.setValue(apre.getPersonal().getApellido());
+            txtCorreo.setValue(apre.getPersonal().getCorreo());
+            txtCorreoInstitucional.setValue(apre.getPersonal().getCorreoinstitucional());
+            txtTelefono.setValue(apre.getPersonal().getTelefono());
             //TODO: revisar
 
             Perteneceficha fichaActiva=pertenecefichaLogica.consultarFichaActiva(apre);
@@ -449,8 +449,8 @@ public class AprendizVista {
             else
             {
                 txtFicha.setValue(fichaActiva.getFichatitulacion().getNumeroficha());
-                txtJornada.setValue(fichaActiva.getFichatitulacion().getJornadaficha());
-                txtPrograma.setValue(fichaActiva.getFichatitulacion().getCodigoprograma().getNombreprograma());
+                txtJornada.setValue(fichaActiva.getFichatitulacion().getJornada());
+                txtPrograma.setValue(fichaActiva.getFichatitulacion().getCodigoprograma().getNombre());
             }          
             
 

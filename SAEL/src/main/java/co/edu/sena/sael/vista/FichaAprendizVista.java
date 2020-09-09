@@ -164,7 +164,7 @@ public class FichaAprendizVista {
             Fichatitulacion fichatitulacion = (Fichatitulacion) event.getObject();  
             
             txtFicha.setValue(fichatitulacion.getNumeroficha());            
-            txtPrograma=fichatitulacion.getCodigoprograma().getNombreprograma();            
+            txtPrograma=fichatitulacion.getCodigoprograma().getNombre();            
             btnModificar.setDisabled(false);
         } catch (Exception ex) {
             Logger.getLogger(FichasVista.class.getName()).log(Level.SEVERE, null, ex);
@@ -185,7 +185,7 @@ public class FichaAprendizVista {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso: ", "La ficha No está registrada!"));
             } else {
                 getTxtFicha().setValue(fichaTitulacion.getNumeroficha());                
-                txtPrograma=fichaTitulacion.getCodigoprograma().getNombreprograma(); 
+                txtPrograma=fichaTitulacion.getCodigoprograma().getNombre(); 
                 btnModificar.setDisabled(true);
             }
         } catch (Exception ex) {
@@ -203,8 +203,8 @@ public class FichaAprendizVista {
                 txtNombreAprendiz="";
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso: ", "El aprendiz No está registrado!"));
             } else {                
-                txtNombreAprendiz=aprendiz.getPersonal().getNombrepersonal()+" "+
-                        aprendiz.getPersonal().getApellidopersonal();
+                txtNombreAprendiz=aprendiz.getPersonal().getNombre()+" "+
+                        aprendiz.getPersonal().getApellido();
             }
         } catch (Exception ex) {
             Logger.getLogger(AprendizVista.class.getName()).log(Level.SEVERE, null, ex);

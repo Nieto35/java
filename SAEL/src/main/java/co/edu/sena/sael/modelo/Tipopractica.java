@@ -18,13 +18,12 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "tipopractica")
@@ -41,12 +40,10 @@ public class Tipopractica implements Serializable {
     @Basic(optional = false)
     @Column(name = "codigotipopractica")
     private Integer codigotipopractica;
-    @Size(max = 50)
-    @Column(name = "nombretipopractica")
+    @Column(name = "nombretipopractica", length = 50)
     private String nombretipopractica;
     @Lob
-    @Size(max = 65535)
-    @Column(name = "descripciontipopractica")
+    @Column(name = "descripciontipopractica", length = 65535)
     private String descripciontipopractica;
     @OneToMany(mappedBy = "codigotipopractica")
     private Collection<Eproductiva> eproductivaCollection;

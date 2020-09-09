@@ -5,7 +5,7 @@
 	<property name="ireport.y" value="0"/>
 	<parameter name="numeroseguimiento" class="java.lang.Integer"/>
 	<queryString>
-		<![CDATA[select novedad.nombrenovedad, personal.nombrepersonal, personal.apellidopersonal, seguimientoaprendiz.rendimientoseguimiento, seguimientoaprendiz.estrategiaseguimiento from personal, aprendiz, seguimientoaprendiz, novedad where seguimientoaprendiz.numeroseguimiento=$P{numeroseguimiento} and personal.documentopersonal=aprendiz.documentoaprendiz and seguimientoaprendiz.numeronovedad=novedad.numeronovedad and seguimientoaprendiz.documentoaprendiz=aprendiz.documentoaprendiz;]]>
+		<![CDATA[select novedad.nombrenovedad, personal.nombre, personal.apellido, seguimientoaprendiz.rendimientoseguimiento, seguimientoaprendiz.estrategiaseguimiento from personal, aprendiz, seguimientoaprendiz, novedad where seguimientoaprendiz.numeroseguimiento=$P{numeroseguimiento} and personal.documentopersonal=aprendiz.documentoaprendiz and seguimientoaprendiz.numeronovedad=novedad.numeronovedad and seguimientoaprendiz.documentoaprendiz=aprendiz.documentoaprendiz;]]>
 	</queryString>
 	<field name="nombrenovedad" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
