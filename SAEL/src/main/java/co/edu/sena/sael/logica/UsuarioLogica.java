@@ -33,7 +33,7 @@ public class UsuarioLogica implements UsuarioLogicaLocal {
             throw new Exception("El documento es obligatorio!");
         }
 
-        if (personal.getClavepersonal()== null || personal.getClavepersonal().equals("")) {
+        if (personal.getClave()== null || personal.getClave().equals("")) {
             throw new Exception("La contraseña es obligatoria!");
         }
         
@@ -44,9 +44,9 @@ public class UsuarioLogica implements UsuarioLogicaLocal {
         }
 
         //se encripta la contraseña digitada en el logeo antes de compararla en la bd
-        String passEncriptado=encriptarContraseña(personal.getClavepersonal());        
+        String passEncriptado=encriptarContraseña(personal.getClave());        
         //si la contraseña no coincide...
-        if (!entity.getClavepersonal().equals(passEncriptado)) {
+        if (!entity.getClave().equals(passEncriptado)) {
             throw new Exception("Usuario incorrecto!");
         }      
     }
@@ -92,12 +92,12 @@ public class UsuarioLogica implements UsuarioLogicaLocal {
         }
         
         //si la contraseña no coincide
-        if (!entityPersonal.getClavepersonal().equals(passEncriptado)) {
+        if (!entityPersonal.getClave().equals(passEncriptado)) {
             throw new Exception("La contraseña otorgada No es correcta para el usuario!");
         }    
         
         
-        entityPersonal.setClavepersonal(encriptarContraseña(passNew));        
+        entityPersonal.setClave(encriptarContraseña(passNew));        
         personalDAO.modificar(entityPersonal);
     }
     

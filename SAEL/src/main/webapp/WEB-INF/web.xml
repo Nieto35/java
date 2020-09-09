@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <!-- filtros para el fileupload de carga de aprendices -->
@@ -127,3 +128,126 @@
     </servlet-mapping-->
     <!--  -->
 </web-app>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <!-- filtros para el fileupload de carga de aprendices -->
+    <filter>
+        <filter-name>PrimeFaces FileUpload Filter</filter-name>
+        <filter-class>org.primefaces.webapp.filter.FileUploadFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>PrimeFaces FileUpload Filter</filter-name>
+        <servlet-name>Faces Servlet</servlet-name>
+    </filter-mapping>
+    <!--  -->
+    <!-- datasource para reportes -->
+    <resource-ref>
+        <res-ref-name>jdbc/gepadBD</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+    <!--  -->
+    <!--<context-param>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>south-street</param-value>
+    </context-param>-->
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>faces/index.xhtml</welcome-file>
+    </welcome-file-list>
+    <error-page>
+        <error-code>403</error-code>
+        <location>/error_pages/403.xhtml</location>
+    </error-page>
+    
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error_pages/404.xhtml</location>
+    </error-page>
+    
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error_pages/500.xhtml</location>
+    </error-page>
+    
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/error_pages/500.xhtml</location>
+    </error-page>
+    
+    <error-page>
+        <exception-type>javax.persistence.OptimisticLockException</exception-type>
+        <location>/error_pages/optimistic.xhtml</location>
+    </error-page>
+    <!-- registro de servlets para reportes -->
+    <servlet>
+        <servlet-name>ReporteAprendiz</servlet-name>
+        <servlet-class>co.edu.senaclem.aspera.reportes.ReporteAprendiz</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReporteFechas</servlet-name>
+        <servlet-class>co.edu.senaclem.aspera.reportes.ReporteFechas</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReporteTotalAprendices</servlet-name>
+        <servlet-class>co.edu.senaclem.aspera.reportes.ReporteTotalAprendices</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReporteDependencia</servlet-name>
+        <servlet-class>co.edu.senaclem.atus.reportes.ReporteDependencia</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReporteArea</servlet-name>
+        <servlet-class>co.edu.senaclem.atus.reportes.ReporteArea</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReporteTotalDependencias</servlet-name>
+        <servlet-class>co.edu.senaclem.atus.reportes.ReporteTotalDependencias</servlet-class>
+    </servlet>
+    <!--  -->
+    <!-- mappin para servlets de reportes -->
+    <!--servlet-mapping>
+        <servlet-name>ReporteAprendiz</servlet-name>
+        <url-pattern>/ReporteAprendiz.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReporteFechas</servlet-name>
+        <url-pattern>/ReporteFechas.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReporteTotalAprendices</servlet-name>
+        <url-pattern>/ReporteTotalAprendices.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReporteDependencia</servlet-name>
+        <url-pattern>/ReporteDependencia.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReporteArea</servlet-name>
+        <url-pattern>/ReporteArea.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReporteTotalDependencias</servlet-name>
+        <url-pattern>/ReporteTotalDependencias.do</url-pattern>
+    </servlet-mapping-->
+    <!--  -->
+</web-app>
+>>>>>>> v1
