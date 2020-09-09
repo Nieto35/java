@@ -112,6 +112,9 @@ public class PersonalLogica implements PersonalLogicaLocal {
         if (personal.getClave() == null || personal.getClave().equals("") == true) {
             return false;
         }
+        if(personal.getSexo()==null){
+            return false;
+        }
 
         return true;
     }
@@ -137,6 +140,10 @@ public class PersonalLogica implements PersonalLogicaLocal {
 
         if (personal.getApellido() == null || personal.getApellido().equals("") == true) {
             throw new Exception("El apellido es obligatorio!");
+        }
+        
+        if(personal.getSexo()==null){
+            throw new Exception("El sexo es obligatorio!");
         }
 
 
