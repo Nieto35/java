@@ -97,11 +97,11 @@ and open the template in the editor.
                                             <h:outputText  value="#{ficha.numeroficha}" />                          
                                         </p:column>
                                         
-                                        <p:column sortBy="#{ficha.codigoprograma.nombreprograma}" filterBy="#{ficha.codigoprograma.nombreprograma}" filterMatchMode="contains">
+                                        <p:column sortBy="#{ficha.codigoprograma.nombre}" filterBy="#{ficha.codigoprograma.nombre}" filterMatchMode="contains">
                                             <f:facet name="header">
                                                 <h:outputText  value="Programa" />                            
                                             </f:facet>
-                                            <h:outputText  value="#{ficha.codigoprograma.nombreprograma}" />                          
+                                            <h:outputText  value="#{ficha.codigoprograma.nombre}" />                          
                                         </p:column> 
                                     </p:dataTable>                                     
 

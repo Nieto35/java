@@ -21,12 +21,11 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "usodeambiente")
@@ -55,12 +54,10 @@ public class Usodeambiente implements Serializable {
     @Column(name = "horasalidausoambiente")
     @Temporal(TemporalType.TIME)
     private Date horasalidausoambiente;
-    @Size(max = 50)
-    @Column(name = "entregausoambiente")
+    @Column(name = "entregausoambiente", length = 50)
     private String entregausoambiente;
     @Lob
-    @Size(max = 65535)
-    @Column(name = "observacionesusoambiente")
+    @Column(name = "observacionesusoambiente", length = 65535)
     private String observacionesusoambiente;
     @JoinColumn(name = "codigoambiente", referencedColumnName = "codigoambiente")
     @ManyToOne

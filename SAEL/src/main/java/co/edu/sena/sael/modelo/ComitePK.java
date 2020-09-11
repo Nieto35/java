@@ -13,18 +13,18 @@ import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Embeddable
 public class ComitePK implements Serializable {
 
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "documentopersonal")
+
+    @Column(name = "documentopersonal", nullable = false)
     private long documentopersonal;
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "numeroseguimiento")
+
+    @Column(name = "numeroseguimiento", nullable = false)
     private int numeroseguimiento;
 
     public ComitePK() {

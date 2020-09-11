@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "formacion")
@@ -41,11 +41,11 @@ public class Formacion implements Serializable {
     @Basic(optional = false)
     @Column(name = "codigoformacion")
     private Integer codigoformacion;
-    @Size(max = 100)
-    @Column(name = "nombreformacion")
+
+    @Column(name = "nombreformacion", length = 100)
     private String nombreformacion;
-    @Size(max = 100)
-    @Column(name = "institucionformacion")
+
+    @Column(name = "institucionformacion", length = 100)
     private String institucionformacion;
     @Column(name = "anioformacion")
     private Integer anioformacion;

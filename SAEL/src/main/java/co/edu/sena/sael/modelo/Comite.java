@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "comite")
@@ -28,15 +28,16 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Comite.findAll", query = "SELECT c FROM Comite c")
     , @NamedQuery(name = "Comite.findByDocumentopersonal", query = "SELECT c FROM Comite c WHERE c.comitePK.documentopersonal = :documentopersonal")
     , @NamedQuery(name = "Comite.findByNumeroseguimiento", query = "SELECT c FROM Comite c WHERE c.comitePK.numeroseguimiento = :numeroseguimiento")
-    , @NamedQuery(name = "Comite.findByCargocomite", query = "SELECT c FROM Comite c WHERE c.cargocomite = :cargocomite")})
+    , @NamedQuery(name = "Comite.findByCargo", query = "SELECT c FROM Comite c WHERE c.cargo = :cargo")})
 public class Comite implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected ComitePK comitePK;
-    @Size(max = 50)
-    @Column(name = "cargocomite")
-    private String cargocomite;
+
+    @Column(name = "cargo", length = 50)
+    private String cargo;
+    
     @JoinColumn(name = "documentopersonal", referencedColumnName = "documentopersonal", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Personal personal;
@@ -63,12 +64,12 @@ public class Comite implements Serializable {
         this.comitePK = comitePK;
     }
 
-    public String getCargocomite() {
-        return cargocomite;
+    public String getCargo() {
+        return cargo;
     }
 
-    public void setCargocomite(String cargocomite) {
-        this.cargocomite = cargocomite;
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 
     public Personal getPersonal() {

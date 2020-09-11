@@ -117,7 +117,7 @@ public class FichasVista {
             try {
                 listaProgramas = programaLogica.consultar();
                 for (Programa programa : listaProgramas) {
-                    itemsProgramas.add(new SelectItem(programa.getCodigoprograma(), programa.getNombreprograma()));
+                    itemsProgramas.add(new SelectItem(programa.getCodigoprograma(), programa.getNombre()));
                 }
             } catch (Exception ex) {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: ", ex.getMessage()));
@@ -212,7 +212,7 @@ public class FichasVista {
             Fichatitulacion fichatitulacion = new Fichatitulacion();
             Instructor instructor = instructorLogica.consultarPorId(Long.parseLong(txtDocumento.getValue().toString()));
             fichatitulacion.setDocumentoinstructor(instructor);
-            fichatitulacion.setJornadaficha(cmbJornada.getValue().toString());
+            fichatitulacion.setJornada(cmbJornada.getValue().toString());
             fichatitulacion.setNumeroficha(Integer.parseInt(txtFicha.getValue().toString()));
             fichatitulacion.setFechainicio(fechaInicio);
             fichatitulacion.setFechafin(fechaFin);
@@ -239,7 +239,7 @@ public class FichasVista {
             Fichatitulacion fichatitulacion = new Fichatitulacion();
             Instructor instructor = instructorLogica.consultarPorId(Long.parseLong(txtDocumento.getValue().toString()));
             fichatitulacion.setDocumentoinstructor(instructor);
-            fichatitulacion.setJornadaficha(cmbJornada.getValue().toString());
+            fichatitulacion.setJornada(cmbJornada.getValue().toString());
             fichatitulacion.setNumeroficha(Integer.parseInt(txtFicha.getValue().toString()));
             fichatitulacion.setFechainicio(fechaInicio);
             fichatitulacion.setFechafin(fechaFin);
@@ -300,10 +300,10 @@ public class FichasVista {
             Fichatitulacion fichatitulacion = (Fichatitulacion) event.getObject();           
            
             txtDocumento.setValue(fichatitulacion.getDocumentoinstructor().getDocumentoinstructor());
-            txtNombreInstructor=fichatitulacion.getDocumentoinstructor().getPersonal().getNombrepersonal()+" "+
-                    fichatitulacion.getDocumentoinstructor().getPersonal().getApellidopersonal();
+            txtNombreInstructor=fichatitulacion.getDocumentoinstructor().getPersonal().getNombre()+" "+
+                    fichatitulacion.getDocumentoinstructor().getPersonal().getApellido();
             txtFicha.setValue(fichatitulacion.getNumeroficha());
-            cmbJornada.setValue(fichatitulacion.getJornadaficha());
+            cmbJornada.setValue(fichatitulacion.getJornada());
             cmbPrograma.setValue(fichatitulacion.getCodigoprograma().getCodigoprograma());
             fechaInicio=fichatitulacion.getFechainicio();
             fechaFin=fichatitulacion.getFechafin();
@@ -341,13 +341,13 @@ public class FichasVista {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso: ", "La ficha No está registrada!"));
             } else {
                 getTxtFicha().setValue(fichaTitulacion.getNumeroficha());
-                cmbJornada.setValue(fichaTitulacion.getJornadaficha());
+                cmbJornada.setValue(fichaTitulacion.getJornada());
                 cmbPrograma.setValue(fichaTitulacion.getCodigoprograma().getCodigoprograma());
                 fechaInicio=fichaTitulacion.getFechainicio();
                 fechaFin=fichaTitulacion.getFechafin();
                 txtDocumento.setValue(fichaTitulacion.getDocumentoinstructor().getDocumentoinstructor());
-                txtNombreInstructor=fichaTitulacion.getDocumentoinstructor().getPersonal().getNombrepersonal()+" "+
-                            fichaTitulacion.getDocumentoinstructor().getPersonal().getApellidopersonal();
+                txtNombreInstructor=fichaTitulacion.getDocumentoinstructor().getPersonal().getNombre()+" "+
+                            fichaTitulacion.getDocumentoinstructor().getPersonal().getApellido();
                 
                 btnModificar.setDisabled(true);
                 btnEliminar.setDisabled(true);
@@ -369,8 +369,8 @@ public class FichasVista {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso: ", "El instructor No está registrado!"));
             } else {
                 txtDocumento.setValue(instructor.getPersonal().getDocumentopersonal());
-                txtNombreInstructor=instructor.getPersonal().getNombrepersonal()+" "+
-                        instructor.getPersonal().getApellidopersonal();
+                txtNombreInstructor=instructor.getPersonal().getNombre()+" "+
+                        instructor.getPersonal().getApellido();
             }
         } catch (Exception ex) {
             Logger.getLogger(AprendizVista.class.getName()).log(Level.SEVERE, null, ex);

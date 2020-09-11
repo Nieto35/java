@@ -9,22 +9,19 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Embeddable
 public class PertenecefichaPK implements Serializable {
 
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "documentoaprendiz")
+    @Column(name = "documentoaprendiz", nullable = false)
     private long documentoaprendiz;
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "numeroficha")
+    @Column(name = "numeroficha", nullable = false)
     private int numeroficha;
 
     public PertenecefichaPK() {

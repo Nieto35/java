@@ -21,12 +21,11 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "ingreso")
@@ -49,18 +48,15 @@ public class Ingreso implements Serializable {
     @Column(name = "fechaingreso")
     @Temporal(TemporalType.DATE)
     private Date fechaingreso;
-    @Size(max = 50)
-    @Column(name = "horaingreso")
+    @Column(name = "horaingreso", length = 50)
     private String horaingreso;
     @Column(name = "fechasalida")
     @Temporal(TemporalType.DATE)
     private Date fechasalida;
-    @Size(max = 50)
-    @Column(name = "horasalida")
+    @Column(name = "horasalida", length = 50)
     private String horasalida;
     @Lob
-    @Size(max = 65535)
-    @Column(name = "motivoingreso")
+    @Column(name = "motivoingreso", length = 65535)
     private String motivoingreso;
     @JoinColumn(name = "numeroelemento", referencedColumnName = "codigoelemento")
     @ManyToOne

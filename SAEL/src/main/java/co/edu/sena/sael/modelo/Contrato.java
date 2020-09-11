@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "contrato")
@@ -42,27 +42,32 @@ public class Contrato implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "numerocontrato")
+    
+    @Column(name = "numerocontrato", nullable = false)
     private Integer numerocontrato;
+    
     @Column(name = "fechainiciocontrato")
     @Temporal(TemporalType.DATE)
     private Date fechainiciocontrato;
+    
     @Column(name = "fechafincontrato")
     @Temporal(TemporalType.DATE)
     private Date fechafincontrato;
+    
     @Lob
-    @Size(max = 65535)
-    @Column(name = "objetocontrato")
+    @Column(name = "objetocontrato", length = 65535)
     private String objetocontrato;
-    @Size(max = 50)
-    @Column(name = "estadocontrato")
+
+    @Column(name = "estadocontrato", length = 50)
     private String estadocontrato;
+    
     @Column(name = "valortotalcontrato")
     private Integer valortotalcontrato;
+    
     @JoinColumn(name = "documentocoordinador", referencedColumnName = "documentocoordinador")
     @ManyToOne
     private Coordinador documentocoordinador;
+    
     @JoinColumn(name = "documentopersonal", referencedColumnName = "documentopersonal")
     @ManyToOne
     private Personal documentopersonal;

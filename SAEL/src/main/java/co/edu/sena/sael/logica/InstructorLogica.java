@@ -43,7 +43,7 @@ public class InstructorLogica implements InstructorLogicaLocal {
             throw new Exception("El instructor es nulo!");
         }
         
-        if(instructor.getTipoinstructor()==null || instructor.getTipoinstructor().equals("")==true) {
+        if(instructor.getTipo()==null || instructor.getTipo().equals("")==true) {
             throw new Exception("El tipo es obligatorio!");
         }        
              
@@ -68,7 +68,7 @@ public class InstructorLogica implements InstructorLogicaLocal {
             throw new Exception("El instructor no existe!"); 
         }
         //se envia el objeto entity a modificar porque es quien tiene el valor del instructor si existe
-        entityInstructor.setTipoinstructor(instructor.getTipoinstructor());
+        entityInstructor.setTipo(instructor.getTipo());
         //modificar
         instructorDAO.modificar(entityInstructor);        
     }
@@ -130,11 +130,11 @@ public class InstructorLogica implements InstructorLogicaLocal {
             Personal nuevoPersonal = new Personal();
             try {
                 nuevoPersonal.setDocumentopersonal(Long.parseLong(hoja.getCell(0, fila).getContents()));
-                nuevoPersonal.setNombrepersonal(hoja.getCell(1, fila).getContents().toUpperCase());
-                nuevoPersonal.setApellidopersonal(hoja.getCell(2, fila).getContents().toUpperCase());
-                nuevoPersonal.setCorreopersonal(hoja.getCell(3, fila).getContents().toUpperCase());
-                nuevoPersonal.setTelefonopersonal(hoja.getCell(4, fila).getContents());
-                nuevoPersonal.setClavepersonal(hoja.getCell(0, fila).getContents());
+                nuevoPersonal.setNombre(hoja.getCell(1, fila).getContents().toUpperCase());
+                nuevoPersonal.setApellido(hoja.getCell(2, fila).getContents().toUpperCase());
+                nuevoPersonal.setCorreo(hoja.getCell(3, fila).getContents().toUpperCase());
+                nuevoPersonal.setTelefono(hoja.getCell(4, fila).getContents());
+                nuevoPersonal.setClave(hoja.getCell(0, fila).getContents());
                 
                 boolean personalValido = personalLogica.validarDatosPersonal(nuevoPersonal);
 
@@ -185,7 +185,7 @@ public class InstructorLogica implements InstructorLogicaLocal {
         Instructor nuevoInstructor=new Instructor();
         nuevoInstructor.setDocumentoinstructor(persona.getDocumentopersonal());
         nuevoInstructor.setPersonal(persona);
-        nuevoInstructor.setTipoinstructor(tipo);
+        nuevoInstructor.setTipo(tipo);
         
         Instructor instructorEntity=instructorDAO.consultarPorId(nuevoInstructor.getDocumentoinstructor());
         if(instructorEntity == null)

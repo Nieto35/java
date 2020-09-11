@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "coformador")
@@ -37,18 +37,19 @@ public class Coformador implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "documentocoformador")
+
+    @Column(name = "documentocoformador", nullable = false)
     private Long documentocoformador;
-    @Size(max = 50)
-    @Column(name = "nombrecoformador")
+    
+    @Column(name = "nombrecoformador", length = 50)
     private String nombrecoformador;
-    @Size(max = 50)
-    @Column(name = "telefonocoformador")
+
+    @Column(name = "telefonocoformador", length = 50)
     private String telefonocoformador;
-    @Size(max = 50)
-    @Column(name = "cargocoformador")
+
+    @Column(name = "cargocoformador", length = 50)
     private String cargocoformador;
+    
     @JoinColumn(name = "numeroempresa", referencedColumnName = "numeroempresa")
     @ManyToOne
     private Empresa numeroempresa;

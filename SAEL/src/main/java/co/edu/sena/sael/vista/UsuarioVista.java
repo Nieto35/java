@@ -137,7 +137,7 @@ public class UsuarioVista implements Serializable{
             this.usuarioLogeado = new Personal();
             Long documento = Long.parseLong(txtUsuario.getValue().toString());
             this.usuarioLogeado.setDocumentopersonal(documento);
-            this.usuarioLogeado.setClavepersonal(passUsuario.getValue().toString());
+            this.usuarioLogeado.setClave(passUsuario.getValue().toString());
             usuariosLogica.autenticar(this.usuarioLogeado);
             //sesion            
             this.usuarioLogeado=personalLogica.consultarPorId(documento);
