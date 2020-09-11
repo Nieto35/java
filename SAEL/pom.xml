@@ -115,7 +115,6 @@
             <groupId>org.primefaces</groupId>
             <artifactId>south-street</artifactId>
             <version>1.0.10</version>
-        </dependency>
      -->   <dependency>
             <groupId>net.sf.jasperreports</groupId>
             <artifactId>jasperreports</artifactId>
@@ -127,6 +126,14 @@
             <version>1.13</version>
         </dependency>
     </dependencies>
+	
+	<repositories>
+        <repository>
+            <id>central maven repo</id>
+            <name>central maven repo https</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
