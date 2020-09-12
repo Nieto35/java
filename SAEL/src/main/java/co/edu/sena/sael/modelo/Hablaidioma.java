@@ -14,7 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -36,14 +35,11 @@ public class Hablaidioma implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected HablaidiomaPK hablaidiomaPK;
-    @Size(max = 50)
-    @Column(name = "nivelhabla")
+    @Column(name = "nivelhabla",length = 50)//@Size
     private String nivelhabla;
-    @Size(max = 50)
-    @Column(name = "nivelescribe")
+    @Column(name = "nivelescribe",length = 50)//@Size
     private String nivelescribe;
-    @Size(max = 50)
-    @Column(name = "nivellee")
+    @Column(name = "nivellee",length = 50)//@Size
     private String nivellee;
     @JoinColumn(name = "codigoidioma", referencedColumnName = "codigoidioma", insertable = false, updatable = false)
     @ManyToOne(optional = false)

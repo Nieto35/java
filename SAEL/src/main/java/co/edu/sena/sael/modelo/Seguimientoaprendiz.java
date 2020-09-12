@@ -15,7 +15,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -35,8 +34,7 @@ public class Seguimientoaprendiz implements Serializable {
     @EmbeddedId
     protected SeguimientoaprendizPK seguimientoaprendizPK;
     @Lob
-    @Size(max = 65535)
-    @Column(name = "rendimientoseguimiento")
+    @Column(name = "rendimientoseguimiento", length = 65535)// @Size(max = 65535)
     private String rendimientoseguimiento;
     @JoinColumn(name = "documentoaprendiz", referencedColumnName = "documentoaprendiz", insertable = false, updatable = false)
     @ManyToOne(optional = false)

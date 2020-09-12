@@ -15,8 +15,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -36,11 +34,9 @@ public class Programa implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "codigoprograma")
+    @Column(name = "codigoprograma", nullable = false)//@NotNull
     private Integer codigoprograma;
-    @Size(max = 100)
-    @Column(name = "nombreprograma")
+    @Column(name = "nombreprograma",length = 100)//@Size(max = 100)
     private String nombreprograma;
     @OneToMany(mappedBy = "codigoprograma")
     private Collection<Fichatitulacion> fichatitulacionCollection;

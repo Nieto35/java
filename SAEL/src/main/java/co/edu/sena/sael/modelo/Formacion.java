@@ -17,7 +17,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -41,11 +40,9 @@ public class Formacion implements Serializable {
     @Basic(optional = false)
     @Column(name = "codigoformacion")
     private Integer codigoformacion;
-    @Size(max = 100)
-    @Column(name = "nombreformacion")
+    @Column(name = "nombreformacion", length = 100)//@Size
     private String nombreformacion;
-    @Size(max = 100)
-    @Column(name = "institucionformacion")
+    @Column(name = "institucionformacion", length = 100)//@Size
     private String institucionformacion;
     @Column(name = "anioformacion")
     private Integer anioformacion;

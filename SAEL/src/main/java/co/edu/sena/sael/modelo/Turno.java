@@ -21,7 +21,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -59,15 +58,12 @@ public class Turno implements Serializable {
     @Temporal(TemporalType.TIME)
     private Date horasalidaturno;
     @Lob
-    @Size(max = 65535)
-    @Column(name = "motivoturno")
+    @Column(name = "motivoturno", length = 65535)//
     private String motivoturno;
-    @Size(max = 50)
-    @Column(name = "estadoturno")
+    @Column(name = "estadoturno", length = 50)
     private String estadoturno;
     @Lob
-    @Size(max = 65535)
-    @Column(name = "observacionesturno")
+    @Column(name = "observacionesturno", length = 65535)// @Size(max = 65535)
     private String observacionesturno;
     @JoinColumn(name = "codigoarea", referencedColumnName = "codigoarea")
     @ManyToOne

@@ -19,8 +19,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -42,8 +40,7 @@ public class Contrato implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "numerocontrato")
+    @Column(name = "numerocontrato", nullable = false)//@NotNull
     private Integer numerocontrato;
     @Column(name = "fechainiciocontrato")
     @Temporal(TemporalType.DATE)
@@ -52,11 +49,9 @@ public class Contrato implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechafincontrato;
     @Lob
-    @Size(max = 65535)
-    @Column(name = "objetocontrato")
+    @Column(name = "objetocontrato", length = 65535)//@Size(
     private String objetocontrato;
-    @Size(max = 50)
-    @Column(name = "estadocontrato")
+    @Column(name = "estadocontrato", length = 50)//@Size(
     private String estadocontrato;
     @Column(name = "valortotalcontrato")
     private Integer valortotalcontrato;

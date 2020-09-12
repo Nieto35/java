@@ -14,7 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -34,8 +33,7 @@ public class Comite implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected ComitePK comitePK;
-    @Size(max = 50)
-    @Column(name = "cargocomite")
+    @Column(name = "cargocomite", length = 50)//@Size
     private String cargocomite;
     @JoinColumn(name = "documentopersonal", referencedColumnName = "documentopersonal", insertable = false, updatable = false)
     @ManyToOne(optional = false)

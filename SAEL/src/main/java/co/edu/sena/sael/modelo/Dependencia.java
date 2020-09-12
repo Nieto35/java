@@ -17,7 +17,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -40,8 +39,7 @@ public class Dependencia implements Serializable {
     @Basic(optional = false)
     @Column(name = "codigodependencia")
     private Integer codigodependencia;
-    @Size(max = 100)
-    @Column(name = "nombredependencia")
+    @Column(name = "nombredependencia", length = 100)//@Size
     private String nombredependencia;
     @OneToMany(mappedBy = "codigodependencia")
     private Collection<Area> areaCollection;
