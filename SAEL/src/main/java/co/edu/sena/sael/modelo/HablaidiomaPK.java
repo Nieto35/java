@@ -12,16 +12,17 @@ import javax.persistence.Embeddable;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Embeddable
 public class HablaidiomaPK implements Serializable {
 
     @Basic(optional = false)
-    @Column(name = "documentoinstructor", nullable = false)//@NotNull
+    @Column(name = "documentoinstructor", nullable = false)
     private long documentoinstructor;
+    
     @Basic(optional = false)
-    @Column(name = "codigoidioma", nullable = false)//@NotNull
+    @Column(name = "codigoidioma", nullable = false)
     private int codigoidioma;
 
     public HablaidiomaPK() {

@@ -12,16 +12,16 @@ import javax.persistence.Embeddable;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Embeddable
 public class SeguimientoaprendizPK implements Serializable {
 
     @Basic(optional = false)
-    @Column(name = "documentoaprendiz", nullable = false)//@NotNull
+    @Column(name = "documentoaprendiz", nullable = false)
     private long documentoaprendiz;
     @Basic(optional = false)
-    @Column(name = "numeroseguimiento", nullable = false)//@NotNull
+    @Column(name = "numeroseguimiento", nullable = false)
     private int numeroseguimiento;
 
     public SeguimientoaprendizPK() {

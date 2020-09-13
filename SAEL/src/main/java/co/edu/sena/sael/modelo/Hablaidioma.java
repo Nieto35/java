@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "hablaidioma")
@@ -35,12 +35,15 @@ public class Hablaidioma implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected HablaidiomaPK hablaidiomaPK;
-    @Column(name = "nivelhabla",length = 50)//@Size
+    @Column(name = "nivelhabla",length = 50)
     private String nivelhabla;
-    @Column(name = "nivelescribe",length = 50)//@Size
+
+    @Column(name = "nivelescribe", length = 50)
     private String nivelescribe;
-    @Column(name = "nivellee",length = 50)//@Size
+
+    @Column(name = "nivellee", length = 50)
     private String nivellee;
+    
     @JoinColumn(name = "codigoidioma", referencedColumnName = "codigoidioma", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Idioma idioma;

@@ -49,7 +49,7 @@ public class PertenecefichaLogica implements PertenecefichaLogicaLocal {
 
         perteneceficha.setAprendiz(aprendiz);
         perteneceficha.setFichatitulacion(fichatitulacion);
-        perteneceficha.setEstadoperteneceficha(perteneceficha.getEstadoperteneceficha());
+        perteneceficha.setEstado(perteneceficha.getEstado());
 
         pertenecefichaDAO.insertar(perteneceficha);
     }
@@ -78,7 +78,7 @@ public class PertenecefichaLogica implements PertenecefichaLogicaLocal {
         perteneceficha1Existente.setAprendiz(aprendiz);
         perteneceficha1Existente.setFichatitulacion(fichatitulacion);
         perteneceficha1Existente.setPertenecefichaPK(perteneceficha.getPertenecefichaPK());
-        perteneceficha1Existente.setEstadoperteneceficha(perteneceficha.getEstadoperteneceficha());       
+        perteneceficha1Existente.setEstado(perteneceficha.getEstado());       
 
         pertenecefichaDAO.modificar(perteneceficha1Existente);
     }
@@ -127,7 +127,7 @@ public class PertenecefichaLogica implements PertenecefichaLogicaLocal {
         
         List<Perteneceficha> pertenecefichaCollection = (List<Perteneceficha>) aprendiz.getPertenecefichaCollection();
         for (Perteneceficha perteneceficha : pertenecefichaCollection) {
-            if(Constantes.FICHA_ESTADO_ACTIVA.equals(perteneceficha.getEstadoperteneceficha()))
+            if(Constantes.FICHA_ESTADO_ACTIVA.equals(perteneceficha.getEstado()))
                 pertenecefichaActiva=perteneceficha;
         }
         

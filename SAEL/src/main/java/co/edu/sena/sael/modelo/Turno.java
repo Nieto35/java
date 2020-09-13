@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "turno")
@@ -58,12 +58,12 @@ public class Turno implements Serializable {
     @Temporal(TemporalType.TIME)
     private Date horasalidaturno;
     @Lob
-    @Column(name = "motivoturno", length = 65535)//
+    @Column(name = "motivoturno", length = 65535)
     private String motivoturno;
     @Column(name = "estadoturno", length = 50)
     private String estadoturno;
     @Lob
-    @Column(name = "observacionesturno", length = 65535)// @Size(max = 65535)
+    @Column(name = "observacionesturno", length = 65535)
     private String observacionesturno;
     @JoinColumn(name = "codigoarea", referencedColumnName = "codigoarea")
     @ManyToOne

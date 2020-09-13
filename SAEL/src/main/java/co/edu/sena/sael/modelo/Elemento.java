@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "elemento")
@@ -40,11 +40,14 @@ public class Elemento implements Serializable {
     @Basic(optional = false)
     @Column(name = "codigoelemento")
     private Integer codigoelemento;
+    
     @Lob
-    @Column(name = "descripcionelemento", length = 65535)//@Size
+    @Column(name = "descripcionelemento", length = 65535)
     private String descripcionelemento;
-    @Column(name = "serialelemento", length = 50)//@Size
+
+    @Column(name = "serialelemento", length = 50)
     private String serialelemento;
+    
     @OneToMany(mappedBy = "numeroelemento")
     private Collection<Ingreso> ingresoCollection;
 

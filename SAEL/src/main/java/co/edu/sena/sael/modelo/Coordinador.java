@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "coordinador")
@@ -30,16 +30,19 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Coordinador.findAll", query = "SELECT c FROM Coordinador c")
     , @NamedQuery(name = "Coordinador.findByDocumentocoordinador", query = "SELECT c FROM Coordinador c WHERE c.documentocoordinador = :documentocoordinador")
-    , @NamedQuery(name = "Coordinador.findByTipocoordinador", query = "SELECT c FROM Coordinador c WHERE c.tipocoordinador = :tipocoordinador")})
+    , @NamedQuery(name = "Coordinador.findByTipo", query = "SELECT c FROM Coordinador c WHERE c.tipo = :tipo")})
 public class Coordinador implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "documentocoordinador", nullable = false)//@NotNull
+
+    @Column(name = "documentocoordinador", nullable = false)
     private Long documentocoordinador;
-    @Column(name = "tipocoordinador", length = 50)//@Size
-    private String tipocoordinador;
+
+    @Column(name = "tipo", length = 50)
+    private String tipo;
+    
     @OneToMany(mappedBy = "documentocoordinador")
     private Collection<Permiso> permisoCollection;
     @OneToMany(mappedBy = "documentocoordinador")
@@ -63,12 +66,12 @@ public class Coordinador implements Serializable {
         this.documentocoordinador = documentocoordinador;
     }
 
-    public String getTipocoordinador() {
-        return tipocoordinador;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setTipocoordinador(String tipocoordinador) {
-        this.tipocoordinador = tipocoordinador;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     @XmlTransient

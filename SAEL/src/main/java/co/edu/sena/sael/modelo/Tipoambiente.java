@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "tipoambiente")
@@ -39,8 +39,7 @@ public class Tipoambiente implements Serializable {
     @Basic(optional = false)
     @Column(name = "codigotipoambiente")
     private Integer codigotipoambiente;
-    
-    @Column(name = "descripciontipoambiente", length = 50)//@Size(max = 50)
+    @Column(name = "descripciontipoambiente", length = 50)
     private String descripciontipoambiente;
     @OneToMany(mappedBy = "codigotipoambiente")
     private Collection<Ambienteaprendizaje> ambienteaprendizajeCollection;

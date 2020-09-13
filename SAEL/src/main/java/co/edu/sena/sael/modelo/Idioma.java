@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "idioma")
@@ -40,7 +40,8 @@ public class Idioma implements Serializable {
     @Basic(optional = false)
     @Column(name = "codigoidioma")
     private Integer codigoidioma;
-    @Column(name = "nombreidioma",length = 50)//@Size
+    
+    @Column(name = "nombreidioma", length = 50)
     private String nombreidioma;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idioma")
     private Collection<Hablaidioma> hablaidiomaCollection;

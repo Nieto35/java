@@ -41,7 +41,7 @@ public class ProgramaLogica implements ProgramaLogicaLocal {
         }
         //se envia el objeto entity a modificar porque es quien tiene el valor del cliente si existe
         entityPrograma.setCodigoprograma(programa.getCodigoprograma());
-        entityPrograma.setNombreprograma(programa.getNombreprograma());
+        entityPrograma.setNombre(programa.getNombre());
       
         //Modificar
         programaDAO.modificar(programa);
@@ -88,7 +88,7 @@ public class ProgramaLogica implements ProgramaLogicaLocal {
         if(programa.getCodigoprograma()==0){
             throw new Exception("El código del programa es obligatoria!");
         }
-        if(programa.getNombreprograma()==null || programa.getNombreprograma().equals("")==true) {
+        if(programa.getNombre()==null || programa.getNombre().equals("")==true) {
             throw new Exception("El nombre es obligatorio!");
         }   
     }
