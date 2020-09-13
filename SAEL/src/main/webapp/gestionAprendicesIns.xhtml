@@ -112,6 +112,23 @@ and open the template in the editor.
 
                                                 <h:outputText value="Programa:"/>
                                                 <p:inputTextarea id="txtPrograma" rows="5" cols="25" autoResize="false" binding="#{aprendizVista.txtPrograma}"  disabled="true"></p:inputTextarea>
+                                                
+                                                <p:row>
+                                                    <p:column>
+                                                        <h:outputText value="Sexo:"/>
+                                                    </p:column>
+
+                                                    <p:column colspan="3">
+                                                        <div align="left">
+                                                            <p:selectOneMenu id="cmbSexo" binding="#{aprendizVista.cmbSexoAprendiz}" >
+                                                                <f:selectItem itemLabel="MASCULINO" itemValue="MASCULINO" />
+                                                                <f:selectItem itemLabel="FEMENINO" itemValue="FEMENINO" />
+                                                            </p:selectOneMenu>
+                                                        </div>                                      
+                                                    </p:column>                                     
+
+                                                </p:row> 
+
                                             </p:panelGrid>
                                         </p:panelGrid>
 

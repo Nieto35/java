@@ -26,15 +26,15 @@ and open the template in the editor.
                             <h:form>
                                 <p:menu>
                                     <p:submenu label="Menú">                                
-                                <p:menuitem value="Inicio" url="indexInstructor.xhtml" />
-                                <p:menuitem value="Alistar Seguimiento" url="gestionSeguimientosIns.xhtml" />
-                                <p:menuitem value="Ejecutar Seguimiento" url="ejecutarSeguimientosIns.xhtml" />
-                                <p:menuitem value="Aprendices" url="gestionAprendicesIns.xhtml" />
-                                <p:menuitem value="Instructores" url="gestionInstructoresIns.xhtml" />
-                                <p:menuitem value="Reportes" url="reportesSaelIns.xhtml" />
-                                <p:menuitem value="Cambio Contraseña" url="CambiaPasswordInst.xhtml" />
-                                <p:menuitem value="Cerrar Sesión" actionListener="#{usuariosSaelVista.cerrarSesion_action}" />
-                            </p:submenu>                       
+                                        <p:menuitem value="Inicio" url="indexInstructor.xhtml" />
+                                        <p:menuitem value="Alistar Seguimiento" url="gestionSeguimientosIns.xhtml" />
+                                        <p:menuitem value="Ejecutar Seguimiento" url="ejecutarSeguimientosIns.xhtml" />
+                                        <p:menuitem value="Aprendices" url="gestionAprendicesIns.xhtml" />
+                                        <p:menuitem value="Instructores" url="gestionInstructoresIns.xhtml" />
+                                        <p:menuitem value="Reportes" url="reportesSaelIns.xhtml" />
+                                        <p:menuitem value="Cambio Contraseña" url="CambiaPasswordInst.xhtml" />
+                                        <p:menuitem value="Cerrar Sesión" actionListener="#{usuariosSaelVista.cerrarSesion_action}" />
+                                    </p:submenu>                       
                                 </p:menu>
                             </h:form>
 
@@ -170,6 +170,22 @@ and open the template in the editor.
                                                 </p:column>                                     
 
                                             </p:row> 
+
+                                            <p:row>
+                                                <p:column>
+                                                    <h:outputText value="Sexo:"/>
+                                                </p:column>
+
+                                                <p:column colspan="3">
+                                                    <div align="left">
+                                                        <p:selectOneMenu id="cmbSexo" binding="#{instructorVista.cmbSexoInstructor}" >
+                                                            <f:selectItem itemLabel="MASCULINO" itemValue="MASCULINO" />
+                                                            <f:selectItem itemLabel="FEMENINO" itemValue="FEMENINO" />
+                                                        </p:selectOneMenu>
+                                                    </div>                                      
+                                                </p:column>                                     
+
+                                            </p:row>                                             
 
                                             <p:row>
                                                 <p:column colspan="4">

@@ -148,6 +148,19 @@ and open the template in the editor.
                                         </p:row>
                                         
                                         <p:row>
+                                            <p:column>
+                                                <h:outputText value="Sexo:"/>
+                                            </p:column>
+
+                                            <p:column>                                                
+                                                <p:selectOneMenu id="cmbSexo" binding="#{instrutorVista.cmbSexoInstrutor}" style="width:90%;">
+                                                    <f:selectItem itemLabel="MASCULINO" itemValue="MASCULINO" />
+                                                    <f:selectItem itemLabel="FEMENINO" itemValue="FEMENINO" />
+                                                </p:selectOneMenu>                                                                                     
+                                            </p:column>
+                                        </p:row>
+                                        
+                                        <p:row>
                                             <p:column colspan="6">
                                                 <div align="center">
                                                     <p:commandButton id="btnCrear" value="Crear" binding="#{instructorVista.btnRegistrar}" action="#{instructorVista.crearAction}" update=":formulario:mensajes,:formulario:panelInstructores,:formulario:listaInstructores" />
