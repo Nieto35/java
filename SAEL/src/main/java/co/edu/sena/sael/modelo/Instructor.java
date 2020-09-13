@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity 
 @Table(name = "instructor")
@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Instructor.findAll", query = "SELECT i FROM Instructor i")
     , @NamedQuery(name = "Instructor.findByDocumentoinstructor", query = "SELECT i FROM Instructor i WHERE i.documentoinstructor = :documentoinstructor")
-    , @NamedQuery(name = "Instructor.findByTipoinstructor", query = "SELECT i FROM Instructor i WHERE i.tipoinstructor = :tipoinstructor")})
+    , @NamedQuery(name = "Instructor.findByTipo", query = "SELECT i FROM Instructor i WHERE i.tipo = :tipo")})
 public class Instructor implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -84,28 +84,28 @@ public class Instructor implements Serializable {
         this.documentoinstructor = documentoinstructor;
     }
 
-    public String getTipoinstructor() {
-        return tipoinstructor;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setTipoinstructor(String tipoinstructor) {
-        this.tipoinstructor = tipoinstructor;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
-    public String getPerfilocupacionalinstructor() {
-        return perfilocupacionalinstructor;
+    public String getPerfilocupacional() {
+        return perfilocupacional;
     }
 
-    public void setPerfilocupacionalinstructor(String perfilocupacionalinstructor) {
-        this.perfilocupacionalinstructor = perfilocupacionalinstructor;
+    public void setPerfilocupacional(String perfilocupacional) {
+        this.perfilocupacional = perfilocupacional;
     }
 
-    public String getLogrosinstructor() {
-        return logrosinstructor;
+    public String getLogros() {
+        return logros;
     }
 
-    public void setLogrosinstructor(String logrosinstructor) {
-        this.logrosinstructor = logrosinstructor;
+    public void setLogros(String logros) {
+        this.logros = logros;
     }
 
     @XmlTransient

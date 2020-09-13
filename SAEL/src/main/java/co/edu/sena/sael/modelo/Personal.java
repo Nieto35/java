@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "personal")
@@ -33,16 +33,17 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Personal.findAll", query = "SELECT p FROM Personal p")
     , @NamedQuery(name = "Personal.findByDocumentopersonal", query = "SELECT p FROM Personal p WHERE p.documentopersonal = :documentopersonal")
-    , @NamedQuery(name = "Personal.findByNombrepersonal", query = "SELECT p FROM Personal p WHERE p.nombrepersonal = :nombrepersonal")
-    , @NamedQuery(name = "Personal.findByApellidopersonal", query = "SELECT p FROM Personal p WHERE p.apellidopersonal = :apellidopersonal")
-    , @NamedQuery(name = "Personal.findByDireccionpersonal", query = "SELECT p FROM Personal p WHERE p.direccionpersonal = :direccionpersonal")
-    , @NamedQuery(name = "Personal.findByCorreopersonal", query = "SELECT p FROM Personal p WHERE p.correopersonal = :correopersonal")
-    , @NamedQuery(name = "Personal.findByTelefonopersonal", query = "SELECT p FROM Personal p WHERE p.telefonopersonal = :telefonopersonal")
-    , @NamedQuery(name = "Personal.findByClavepersonal", query = "SELECT p FROM Personal p WHERE p.clavepersonal = :clavepersonal")
-    , @NamedQuery(name = "Personal.findByFechanacimientopersonal", query = "SELECT p FROM Personal p WHERE p.fechanacimientopersonal = :fechanacimientopersonal")
-    , @NamedQuery(name = "Personal.findByLugarnacimientopersonal", query = "SELECT p FROM Personal p WHERE p.lugarnacimientopersonal = :lugarnacimientopersonal")
-    , @NamedQuery(name = "Personal.findByFotopersonal", query = "SELECT p FROM Personal p WHERE p.fotopersonal = :fotopersonal")
-    , @NamedQuery(name = "Personal.findByCorreoinstitucionalpersonal", query = "SELECT p FROM Personal p WHERE p.correoinstitucionalpersonal = :correoinstitucionalpersonal")})
+    , @NamedQuery(name = "Personal.findByNombre", query = "SELECT p FROM Personal p WHERE p.nombre = :nombre")
+    , @NamedQuery(name = "Personal.findByApellido", query = "SELECT p FROM Personal p WHERE p.apellido = :apellido")
+    , @NamedQuery(name = "Personal.findByDireccion", query = "SELECT p FROM Personal p WHERE p.direccion = :direccion")
+    , @NamedQuery(name = "Personal.findByCorreo", query = "SELECT p FROM Personal p WHERE p.correo = :correo")
+    , @NamedQuery(name = "Personal.findByTelefono", query = "SELECT p FROM Personal p WHERE p.telefono = :telefono")
+    , @NamedQuery(name = "Personal.findByClave", query = "SELECT p FROM Personal p WHERE p.clave = :clave")
+    , @NamedQuery(name = "Personal.findByFechanacimiento", query = "SELECT p FROM Personal p WHERE p.fechanacimiento = :fechanacimiento")
+    , @NamedQuery(name = "Personal.findByLugarnacimiento", query = "SELECT p FROM Personal p WHERE p.lugarnacimiento = :lugarnacimiento")
+    , @NamedQuery(name = "Personal.findByFoto", query = "SELECT p FROM Personal p WHERE p.foto = :foto")
+    , @NamedQuery(name = "Personal.findByCorreoinstitucional", query = "SELECT p FROM Personal p WHERE p.correoinstitucional = :correoinstitucional")
+    , @NamedQuery(name = "Personal.findBySexo", query = "SELECT p FROM Personal p WHERE p.sexo = :sexo")})
 public class Personal implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -103,10 +104,10 @@ public class Personal implements Serializable {
         this.documentopersonal = documentopersonal;
     }
 
-    public Personal(Long documentopersonal, String nombrepersonal, String apellidopersonal) {
+    public Personal(Long documentopersonal, String nombre, String apellido) {
         this.documentopersonal = documentopersonal;
-        this.nombrepersonal = nombrepersonal;
-        this.apellidopersonal = apellidopersonal;
+        this.nombre = nombre;
+        this.apellido = apellido;
     }
 
     public Long getDocumentopersonal() {
@@ -117,84 +118,92 @@ public class Personal implements Serializable {
         this.documentopersonal = documentopersonal;
     }
 
-    public String getNombrepersonal() {
-        return nombrepersonal;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombrepersonal(String nombrepersonal) {
-        this.nombrepersonal = nombrepersonal;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getApellidopersonal() {
-        return apellidopersonal;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setApellidopersonal(String apellidopersonal) {
-        this.apellidopersonal = apellidopersonal;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
-    public String getDireccionpersonal() {
-        return direccionpersonal;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setDireccionpersonal(String direccionpersonal) {
-        this.direccionpersonal = direccionpersonal;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
-    public String getCorreopersonal() {
-        return correopersonal;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setCorreopersonal(String correopersonal) {
-        this.correopersonal = correopersonal;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
-    public String getTelefonopersonal() {
-        return telefonopersonal;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setTelefonopersonal(String telefonopersonal) {
-        this.telefonopersonal = telefonopersonal;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
-    public String getClavepersonal() {
-        return clavepersonal;
+    public String getClave() {
+        return clave;
     }
 
-    public void setClavepersonal(String clavepersonal) {
-        this.clavepersonal = clavepersonal;
+    public void setClave(String clave) {
+        this.clave = clave;
     }
 
-    public Date getFechanacimientopersonal() {
-        return fechanacimientopersonal;
+    public Date getFechanacimiento() {
+        return fechanacimiento;
     }
 
-    public void setFechanacimientopersonal(Date fechanacimientopersonal) {
-        this.fechanacimientopersonal = fechanacimientopersonal;
+    public void setFechanacimiento(Date fechanacimiento) {
+        this.fechanacimiento = fechanacimiento;
     }
 
-    public String getLugarnacimientopersonal() {
-        return lugarnacimientopersonal;
+    public String getLugarnacimiento() {
+        return lugarnacimiento;
     }
 
-    public void setLugarnacimientopersonal(String lugarnacimientopersonal) {
-        this.lugarnacimientopersonal = lugarnacimientopersonal;
+    public void setLugarnacimiento(String lugarnacimiento) {
+        this.lugarnacimiento = lugarnacimiento;
     }
 
-    public String getFotopersonal() {
-        return fotopersonal;
+    public String getFoto() {
+        return foto;
     }
 
-    public void setFotopersonal(String fotopersonal) {
-        this.fotopersonal = fotopersonal;
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
-    public String getCorreoinstitucionalpersonal() {
-        return correoinstitucionalpersonal;
+    public String getCorreoinstitucional() {
+        return correoinstitucional;
     }
 
-    public void setCorreoinstitucionalpersonal(String correoinstitucionalpersonal) {
-        this.correoinstitucionalpersonal = correoinstitucionalpersonal;
+    public void setCorreoinstitucional(String correoinstitucional) {
+        this.correoinstitucional = correoinstitucional;
+    }
+
+    public Character getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(Character sexo) {
+        this.sexo = sexo;
     }
 
     @XmlTransient

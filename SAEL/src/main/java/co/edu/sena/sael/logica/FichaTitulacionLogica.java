@@ -44,7 +44,7 @@ public class FichaTitulacionLogica implements FichaTitulacionLogicaLocal {
         }
         //se envia el objeto entity a modificar porque es quien tiene el valor del cliente si existe
         entityFicha.setNumeroficha(ficha.getNumeroficha());
-        entityFicha.setJornadaficha(ficha.getJornadaficha());
+        entityFicha.setJornada(ficha.getJornada());
         entityFicha.setCodigoprograma(ficha.getCodigoprograma());
         entityFicha.setDocumentoinstructor(ficha.getDocumentoinstructor());
         entityFicha.setFechainicio(ficha.getFechainicio());
@@ -93,7 +93,7 @@ public class FichaTitulacionLogica implements FichaTitulacionLogicaLocal {
         if(fichatitulacion.getNumeroficha()==0){
             throw new Exception("La ficha es obligatoria!");
         }
-        if(fichatitulacion.getJornadaficha()==null || fichatitulacion.getJornadaficha().equals("")==true) {
+        if(fichatitulacion.getJornada()==null || fichatitulacion.getJornada().equals("")==true) {
             throw new Exception("La jornada es obligatoria!");
         } 
         if(fichatitulacion.getCodigoprograma()==null) {

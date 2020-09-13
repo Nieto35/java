@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "comiteproductiva")
@@ -43,14 +43,17 @@ public class Comiteproductiva implements Serializable {
     @Basic(optional = false)
     @Column(name = "numerocomite")
     private Integer numerocomite;
+    
     @Column(name = "fechacomite")
     @Temporal(TemporalType.DATE)
     private Date fechacomite;
+    
     @Lob
     @Column(name = "observacionescomite", length = 65535)//@Size(
     private String observacionescomite;
     @Column(name = "actacomite", length = 50)//@Size(
     private String actacomite;
+    
     @JoinColumn(name = "codigoeproductiva", referencedColumnName = "codigoeproductiva")
     @ManyToOne
     private Eproductiva codigoeproductiva;

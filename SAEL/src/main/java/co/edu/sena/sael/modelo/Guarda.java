@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "guarda")
@@ -37,6 +37,7 @@ public class Guarda implements Serializable {
     @Basic(optional = false)
     @Column(name = "documentoguarda", nullable = false)//@NotNull
     private Long documentoguarda;
+    
     @OneToMany(mappedBy = "idguarda")
     private Collection<Usodeambiente> usodeambienteCollection;
     @JoinColumn(name = "documentoguarda", referencedColumnName = "documentopersonal", insertable = false, updatable = false)

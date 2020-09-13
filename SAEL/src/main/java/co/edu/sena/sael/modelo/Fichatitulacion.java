@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "fichatitulacion")
@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Fichatitulacion.findAll", query = "SELECT f FROM Fichatitulacion f")
     , @NamedQuery(name = "Fichatitulacion.findByNumeroficha", query = "SELECT f FROM Fichatitulacion f WHERE f.numeroficha = :numeroficha")
-    , @NamedQuery(name = "Fichatitulacion.findByJornadaficha", query = "SELECT f FROM Fichatitulacion f WHERE f.jornadaficha = :jornadaficha")
+    , @NamedQuery(name = "Fichatitulacion.findByJornada", query = "SELECT f FROM Fichatitulacion f WHERE f.jornada = :jornada")
     , @NamedQuery(name = "Fichatitulacion.findByFechainicio", query = "SELECT f FROM Fichatitulacion f WHERE f.fechainicio = :fechainicio")
     , @NamedQuery(name = "Fichatitulacion.findByFechafin", query = "SELECT f FROM Fichatitulacion f WHERE f.fechafin = :fechafin")})
 public class Fichatitulacion implements Serializable {
@@ -51,9 +51,11 @@ public class Fichatitulacion implements Serializable {
     @Column(name = "fechainicio")
     @Temporal(TemporalType.DATE)
     private Date fechainicio;
+    
     @Column(name = "fechafin")
     @Temporal(TemporalType.DATE)
     private Date fechafin;
+    
     @JoinTable(name = "asignafichas", joinColumns = {
         @JoinColumn(name = "fichatitulacion", referencedColumnName = "numeroficha")}, inverseJoinColumns = {
         @JoinColumn(name = "documentoinstructor", referencedColumnName = "documentoinstructor")})
@@ -92,12 +94,12 @@ public class Fichatitulacion implements Serializable {
         this.numeroficha = numeroficha;
     }
 
-    public String getJornadaficha() {
-        return jornadaficha;
+    public String getJornada() {
+        return jornada;
     }
 
-    public void setJornadaficha(String jornadaficha) {
-        this.jornadaficha = jornadaficha;
+    public void setJornada(String jornada) {
+        this.jornada = jornada;
     }
 
     public Date getFechainicio() {

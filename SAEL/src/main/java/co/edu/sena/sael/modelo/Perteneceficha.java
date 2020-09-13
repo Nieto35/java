@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "perteneceficha")
@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Perteneceficha.findAll", query = "SELECT p FROM Perteneceficha p")
     , @NamedQuery(name = "Perteneceficha.findByDocumentoaprendiz", query = "SELECT p FROM Perteneceficha p WHERE p.pertenecefichaPK.documentoaprendiz = :documentoaprendiz")
     , @NamedQuery(name = "Perteneceficha.findByNumeroficha", query = "SELECT p FROM Perteneceficha p WHERE p.pertenecefichaPK.numeroficha = :numeroficha")
-    , @NamedQuery(name = "Perteneceficha.findByEstadoperteneceficha", query = "SELECT p FROM Perteneceficha p WHERE p.estadoperteneceficha = :estadoperteneceficha")})
+    , @NamedQuery(name = "Perteneceficha.findByEstado", query = "SELECT p FROM Perteneceficha p WHERE p.estado = :estado")})
 public class Perteneceficha implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -61,12 +61,12 @@ public class Perteneceficha implements Serializable {
         this.pertenecefichaPK = pertenecefichaPK;
     }
 
-    public String getEstadoperteneceficha() {
-        return estadoperteneceficha;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setEstadoperteneceficha(String estadoperteneceficha) {
-        this.estadoperteneceficha = estadoperteneceficha;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public Aprendiz getAprendiz() {

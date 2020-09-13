@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "empresa")
@@ -44,6 +44,7 @@ public class Empresa implements Serializable {
     private String direccionempresa;
     @Column(name = "telefonoempresa", length = 50)//@Size
     private String telefonoempresa;
+    
     @OneToMany(mappedBy = "numeroempresa")
     private Collection<Eproductiva> eproductivaCollection;
     @OneToMany(mappedBy = "numeroempresa")

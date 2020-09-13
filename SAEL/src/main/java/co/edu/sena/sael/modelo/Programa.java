@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "programa")
@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Programa.findAll", query = "SELECT p FROM Programa p")
     , @NamedQuery(name = "Programa.findByCodigoprograma", query = "SELECT p FROM Programa p WHERE p.codigoprograma = :codigoprograma")
-    , @NamedQuery(name = "Programa.findByNombreprograma", query = "SELECT p FROM Programa p WHERE p.nombreprograma = :nombreprograma")})
+    , @NamedQuery(name = "Programa.findByNombre", query = "SELECT p FROM Programa p WHERE p.nombre = :nombre")})
 public class Programa implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -56,12 +56,12 @@ public class Programa implements Serializable {
         this.codigoprograma = codigoprograma;
     }
 
-    public String getNombreprograma() {
-        return nombreprograma;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreprograma(String nombreprograma) {
-        this.nombreprograma = nombreprograma;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     @XmlTransient

@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "seguimiento")
@@ -37,13 +37,12 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Seguimiento.findAll", query = "SELECT s FROM Seguimiento s")
     , @NamedQuery(name = "Seguimiento.findByCodigoseguimiento", query = "SELECT s FROM Seguimiento s WHERE s.codigoseguimiento = :codigoseguimiento")
-    , @NamedQuery(name = "Seguimiento.findByNumeroseguimiento", query = "SELECT s FROM Seguimiento s WHERE s.numeroseguimiento = :numeroseguimiento")
-    , @NamedQuery(name = "Seguimiento.findByFechaseguimiento", query = "SELECT s FROM Seguimiento s WHERE s.fechaseguimiento = :fechaseguimiento")
-    , @NamedQuery(name = "Seguimiento.findByFaseseguimiento", query = "SELECT s FROM Seguimiento s WHERE s.faseseguimiento = :faseseguimiento")
-    , @NamedQuery(name = "Seguimiento.findByLugarseguimiento", query = "SELECT s FROM Seguimiento s WHERE s.lugarseguimiento = :lugarseguimiento")
-    , @NamedQuery(name = "Seguimiento.findByHorainicioseguimiento", query = "SELECT s FROM Seguimiento s WHERE s.horainicioseguimiento = :horainicioseguimiento")
-    , @NamedQuery(name = "Seguimiento.findByHorafinseguimiento", query = "SELECT s FROM Seguimiento s WHERE s.horafinseguimiento = :horafinseguimiento")
-    , @NamedQuery(name = "Seguimiento.findByEstadoseguimiento", query = "SELECT s FROM Seguimiento s WHERE s.estadoseguimiento = :estadoseguimiento")})
+    , @NamedQuery(name = "Seguimiento.findByFecha", query = "SELECT s FROM Seguimiento s WHERE s.fecha = :fecha")
+    , @NamedQuery(name = "Seguimiento.findByObjetivos", query = "SELECT s FROM Seguimiento s WHERE s.objetivos = :objetivos")
+    , @NamedQuery(name = "Seguimiento.findByLugar", query = "SELECT s FROM Seguimiento s WHERE s.lugar = :lugar")
+    , @NamedQuery(name = "Seguimiento.findByHorainicio", query = "SELECT s FROM Seguimiento s WHERE s.horainicio = :horainicio")
+    , @NamedQuery(name = "Seguimiento.findByHorafin", query = "SELECT s FROM Seguimiento s WHERE s.horafin = :horafin")
+    , @NamedQuery(name = "Seguimiento.findByEstado", query = "SELECT s FROM Seguimiento s WHERE s.estado = :estado")})
 public class Seguimiento implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -52,9 +51,13 @@ public class Seguimiento implements Serializable {
     @Basic(optional = false)
     @Column(name = "codigoseguimiento")
     private Integer codigoseguimiento;
-    @Column(name = "numeroseguimiento")
-    private Integer numeroseguimiento;
-    @Column(name = "fechaseguimiento")
+    @Lob
+    @Column(name = "reconocimiento", length = 65535)
+    private String reconocimiento;
+    @Lob
+    @Column(name = "observaciones", length = 65535)
+    private String observaciones;
+    @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     private Date fechaseguimiento;
     @Column(name = "faseseguimiento", length = 50)//@Size(max = 50)
@@ -72,8 +75,8 @@ public class Seguimiento implements Serializable {
     private String lugarseguimiento;
     @Column(name = "horainicioseguimiento")
     @Temporal(TemporalType.TIME)
-    private Date horainicioseguimiento;
-    @Column(name = "horafinseguimiento")
+    private Date horainicio;
+    @Column(name = "horafin")
     @Temporal(TemporalType.TIME)
     private Date horafinseguimiento;
     @Column(name = "estadoseguimiento",length = 50 )//@Size(max = 50)
@@ -101,84 +104,92 @@ public class Seguimiento implements Serializable {
         this.codigoseguimiento = codigoseguimiento;
     }
 
-    public Integer getNumeroseguimiento() {
-        return numeroseguimiento;
+    public String getReconocimiento() {
+        return reconocimiento;
     }
 
-    public void setNumeroseguimiento(Integer numeroseguimiento) {
-        this.numeroseguimiento = numeroseguimiento;
+    public void setReconocimiento(String reconocimiento) {
+        this.reconocimiento = reconocimiento;
     }
 
-    public Date getFechaseguimiento() {
-        return fechaseguimiento;
+    public String getObservaciones() {
+        return observaciones;
     }
 
-    public void setFechaseguimiento(Date fechaseguimiento) {
-        this.fechaseguimiento = fechaseguimiento;
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
     }
 
-    public String getFaseseguimiento() {
-        return faseseguimiento;
+    public Date getFecha() {
+        return fecha;
     }
 
-    public void setFaseseguimiento(String faseseguimiento) {
-        this.faseseguimiento = faseseguimiento;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
-    public String getObservacionesseguimiento() {
-        return observacionesseguimiento;
+    public String getObjetivos() {
+        return objetivos;
     }
 
-    public void setObservacionesseguimiento(String observacionesseguimiento) {
-        this.observacionesseguimiento = observacionesseguimiento;
+    public void setObjetivos(String objetivos) {
+        this.objetivos = objetivos;
     }
 
-    public String getConclusionesseguimiento() {
-        return conclusionesseguimiento;
+    public String getConclusiones() {
+        return conclusiones;
     }
 
-    public void setConclusionesseguimiento(String conclusionesseguimiento) {
-        this.conclusionesseguimiento = conclusionesseguimiento;
+    public void setConclusiones(String conclusiones) {
+        this.conclusiones = conclusiones;
     }
 
-    public String getCompromisosseguimiento() {
-        return compromisosseguimiento;
+    public String getCompromisos() {
+        return compromisos;
     }
 
-    public void setCompromisosseguimiento(String compromisosseguimiento) {
-        this.compromisosseguimiento = compromisosseguimiento;
+    public void setCompromisos(String compromisos) {
+        this.compromisos = compromisos;
     }
 
-    public String getLugarseguimiento() {
-        return lugarseguimiento;
+    public String getLugar() {
+        return lugar;
     }
 
-    public void setLugarseguimiento(String lugarseguimiento) {
-        this.lugarseguimiento = lugarseguimiento;
+    public void setLugar(String lugar) {
+        this.lugar = lugar;
     }
 
-    public Date getHorainicioseguimiento() {
-        return horainicioseguimiento;
+    public Date getHorainicio() {
+        return horainicio;
     }
 
-    public void setHorainicioseguimiento(Date horainicioseguimiento) {
-        this.horainicioseguimiento = horainicioseguimiento;
+    public void setHorainicio(Date horainicio) {
+        this.horainicio = horainicio;
     }
 
-    public Date getHorafinseguimiento() {
-        return horafinseguimiento;
+    public Date getHorafin() {
+        return horafin;
     }
 
-    public void setHorafinseguimiento(Date horafinseguimiento) {
-        this.horafinseguimiento = horafinseguimiento;
+    public void setHorafin(Date horafin) {
+        this.horafin = horafin;
     }
 
-    public String getEstadoseguimiento() {
-        return estadoseguimiento;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setEstadoseguimiento(String estadoseguimiento) {
-        this.estadoseguimiento = estadoseguimiento;
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getMotivocancelacion() {
+        return motivocancelacion;
+    }
+
+    public void setMotivocancelacion(String motivocancelacion) {
+        this.motivocancelacion = motivocancelacion;
     }
 
     @XmlTransient

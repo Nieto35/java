@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "contrato")
@@ -42,22 +42,28 @@ public class Contrato implements Serializable {
     @Basic(optional = false)
     @Column(name = "numerocontrato", nullable = false)//@NotNull
     private Integer numerocontrato;
+    
     @Column(name = "fechainiciocontrato")
     @Temporal(TemporalType.DATE)
     private Date fechainiciocontrato;
+    
     @Column(name = "fechafincontrato")
     @Temporal(TemporalType.DATE)
     private Date fechafincontrato;
+    
     @Lob
     @Column(name = "objetocontrato", length = 65535)//@Size(
     private String objetocontrato;
     @Column(name = "estadocontrato", length = 50)//@Size(
     private String estadocontrato;
+    
     @Column(name = "valortotalcontrato")
     private Integer valortotalcontrato;
+    
     @JoinColumn(name = "documentocoordinador", referencedColumnName = "documentocoordinador")
     @ManyToOne
     private Coordinador documentocoordinador;
+    
     @JoinColumn(name = "documentopersonal", referencedColumnName = "documentopersonal")
     @ManyToOne
     private Personal documentopersonal;

@@ -67,7 +67,7 @@ public class AprendizLogica implements AprendizLogicaLocal {
             throw new Exception("El aprendiz no existe");
         }
         //se envia el objeto entity a modificar porque es quien tiene el valor del cliente si existe
-        entityAprendiz.setEstadoaprendiz(aprendiz.getEstadoaprendiz());
+        entityAprendiz.setEstado(aprendiz.getEstado());
         //Modificar                
         aprendizDAO.modificar(aprendiz);
     }
@@ -126,11 +126,11 @@ public class AprendizLogica implements AprendizLogicaLocal {
             Personal nuevoPersonal = new Personal();
             try {
                 nuevoPersonal.setDocumentopersonal(Long.parseLong(hoja.getCell(0, fila).getContents()));
-                nuevoPersonal.setNombrepersonal(hoja.getCell(1, fila).getContents());
-                nuevoPersonal.setApellidopersonal(hoja.getCell(2, fila).getContents());
-                nuevoPersonal.setCorreoinstitucionalpersonal(hoja.getCell(3, fila).getContents());
-                nuevoPersonal.setTelefonopersonal(hoja.getCell(4, fila).getContents());
-                nuevoPersonal.setClavepersonal(hoja.getCell(0, fila).getContents());
+                nuevoPersonal.setNombre(hoja.getCell(1, fila).getContents());
+                nuevoPersonal.setApellido(hoja.getCell(2, fila).getContents());
+                nuevoPersonal.setCorreoinstitucional(hoja.getCell(3, fila).getContents());
+                nuevoPersonal.setTelefono(hoja.getCell(4, fila).getContents());
+                nuevoPersonal.setClave(hoja.getCell(0, fila).getContents());
                 
                 boolean personalValido = personalLogica.validarDatosPersonal(nuevoPersonal);
 

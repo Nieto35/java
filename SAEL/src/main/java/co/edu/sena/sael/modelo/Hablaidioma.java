@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "hablaidioma")
@@ -41,6 +41,7 @@ public class Hablaidioma implements Serializable {
     private String nivelescribe;
     @Column(name = "nivellee",length = 50)//@Size
     private String nivellee;
+    
     @JoinColumn(name = "codigoidioma", referencedColumnName = "codigoidioma", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Idioma idioma;

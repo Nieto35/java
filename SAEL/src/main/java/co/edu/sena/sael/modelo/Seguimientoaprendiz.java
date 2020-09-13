@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "seguimientoaprendiz")
@@ -65,12 +65,12 @@ public class Seguimientoaprendiz implements Serializable {
         this.seguimientoaprendizPK = seguimientoaprendizPK;
     }
 
-    public String getRendimientoseguimiento() {
-        return rendimientoseguimiento;
+    public String getConceptoespecifico() {
+        return conceptoespecifico;
     }
 
-    public void setRendimientoseguimiento(String rendimientoseguimiento) {
-        this.rendimientoseguimiento = rendimientoseguimiento;
+    public void setConceptoespecifico(String conceptoespecifico) {
+        this.conceptoespecifico = conceptoespecifico;
     }
 
     public Aprendiz getAprendiz() {

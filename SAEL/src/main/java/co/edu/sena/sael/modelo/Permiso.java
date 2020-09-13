@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /** 
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "permiso")
