@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "inasistencia")
@@ -48,7 +48,7 @@ public class Inasistencia implements Serializable {
     private Date fechainasistencia;
     @Column(name = "horasinasistencia")
     private Integer horasinasistencia;
-    @Column(name = "excusainasistencia",length = 50)//@Size
+    @Column(name = "excusainasistencia", length = 50)
     private String excusainasistencia;
     @JoinColumn(name = "documentoaprendiz", referencedColumnName = "documentoaprendiz")
     @ManyToOne

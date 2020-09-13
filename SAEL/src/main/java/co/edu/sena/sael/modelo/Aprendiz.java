@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "aprendiz")
@@ -31,26 +31,32 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Aprendiz.findAll", query = "SELECT a FROM Aprendiz a")
     , @NamedQuery(name = "Aprendiz.findByDocumentoaprendiz", query = "SELECT a FROM Aprendiz a WHERE a.documentoaprendiz = :documentoaprendiz")
-    , @NamedQuery(name = "Aprendiz.findByEstadoaprendiz", query = "SELECT a FROM Aprendiz a WHERE a.estadoaprendiz = :estadoaprendiz")})
+    , @NamedQuery(name = "Aprendiz.findByEstado", query = "SELECT a FROM Aprendiz a WHERE a.estado = :estado")})
 public class Aprendiz implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "documentoaprendiz",nullable = false)//@NotNull
+    
+    @Column(name = "documentoaprendiz", nullable = false)
     private Long documentoaprendiz;
-    @Column(name = "estadoaprendiz", length = 50)// @Size
-    private String estadoaprendiz;
+
+    @Column(name = "estado", length = 50)
+    private String estado;
+    
     @OneToMany(mappedBy = "documentoaprendiz")
     private Collection<Inasistencia> inasistenciaCollection;
     @OneToMany(mappedBy = "documentoaprendiz")
+    
     private Collection<Permiso> permisoCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "aprendiz")
     private Collection<Seguimientoaprendiz> seguimientoaprendizCollection;
     @OneToMany(mappedBy = "documentoaprendiz")
+    
     private Collection<Eproductiva> eproductivaCollection;
     @JoinColumn(name = "documentoaprendiz", referencedColumnName = "documentopersonal", insertable = false, updatable = false)
     @OneToOne(optional = false)
+    
     private Personal personal;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "aprendiz")
     private Collection<Perteneceficha> pertenecefichaCollection;
@@ -70,12 +76,12 @@ public class Aprendiz implements Serializable {
         this.documentoaprendiz = documentoaprendiz;
     }
 
-    public String getEstadoaprendiz() {
-        return estadoaprendiz;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setEstadoaprendiz(String estadoaprendiz) {
-        this.estadoaprendiz = estadoaprendiz;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     @XmlTransient

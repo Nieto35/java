@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "empresa")
@@ -36,14 +36,18 @@ public class Empresa implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "numeroempresa", nullable = false)//@NotNull
+    @Column(name = "numeroempresa", nullable = false)
     private Long numeroempresa;
-    @Column(name = "nombreempresa", length = 50)//@Size
+
+    @Column(name = "nombreempresa", length = 50)
     private String nombreempresa;
-    @Column(name = "direccionempresa", length = 50)//@Size
+
+    @Column(name = "direccionempresa", length = 50)
     private String direccionempresa;
-    @Column(name = "telefonoempresa", length = 50)//@Size
+
+    @Column(name = "telefonoempresa", length = 50)
     private String telefonoempresa;
+    
     @OneToMany(mappedBy = "numeroempresa")
     private Collection<Eproductiva> eproductivaCollection;
     @OneToMany(mappedBy = "numeroempresa")

@@ -196,25 +196,25 @@ and open the template in the editor.
                                             <h:outputText   value="#{instructores.documentoinstructor}" />                          
                                         </p:column>
 
-                                        <p:column sortBy="#{instructores.tipoinstructor}">
+                                        <p:column sortBy="#{instructores.tipo}">
                                             <f:facet name="header">
                                                 <h:outputText  value="Tipo Instructor" />                            
                                             </f:facet>
-                                            <h:outputText  value="#{instructores.tipoinstructor}" />                          
+                                            <h:outputText  value="#{instructores.tipo}" />                          
                                         </p:column>
 
-                                        <p:column sortBy="#{instructores.personal.nombrepersonal}" filterBy="#{instructores.personal.nombrepersonal}" filterMatchMode="contains">
+                                        <p:column sortBy="#{instructores.personal.nombre}" filterBy="#{instructores.personal.nombre}" filterMatchMode="contains">
                                             <f:facet name="header" >
                                                 <h:outputText  value="Nombre" />                            
                                             </f:facet>
-                                            <h:outputText  value="#{instructores.personal.nombrepersonal}" />                          
+                                            <h:outputText  value="#{instructores.personal.nombre}" />                          
                                         </p:column>
                                         
-                                        <p:column sortBy="#{instructores.personal.apellidopersonal}" filterBy="#{instructores.personal.apellidopersonal}" filterMatchMode="contains">
+                                        <p:column sortBy="#{instructores.personal.apellido}" filterBy="#{instructores.personal.apellido}" filterMatchMode="contains">
                                             <f:facet name="header" >
                                                 <h:outputText  value="Apellido" />                            
                                             </f:facet>
-                                            <h:outputText  value="#{instructores.personal.apellidopersonal}" />                          
+                                            <h:outputText  value="#{instructores.personal.apellido}" />                          
                                         </p:column>
                                     </p:dataTable>                    
 

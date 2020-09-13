@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /** 
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "permiso")
@@ -54,9 +54,9 @@ public class Permiso implements Serializable {
     @Column(name = "horahastapermiso")
     @Temporal(TemporalType.TIME)
     private Date horahastapermiso;
-    @Column(name = "motivopermiso",length = 100)//@Size
+    @Column(name = "motivopermiso", length = 100)
     private String motivopermiso;
-    @Column(name = "estadopermiso",length = 50)//@Size)
+    @Column(name = "estadopermiso", length = 50)
     private String estadopermiso;
     @JoinColumn(name = "documentoaprendiz", referencedColumnName = "documentoaprendiz")
     @ManyToOne

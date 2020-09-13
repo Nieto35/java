@@ -94,7 +94,7 @@ and open the template in the editor.
                                                     <div align="left">
                                                         <p:inputText id="txtDocumento" binding="#{instructorVista.txtIdentificacion}" size="30" >
                                                             <!-- ajax para el listener del campo -->
-                                                            <p:ajax listener="#{instructorVista.txtIdentificacion_listener}" update="panelInstructores" />
+                                                            <p:ajax listener="#{instructorVista.txtIdentificacionListener()}" update="panelInstructores" />
                                                         </p:inputText>
                                                     </div> 
                                                     <p:tooltip for="txtDocumento" value="Digite el Documento y Presione TAB" showEffect="slide" hideEffect="slide" />

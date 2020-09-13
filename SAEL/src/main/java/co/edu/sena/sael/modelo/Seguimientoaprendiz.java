@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "seguimientoaprendiz")
@@ -34,8 +34,8 @@ public class Seguimientoaprendiz implements Serializable {
     @EmbeddedId
     protected SeguimientoaprendizPK seguimientoaprendizPK;
     @Lob
-    @Column(name = "rendimientoseguimiento", length = 65535)// @Size(max = 65535)
-    private String rendimientoseguimiento;
+    @Column(name = "conceptoespecifico", length = 65535)
+    private String conceptoespecifico;
     @JoinColumn(name = "documentoaprendiz", referencedColumnName = "documentoaprendiz", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Aprendiz aprendiz;
@@ -65,12 +65,12 @@ public class Seguimientoaprendiz implements Serializable {
         this.seguimientoaprendizPK = seguimientoaprendizPK;
     }
 
-    public String getRendimientoseguimiento() {
-        return rendimientoseguimiento;
+    public String getConceptoespecifico() {
+        return conceptoespecifico;
     }
 
-    public void setRendimientoseguimiento(String rendimientoseguimiento) {
-        this.rendimientoseguimiento = rendimientoseguimiento;
+    public void setConceptoespecifico(String conceptoespecifico) {
+        this.conceptoespecifico = conceptoespecifico;
     }
 
     public Aprendiz getAprendiz() {

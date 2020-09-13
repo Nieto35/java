@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Entity
 @Table(name = "eproductiva")
@@ -51,37 +51,49 @@ public class Eproductiva implements Serializable {
     @Basic(optional = false)
     @Column(name = "codigoeproductiva")
     private Integer codigoeproductiva;
+    
     @Column(name = "fechainicioeproductiva")
     @Temporal(TemporalType.DATE)
     private Date fechainicioeproductiva;
+    
     @Column(name = "fechafineproductiva")
     @Temporal(TemporalType.DATE)
     private Date fechafineproductiva;
+    
     @Lob
-    @Column(name = "funcioneseproductiva", length = 65535)//@Size
+    @Column(name = "funcioneseproductiva", length = 65535)
     private String funcioneseproductiva;
-    @Column(name = "estadoeproductiva", length = 50)//@Size
+    
+    @Column(name = "estadoeproductiva", length = 50)
     private String estadoeproductiva;
+    
     @Column(name = "documentocoformador")
     private BigInteger documentocoformador;
-    @Column(name = "etapaeproductiva", length = 50)//@Size
+    
+    @Column(name = "etapaeproductiva", length = 50)
     private String etapaeproductiva;
-    @Column(name = "bitacoraseproductiva", length = 50)//@Size
+
+    @Column(name = "bitacoraseproductiva", length = 50)
     private String bitacoraseproductiva;
     @OneToMany(mappedBy = "codigoeproductiva")
+    
     private Collection<Comiteproductiva> comiteproductivaCollection;
     @JoinColumn(name = "documentoaprendiz", referencedColumnName = "documentoaprendiz")
     @ManyToOne
     private Aprendiz documentoaprendiz;
+    
     @JoinColumn(name = "numeroempresa", referencedColumnName = "numeroempresa")
     @ManyToOne
     private Empresa numeroempresa;
+    
     @JoinColumn(name = "documentofuncionario", referencedColumnName = "documentofuncionario")
     @ManyToOne
     private Funcionario documentofuncionario;
+    
     @JoinColumn(name = "codigotipopractica", referencedColumnName = "codigotipopractica")
     @ManyToOne
     private Tipopractica codigotipopractica;
+    
     @OneToMany(mappedBy = "codigoeproductiva")
     private Collection<Novedadproductiva> novedadproductivaCollection;
     @OneToMany(mappedBy = "codigoeproductiva")

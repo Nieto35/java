@@ -12,16 +12,18 @@ import javax.persistence.Embeddable;
 
 /**
  *
- * @author Felipe
+ * @author dasak
  */
 @Embeddable
 public class ComitePK implements Serializable {
 
     @Basic(optional = false)
-    @Column(name = "documentopersonal", nullable = false)//@NotNull
+
+    @Column(name = "documentopersonal", nullable = false)
     private long documentopersonal;
     @Basic(optional = false)
-    @Column(name = "numeroseguimiento", nullable = false)//@NotNull
+
+    @Column(name = "numeroseguimiento", nullable = false)
     private int numeroseguimiento;
 
     public ComitePK() {
