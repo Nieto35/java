@@ -3,11 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
    
     <f:view contentType="text/html">
-        <h:head>            
+        <h:head>           
             <f:facet name="first">
+                <ui:include src="templates/head.xhtml"/> 
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
                 <link rel="shortcut icon" href="aspera/favicon.ico"/>
                 <title>..:: Bienvenido a SAEL ::..</title>
