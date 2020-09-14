@@ -124,7 +124,7 @@
     <!--  -->
     
     <mime-mapping>
-        <extension>pdf</extension>
-        <mime-type>application/pdf</mime-type>
+        <extension>docx</extension>
+        <mime-type>application/docx</mime-type>
     </mime-mapping>
 </web-app>

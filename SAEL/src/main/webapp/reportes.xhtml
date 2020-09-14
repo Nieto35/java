@@ -1,37 +1,33 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-   
-    <f:view contentType="text/html">
-        <h:head>            
-            <f:facet name="first">
-                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <link rel="shortcut icon" href="favicon.ico"/>
-                <title>..:: SAEL ::..</title>
-            </f:facet>
-        </h:head>
 
-        <h:body>    
-            <ui:include src="templates/header.xhtml"/>
-            <h:form id="formLogin">  
-                <p:panel id="panel">                    
-                    <div align="center"> 
-                        <p:messages showDetail="true" /> 
-                        <p:panelGrid id="pnlReporte" columns="2"> 
-                            <h5>selecciona un ID de la lista, para descargar tu reporte:</h5>  
-                            <p:panelGrid id="panelGridBoton2" columns="2">
-                                <p:selectOneMenu id="selectAprendiz" binding="#{reportesVista.itemAprendiz}" class="col-2" >
-                                    <f:selectItems value="#{reportesVista.itemAprendiz}" />
-                                </p:selectOneMenu>
-                                <p:commandButton id="btnReporte2" value="Tipos de Actividad por Id" action="#{reportesVista.generarReporteFelicitacion()}" update="formulario" />
-                            </p:panelGrid>
-                            <p:spacer/> 
-                        </p:panelGrid>                         
-                    </div>   
+    <f:view contentType="text/html">
+        <h:head>
+            <ui:include src="templates/head.xhtml"/>
+        </h:head>
+        
+        <h:body>
+            <h:form id="formulario">
+                <ui:include src="templates/header.xhtml"/>
+                <p:panel>
+                    <p:messages showDetail="true" /> 
+                    <p:panelGrid id="pnlReporte" columns="2"> 
+                        <h5>selecciona un ID de la lista, para descargar tu reporte:</h5> 
+                        <p:selectOneMenu id="selectAprendiz" binding="#{reportesVista.selectAprendiz}" class="col-2" >
+                            <f:selectItems value="#{reportesVista.itemAprendiz}" />
+                        </p:selectOneMenu>
+                        <p:commandButton id="btnReporte" value="Imprimir felicitacion" action="#{reportesVista.generarReporteFelicitacion()}" update="formulario" />
+                    </p:panelGrid>
+
                 </p:panel>
                 <ui:include src="templates/footer.xhtml"/>
             </h:form>

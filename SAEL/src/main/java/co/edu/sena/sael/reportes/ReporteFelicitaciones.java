@@ -52,7 +52,7 @@ public class ReporteFelicitaciones extends HttpServlet {
         Connection conn = null;
         try {
             String rutaReporte = this.getServletContext().getRealPath("/reportes")
-                    + File.separator + "cartaFelicitacionHombre.jrxml";
+                    + File.separator + "cartaFelicitacionHombre.jasper";
             System.out.println("Ruta completa: " + rutaReporte);
             //se abre el reporte
             InputStream inputStream = new FileInputStream(rutaReporte);
@@ -60,12 +60,14 @@ public class ReporteFelicitaciones extends HttpServlet {
                 throw new ClassNotFoundException("Archivo jasper no se encontro");
             }
 
-            String documentoAprendiz = request.getParameter("documentoAprendiz");
-            System.out.println("documentoAprendiz: " + documentoAprendiz);
+            String DocumentoAprendiz = request.getParameter("DocumentoAprendiz");
+            System.out.println("DocumentoAprendiz: " + DocumentoAprendiz);
 
             //parametros del reporte
             Map params = new HashMap();
-            params.put("documentoAprendiz", documentoAprendiz);
+            params.put("DocumentoAprendiz", DocumentoAprendiz);
+            params.put("imagenParametro", this.getClass().getResourceAsStream("icontec.jpg"));
+            params.put("imagenParametro2", this.getClass().getResourceAsStream("logoSena.jpg"));
 //            params.put("imagenParametro",this.getClass().getResourceAsStream("estudiante.png"));
 
             //se abre la cx
