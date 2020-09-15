@@ -5,8 +5,12 @@
  */
 package co.edu.sena.sael.vista;
 
+import co.edu.sena.sael.logica.CoordinadorLogicaLocal;
+import co.edu.sena.sael.logica.InstructorLogicaLocal;
 import co.edu.sena.sael.logica.PersonalLogicaLocal;
 import co.edu.sena.sael.logica.UsuarioLogicaLocal;
+import co.edu.sena.sael.modelo.Coordinador;
+import co.edu.sena.sael.modelo.Instructor;
 import co.edu.sena.sael.modelo.Personal;
 import co.edu.sena.sael.utils.Constantes;
 import java.io.IOException;
@@ -35,6 +39,10 @@ public class UsuarioVista implements Serializable{
     private UsuarioLogicaLocal usuariosLogica;
     @EJB
     private PersonalLogicaLocal personalLogica;
+    @EJB
+    private InstructorLogicaLocal instructorLogica;
+    @EJB
+    private CoordinadorLogicaLocal coordinadorLogica;
     @EJB
     private UsuarioLogicaLocal usuarioLogica;
     @Inject
@@ -149,10 +157,25 @@ public class UsuarioVista implements Serializable{
             //sesion            
             this.usuarioLogeado=personalLogica.consultarPorId(documento);
             
-            if ("COORDINADOR".equals(opcion)) {
-                pagina = "faces/indexCoordinador.xhtml";
-            } else if ("INSTRUCTOR".equals(opcion)) {
-                pagina = "faces/indexInstructor.xhtml";
+            Instructor validarInstructor = null;
+            Coordinador validarCoordinador = null;
+
+            if ("INSTRUCTOR".equals(opcion)) {
+                
+                validarInstructor = instructorLogica.consultarPorId(documento);
+
+                if (validarInstructor.getDocumentoinstructor() != null) {
+                    pagina = "faces/indexInstructor.xhtml";
+                }
+
+            } else if ("COORDINADOR".equals(opcion)) {
+                
+                validarCoordinador = coordinadorLogica.consultarPorId(documento);
+
+                if (validarCoordinador.getDocumentocoordinador() != null) {
+                    pagina = "faces/indexCoordinador.xhtml";
+                }
+                
             }
 
             //FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioLogeado", usuarioLogeado);
@@ -171,32 +194,50 @@ public class UsuarioVista implements Serializable{
     }
     
     public void validarSesion()
-{
-try {
+    {
+    try {
 	String url = request.getRequestURL().toString();
 	System.out.println("url: "+url);
 	ExternalContext context=FacesContext.getCurrentInstance().getExternalContext();
 	usuarioLogeado = (Personal) context.getSessionMap().get("usuarioLogeado"); 
 	String ctxPath = ((ServletContext) context.getContext()).getContextPath();
-
-
+        
+        Instructor validarInstructor = null;
+        Coordinador validarCoordinador = null;
+        
+        System.out.println("Entreo en el metodo aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        
 	//si la pagina actual es el login o la configurada como inicial
-	if(url.endsWith ("/SAEL/") || url.endsWith("/index.xhtml"))
+	if(url.endsWith (ctxPath + "/") || url.endsWith("/index.xhtml"))
 	{
-		//si hay una sesión iniciada redirije al index siempre y  no permite ir al login
-		if(usuarioLogeado != null)
-		{
-			context.redirect(ctxPath+ "/indexInstructor.xhtml");
-		}
+            //si hay una sesión iniciada redirije al index siempre y  no permite ir al login
+            if(usuarioLogeado != null)
+            {
+                Long instructor=usuarioLogeado.getDocumentopersonal();
+                validarInstructor = instructorLogica.consultarPorId(instructor);
+
+                if (validarInstructor.getDocumentoinstructor() != null) {
+                    context.redirect(ctxPath + "faces/indexInstructor.xhtml");
+                }
+                
+                Long coordinador=usuarioLogeado.getDocumentopersonal();
+                validarCoordinador = coordinadorLogica.consultarPorId(coordinador);
+
+                if (validarCoordinador.getDocumentocoordinador() != null) {
+                    context.redirect(ctxPath + "faces/indexCoordinador.xhtml");
+                }
+            }
+            
 	}
 	else if(usuarioLogeado==null)//si es otra pagina y  no hay sesion ·niciada abre sesion invalida
 	{
-
 		context.redirect(ctxPath+ "/SesionInvalida.xhtml");
 	}
       }catch (IOException e) {
 	Logger.getLogger(UsuarioVista.class.getName()).log(Level.SEVERE, null, e);
-	}
+	} catch (Exception ex) {
+            Logger.getLogger(UsuarioVista.class.getName()).log(Level.SEVERE, null, ex);
+        }
 }
 
     
