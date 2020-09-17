@@ -73,6 +73,11 @@ public class ReportesVista {
     
     public void generarReporteFelicitacion() {
         try {
+            
+              Aprendiz aprendiz = new Aprendiz();
+              aprendiz.setDocumentoaprendiz(Long.parseLong(selectAprendiz.getValue().toString()));
+            
+            
             HttpServletRequest sr = ((HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest());
             String scheme = sr.getScheme();
             String serverName = sr.getServerName();
@@ -84,7 +89,7 @@ public class ReportesVista {
 
             String params
                     = "'"
-                    + url + "/ReporteFelicitaciones.do"
+                    + url + "/ReporteFelicitaciones.do?DocumentoAprendiz="+aprendiz.getDocumentoaprendiz()
                     + "','reportWindow'";
 
             System.out.println("params: " + params);
