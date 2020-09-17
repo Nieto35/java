@@ -11,7 +11,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -48,7 +47,7 @@ public class ReporteFelicitaciones extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+
         Connection conn = null;
         try {
             String rutaReporte = this.getServletContext().getRealPath("/reportes")
@@ -66,8 +65,8 @@ public class ReporteFelicitaciones extends HttpServlet {
             //parametros del reporte
             Map params = new HashMap();
             params.put("DocumentoAprendiz", DocumentoAprendiz);
-            params.put("imagenParametro", this.getClass().getResourceAsStream("icontec.jpg"));
-            params.put("imagenParametro2", this.getClass().getResourceAsStream("logoSena.jpg"));
+            params.put("icontec", this.getClass().getResourceAsStream("icontec.jpg"));
+            params.put("logoSena", this.getClass().getResourceAsStream("logoSena.jpg"));
 //            params.put("imagenParametro",this.getClass().getResourceAsStream("estudiante.png"));
 
             //se abre la cx
