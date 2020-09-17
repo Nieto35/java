@@ -25,8 +25,7 @@ and open the template in the editor.
                         <p:selectOneMenu id="selectAprendiz" binding="#{reportesVista.selectAprendiz}" class="col-2" >
                             <f:selectItems value="#{reportesVista.itemAprendiz}" />
                         </p:selectOneMenu>
-                        <p:commandButton id="btnReporte" value="Imprimir felicitacion"
-                                         action="#{reportesVista.generarReporteFelicitacion()}" update="formulario" />
+                        <p:commandButton id="btnReporte" value="Imprimir felicitacion" action="#{reportesVista.generarReporteFelicitacion()}" update="formulario" />
                     </p:panelGrid>
 
                 </p:panel>
