@@ -35,4 +35,7 @@ public class ErrorVista implements Serializable {
     
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> v1
