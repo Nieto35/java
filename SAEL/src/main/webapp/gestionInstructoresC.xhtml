@@ -94,6 +94,19 @@ and open the template in the editor.
                                             <p:column>
                                                 <p:inputText id="txtApellido" binding="#{instructorVista.txtApellido}" style="width:90%;"/>
                                             </p:column>
+                                            
+                                        <p:row>
+                                            <p:column>
+                                                <h:outputText value="Sexo:"/>
+                                            </p:column>
+
+                                            <p:column>                                                
+                                                <p:selectOneMenu id="cmbSexo" binding="#{instrutorVista.cmbSexoInstrutor}" style="width:90%;">
+                                                    <f:selectItem itemLabel="MASCULINO" itemValue="M" />
+                                                    <f:selectItem itemLabel="FEMENINO" itemValue="F" />
+                                                </p:selectOneMenu>                                                                                     
+                                            </p:column>
+                                        </p:row>
 
                                             <p:column>
                                                 <h:outputText value="Correo:"/>
@@ -147,18 +160,7 @@ and open the template in the editor.
                                             </p:column>
                                         </p:row>
                                         
-                                        <p:row>
-                                            <p:column>
-                                                <h:outputText value="Sexo:"/>
-                                            </p:column>
-
-                                            <p:column>                                                
-                                                <p:selectOneMenu id="cmbSexo" binding="#{instrutorVista.cmbSexoInstrutor}" style="width:90%;">
-                                                    <f:selectItem itemLabel="MASCULINO" itemValue="MASCULINO" />
-                                                    <f:selectItem itemLabel="FEMENINO" itemValue="FEMENINO" />
-                                                </p:selectOneMenu>                                                                                     
-                                            </p:column>
-                                        </p:row>
+                                        
                                         
                                         <p:row>
                                             <p:column colspan="6">

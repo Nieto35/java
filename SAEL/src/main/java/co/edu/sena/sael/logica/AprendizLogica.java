@@ -131,7 +131,6 @@ public class AprendizLogica implements AprendizLogicaLocal {
                 nuevoPersonal.setCorreoinstitucional(hoja.getCell(3, fila).getContents());
                 nuevoPersonal.setTelefono(hoja.getCell(4, fila).getContents());
                 nuevoPersonal.setClave(hoja.getCell(0, fila).getContents());
-                
                 boolean personalValido = personalLogica.validarDatosPersonal(nuevoPersonal);
 
                 if (personalValido) {

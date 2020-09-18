@@ -44,6 +44,7 @@ public class InstructorVista {
     private InputText txtIdentificacion;
     private InputText txtNombre;
     private InputText txtApellido;
+    private InputText txtSexo;
     private InputText txtCorreo;
     private InputText txtCorreoInstitucional;
     private InputText txtTelefono;
@@ -59,6 +60,14 @@ public class InstructorVista {
      * Creates a new instance of InstructorVista
      */
     public InstructorVista() {
+    }
+
+    public InputText getTxtSexo() {
+        return txtSexo;
+    }
+
+    public void setTxtSexo(InputText txtSexo) {
+        this.txtSexo = txtSexo;
     }
 
     public SelectOneMenu getCmbTipoInstructor() {
@@ -191,6 +200,7 @@ public class InstructorVista {
             nuevoPersonal.setDocumentopersonal(documento);
             nuevoPersonal.setNombre(txtNombre.getValue().toString().toUpperCase());
             nuevoPersonal.setApellido(txtApellido.getValue().toString().toUpperCase());
+            nuevoPersonal.setSexo((Character)txtSexo.getValue());
             nuevoPersonal.setCorreo(txtCorreo.getValue().toString().toUpperCase());
             nuevoPersonal.setCorreoinstitucional(txtCorreoInstitucional.getValue().toString().toUpperCase());
             nuevoPersonal.setTelefono(txtTelefono.getValue().toString());            
@@ -234,6 +244,7 @@ public class InstructorVista {
             miPersonal.setDocumentopersonal(documento);
             miPersonal.setNombre(txtNombre.getValue().toString().toUpperCase());
             miPersonal.setApellido(txtApellido.getValue().toString().toUpperCase());
+            miPersonal.setSexo((Character)txtSexo.getValue());
             miPersonal.setCorreo(txtCorreo.getValue().toString().toUpperCase());
             miPersonal.setCorreoinstitucional(txtCorreoInstitucional.getValue().toString().toUpperCase());
             miPersonal.setTelefono(txtTelefono.getValue().toString().toUpperCase());
@@ -287,6 +298,7 @@ public class InstructorVista {
         txtIdentificacion.setDisabled(false);
         txtNombre.setValue("");
         txtApellido.setValue("");
+        txtSexo.setValue("");
         txtCorreo.setValue("");
         txtCorreoInstitucional.setValue("");
         txtTelefono.setValue("");
@@ -322,6 +334,7 @@ public class InstructorVista {
 
             txtNombre.setValue("");
             txtApellido.setValue("");
+            txtSexo.setValue("");
             txtCorreo.setValue("");
             txtCorreoInstitucional.setValue("");
             txtTelefono.setValue("");
@@ -333,6 +346,7 @@ public class InstructorVista {
         {
             txtNombre.setValue(entityPersonal.getNombre());
             txtApellido.setValue(entityPersonal.getApellido());
+            txtSexo.setValue(entityPersonal.getSexo());
             txtCorreo.setValue(entityPersonal.getCorreo());
             txtCorreoInstitucional.setValue(entityPersonal.getCorreoinstitucional());
             txtTelefono.setValue(entityPersonal.getTelefono());
@@ -349,6 +363,7 @@ public class InstructorVista {
         {
             txtNombre.setValue(entityInstructor.getPersonal().getNombre());
             txtApellido.setValue(entityInstructor.getPersonal().getApellido());
+            txtSexo.setValue(entityInstructor.getPersonal().getSexo());
             txtCorreo.setValue(entityInstructor.getPersonal().getCorreo());
             txtCorreoInstitucional.setValue(entityPersonal.getCorreoinstitucional());
             txtTelefono.setValue(entityInstructor.getPersonal().getTelefono()); 
@@ -369,6 +384,7 @@ public class InstructorVista {
         txtIdentificacion.setValue(instructor.getDocumentoinstructor());
         txtNombre.setValue(instructor.getPersonal().getNombre());
         txtApellido.setValue(instructor.getPersonal().getApellido());
+        txtSexo.setValue(instructor.getPersonal().getSexo());
         txtCorreo.setValue(instructor.getPersonal().getCorreo());
         txtCorreoInstitucional.setValue(instructor.getPersonal().getCorreoinstitucional());
         txtTelefono.setValue(instructor.getPersonal().getTelefono());

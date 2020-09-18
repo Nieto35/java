@@ -71,7 +71,20 @@ and open the template in the editor.
 
                                             <h:outputText value="Apellidos:"/>
                                             <p:inputText id="txtApellido" binding="#{aprendizVista.txtApellido}" />
+                                            
+                                            <p:row>
+                                                <p:column>
+                                                    <h:outputText value="Sexo:"/>
+                                                </p:column>
 
+                                                <p:column>                                                
+                                                    <p:selectOneMenu id="cmbSexo" binding="#{aprendizVista.cmbSexoAprendiz}" style="width:90%;">
+                                                        <f:selectItem itemLabel="MASCULINO" itemValue="M" />
+                                                        <f:selectItem itemLabel="FEMENINO" itemValue="F" />
+                                                    </p:selectOneMenu>                                                                                     
+                                                </p:column>
+                                            </p:row>
+                                            
                                             <h:outputText value="Teléfono"/>
                                             <p:inputText id="txtTelefono" binding="#{aprendizVista.txtTelefono}" />
 
@@ -93,18 +106,7 @@ and open the template in the editor.
                                             <h:outputText value="Programa:"/>
                                             <p:inputTextarea id="txtPrograma" rows="5" cols="25" autoResize="false" binding="#{aprendizVista.txtPrograma}"  disabled="true"></p:inputTextarea>
                                             
-                                            <p:row>
-                                                <p:column>
-                                                    <h:outputText value="Sexo:"/>
-                                                </p:column>
-
-                                                <p:column>                                                
-                                                    <p:selectOneMenu id="cmbSexo" binding="#{aprendizVista.cmbSexoAprendiz}" style="width:90%;">
-                                                        <f:selectItem itemLabel="MASCULINO" itemValue="MASCULINO" />
-                                                        <f:selectItem itemLabel="FEMENINO" itemValue="FEMENINO" />
-                                                    </p:selectOneMenu>                                                                                     
-                                                </p:column>
-                                            </p:row>
+                                            
                                             
                                         </p:panelGrid>
                                     </p:panelGrid>
