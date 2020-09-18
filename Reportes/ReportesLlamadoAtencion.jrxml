@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.13.0.final using JasperReports Library version 6.13.0-46ada4d1be8f3c5985fd0b6146f3ed44caed6f05  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportesLlamadoAtencion" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="295ffc2e-4891-4cdf-80ef-93b521d04ea6">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Data Adapter Llamado de Atención"/>
+	<parameter name="DocumentoAprendiz" class="java.lang.String"/>
+	<parameter name="logoSena" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="icontec" class="java.io.InputStream" isForPrompting="false"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT personal.nombrepersonal, personal.apellidopersonal, programa.codigoprograma, programa.nombreprograma 
+FROM personal, programa, aprendiz, perteneceficha, fichatitulacion 
+WHERE aprendiz.documentoaprendiz= $P{DocumentoAprendiz}    AND aprendiz.documentoaprendiz=personal.documentopersonal
+AND  aprendiz.documentoaprendiz=perteneceficha.documentoaprendiz AND programa.codigoprograma=fichatitulacion.codigoprograma 
+AND perteneceficha.numeroficha=fichatitulacion.numeroficha]]>
+	</queryString>
+	<field name="nombrepersonal" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nombrepersonal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personal"/>
+	</field>
+	<field name="apellidopersonal" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="apellidopersonal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personal"/>
+	</field>
+	<field name="codigoprograma" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="codigoprograma"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="programa"/>
+	</field>
+	<field name="nombreprograma" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nombreprograma"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="programa"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="108" splitType="Stretch">
+			<image>
+				<reportElement x="241" y="0" width="91" height="91" uuid="b09c5cad-6109-47b1-bcb1-38c95de3b741"/>
+				<imageExpression><![CDATA[$P{logoSena}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="183" splitType="Stretch">
+			<textField>
+				<reportElement x="20" y="60" width="150" height="30" uuid="fa33dd2e-6d56-4aeb-83b4-c19165cf35d0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="34034fba-e3b0-4868-b5bf-a7ba97111b9a"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombrepersonal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="20" y="80" width="150" height="30" uuid="c7a3b61c-32f2-46cc-aca1-eda01ba9793b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a901637d-026d-405b-a4e3-e8744cab6b92"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{apellidopersonal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="110" width="100" height="30" uuid="a03a3e22-df94-4cd5-b614-b1faec0559ef">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="34034fba-e3b0-4868-b5bf-a7ba97111b9a"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Aprendiz]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="0" width="100" height="30" uuid="b8c5eb6b-80fc-4c69-93c9-6826c9ad0a47"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[76-9125-1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="30" width="40" height="30" uuid="434069b9-0f16-42a6-b428-4ccbc76f1036"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Tulua ,]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="300" y="30" width="170" height="30" uuid="a5129b60-ad39-4823-9a7b-159dbbee3899"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="110" width="460" height="30" uuid="27c3431e-d708-45c5-a5b6-344767675346">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="98fdd77b-f21f-44fb-ba68-e558d105b15d"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreprograma}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="130" width="100" height="30" uuid="2b770b87-638f-4424-92a7-d447a30abe65">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4fa3d279-be5a-422b-a44a-470d8b0c58a2"/>
+				</reportElement>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigoprograma}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="130" width="60" height="30" uuid="9e8d2a3b-2616-4872-a695-f09d1df80f83"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Ficha No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="150" width="140" height="30" uuid="ea60aa1d-ea85-4825-984a-57c82a97e927"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[SENA CLEM Tuluá]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="260" y="0" width="210" height="30" uuid="f42776c2-b708-4645-83bf-31ab8d98d4b1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Asunto:   LLAMADO DE ATENCIÓN]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="317" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="10" width="560" height="140" uuid="7e4d4b99-07d4-4827-b628-da4d70209500"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Cordial saludo,
+
+En Comité de Evaluación y Seguimiento de Aprendices realizado el ________________ según acta no. XX, se sugiere realizar un llamado de atención por falta de compromiso y desinterés con las actividades propuestas, las cuales se evidencian en su desempeño actitudinal y académico y por sus inasistencias continúas a las jornadas de formación sin justificación.
+
+De acuerdo con las recomendaciones del Comité, se sugiere tener más compromiso y dinamismo con los procesos de formación profesional que son el pilar fundamental para su futuro como estudiante del SENA.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="190" width="100" height="30" uuid="2b21ac90-0f2e-4f47-aabd-8a453d31fd26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Cordialmente:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="195" y="230" width="170" height="47" uuid="cb3b287e-f3db-4a5f-a3af-15cc7c8dd901"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[German Suarez García
+ Subdirector de Centro
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="280" width="180" height="30" uuid="fbc872db-0a3e-4da3-85cb-d3ffba86a412"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Transcriptor: Ivonne Garcés   
+Revisó: Jhon Fernando Villada
+]]></text>
+			</staticText>
+			<image>
+				<reportElement x="520" y="166" width="61" height="151" uuid="8af7adf4-3376-4167-9567-f60a2df9f010"/>
+				<imageExpression><![CDATA[$P{icontec}]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="60" y="10" width="460" height="40" uuid="863c222e-0d41-4895-8781-75e1f46f0b20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ministerio de Trabajo
+    SERVICIO NACIONAL DE APRENDIZAJE
+Regional Valle / Centro Latinoamericano de Especies Menores SENA CLEM
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="50" width="410" height="29" uuid="b7fab57e-1048-47a7-9070-a62bafce52bb"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Direccion kilometro 1 via Tulua - Buga, Ciudad Tulua. - PBX (57 2) 2249664
+      www.sena.edu.co - Línea gratuita nacional: 01 8000 9 10 270    GD-F-011 V04 Pag 1 ]]></text>
+			</staticText>
+			<line direction="BottomUp">
+				<reportElement x="100" y="50" width="391" height="1" uuid="6e0d33ce-558f-47d7-bb35-f8a6cded2297">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+		</band>
+	</pageFooter>
+</jasperReport>

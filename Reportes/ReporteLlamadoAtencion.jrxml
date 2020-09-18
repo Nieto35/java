@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.13.0.final using JasperReports Library version 6.13.0-46ada4d1be8f3c5985fd0b6146f3ed44caed6f05  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteLlamadoAtencion" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="acbf19d8-d35f-4697-b78c-359a25f0ed73">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="91" splitType="Stretch">
+			<image>
+				<reportElement x="240" y="0" width="100" height="91" uuid="e614e5d1-e1db-49c7-9ffb-6c90d784893d"/>
+				<imageExpression><![CDATA["Sin título-1.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="175" splitType="Stretch">
+			<staticText>
+				<reportElement x="260" y="50" width="40" height="30" uuid="d1eb538b-73a9-41fb-99c4-3c59ef739bc3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Tulua ,]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="300" y="50" width="100" height="30" uuid="af810918-a838-4baa-892f-d3e1f25d55b1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new   java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="90" width="200" height="76" uuid="b66c56d2-5990-4223-90ee-671fdbe9fec2"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Jeisson Stiven Santacruz Hernández
+Aprendiz
+Tecnología en Gestión Empresarial
+Ficha No. 1437866
+SENA CLEM Tuluá
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="236" y="10" width="100" height="30" uuid="d8a28f68-fb34-4be4-93eb-5c8196349825"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[76-9125-1]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="51" splitType="Stretch">
+			<staticText>
+				<reportElement x="260" y="21" width="210" height="30" uuid="371f24ff-a229-4917-9396-3c4f96cc575b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Asunto:   LLAMADO DE ATENCIÓN]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="344" splitType="Stretch">
+			<staticText>
+				<reportElement x="21" y="30" width="541" height="160" uuid="2c928b81-2593-4f5a-ae94-b2e8bce72a3a"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Cordial saludo,
+
+En Comité de Evaluación y Seguimiento de Aprendices realizado el 25 de junio de 2018 según acta no. 266, se sugiere realizar un llamado de atención por falta de compromiso y desinterés con las actividades propuestas, las cuales se evidencian en su desempeño actitudinal y académico y por sus inasistencias continúas a las jornadas de formación sin justificación.
+
+De acuerdo con las recomendaciones del Comité, se sugiere tener más compromiso y dinamismo con los procesos de formación profesional que son el pilar fundamental para su futuro como estudiante del SENA.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="190" width="100" height="30" uuid="ec9bff30-86a7-4623-a471-20177a0f0cf5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Cordialmente:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="296" width="180" height="30" uuid="5d25569b-efd4-4190-b99d-784ebf428406"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Transcriptor: Ivonne Garcés   
+Revisó: Jhon Fernando Villada
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="195" y="240" width="170" height="47" uuid="6785999c-1b8e-428f-b6e0-a26dcdee5147"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[German Suarez García
+ Subdirector de Centro
+]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="131" splitType="Stretch">
+			<staticText>
+				<reportElement x="60" y="50" width="460" height="40" uuid="b2117c1d-c44a-45fb-b5cb-16ffb951fc8a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ministerio de Trabajo
+    SERVICIO NACIONAL DE APRENDIZAJE
+Regional Valle / Centro Latinoamericano de Especies Menores SENA CLEM
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="90" width="410" height="29" uuid="51bed2db-225f-4a75-83aa-aa0a85aa81ac"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Direccion kilometro 1 via Tulua - Buga, Ciudad Tulua. - PBX (57 2) 2249664
+      www.sena.edu.co - Línea gratuita nacional: 01 8000 9 10 270    GD-F-011 V04 Pag 1 ]]></text>
+			</staticText>
+			<line direction="BottomUp">
+				<reportElement x="100" y="90" width="391" height="1" uuid="b95f1a47-7104-4ba8-a85f-3520bb1cd721">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<image>
+				<reportElement x="520" y="0" width="50" height="130" uuid="290d3607-7c66-48e9-8b11-df8fa23c01f2"/>
+				<imageExpression><![CDATA["qwe.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageFooter>
+</jasperReport>
