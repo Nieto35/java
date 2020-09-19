@@ -22,9 +22,11 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import oracle.jrockit.jfr.events.Bits;
 import org.primefaces.component.commandbutton.CommandButton;
 import org.primefaces.component.inputtext.InputText;
 import org.primefaces.component.inputtextarea.InputTextarea;
+import org.primefaces.component.selectonemenu.SelectOneMenu;
 import org.primefaces.event.SelectEvent;
 
 /**
@@ -45,7 +47,7 @@ public class AprendizVista {
     private InputText txtIdentificacion;
     private InputText txtNombre;
     private InputText txtApellido;
-    private InputText txtSexo;
+    private SelectOneMenu selectSexo;
     private InputText txtCorreo;
     private InputText txtCorreoInstitucional;
     private InputText txtTelefono;
@@ -93,12 +95,12 @@ public class AprendizVista {
         return txtCorreo;
     }
 
-    public InputText getTxtSexo() {
-        return txtSexo;
+    public SelectOneMenu getSelectSexo() {
+        return selectSexo;
     }
 
-    public void setTxtSexo(InputText txtSexo) {
-        this.txtSexo = txtSexo;
+    public void setSelectSexo(SelectOneMenu selectSexo) {
+        this.selectSexo = selectSexo;
     }
 
     public void setTxtCorreo(InputText txtCorreo) {
@@ -211,7 +213,7 @@ public class AprendizVista {
             nuevoPersonal.setDocumentopersonal(docAprendiz);
             nuevoPersonal.setNombre(txtNombre.getValue().toString().toUpperCase());
             nuevoPersonal.setApellido(txtApellido.getValue().toString().toUpperCase());
-            nuevoPersonal.setSexo((Character) txtSexo.getValue());
+            nuevoPersonal.setSexo((char)(selectSexo.getValue()));
             nuevoPersonal.setCorreo(txtCorreo.getValue().toString().toUpperCase());
             nuevoPersonal.setCorreoinstitucional(txtCorreoInstitucional.getValue().toString().toUpperCase());
             nuevoPersonal.setTelefono(txtTelefono.getValue().toString());
@@ -268,7 +270,7 @@ public class AprendizVista {
             miPersonal.setDocumentopersonal(docAprendiz);
             miPersonal.setNombre(txtNombre.getValue().toString().toUpperCase());
             miPersonal.setApellido(txtApellido.getValue().toString().toUpperCase());
-            miPersonal.setSexo((Character) txtSexo.getValue());
+            miPersonal.setSexo((char)(selectSexo.getValue()));
             miPersonal.setCorreo(txtCorreo.getValue().toString().toUpperCase());
             miPersonal.setCorreoinstitucional(txtCorreoInstitucional.getValue().toString().toUpperCase());
             miPersonal.setTelefono(txtTelefono.getValue().toString());
@@ -325,7 +327,7 @@ public class AprendizVista {
         txtIdentificacion.setValue("");
         txtNombre.setValue("");
         txtApellido.setValue("");
-        txtSexo.setValue("");
+        selectSexo.setValue("");
         txtTelefono.setValue("");
         txtCorreo.setValue("");
         txtCorreoInstitucional.setValue("");
@@ -355,7 +357,7 @@ public class AprendizVista {
         {
             txtNombre.setValue("");
             txtApellido.setValue("");
-            txtSexo.setValue("");
+            selectSexo.setValue("");
             txtCorreo.setValue("");
             txtCorreoInstitucional.setValue("");
             txtTelefono.setValue("");
@@ -373,7 +375,7 @@ public class AprendizVista {
         {
             txtNombre.setValue(entityPersonal.getNombre());
             txtApellido.setValue(entityPersonal.getApellido());
-            txtSexo.setValue(entityPersonal.getSexo());
+            selectSexo.setValue(entityPersonal.getSexo());
             txtCorreo.setValue(entityPersonal.getCorreo());
             txtCorreoInstitucional.setValue(entityPersonal.getCorreoinstitucional());
             txtTelefono.setValue(entityPersonal.getTelefono());
@@ -388,7 +390,7 @@ public class AprendizVista {
             txtIdentificacion.setValue(apre.getDocumentoaprendiz());
             txtNombre.setValue(apre.getPersonal().getNombre());
             txtApellido.setValue(apre.getPersonal().getApellido());
-            txtSexo.setValue(apre.getPersonal().getSexo());
+            selectSexo.setValue(apre.getPersonal().getSexo());
             txtCorreo.setValue(apre.getPersonal().getCorreo());
             txtCorreoInstitucional.setValue(entityPersonal.getCorreoinstitucional());
             txtTelefono.setValue(apre.getPersonal().getTelefono());
@@ -451,7 +453,7 @@ public class AprendizVista {
             txtIdentificacion.setValue(apre.getDocumentoaprendiz());
             txtNombre.setValue(apre.getPersonal().getNombre());
             txtApellido.setValue(apre.getPersonal().getApellido());
-            txtSexo.setValue(apre.getPersonal().getSexo());
+            selectSexo.setValue(apre.getPersonal().getSexo());
             txtCorreo.setValue(apre.getPersonal().getCorreo());
             txtCorreoInstitucional.setValue(apre.getPersonal().getCorreoinstitucional());
             txtTelefono.setValue(apre.getPersonal().getTelefono());
