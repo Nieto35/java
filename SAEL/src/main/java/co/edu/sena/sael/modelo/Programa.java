@@ -34,10 +34,10 @@ public class Programa implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "codigoprograma", nullable = false)//@NotNull
+    @Column(name = "codigoprograma", nullable = false)
     private Integer codigoprograma;
-    @Column(name = "nombreprograma",length = 100)//@Size(max = 100)
-    private String nombreprograma;
+    @Column(name = "nombre", length = 100)
+    private String nombre;
     @OneToMany(mappedBy = "codigoprograma")
     private Collection<Fichatitulacion> fichatitulacionCollection;
 

@@ -34,8 +34,8 @@ public class Seguimientoaprendiz implements Serializable {
     @EmbeddedId
     protected SeguimientoaprendizPK seguimientoaprendizPK;
     @Lob
-    @Column(name = "rendimientoseguimiento", length = 65535)// @Size(max = 65535)
-    private String rendimientoseguimiento;
+    @Column(name = "conceptoespecifico", length = 65535)
+    private String conceptoespecifico;
     @JoinColumn(name = "documentoaprendiz", referencedColumnName = "documentoaprendiz", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Aprendiz aprendiz;

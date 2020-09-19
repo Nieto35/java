@@ -93,6 +93,22 @@ and open the template in the editor.
 
                                                 <h:outputText value="Apellido:"/>
                                                 <p:inputText id="txtApellido" binding="#{aprendizVista.txtApellido}" />
+                                                
+                                                <p:row>
+                                                    <p:column>
+                                                        <h:outputText value="Sexo:"/>
+                                                    </p:column>
+
+                                                    <p:column colspan="3">
+                                                        <div align="left">
+                                                            <p:selectOneMenu id="selectSexo" binding="#{aprendizVista.selectSexo}" >
+                                                                <f:selectItem itemLabel="MASCULINO" itemValue="M" />
+                                                                <f:selectItem itemLabel="FEMENINO" itemValue="F" />
+                                                            </p:selectOneMenu>
+                                                        </div>                                      
+                                                    </p:column>                                     
+
+                                                </p:row>
 
                                                 <h:outputText value="Teléfono"/>
                                                 <p:inputText id="txtTelefono" binding="#{aprendizVista.txtTelefono}" />
@@ -114,6 +130,9 @@ and open the template in the editor.
 
                                                 <h:outputText value="Programa:"/>
                                                 <p:inputTextarea id="txtPrograma" rows="5" cols="25" autoResize="false" binding="#{aprendizVista.txtPrograma}"  disabled="true"></p:inputTextarea>
+                                                
+                                                 
+
                                             </p:panelGrid>
                                         </p:panelGrid>
 

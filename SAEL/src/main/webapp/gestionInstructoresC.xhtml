@@ -94,6 +94,19 @@ and open the template in the editor.
                                             <p:column>
                                                 <p:inputText id="txtApellido" binding="#{instructorVista.txtApellido}" style="width:90%;"/>
                                             </p:column>
+                                            
+                                        <p:row>
+                                            <p:column>
+                                                <h:outputText value="Sexo:"/>
+                                            </p:column>
+
+                                            <p:column>                                                
+                                                <p:selectOneMenu id="selectSexo" binding="#{instrutorVista.selectSexo}" style="width:90%;">
+                                                    <f:selectItem itemLabel="MASCULINO" itemValue="M" />
+                                                    <f:selectItem itemLabel="FEMENINO" itemValue="F" />
+                                                </p:selectOneMenu>                                                                                     
+                                            </p:column>
+                                        </p:row>
 
                                             <p:column>
                                                 <h:outputText value="Correo:"/>
@@ -146,6 +159,8 @@ and open the template in the editor.
                                                 </p:selectOneMenu>                                                                                     
                                             </p:column>
                                         </p:row>
+                                        
+                                        
                                         
                                         <p:row>
                                             <p:column colspan="6">

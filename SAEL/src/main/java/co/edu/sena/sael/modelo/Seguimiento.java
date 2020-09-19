@@ -59,28 +59,28 @@ public class Seguimiento implements Serializable {
     private String observaciones;
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
-    private Date fechaseguimiento;
-    @Column(name = "faseseguimiento", length = 50)//@Size(max = 50)
-    private String faseseguimiento;
+    private Date fecha;
+    @Column(name = "objetivos", length = 50)
+    private String objetivos;
     @Lob
-    @Column(name = "observacionesseguimiento", length = 65535)//@Size(max = 65535)
-    private String observacionesseguimiento;
-    @Lob 
-    @Column(name = "conclusionesseguimiento", length = 65535 )//@Size(max = 65535)
-    private String conclusionesseguimiento;
+    @Column(name = "conclusiones", length = 65535)
+    private String conclusiones;
     @Lob
-    @Column(name = "compromisosseguimiento", length = 65535 )//@Size(max = 65535)
-    private String compromisosseguimiento;
-    @Column(name = "lugarseguimiento", length = 50 )//@Size(max = 50)
-    private String lugarseguimiento;
-    @Column(name = "horainicioseguimiento")
+    @Column(name = "compromisos", length = 65535)
+    private String compromisos;
+    @Column(name = "lugar", length = 50)
+    private String lugar;
+    @Column(name = "horainicio")
     @Temporal(TemporalType.TIME)
     private Date horainicio;
     @Column(name = "horafin")
     @Temporal(TemporalType.TIME)
-    private Date horafinseguimiento;
-    @Column(name = "estadoseguimiento",length = 50 )//@Size(max = 50)
-    private String estadoseguimiento;
+    private Date horafin;
+    @Column(name = "estado", length = 50)
+    private String estado;
+    @Lob
+    @Column(name = "motivocancelacion", length = 65535)
+    private String motivocancelacion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "seguimiento")
     private Collection<Comite> comiteCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "seguimiento")
