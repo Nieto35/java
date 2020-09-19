@@ -46,8 +46,8 @@ public class Fichatitulacion implements Serializable {
     @Basic(optional = false)
     @Column(name = "numeroficha", nullable = false)//@NotNull
     private Integer numeroficha;
-    @Column(name = "jornadaficha", length = 50)//@Size
-    private String jornadaficha;
+    @Column(name = "jornada", length = 50)//@Size
+    private String jornada;
     @Column(name = "fechainicio")
     @Temporal(TemporalType.DATE)
     private Date fechainicio;

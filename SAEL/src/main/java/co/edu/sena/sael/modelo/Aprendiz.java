@@ -39,8 +39,8 @@ public class Aprendiz implements Serializable {
     @Basic(optional = false)
     @Column(name = "documentoaprendiz",nullable = false)//@NotNull
     private Long documentoaprendiz;
-    @Column(name = "estadoaprendiz", length = 50)// @Size
-    private String estadoaprendiz;
+    @Column(name = "estado", length = 50)// @Size
+    private String estado;
     @OneToMany(mappedBy = "documentoaprendiz")
     private Collection<Inasistencia> inasistenciaCollection;
     @OneToMany(mappedBy = "documentoaprendiz")

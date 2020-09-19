@@ -38,8 +38,8 @@ public class Coordinador implements Serializable {
     @Basic(optional = false)
     @Column(name = "documentocoordinador", nullable = false)//@NotNull
     private Long documentocoordinador;
-    @Column(name = "tipocoordinador", length = 50)//@Size
-    private String tipocoordinador;
+    @Column(name = "tipo", length = 50)//@Size
+    private String tipo;
     @OneToMany(mappedBy = "documentocoordinador")
     private Collection<Permiso> permisoCollection;
     @OneToMany(mappedBy = "documentocoordinador")

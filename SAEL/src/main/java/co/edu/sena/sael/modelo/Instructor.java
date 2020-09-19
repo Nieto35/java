@@ -41,14 +41,14 @@ public class Instructor implements Serializable {
     @Basic(optional = false)
     @Column(name = "documentoinstructor", nullable = false)//@NotNull
     private Long documentoinstructor;
-    @Column(name = "tipoinstructor", length = 50)//@Size
-    private String tipoinstructor;
+    @Column(name = "tipo", length = 50)//@Size
+    private String tipo;
     @Lob
-    @Column(name = "perfilocupacionalinstructor",length = 65535)//@Size
-    private String perfilocupacionalinstructor;
+    @Column(name = "perfilocupacional",length = 65535)//@Size
+    private String perfilocupacional;
     @Lob
-    @Column(name = "logrosinstructor",length = 65535)//@Size
-    private String logrosinstructor;
+    @Column(name = "logros",length = 65535)//@Size
+    private String logros;
     @ManyToMany(mappedBy = "instructorCollection")
     private Collection<Fichatitulacion> fichatitulacionCollection;
     @OneToMany(mappedBy = "documentoinstructor")

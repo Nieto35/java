@@ -33,8 +33,8 @@ public class Comite implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected ComitePK comitePK;
-    @Column(name = "cargocomite", length = 50)//@Size
-    private String cargocomite;
+    @Column(name = "cargo", length = 50)//@Size
+    private String cargo;
     @JoinColumn(name = "documentopersonal", referencedColumnName = "documentopersonal", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Personal personal;
