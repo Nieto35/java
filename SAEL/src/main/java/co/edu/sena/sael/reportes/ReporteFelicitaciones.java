@@ -27,6 +27,7 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.engine.export.ooxml.JRDocxExporter;
 import net.sf.jasperreports.export.SimpleExporterInput;
 import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 
@@ -77,20 +78,28 @@ public class ReporteFelicitaciones extends HttpServlet {
             //se llena el reporte
             JasperPrint jasperPrint = JasperFillManager.fillReport(inputStream, params, conn);
 
-            JRPdfExporter pdfExporter = new JRPdfExporter();
-            pdfExporter.setExporterInput(new SimpleExporterInput(jasperPrint));
-            ByteArrayOutputStream pdfReportStream = new ByteArrayOutputStream();
-            pdfExporter.setExporterOutput(new SimpleOutputStreamExporterOutput(pdfReportStream));
-            pdfExporter.exportReport();
+            
+            JRDocxExporter docxExporter = new JRDocxExporter();
+            docxExporter.setExporterInput(new  SimpleExporterInput(jasperPrint));
+            ByteArrayOutputStream docxReportStream = new ByteArrayOutputStream();
+            docxExporter.setExporterOutput(new SimpleOutputStreamExporterOutput(docxReportStream));
+             docxExporter.exportReport();
+                    
+           // JRPdfExporter pdfExporter = new JRPdfExporter();
+           // pdfExporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+           // ByteArrayOutputStream pdfReportStream = new ByteArrayOutputStream();
+        // pdfExporter.setExporterOutput(new SimpleOutputStreamExporterOutput(pdfReportStream));
+          //  pdfExporter.exportReport();
 
-            response.setContentType("application/pdf");
-            response.setHeader("content-Length", String.valueOf(pdfReportStream.size()));
-            response.setHeader("Content-disposition", "attachment; filename=reporteFelicitaciones.pdf");
+            response.setContentType("application/docx");
+            response.setHeader("content-Length", String.valueOf(docxReportStream.size()));
+            response.setHeader("Content-disposition", "attachment; filename=reporteFelicitaciones.docx");
 
             OutputStream responseOutputStream = response.getOutputStream();
-            responseOutputStream.write(pdfReportStream.toByteArray());
+            responseOutputStream.write(docxReportStream.toByteArray());
             responseOutputStream.close();
-            pdfReportStream.close();
+            docxReportStream.close();
+
         } catch (IOException | ClassNotFoundException | SQLException | NamingException | JRException e) {
             e.printStackTrace();
         } finally {
