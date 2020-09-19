@@ -17,8 +17,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -38,13 +36,10 @@ public class Coordinador implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-
-    @Column(name = "documentocoordinador", nullable = false)
+    @Column(name = "documentocoordinador", nullable = false)//@NotNull
     private Long documentocoordinador;
-
-    @Column(name = "tipo", length = 50)
-    private String tipo;
-    
+    @Column(name = "tipocoordinador", length = 50)//@Size
+    private String tipocoordinador;
     @OneToMany(mappedBy = "documentocoordinador")
     private Collection<Permiso> permisoCollection;
     @OneToMany(mappedBy = "documentocoordinador")

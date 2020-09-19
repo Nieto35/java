@@ -21,7 +21,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -50,10 +49,9 @@ public class Comiteproductiva implements Serializable {
     private Date fechacomite;
     
     @Lob
-    @Column(name = "observacionescomite", length = 65535)
+    @Column(name = "observacionescomite", length = 65535)//@Size(
     private String observacionescomite;
-    
-    @Column(name = "actacomite", length = 50)
+    @Column(name = "actacomite", length = 50)//@Size(
     private String actacomite;
     
     @JoinColumn(name = "codigoeproductiva", referencedColumnName = "codigoeproductiva")

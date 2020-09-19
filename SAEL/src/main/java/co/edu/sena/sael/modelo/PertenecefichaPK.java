@@ -18,10 +18,10 @@ import javax.persistence.Embeddable;
 public class PertenecefichaPK implements Serializable {
 
     @Basic(optional = false)
-    @Column(name = "documentoaprendiz", nullable = false)
+    @Column(name = "documentoaprendiz",nullable = false)//@NotNull)
     private long documentoaprendiz;
     @Basic(optional = false)
-    @Column(name = "numeroficha", nullable = false)
+    @Column(name = "numeroficha",nullable = false)//@NotNull)
     private int numeroficha;
 
     public PertenecefichaPK() {

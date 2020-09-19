@@ -15,8 +15,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -38,16 +36,13 @@ public class Empresa implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "numeroempresa", nullable = false)
+    @Column(name = "numeroempresa", nullable = false)//@NotNull
     private Long numeroempresa;
-
-    @Column(name = "nombreempresa", length = 50)
+    @Column(name = "nombreempresa", length = 50)//@Size
     private String nombreempresa;
-
-    @Column(name = "direccionempresa", length = 50)
+    @Column(name = "direccionempresa", length = 50)//@Size
     private String direccionempresa;
-
-    @Column(name = "telefonoempresa", length = 50)
+    @Column(name = "telefonoempresa", length = 50)//@Size
     private String telefonoempresa;
     
     @OneToMany(mappedBy = "numeroempresa")

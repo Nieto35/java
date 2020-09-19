@@ -123,6 +123,22 @@ and open the template in the editor.
                                                         <p:inputText id="txtApellido" binding="#{instructorVista.txtApellido}" size="30"/>
                                                     </div>                                      
                                                 </p:column>
+                                                
+                                            <p:row>
+                                                <p:column>
+                                                    <h:outputText value="Sexo:"/>
+                                                </p:column>
+
+                                                <p:column colspan="3">
+                                                    <div align="left">
+                                                        <p:selectOneMenu id="selectSexo" binding="#{instructorVista.selectSexo}" >
+                                                            <f:selectItem itemLabel="MASCULINO" itemValue="M" />
+                                                            <f:selectItem itemLabel="FEMENINO" itemValue="F" />
+                                                        </p:selectOneMenu>
+                                                    </div>                                      
+                                                </p:column>                                     
+
+                                            </p:row>
 
                                                 <p:column>
                                                     <h:outputText value="Correo:"/>
@@ -172,6 +188,8 @@ and open the template in the editor.
                                                 </p:column>                                     
 
                                             </p:row> 
+
+                                                                                         
 
                                             <p:row>
                                                 <p:column colspan="4">

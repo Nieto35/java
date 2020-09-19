@@ -20,7 +20,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -45,11 +44,9 @@ public class Experiencia implements Serializable {
     @Basic(optional = false)
     @Column(name = "codigoexperiencia")
     private Integer codigoexperiencia;
-
-    @Column(name = "empresaexperiencia", length = 50)
+    @Column(name = "empresaexperiencia", length = 50)//@Size
     private String empresaexperiencia;
-
-    @Column(name = "ocupacionexperiencia", length = 50)
+    @Column(name = "ocupacionexperiencia", length = 50)//@Size
     private String ocupacionexperiencia;
     
     @Column(name = "fechaingresoexperiencia")

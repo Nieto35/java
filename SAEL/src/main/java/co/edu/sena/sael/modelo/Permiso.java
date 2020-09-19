@@ -22,7 +22,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
+/** 
  *
  * @author dasak
  */
@@ -54,9 +54,9 @@ public class Permiso implements Serializable {
     @Column(name = "horahastapermiso")
     @Temporal(TemporalType.TIME)
     private Date horahastapermiso;
-    @Column(name = "motivopermiso", length = 100)
+    @Column(name = "motivopermiso",length = 100)//@Size
     private String motivopermiso;
-    @Column(name = "estadopermiso", length = 50)
+    @Column(name = "estadopermiso",length = 50)//@Size)
     private String estadopermiso;
     @JoinColumn(name = "documentoaprendiz", referencedColumnName = "documentoaprendiz")
     @ManyToOne

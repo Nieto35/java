@@ -49,33 +49,31 @@ public class Personal implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "documentopersonal", nullable = false)
+    @Column(name = "documentopersonal", nullable = false)// @NotNull
     private Long documentopersonal;
     @Basic(optional = false)
-    @Column(name = "nombre", nullable = false, length = 100)
-    private String nombre;
+    @Column(name = "nombrepersonal",nullable = false, length = 100)//@NotNull,@Size
+    private String nombrepersonal;
     @Basic(optional = false)
-    @Column(name = "apellido", nullable = false, length = 100)
-    private String apellido;
-    @Column(name = "direccion", length = 100)
-    private String direccion;
-    @Column(name = "correo", length = 100)
-    private String correo;
-    @Column(name = "telefono", length = 100)
-    private String telefono;
-    @Column(name = "clave", length = 255)
-    private String clave;
-    @Column(name = "fechanacimiento")
+    @Column(name = "apellidopersonal",nullable = false, length = 100)//@NotNull,@Size)
+    private String apellidopersonal;
+    @Column(name = "direccionpersonal",length = 100)//@size
+    private String direccionpersonal;
+    @Column(name = "correopersonal",length = 100)//@size)
+    private String correopersonal;
+    @Column(name = "telefonopersonal",length = 100)//@size)
+    private String telefonopersonal;   
+    @Column(name = "clavepersonal",length = 255)//@size)
+    private String clavepersonal;
+    @Column(name = "fechanacimientopersonal")
     @Temporal(TemporalType.DATE)
-    private Date fechanacimiento;
-    @Column(name = "lugarnacimiento", length = 50)
-    private String lugarnacimiento;
-    @Column(name = "foto", length = 100)
-    private String foto;
-    @Column(name = "correoinstitucional", length = 100)
-    private String correoinstitucional;
-    @Column(name = "sexo")
-    private Character sexo;
+    private Date fechanacimientopersonal; 
+    @Column(name = "lugarnacimientopersonal",length = 50)//@size)
+    private String lugarnacimientopersonal;  
+    @Column(name = "fotopersonal",length = 100)//@size)
+    private String fotopersonal;
+    @Column(name = "correoinstitucionalpersonal",length = 100)//@size)
+    private String correoinstitucionalpersonal;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "personal")
     private Collection<Comite> comiteCollection;
     @OneToMany(mappedBy = "documentopersonal")

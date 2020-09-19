@@ -19,7 +19,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -45,8 +44,7 @@ public class Ambienteaprendizaje implements Serializable {
     @Basic(optional = false)
     @Column(name = "codigoambiente")
     private Integer codigoambiente;
-    
-    @Column(name = "nombreambiente", length = 50)
+    @Column(name = "nombreambiente", length = 50)// @Size
     private String nombreambiente;
     
     @Column(name = "capacidadambiente")
@@ -54,8 +52,7 @@ public class Ambienteaprendizaje implements Serializable {
     
     @Column(name = "areaambiente")
     private Integer areaambiente;
-    
-    @Column(name = "estadoambiente", length = 50)
+    @Column(name = "estadoambiente", length = 50)// @Size
     private String estadoambiente;
     @JoinColumn(name = "numerosede", referencedColumnName = "numerosede")
     @ManyToOne

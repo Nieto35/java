@@ -18,8 +18,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -39,13 +37,10 @@ public class Aprendiz implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    
-    @Column(name = "documentoaprendiz", nullable = false)
+    @Column(name = "documentoaprendiz",nullable = false)//@NotNull
     private Long documentoaprendiz;
-
-    @Column(name = "estado", length = 50)
-    private String estado;
-    
+    @Column(name = "estadoaprendiz", length = 50)// @Size
+    private String estadoaprendiz;
     @OneToMany(mappedBy = "documentoaprendiz")
     private Collection<Inasistencia> inasistenciaCollection;
     @OneToMany(mappedBy = "documentoaprendiz")

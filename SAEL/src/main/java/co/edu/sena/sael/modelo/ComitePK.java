@@ -9,7 +9,6 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -19,12 +18,10 @@ import javax.validation.constraints.NotNull;
 public class ComitePK implements Serializable {
 
     @Basic(optional = false)
-
-    @Column(name = "documentopersonal", nullable = false)
+    @Column(name = "documentopersonal", nullable = false)//@NotNull
     private long documentopersonal;
     @Basic(optional = false)
-
-    @Column(name = "numeroseguimiento", nullable = false)
+    @Column(name = "numeroseguimiento", nullable = false)//@NotNull
     private int numeroseguimiento;
 
     public ComitePK() {

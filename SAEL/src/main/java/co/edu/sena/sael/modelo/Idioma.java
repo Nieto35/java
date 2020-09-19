@@ -18,7 +18,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -41,8 +40,7 @@ public class Idioma implements Serializable {
     @Basic(optional = false)
     @Column(name = "codigoidioma")
     private Integer codigoidioma;
-    
-    @Column(name = "nombreidioma", length = 50)
+    @Column(name = "nombreidioma",length = 50)//@Size
     private String nombreidioma;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idioma")
     private Collection<Hablaidioma> hablaidiomaCollection;

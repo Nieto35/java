@@ -18,10 +18,10 @@ import javax.persistence.Embeddable;
 public class SeguimientoaprendizPK implements Serializable {
 
     @Basic(optional = false)
-    @Column(name = "documentoaprendiz", nullable = false)
+    @Column(name = "documentoaprendiz", nullable = false)//@NotNull
     private long documentoaprendiz;
     @Basic(optional = false)
-    @Column(name = "numeroseguimiento", nullable = false)
+    @Column(name = "numeroseguimiento", nullable = false)//@NotNull
     private int numeroseguimiento;
 
     public SeguimientoaprendizPK() {

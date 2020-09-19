@@ -18,11 +18,11 @@ import javax.persistence.Embeddable;
 public class HablaidiomaPK implements Serializable {
 
     @Basic(optional = false)
-    @Column(name = "documentoinstructor", nullable = false)
+    @Column(name = "documentoinstructor", nullable = false)//@NotNull
     private long documentoinstructor;
     
     @Basic(optional = false)
-    @Column(name = "codigoidioma", nullable = false)
+    @Column(name = "codigoidioma", nullable = false)//@NotNull
     private int codigoidioma;
 
     public HablaidiomaPK() {

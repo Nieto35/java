@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javafx.scene.chart.Chart;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import jxl.Sheet;
@@ -119,6 +120,8 @@ public class InstructorLogica implements InstructorLogicaLocal {
         Sheet hoja = archivoExcel.getSheet(0);
         int numFilas = hoja.getRows();
         
+        
+        
         personasInsertadas = 0;
         personasExistentes = 0;
         instructoresInsertados=0;    
@@ -130,10 +133,12 @@ public class InstructorLogica implements InstructorLogicaLocal {
             Personal nuevoPersonal = new Personal();
             try {
                 nuevoPersonal.setDocumentopersonal(Long.parseLong(hoja.getCell(0, fila).getContents()));
-                nuevoPersonal.setNombre(hoja.getCell(1, fila).getContents().toUpperCase());
+                nuevoPersonal.setNombre(hoja.getCell(1,fila).getContents().toUpperCase());
                 nuevoPersonal.setApellido(hoja.getCell(2, fila).getContents().toUpperCase());
                 nuevoPersonal.setCorreo(hoja.getCell(3, fila).getContents().toUpperCase());
                 nuevoPersonal.setTelefono(hoja.getCell(4, fila).getContents());
+                //String sexo =  s;
+                nuevoPersonal.setSexo(hoja.getCell(5,fila).getContents().charAt(0));
                 nuevoPersonal.setClave(hoja.getCell(0, fila).getContents());
                 
                 boolean personalValido = personalLogica.validarDatosPersonal(nuevoPersonal);

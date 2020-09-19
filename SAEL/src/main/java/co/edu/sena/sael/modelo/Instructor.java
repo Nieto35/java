@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
  *
  * @author dasak
  */
-@Entity
+@Entity 
 @Table(name = "instructor")
 @XmlRootElement
 @NamedQueries({
@@ -39,16 +39,16 @@ public class Instructor implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "documentoinstructor", nullable = false)
+    @Column(name = "documentoinstructor", nullable = false)//@NotNull
     private Long documentoinstructor;
-    @Column(name = "tipo", length = 50)
-    private String tipo;
+    @Column(name = "tipoinstructor", length = 50)//@Size
+    private String tipoinstructor;
     @Lob
-    @Column(name = "perfilocupacional", length = 65535)
-    private String perfilocupacional;
+    @Column(name = "perfilocupacionalinstructor",length = 65535)//@Size
+    private String perfilocupacionalinstructor;
     @Lob
-    @Column(name = "logros", length = 65535)
-    private String logros;
+    @Column(name = "logrosinstructor",length = 65535)//@Size
+    private String logrosinstructor;
     @ManyToMany(mappedBy = "instructorCollection")
     private Collection<Fichatitulacion> fichatitulacionCollection;
     @OneToMany(mappedBy = "documentoinstructor")

@@ -48,7 +48,7 @@ public class Inasistencia implements Serializable {
     private Date fechainasistencia;
     @Column(name = "horasinasistencia")
     private Integer horasinasistencia;
-    @Column(name = "excusainasistencia", length = 50)
+    @Column(name = "excusainasistencia",length = 50)//@Size
     private String excusainasistencia;
     @JoinColumn(name = "documentoaprendiz", referencedColumnName = "documentoaprendiz")
     @ManyToOne

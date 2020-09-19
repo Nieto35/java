@@ -23,8 +23,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -46,12 +44,10 @@ public class Fichatitulacion implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "numeroficha", nullable = false)
+    @Column(name = "numeroficha", nullable = false)//@NotNull
     private Integer numeroficha;
-    
-    @Column(name = "jornada", length = 50)
-    private String jornada;
-    
+    @Column(name = "jornadaficha", length = 50)//@Size
+    private String jornadaficha;
     @Column(name = "fechainicio")
     @Temporal(TemporalType.DATE)
     private Date fechainicio;

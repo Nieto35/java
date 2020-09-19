@@ -48,15 +48,16 @@ public class Ingreso implements Serializable {
     @Column(name = "fechaingreso")
     @Temporal(TemporalType.DATE)
     private Date fechaingreso;
-    @Column(name = "horaingreso", length = 50)
+    @Column(name = "horaingreso",length = 50)//@Size
     private String horaingreso;
     @Column(name = "fechasalida")
     @Temporal(TemporalType.DATE)
     private Date fechasalida;
-    @Column(name = "horasalida", length = 50)
+   
+    @Column(name = "horasalida",length = 50)//@Size
     private String horasalida;
     @Lob
-    @Column(name = "motivoingreso", length = 65535)
+    @Column(name = "motivoingreso",length = 65535)//@Size
     private String motivoingreso;
     @JoinColumn(name = "numeroelemento", referencedColumnName = "codigoelemento")
     @ManyToOne

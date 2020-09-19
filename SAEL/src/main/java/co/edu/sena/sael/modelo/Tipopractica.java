@@ -40,10 +40,10 @@ public class Tipopractica implements Serializable {
     @Basic(optional = false)
     @Column(name = "codigotipopractica")
     private Integer codigotipopractica;
-    @Column(name = "nombretipopractica", length = 50)
+    @Column(name = "nombretipopractica", length = 50)// @Size(max = 50)
     private String nombretipopractica;
     @Lob
-    @Column(name = "descripciontipopractica", length = 65535)
+    @Column(name = "descripciontipopractica", length = 65535)//@Size(max = 65535)
     private String descripciontipopractica;
     @OneToMany(mappedBy = "codigotipopractica")
     private Collection<Eproductiva> eproductivaCollection;
