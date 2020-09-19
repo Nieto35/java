@@ -27,4 +27,10 @@
         <managed-bean-class>co.edu.sena.sael.vista.FichaAprendizVista</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>reportesVista</managed-bean-name>
+        <managed-bean-class>co.edu.sena.sael.vista.ReportesVista</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    
 </faces-config>

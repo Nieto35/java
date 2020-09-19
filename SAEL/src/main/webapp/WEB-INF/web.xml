@@ -30,9 +30,17 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>ReporteFelicitaciones</servlet-name>
+        <servlet-class>co.edu.sena.sael.reportes.ReporteFelicitaciones</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReporteFelicitaciones</servlet-name>
+        <url-pattern>/ReporteFelicitaciones.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -46,22 +54,18 @@
         <error-code>403</error-code>
         <location>/error_pages/403.xhtml</location>
     </error-page>
-    
     <error-page>
         <error-code>404</error-code>
         <location>/error_pages/404.xhtml</location>
     </error-page>
-    
     <error-page>
         <error-code>500</error-code>
         <location>/error_pages/500.xhtml</location>
     </error-page>
-    
     <error-page>
         <exception-type>java.lang.Throwable</exception-type>
         <location>/error_pages/500.xhtml</location>
     </error-page>
-    
     <error-page>
         <exception-type>javax.persistence.OptimisticLockException</exception-type>
         <location>/error_pages/optimistic.xhtml</location>
