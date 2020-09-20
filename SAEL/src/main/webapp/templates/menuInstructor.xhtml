@@ -39,7 +39,7 @@ and open the template in the editor.
 
 
                             <li class="nav-item">
-                                <a href="indexCoordinador.xhtml" class="nav-link">
+                                <a href="indexInstructor.xhtml" class="nav-link">
                                     <i class="fas fa-home"></i>
                                     <p>
                                         Inicio
@@ -48,16 +48,16 @@ and open the template in the editor.
                             </li> 
 
                             <li class="nav-item">
-                                <a href="gestionSeguimientosC.xhtml" class="nav-link">
+                                <a href="ejecutarSeguimientosIns.xhtml" class="nav-link">
                                     <i class="fas fa-search"></i>
                                     <p>
-                                        Programar Seguimiento
+                                        Ejecutar Seguimiento
                                     </p>
                                 </a>
                             </li> 
 
                             <li class="nav-item">
-                                <a href="gestionAprendicesC.xhtml" class="nav-link">
+                                <a href="gestionAprendicesIns.xhtml" class="nav-link">
                                     <i class="fas fa-search"></i>
                                     <p>
                                         Aprendices
@@ -66,7 +66,7 @@ and open the template in the editor.
                             </li>
 
                             <li class="nav-item">
-                                <a href="gestionInstructoresC.xhtml" class="nav-link">
+                                <a href="gestionInstructoresIns.xhtml" class="nav-link">
                                     <i class="fas fa-search"></i>
                                     <p>
                                         Instructores
@@ -74,36 +74,9 @@ and open the template in the editor.
                                 </a>
                             </li>
 
-                            <li class="nav-item has-treeview">
-                                <a href="#" class="nav-link">
-                                    <i class="fas fa-search"></i>
-                                    <p>
-                                        Fichas
-                                        <i class="fas fa-angle-left right"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="gestionFichasC.xhtml" class="nav-link">
-                                            <i class="nav-icon far fa-calendar-alt"></i>
-                                            <p>
-                                                Gestión              
-                                            </p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="gestionFichaAprendizC.xhtml" class="nav-link">
-                                            <i class="nav-icon fas fa-tasks"></i>
-                                            <p>
-                                                Asignar estado a aprendices
-                                            </p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-
+                            
                             <li class="nav-item">
-                                <a href="reportes.xhtml" class="nav-link">
+                                <a href="#" class="nav-link">
                                     <i class="fas fa-search"></i>
                                     <p>
                                         Reportes
@@ -112,7 +85,7 @@ and open the template in the editor.
                             </li>
 
                             <li class="nav-item">
-                                <a href="CambiaPasswordCoord.xhtml" class="nav-link">
+                                <a href="CambiaPasswordInst.xhtml" class="nav-link">
                                     <i class="fas fa-search"></i>
                                     <p>
                                         Cambio Contraseña
@@ -122,7 +95,7 @@ and open the template in the editor.
 
                             <li class="nav-item">
                                 <div class="col-md-2">    
-                                    <b:navLink  action-listener="#{usuarioVista.cerrarSesionAction()}" value="Cerrar Sesión" href="index.xhtml"/>
+                                    <b:navLink binding="" action-listener="#{usuarioVista.cerrarSesionAction()}" value="Cerrar Sesión" href="index.xhtml"/>
                                    
                                 </div>
                             </li>
