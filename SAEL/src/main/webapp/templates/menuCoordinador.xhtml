@@ -122,7 +122,8 @@ and open the template in the editor.
 
                             <li class="nav-item">
                                 <div class="col-md-2">    
-                                    <p:commandButton id="btnCerrrarSesion" value="Cerrar Sesion"  action="#{usuarioVista.cerrarSesionAction()}" />
+                                    <b:navLink  action-listener="#{usuarioVista.cerrarSesionAction()}" value="Cerrar Sesión" href="index.xhtml"/>
+                                   
                                 </div>
                             </li>
 
