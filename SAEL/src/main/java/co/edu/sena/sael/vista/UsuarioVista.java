@@ -55,7 +55,7 @@ public class UsuarioVista implements Serializable{
     private String opcion;
     
     private InputSecret passClaveOld;
-    private Password passClaveNew;
+    private InputSecret passClaveNew;
     private InputSecret passClaveNew2;
     private Personal usuarioLogeado;
     private String[] listaTiposUsuario = Constantes.LIST_TIPOS_USUARIO; 
@@ -108,11 +108,11 @@ public class UsuarioVista implements Serializable{
         this.passClaveOld = passClaveOld;
     }
 
-    public Password getPassClaveNew() {
+    public InputSecret getPassClaveNew() {
         return passClaveNew;
     }
 
-    public void setPassClaveNew(Password passClaveNew) {
+    public void setPassClaveNew(InputSecret passClaveNew) {
         this.passClaveNew = passClaveNew;
     }
 

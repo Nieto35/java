@@ -124,7 +124,7 @@
                                                     <b:inputText id="txtJornada" binding="#{aprendizVista.txtJornada}" disabled="true"/>
 
                                                     <h:outputText value="Programa:"/>
-                                                    <b:inputTextarea id="txtPrograma" rows="5" col-sm="14" maxlength="0" binding="#{aprendizVista.txtPrograma}"  disabled="true"></b:inputTextarea>
+                                                    <b:inputText id="txtPrograma" col-sm="14" maxlength="0" binding="#{aprendizVista.txtPrograma}"  disabled="true"/>
 
                                                 </b:panelGrid>
                                             </b:panelGrid>
@@ -197,7 +197,6 @@
                                     </b:form>
                                 </b:column>
 
-                                <ui:include src="templates/footer.xhtml"/>
                                 <!-- Dialogo de confirmacion para el boton eliminar -->
                                 <b:form id="formDialog" > 
                                     <p:confirmDialog id="confirmDialog" message="Está seguro de eliminar el aprendiz?"  
@@ -215,6 +214,7 @@
                     </div><!-- /.container-fluid -->
                 </div>
                 <!-- /.content-header -->
+                <ui:include src="templates/footer.xhtml"/>
 
                 <div align="center">
 

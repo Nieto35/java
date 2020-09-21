@@ -162,7 +162,7 @@
                                             <!--=====================================Tabla===========================================-->
 
                                             <b:dataTable  id="listaInstructores" var="instructores" value="#{instructorVista.listaInstructores}" selectionInfo="#{instructorVista.selectedInstructor}" selection-mode="single" select="true" responsive="true"
-                                                          onselect="instructorVista.onRowSelect(instructores)" update=":formulario:panelInstructores"  >
+                                                          onselect="instructorVista.onRowSelect(instructores)" paginated="true" update=":formulario:panelInstructores"  >
 
                                                 <b:dataTableColumn label="Identificación" value="#{instructores.documentoinstructor}" style="text-align: center" />
                                                 <b:dataTableColumn label="Tipo Instructor" value="#{instructores.tipo}" style="text-align: center" />
