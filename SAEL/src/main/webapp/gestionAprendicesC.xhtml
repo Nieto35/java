@@ -80,7 +80,7 @@
                                                 <b:commandLink onclick="PF('helpDialog').show();" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon ui-icon-help" /></b:commandLink>
                                             </f:facet>
                                             <!--=============================== inicio paneGrid Datos Personales===============================-->
-                                            
+
                                             <b:panelGrid  columns="3" style="width: 100%;">
 
                                                 <b:panelGrid columns="1">
@@ -125,32 +125,33 @@
 
                                                     <h:outputText value="Programa:"/>
                                                     <b:inputTextarea id="txtPrograma" rows="5" col-sm="14" maxlength="0" binding="#{aprendizVista.txtPrograma}"  disabled="true"></b:inputTextarea>
-                                                    <!--=============================== fin paneGrid Datos Personales===============================-->
-                                                    
-                                                    <!--=============================== Botones===============================-->
+
                                                 </b:panelGrid>
                                             </b:panelGrid>
-                                            
-                                                <b:panel id="pnlBotones">
-                                                    <div class="row" align="center">
-                                                        <div class="col-md-2"></div> 
-                                                        <div class="col-md-2">                                                       
-                                                            <b:commandButton class="btn-success" id="btnCrear" value="Crear" binding="#{aprendizVista.btnCrear}" action="#{aprendizVista.crearAction}" update="formulario" />
-                                                        </div>
-                                                        <div class="col-md-2">      
-                                                            <b:commandButton class="btn-warning" id="btnModificar" value="Modificar" binding="#{aprendizVista.btnModificar}" action="#{aprendizVista.modificarAction}" update="formulario" disabled="true" />
-                                                        </div>
-                                                        <div class="col-md-2">    
-                                                            <b:commandButton class="btn-danger" id="btnEliminar" value="Eliminar" binding="#{aprendizVista.btnEliminar}" onclick="PF('confirmation').show();" type="button" disabled="true" >
-                                                                <f:ajax event="click"/>
-                                                            </b:commandButton>
-                                                        </div>
-                                                        <div class="col-md-2">    
-                                                            <b:commandButton class="btn-info" id="btnLimpiar" value="Limpiar" binding="#{aprendizVista.btnLimpiar}" action="#{aprendizVista.limpiarAction}" update="formulario" />
-                                                        </div>
-                                                        <div class="col-md-2"></div> 
+                                            <!--=============================== fin paneGrid Datos Personales===============================-->
+
+                                            <!--================================== Botones =============================================-->
+
+                                            <b:panel id="pnlBotones">
+                                                <div class="row" align="center">
+                                                    <div class="col-md-2"></div> 
+                                                    <div class="col-md-2">                                                       
+                                                        <b:commandButton class="btn-success" id="btnCrear" value="Crear" binding="#{aprendizVista.btnCrear}" action="#{aprendizVista.crearAction}" update="formulario" />
                                                     </div>
-                                                </b:panel> 
+                                                    <div class="col-md-2">      
+                                                        <b:commandButton class="btn-warning" id="btnModificar" value="Modificar" binding="#{aprendizVista.btnModificar}" action="#{aprendizVista.modificarAction}" update="formulario" disabled="true" />
+                                                    </div>
+                                                    <div class="col-md-2">    
+                                                        <b:commandButton class="btn-danger" id="btnEliminar" value="Eliminar" binding="#{aprendizVista.btnEliminar}" onclick="PF('confirmation').show();" type="button" disabled="true" >
+                                                            <f:ajax event="click"/>
+                                                        </b:commandButton>
+                                                    </div>
+                                                    <div class="col-md-2">    
+                                                        <b:commandButton class="btn-info" id="btnLimpiar" value="Limpiar" binding="#{aprendizVista.btnLimpiar}" action="#{aprendizVista.limpiarAction}" update="formulario" />
+                                                    </div>
+                                                    <div class="col-md-2"></div> 
+                                                </div>
+                                            </b:panel> 
                                             <!--=============================== fin Botones===============================-->
 
                                             <b:panel id="panelUpload" title="Cargue masivo de aprendices">
