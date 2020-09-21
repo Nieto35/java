@@ -114,7 +114,7 @@
                                                     <b:commandButton id="btnCrear" look="success" value="Crear" binding="#{fichasVista.btnRegistrar}" action="#{fichasVista.crearAction}" update="formulario" />
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <b:commandButton id="btnModificar"  look="primary" disabled="true" value="Modificar" binding="#{fichasVista.btnModificar}" action="#{fichasVista.modificarAction}" update="formulario" />
+                                                    <b:commandButton id="btnModificar"  class="btn-warning" disabled="true" value="Modificar" binding="#{fichasVista.btnModificar}" action="#{fichasVista.modificarAction}" update="formulario" />
                                                 </div>
                                                 <div class="col-md-2">
                                                     <b:commandButton id="btnEliminar" look="danger"  value="Eliminar" binding="#{fichasVista.btnEliminar}" onclick="PF('confirmation').show();" type="button" disabled="true" process="@this" update="formulario"/>
