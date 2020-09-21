@@ -25,6 +25,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import net.bootsfaces.component.inputSecret.InputSecret;
 import org.primefaces.component.inputtext.InputText;
 import org.primefaces.component.password.Password;
 import org.primefaces.component.selectonemenu.SelectOneMenu;
@@ -53,9 +54,9 @@ public class UsuarioVista implements Serializable{
     private SelectOneMenu cmbTipo;
     private String opcion;
     
-    private Password passClaveOld;
+    private InputSecret passClaveOld;
     private Password passClaveNew;
-    private Password passClaveNew2;
+    private InputSecret passClaveNew2;
     private Personal usuarioLogeado;
     private String[] listaTiposUsuario = Constantes.LIST_TIPOS_USUARIO; 
 
@@ -99,11 +100,11 @@ public class UsuarioVista implements Serializable{
         this.opcion = opcion;
     }
 
-    public Password getPassClaveOld() {
+    public InputSecret getPassClaveOld() {
         return passClaveOld;
     }
 
-    public void setPassClaveOld(Password passClaveOld) {
+    public void setPassClaveOld(InputSecret passClaveOld) {
         this.passClaveOld = passClaveOld;
     }
 
@@ -115,11 +116,11 @@ public class UsuarioVista implements Serializable{
         this.passClaveNew = passClaveNew;
     }
 
-    public Password getPassClaveNew2() {
+    public InputSecret getPassClaveNew2() {
         return passClaveNew2;
     }
 
-    public void setPassClaveNew2(Password passClaveNew2) {
+    public void setPassClaveNew2(InputSecret passClaveNew2) {
         this.passClaveNew2 = passClaveNew2;
     }
 
