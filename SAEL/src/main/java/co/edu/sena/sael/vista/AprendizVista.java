@@ -24,10 +24,14 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import net.bootsfaces.component.commandButton.CommandButton;
 import net.bootsfaces.component.inputText.InputText;
+<<<<<<< HEAD
+import net.bootsfaces.component.selectOneMenu.SelectOneMenu;
+=======
 import net.bootsfaces.component.inputTextarea.InputTextarea;
 import net.bootsfaces.component.selectOneMenu.SelectOneMenu;
 import oracle.jrockit.jfr.events.Bits;
 import org.primefaces.event.SelectEvent;
+>>>>>>> v1
 
 /**
  *
@@ -53,7 +57,7 @@ public class AprendizVista {
     private InputText txtTelefono;
     private InputText txtFicha;
     private InputText txtJornada;
-    private InputTextarea txtPrograma;
+    private InputText txtPrograma;
     private CommandButton btnCrear;
     private CommandButton btnModificar;
     private CommandButton btnEliminar;
@@ -131,11 +135,11 @@ public class AprendizVista {
         this.txtJornada = txtJornada;
     }
 
-    public InputTextarea getTxtPrograma() {
+    public InputText getTxtPrograma() {
         return txtPrograma;
     }
 
-    public void setTxtPrograma(InputTextarea txtPrograma) {
+    public void setTxtPrograma(InputText txtPrograma) {
         this.txtPrograma = txtPrograma;
     }    
 
@@ -448,7 +452,11 @@ public class AprendizVista {
     
     public void onRowSelect(Aprendiz apre) {
         //System.out.println("Selecciono el Aprendiz");        
+<<<<<<< HEAD
+        try {      
+=======
         try {   
+>>>>>>> v1
             txtIdentificacion.setValue(apre.getDocumentoaprendiz());
             txtNombre.setValue(apre.getPersonal().getNombre());
             txtApellido.setValue(apre.getPersonal().getApellido());
