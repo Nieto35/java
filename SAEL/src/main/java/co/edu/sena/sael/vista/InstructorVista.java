@@ -26,11 +26,9 @@ import javax.servlet.ServletContext;
 import net.bootsfaces.component.commandButton.CommandButton;
 import net.bootsfaces.component.inputText.InputText;
 import net.bootsfaces.component.selectOneMenu.SelectOneMenu;
-<<<<<<< HEAD
-=======
 import org.primefaces.event.FileUploadEvent;
-import org.primefaces.event.SelectEvent;
->>>>>>> v1
+
+
 
 /**
  *
@@ -403,7 +401,7 @@ public class InstructorVista {
         borrarAction();
     }
     
-    /*public void handleFileUpload(FileUploadEvent event) {
+    public void handleFileUpload(FileUploadEvent event) {
         //System.out.println("Evento File upload!!!");
 
         ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
@@ -431,7 +429,7 @@ public class InstructorVista {
         } catch (Exception ex) {
             Logger.getLogger(InstructorVista.class.getName()).log(Level.SEVERE, null, ex);
         }
-    } */
+    } 
 
     public void copyFile(String rutaDestino, String fileName, InputStream in) {
         try {
