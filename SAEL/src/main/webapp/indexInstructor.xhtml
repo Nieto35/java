@@ -7,57 +7,49 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <f:view contentType="text/html">
         <h:head>
             <ui:include src="templates/head.xhtml"/>
-            <f:facet name="first"> 
-                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>.::SAEL::. Seguimiento de Aprendices</title>
-                <link rel="shortcut icon" href="favicon.ico"/>
+            <f:facet name="first">                
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>                
             </f:facet>
         </h:head>
 
         <h:body>
-                <h:graphicImage url="images/banner_sael.jpg" width="100%" height="100%" alt="LogoAspera" style="vertical-align: top;"/> 
-               <p:panel>
-                <p:panelGrid style="width: 100%;"> 
-                    <p:row>
-                        <p:column style="vertical-align: top; width: 10%;"> 
-                    <h:form>
-                        <p:menu>
-                            <p:submenu label="Menú">                                
-                                <p:menuitem value="Inicio" url="indexInstructor.xhtml" />
-                                <p:menuitem value="Alistar Seguimiento" url="gestionSeguimientosIns.xhtml" />
-                                <p:menuitem value="Ejecutar Seguimiento" url="ejecutarSeguimientosIns.xhtml" />
-                                <p:menuitem value="Aprendices" url="gestionAprendicesIns.xhtml" />
-                                <p:menuitem value="Instructores" url="gestionInstructoresIns.xhtml" />
-                                <p:menuitem value="Reportes" url="reportesSaelIns.xhtml" />
-                                <p:menuitem value="Cambio Contraseña" url="CambiaPasswordInst.xhtml" />
-                                <p:menuitem value="Cerrar Sesión" actionListener="#{usuarioVista.cerrarSesionAction}" />
-                            </p:submenu>                    
-                        </p:menu>
-                    </h:form>
-                        </p:column>
-                        <p:column>
-                    Módulo Usuario Instructor en SAEL<br/>
-                        <ul>
-                            <li>Alistar / Preparar Seguimientos</li>
-                            <li>Ejecutar Seguimientos</li>
-                            <li>Gestionar Información de Aprendices</li>
-                            <li>Gestionar Información de Instructores</li>
-                            <li>Reportes - Generación de Actas</li>
-                            <li>Cambio de Contraseña</li>
-                        </ul>
-                        </p:column>
-                    </p:row>
-                </p:panelGrid>
-               </p:panel>
-                 <div align="center" >
-                        <h:graphicImage url="images/pie_sael.jpg" width="100%" height="100%" alt="LogoSAEL" style="vertical-align: bottom;"/>
+            <div class="wrapper">
+                <ui:include src="templates/cabezote.xhtml" />
+                <!--        ============================================
+                        MENU LATERAL
+                ============================================-->
+                <ui:include src="templates/menuInstructor.xhtml" /> 
+
+                <div class="content-wrapper">                    
+                    <div class="content-header">
+                        <div class="container-fluid">
+                            <div class="row mb-2">
+                                <div class="col-sm-12">
+                                    
+                                    <p><strong>Bienvenid@: #{usuarioVista.usuarioLogeado.nombre}  #{usuarioVista.usuarioLogeado.apellido}</strong></p>
+                                    <p>Módulo Usuario Instructor en SAEL</p>                                   
+                                    <ul>
+                                        <li>Alistar / Preparar Seguimientos</li>
+                                        <li>Ejecutar Seguimientos</li>
+                                        <li>Gestionar Información de Aprendices</li>
+                                        <li>Gestionar Información de Instructores</li>
+                                        <li>Reportes - Generación de Actas</li>
+                                        <li>Cambio de Contraseña</li>
+                                    </ul>
+                                    
+
+                                </div>          
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <ui:include src="templates/footer.xhtml" />
+            </div>
         </h:body>
     </f:view>
 </html>
