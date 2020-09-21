@@ -190,7 +190,7 @@ public class InstructorVista {
     public void setListaInstructores(List<Instructor> listaInstructores) {
         this.listaInstructores = listaInstructores;
     }
-    
+    // se realizo cambios
     public void crearAction() {
                
         try {

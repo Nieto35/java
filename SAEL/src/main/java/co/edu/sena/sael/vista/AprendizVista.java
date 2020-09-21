@@ -202,7 +202,7 @@ public class AprendizVista {
     public void setListaAprendices(List<Aprendiz> listaAprendices) {
         this.listaAprendices = listaAprendices;
     }
-    
+    // se realizo los cambios
     public void crearAction()
     {
         
