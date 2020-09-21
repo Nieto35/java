@@ -16,7 +16,7 @@ and open the template in the editor.
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
                 <title>.::SAEL::. Sesión Inválida</title>
                 <link rel="shortcut icon" href="favicon.ico"/>
-            </f:facet>
+            </f:facet>              
 
             <script>
                 <!--
@@ -48,20 +48,34 @@ and open the template in the editor.
                 //-->
             </script>
         </h:head>
+ <h:body onload="begintimer()" >
 
-        <h:body onload='begintimer()'>
-            
-            <p:panel id="panel" header="Sesión Inválida">
-                <div align="center">
-                    <h:outputText value="No ha iniciado sesión o ésta ya ha caducado"/>
-                    <br/>
-                    <h:graphicImage url="/images/Attention.png" alt="Atención"  />
-                    <br/>
-                    <h:outputText value="Será redireccionado a la página principal en "/><b><font color="#ff0000"><span id="tiempo"></span></font></b>                
-                </div>
-            </p:panel>
 
-        </h:body>
+        <h:form id="formulario">
+
+            <div align="center">
+
+                <h1>
+                    Sesion Caducada
+                </h1>
+
+                <h3>
+                    Su sesion a finalizado, por favor ingrese de nuevo
+                </h3>
+
+                <p>
+                    <h:outputText value="Sera redireccionado a la pagina en "/><b><font color="#ff0000"><span id="tiempo"></span></font></b>
+
+                </p>
+
+                <p:link href="index.xhtml" value="Regresar"/>
+
+            </div>
+
+        </h:form>
+         <ui:include src="templates/footer.xhtml" />
+
+    </h:body>
 
     </f:view>
 </html>
