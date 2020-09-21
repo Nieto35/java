@@ -17,9 +17,9 @@ import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import org.primefaces.component.commandbutton.CommandButton;
-import org.primefaces.component.inputtext.InputText;
-import org.primefaces.component.selectonemenu.SelectOneMenu;
+import net.bootsfaces.component.commandButton.CommandButton;
+import net.bootsfaces.component.inputText.InputText;
+import net.bootsfaces.component.selectOneMenu.SelectOneMenu;
 import org.primefaces.event.SelectEvent;
 
 /**

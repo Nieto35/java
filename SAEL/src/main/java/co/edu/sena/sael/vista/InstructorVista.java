@@ -26,6 +26,11 @@ import javax.servlet.ServletContext;
 import net.bootsfaces.component.commandButton.CommandButton;
 import net.bootsfaces.component.inputText.InputText;
 import net.bootsfaces.component.selectOneMenu.SelectOneMenu;
+<<<<<<< HEAD
+=======
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.event.SelectEvent;
+>>>>>>> v1
 
 /**
  *
