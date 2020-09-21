@@ -1,258 +1,229 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
+<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
 
-    <f:view contentType="text/html">
-        <h:head>
-            <ui:include src="templates/head.xhtml"/>
-        </h:head>
-        <h:body>
-            <ui:include src="templates/header.xhtml"/>
-            <p:panel>
-                <p:panelGrid style="width: 100%;"> 
-                    <p:row>
-                        <ui:include src="templates/menuCoordinador.xhtml"/> 
-                        <!-- dialogo de ayuda -->
-                        <p:dialog id="modalDialog" width="80%" header="Ayuda" widgetVar="helpDialog" showEffect="fade" hideEffect="bounce" modal="true" dynamic="true">  
-                            <p align="justify">                       
-                                En esta página usted podrá:<br/><br/>
-                                <b>-Crear, modificar, eliminar y consultar Instructores:</b> ésta opción solo está disponible para usuarios de tipo Coordinador. 
-                                Para crear un instructor basta con digitar su documento de identificación y luego presionar la tecla TAB(Tabulación) o Enter. 
-                                SAEL verificará que no exista un instructor con ese mismo documento. Si existe cargará sus datos y sino usted deberá continuar
-                                llenando el formulario. Luego de clic en el botón Crear. Para modificar o eliminar un instructor existente seleccionelo 
-                                de la tabla inferior.
-                                <br/><br/>
-                                <b>-Cargue masivo de instructores:</b> para crear varios instructores masivamente desde un archivo de Excel de clic en el botón Selecccionar. 
-                                Luego busque el archivo el cual deberá tener extensión <strong>.XLS</strong>. SAEL leerá el archivo y luego mostrará el resultado del cargue masivo. 
-                                También indicará en que filas del archivo hay errores. Para ver un ejemplo de la estructura que debe tener el archivo de clic en el enlace Ver Ejemplo. 
-                                <br/><br/>
-                                <u>Nota:</u> la clave de acceso no se podrá modificar en ésta página por razones de seguridad sino en la opción <u>Cambio Contraseña</u> del menú principal. 
-                                El coordinador, al momento de crear el instructor, asignará una clave de acceso temporal.
-                                Se le recomienda al instructor que luego de ingresar por primera vez a SAEL realice el cambio de contraseña por razones de
-                                seguridad
-                                <br/><br/>                  
+        <!--aca estan los css y js-->
+        <ui:include src="templates/head.xhtml" />
 
-                                <b>-Consultar y filtrar instructores:</b> en la tabla de resultados se pueden visualizar todos los instructores existentes. 
-                                Si desea filtrar los resultados basta con digitar en la columna Identificación un número especifico, de igual forma se puede utilizar 
-                                el filtro por Nombre.                      
-                            </p>
-                        </p:dialog>
-                        <!-- dialogo de ejemplo cargue -->
-                        <p:dialog id="modalDialogEjemplo" header="Ejemplo Archivo de Cargue" widgetVar="cargueDialog" showEffect="fade" hideEffect="bounce" modal="true" dynamic="true">  
-                            <p align="justify">                       
-                                El archivo de Excel para cargar masivamente los instructores debe tener la extensión .XLS y debe tener la siguiente estructura:<br/><br/>
-                                <div align="center" >
-                                    <h:graphicImage url="/aspera/images/ejemploCargueInstructores.JPG" alt="Cargue Instructores"/>
-                                </div>                    
-                                <br/>                    
-                            </p>
-                        </p:dialog>
-                       
-                        <p:column>
-                            <h:form id="formulario"> 
-                                <p:panel id="panelInstructores" header="Instructores">
-                                    <p:growl id="growl" showDetail="true" sticky="true" /> 
-                                    <p:messages id="mensajes" showDetail="true"  closable="true"/>                                    
-                                    <f:facet name="actions">
-                                        <p:commandLink onclick="PF('helpDialog').show();" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon ui-icon-help" /></p:commandLink>
-                                    </f:facet>
-                                    <p:panelGrid style="width: 100%;">
-                                        <p:row>
-                                            <p:column>
-                                                <h:outputText value="Documento:"/> 
-                                            </p:column>
+    </h:head>
+    <h:body class="hold-transition sidebar-mini layout-fixed">
+        <div class="wrapper">
 
-                                            <p:column>
-                                                <p:inputText id="txtDocumento" binding="#{instructorVista.txtIdentificacion}" style="width:90%;">
-                                                    <!-- ajax para el listener del campo -->
-                                                    <p:ajax listener="#{instructorVista.txtIdentificacionListener}" update="panelInstructores" />
-                                                </p:inputText>                                                 
-                                                <p:tooltip for="txtDocumento" value="Digite el documento y presione TAB" showEffect="slide" hideEffect="slide" />
-                                            </p:column>
+            <!--        ============================================
+                            CABEZOTE
+                    ============================================-->
+            <ui:include src="templates/cabezote.xhtml" />
+            <!--        ============================================
+                    MENU LATERAL
+            ============================================-->
+            <ui:include src="templates/menuCoordinador.xhtml" />
 
-                                            <p:column>
-                                                <h:outputText value="Nombre:"/>
-                                            </p:column>
 
-                                            <p:column>
-                                                <p:inputText id="txtNombre" binding="#{instructorVista.txtNombre}" style="width:90%;"/>
-                                            </p:column>  
-                                        </p:row>  
-                                        <p:row> 
-                                            <p:column>
+
+            <!--        ============================================
+                   CONTENIDO
+           ============================================-->  
+
+
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <div class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-12">
+
+
+                                <!-- dialogo de ayuda -->
+                                <p:dialog id="modalDialog" width="80%" header="Ayuda" widgetVar="helpDialog" showEffect="fade" hideEffect="bounce" modal="true" dynamic="true">  
+                                    <p align="justify">                       
+                                        En esta página usted podrá:<br/><br/>
+                                        <b>-Crear, modificar, eliminar y consultar Instructores:</b> ésta opción solo está disponible para usuarios de tipo Coordinador. 
+                                        Para crear un instructor basta con digitar su documento de identificación y luego presionar la tecla TAB(Tabulación) o Enter. 
+                                        SAEL verificará que no exista un instructor con ese mismo documento. Si existe cargará sus datos y sino usted deberá continuar
+                                        llenando el formulario. Luego de clic en el botón Crear. Para modificar o eliminar un instructor existente seleccionelo 
+                                        de la tabla inferior.
+                                        <br/><br/>
+                                        <b>-Cargue masivo de instructores:</b> para crear varios instructores masivamente desde un archivo de Excel de clic en el botón Selecccionar. 
+                                        Luego busque el archivo el cual deberá tener extensión <strong>.XLS</strong>. SAEL leerá el archivo y luego mostrará el resultado del cargue masivo. 
+                                        También indicará en que filas del archivo hay errores. Para ver un ejemplo de la estructura que debe tener el archivo de clic en el enlace Ver Ejemplo. 
+                                        <br/><br/>
+                                        <u>Nota:</u> la clave de acceso no se podrá modificar en ésta página por razones de seguridad sino en la opción <u>Cambio Contraseña</u> del menú principal. 
+                                        El coordinador, al momento de crear el instructor, asignará una clave de acceso temporal.
+                                        Se le recomienda al instructor que luego de ingresar por primera vez a SAEL realice el cambio de contraseña por razones de
+                                        seguridad
+                                        <br/><br/>                  
+
+                                        <b>-Consultar y filtrar instructores:</b> en la tabla de resultados se pueden visualizar todos los instructores existentes. 
+                                        Si desea filtrar los resultados basta con digitar en la columna Identificación un número especifico, de igual forma se puede utilizar 
+                                        el filtro por Nombre.                      
+                                    </p>
+                                </p:dialog>
+                                <!-- dialogo de ejemplo cargue -->
+                                <p:dialog id="modalDialogEjemplo" header="Ejemplo Archivo de Cargue" widgetVar="cargueDialog" showEffect="fade" hideEffect="bounce" modal="true" dynamic="true">  
+                                    <p align="justify">                       
+                                        El archivo de Excel para cargar masivamente los instructores debe tener la extensión .XLS y debe tener la siguiente estructura:<br/><br/>
+                                        <div align="center" >
+                                            <h:graphicImage url="/aspera/images/ejemploCargueInstructores.JPG" alt="Cargue Instructores"/>
+                                        </div>                    
+                                        <br/>                    
+                                    </p>
+                                </p:dialog>
+
+                                <b:column>
+                                    <b:form id="formulario"> 
+                                        <b:panel id="panelInstructores" title="Instructores">
+                                            <b:growl id="growl" showDetail="true"  severity="Error" /> 
+                                            <b:messages id="mensajes" showDetail="true"  />                                    
+                                            <f:facet name="actions">
+                                                <b:commandLink onclick="PF('helpDialog').show();" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon ui-icon-help" /></b:commandLink>
+                                            </f:facet>
+
+                                            <!--======================================Datos====================================-->
+                                            <b:panelGrid columns="4" id="panelGridInstructor">
+                                                <h:outputText value="Documento:"/>
+                                                <b:inputText id="txtDocumento" binding="#{instructorVista.txtIdentificacion}" update="panelInstructores">
+                                                    <f:ajax listener="#{instructorVista.txtIdentificacionListener}" />
+                                                </b:inputText>
+
+                                                <h:outputText value="Nombre:"/> 
+                                                <b:inputText id="txtNombre" binding="#{instructorVista.txtNombre}"  />
+
                                                 <h:outputText value="Apellido:"/>
-                                            </p:column>
+                                                <b:inputText id="txtApellido" binding="#{instructorVista.txtApellido}" />
 
-                                            <p:column>
-                                                <p:inputText id="txtApellido" binding="#{instructorVista.txtApellido}" style="width:90%;"/>
-                                            </p:column>
-                                            
-                                        <p:row>
-                                            <p:column>
                                                 <h:outputText value="Sexo:"/>
-                                            </p:column>
-
-                                            <p:column>                                                
-                                                <p:selectOneMenu id="selectSexo" binding="#{instrutorVista.selectSexo}" style="width:90%;">
+                                                <b:selectOneMenu id="selectSexo" binding="#{instructorVista.selectSexo}">
                                                     <f:selectItem itemLabel="MASCULINO" itemValue="M" />
                                                     <f:selectItem itemLabel="FEMENINO" itemValue="F" />
-                                                </p:selectOneMenu>                                                                                     
-                                            </p:column>
-                                        </p:row>
+                                                </b:selectOneMenu>  
 
-                                            <p:column>
                                                 <h:outputText value="Correo:"/>
-                                            </p:column>
+                                                <b:inputText id="txtCorreo" binding="#{instructorVista.txtCorreo}"/>
 
-                                            <p:column>
-                                                <div align="left">
-                                                    <p:inputText id="txtCorreo" binding="#{instructorVista.txtCorreo}" style="width:90%;"/>
-                                                </div>                                      
-                                            </p:column> 
-
-                                        </p:row>
-                                        
-                                        <p:row>                                            
-                                            <p:column>
                                                 <h:outputText value="Correo institucional:"/>
-                                            </p:column>
+                                                <b:inputText id="txtCorreoInstitucional" binding="#{instructorVista.txtCorreoInstitucional}" />
 
-                                            <p:column>
-                                                <p:inputText id="txtCorreoInstitucional" binding="#{instructorVista.txtCorreoInstitucional}" style="width:90%;"/>
-                                            </p:column>
-                                            
-                                            <p:column>
                                                 <h:outputText value="Teléfono:"/>
-                                            </p:column>
+                                                <b:inputText id="txtTelefono" binding="#{instructorVista.txtTelefono}"/>
 
-                                            <p:column>                                                
-                                                <p:inputText id="txtTelefono" binding="#{instructorVista.txtTelefono}" style="width:90%;"/>                                                                                   
-                                            </p:column>                                            
-                                            
-                                        </p:row>
-                                        
-                                        <p:row>
-                                            <p:column>
                                                 <h:outputText value="Perfil ocupacional:"/>
-                                            </p:column>
+                                                <b:inputText id="txtPerfilOcupacional" placeholder="Ej: INGENIERO DE SISTEMAS" binding="#{instructorVista.txtPerfilOcupacional}"/>
 
-                                            <p:column>                                                
-                                                <p:inputText id="txtPerfilOcupacional" placeholder="Ej: INGENIERO DE SISTEMAS" binding="#{instructorVista.txtPerfilOcupacional}" style="width:90%;"   />
-                                            </p:column>
-                                            
-                                            <p:column>
                                                 <h:outputText value="Tipo:"/>
-                                            </p:column>
-
-                                            <p:column>                                                
-                                                <p:selectOneMenu id="cmbTipo" binding="#{instructorVista.cmbTipoInstructor}" style="width:90%;">
+                                                <b:selectOneMenu id="cmbTipo" binding="#{instructorVista.cmbTipoInstructor}" >
                                                     <f:selectItem itemLabel="CONTRATISTA" itemValue="CONTRATISTA" />
                                                     <f:selectItem itemLabel="PLANTA" itemValue="PLANTA" />
-                                                </p:selectOneMenu>                                                                                     
-                                            </p:column>
-                                        </p:row>
-                                        
-                                        
-                                        
-                                        <p:row>
-                                            <p:column colspan="6">
-                                                <div align="center">
-                                                    <p:commandButton id="btnCrear" value="Crear" binding="#{instructorVista.btnRegistrar}" action="#{instructorVista.crearAction}" update=":formulario:mensajes,:formulario:panelInstructores,:formulario:listaInstructores" />
-                                                    <p:commandButton id="btnModificar" disabled="true" value="Modificar" binding="#{instructorVista.btnModificar}" action="#{instructorVista.modificarAction}" update=":formulario:mensajes,:formulario:panelInstructores,:formulario:listaInstructores" />
-                                                    <p:commandButton id="btnEliminar" disabled="true" value="Eliminar" binding="#{instructorVista.btnEliminar}" action="#{instructorVista.borrarAction}" onclick="PF('confirmation').show();" type="button" process="@this" update="formulario"/>
-                                                    <p:commandButton id="btnLimpiar" value="Limpiar" binding="#{instructorVista.btnLimpiar}" action="#{instructorVista.limpiarAction}" update=":formulario:panelInstructores,:formulario:listaInstructores" />
+                                                </b:selectOneMenu>   
+
+                                            </b:panelGrid>
+                                            <!--======================================Datos====================================-->
+
+                                            <!--======================================Botones====================================-->
+                                            <div class="row" align="center" style="margin-bottom: 10px;">
+                                                <div class="col-md-2"></div> 
+                                                <div class="col-md-2">                                                       
+                                                    <b:commandButton class="btn-success" id="btnCrear" value="Crear" binding="#{instructorVista.btnRegistrar}" action="#{instructorVista.crearAction}" update=":formulario:mensajes,:formulario:panelInstructores,:formulario:listaInstructores" />
                                                 </div>
-                                            </p:column>                                     
+                                                <div class="col-md-2">      
+                                                    <b:commandButton class="btn-warning" id="btnModificar" disabled="true" value="Modificar" binding="#{instructorVista.btnModificar}" action="#{instructorVista.modificarAction}" update=":formulario:mensajes,:formulario:panelInstructores,:formulario:listaInstructores" />
+                                                </div>
+                                                <div class="col-md-2">    
+                                                    <b:commandButton class="btn-danger" id="btnEliminar" disabled="true" value="Eliminar" binding="#{instructorVista.btnEliminar}" action="#{instructorVista.borrarAction}" onclick="PF('confirmation').show();" type="button" process="@this" update="formulario">
+                                                    <f:ajax event="click"/>
+                                                    </b:commandButton>
+                                                </div>
+                                                <div class="col-md-2">    
+                                                    <b:commandButton class="btn-info" id="btnLimpiar" value="Limpiar" binding="#{instructorVista.btnLimpiar}" action="#{instructorVista.limpiarAction}" update=":formulario:panelInstructores,:formulario:listaInstructores" />
+                                                </div>
+                                                <div class="col-md-2"></div> 
+                                            </div>
+                                            <!--======================================Botones====================================-->
 
-                                        </p:row> 
+                                            <b:panel id="panelUpload" title="Cargue masivo de instructores">
+                                                <b:commandLink id="linkEjemplo" update="panelUpload" onclick="PF('cargueDialog').show();" style="cursor: help;" >  
+                                                    <h:outputText value="Ver Ejemplo" style="color: #168216; font-weight: bold;"/> 
+                                                </b:commandLink>
+                                                <p:fileUpload label="Seleccionar" invalidFileMessage="El Archivo deber ser de extensión .XLS" fileUploadListener="#{instructorVista.handleFileUpload}" mode="advanced"  update="mensajeArchivo" auto="true" allowTypes="/(\.|\/)(xls)$/"/> 
+                                                <b:messages id="mensajeArchivo" showDetail="true" /> 
+                                            </b:panel>
+                                            <br />
+                                            <h:outputText value="Si desea buscar un instructor específico digite el dato en el filtro respectivo" />
+                                            <br /><br />
 
-                                    </p:panelGrid>
+                                            <p:separator/>
 
-                                    
-                                    <p:panel id="panelUpload" header="Cargue masivo de instructores">
-                                        <p:commandLink id="linkEjemplo" update="panelUpload" onclick="PF('cargueDialog').show();" style="cursor: help;" >  
-                                            <h:outputText value="Ver Ejemplo" style="color: #168216; font-weight: bold;"/> 
-                                        </p:commandLink>
-                                        <p:fileUpload label="Seleccionar" invalidFileMessage="El Archivo deber ser de extensión .XLS" fileUploadListener="#{instructorVista.handleFileUpload}" mode="advanced"  update="mensajeArchivo" auto="true" allowTypes="/(\.|\/)(xls)$/"/> 
-                                        <p:messages id="mensajeArchivo" showDetail="true" /> 
-                                    </p:panel>
-                                    <br />
-                                    <h:outputText value="Si desea buscar un instructor específico digite el dato en el filtro respectivo" />
-                                    <br /><br />
-                                    <p:dataTable id="listaInstructores" var="instructores" value="#{instructorVista.listaInstructores}" selection="#{instructorVista.selectedInstructor}"
-                                                 selectionMode="single" rowKey="#{instructores.documentoinstructor}" paginator="true" rows="10" emptyMessage="No existe el Instructor!" 
-                                                 style="text-align: center;">
-                                        <p:ajax event="rowSelect" listener="#{instructorVista.onRowSelect}" update=":formulario:panelInstructores" /> 
-                                        <p:column  sortBy="#{instructores.documentoinstructor}" filterBy="#{instructores.documentoinstructor}" filterMatchMode="contains">
-                                            <f:facet name="header">
-                                                <h:outputText  value="Identificación" />                            
-                                            </f:facet>
-                                            <h:outputText   value="#{instructores.documentoinstructor}" />                          
-                                        </p:column>
+                                            <!--=====================================Tabla===========================================-->
 
-                                        <p:column sortBy="#{instructores.tipo}">
-                                            <f:facet name="header">
-                                                <h:outputText  value="Tipo Instructor" />                            
-                                            </f:facet>
-                                            <h:outputText  value="#{instructores.tipo}" />                          
-                                        </p:column>
+                                            <b:dataTable  id="listaInstructores" var="instructores" value="#{instructorVista.listaInstructores}" selectionInfo="#{instructorVista.selectedInstructor}" selection-mode="single" select="true" responsive="true"
+                                                          onselect="instructorVista.onRowSelect(instructores)" update=":formulario:panelInstructores"  >
 
-                                        <p:column sortBy="#{instructores.personal.nombre}" filterBy="#{instructores.personal.nombre}" filterMatchMode="contains">
-                                            <f:facet name="header" >
-                                                <h:outputText  value="Nombre" />                            
-                                            </f:facet>
-                                            <h:outputText  value="#{instructores.personal.nombre}" />                          
-                                        </p:column>
-                                        
-                                        <p:column sortBy="#{instructores.personal.apellido}" filterBy="#{instructores.personal.apellido}" filterMatchMode="contains">
-                                            <f:facet name="header" >
-                                                <h:outputText  value="Apellido" />                            
-                                            </f:facet>
-                                            <h:outputText  value="#{instructores.personal.apellido}" />                          
-                                        </p:column>
-                                    </p:dataTable>                    
+                                                <b:dataTableColumn label="Identificación" value="#{instructores.documentoinstructor}" style="text-align: center" />
+                                                <b:dataTableColumn label="Tipo Instructor" value="#{instructores.tipo}" style="text-align: center" />
+                                                <b:dataTableColumn label="Nombre" value="#{instructores.personal.nombre}" style="text-align: center" />
+                                                <b:dataTableColumn label="Apellido" value="#{instructores.personal.apellido}" style="text-align: center" />
 
-                                    <!--Panel Exportar -->
-                                    <p:panel header="Exportar">   
-                                        <h:commandLink>
-                                            <!--PDF-->
-                                            <h:outputText value="PDF" />
-                                            <p:dataExporter type="pdf" fileName="ListadoInstructores" target="listaInstructores"/>
-                                        </h:commandLink>
+                                            </b:dataTable>                 
+                                            <!--========================================Tabla========================================-->
 
-                                        <h:outputText value=" | " />
+                                            <!--Panel Exportar -->
+                                            <b:panel title="Exportar">   
+                                                <b:commandLink>
+                                                    <!--PDF-->
+                                                    <h:outputText value="PDF" />
+                                                    <p:dataExporter type="pdf" fileName="ListadoInstructores" target="listaInstructores"/>
+                                                </b:commandLink>
 
-                                        <h:commandLink>
-                                            <!--EXCEL-->
-                                            <h:outputText value="XLS" />
-                                            <p:dataExporter type="xls" fileName="ListadoInstructores" target="listaInstructores"/>
-                                        </h:commandLink>
-                                    </p:panel>
-                                </p:panel>
-                                <!-- Dialogo de confirmacion para el boton eliminar -->
-                                <p:confirmDialog id="confirmDialog" message="Está seguro de eliminar el instructor?"  
-                                                 header="Confirmación" severity="alert" widgetVar="confirmation">  
-                                    <p:commandButton id="confirm" value="Si" process="@this" oncomplete="PF('confirmation').hide()" update="formulario"  
-                                                     actionListener="#{instructorVista.onEliminacionConfirm(actionEvent)}" />  
-                                    <p:commandButton id="decline" value="No" onclick="PF('confirmation').hide()" type="button" />   
+                                                <h:outputText value=" | " />
 
-                                </p:confirmDialog> 
-                             
-                            </h:form>
-                        </p:column>
-                    </p:row>
-                </p:panelGrid>
-            </p:panel>
-            <ui:include src="templates/footer.xhtml"/>            
-        </h:body>
+                                                <b:commandLink>
+                                                    <!--EXCEL-->
+                                                    <h:outputText value="XLS" />
+                                                    <p:dataExporter type="xls" fileName="ListadoInstructores" target="listaInstructores"/>
+                                                </b:commandLink>
+                                            </b:panel>
+                                        </b:panel>
+                                        <!-- Dialogo de confirmacion para el boton eliminar -->
+                                        <p:confirmDialog id="confirmDialog" message="Está seguro de eliminar el instructor?"  
+                                                         header="Confirmación" severity="alert" widgetVar="confirmation">  
+                                            <b:commandButton id="confirm" value="Si" process="@this" oncomplete="PF('confirmation').hide()" update="formulario"  
+                                                             actionListener="#{instructorVista.onEliminacionConfirm(actionEvent)}" />  
+                                            <b:commandButton id="decline" value="No" onclick="PF('confirmation').hide()" type="button" />   
 
-    </f:view>
+                                        </p:confirmDialog> 
+
+                                    </b:form>
+                                </b:column>
+
+
+                            </div><!-- /.col -->          
+                        </div><!-- /.row -->
+                    </div><!-- /.container-fluid -->
+                </div>
+                <!-- /.content-header -->
+
+                <div align="center">
+
+
+                </div>   
+
+            </div>
+
+            <!--        ============================================
+                FOOTER
+         ============================================-->
+            <ui:include src="templates/footer.xhtml" />
+
+        </div>
+
+
+    </h:body>
 </html>
+
+

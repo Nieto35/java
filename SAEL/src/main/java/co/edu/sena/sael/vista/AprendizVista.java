@@ -22,11 +22,11 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import net.bootsfaces.component.commandButton.CommandButton;
+import net.bootsfaces.component.inputText.InputText;
+import net.bootsfaces.component.inputTextarea.InputTextarea;
+import net.bootsfaces.component.selectOneMenu.SelectOneMenu;
 import oracle.jrockit.jfr.events.Bits;
-import org.primefaces.component.commandbutton.CommandButton;
-import org.primefaces.component.inputtext.InputText;
-import org.primefaces.component.inputtextarea.InputTextarea;
-import org.primefaces.component.selectonemenu.SelectOneMenu;
 import org.primefaces.event.SelectEvent;
 
 /**
@@ -446,10 +446,9 @@ public class AprendizVista {
         borrarAction();
     }
     
-    public void onRowSelect(SelectEvent event) {
+    public void onRowSelect(Aprendiz apre) {
         //System.out.println("Selecciono el Aprendiz");        
-        try {
-            Aprendiz apre = (Aprendiz) event.getObject();       
+        try {   
             txtIdentificacion.setValue(apre.getDocumentoaprendiz());
             txtNombre.setValue(apre.getPersonal().getNombre());
             txtApellido.setValue(apre.getPersonal().getApellido());
