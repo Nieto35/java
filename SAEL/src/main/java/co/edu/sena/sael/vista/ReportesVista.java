@@ -17,7 +17,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
 import org.primefaces.PrimeFaces;
-import org.primefaces.component.selectonemenu.SelectOneMenu;
+import net.bootsfaces.component.selectOneMenu.SelectOneMenu;
 
 /**
  *

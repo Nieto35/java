@@ -22,12 +22,9 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-import oracle.jrockit.jfr.events.Bits;
-import org.primefaces.component.commandbutton.CommandButton;
-import org.primefaces.component.inputtext.InputText;
-import org.primefaces.component.inputtextarea.InputTextarea;
-import org.primefaces.component.selectonemenu.SelectOneMenu;
-import org.primefaces.event.SelectEvent;
+import net.bootsfaces.component.commandButton.CommandButton;
+import net.bootsfaces.component.inputText.InputText;
+import net.bootsfaces.component.selectOneMenu.SelectOneMenu;
 
 /**
  *
@@ -53,7 +50,7 @@ public class AprendizVista {
     private InputText txtTelefono;
     private InputText txtFicha;
     private InputText txtJornada;
-    private InputTextarea txtPrograma;
+    private InputText txtPrograma;
     private CommandButton btnCrear;
     private CommandButton btnModificar;
     private CommandButton btnEliminar;
@@ -131,11 +128,11 @@ public class AprendizVista {
         this.txtJornada = txtJornada;
     }
 
-    public InputTextarea getTxtPrograma() {
+    public InputText getTxtPrograma() {
         return txtPrograma;
     }
 
-    public void setTxtPrograma(InputTextarea txtPrograma) {
+    public void setTxtPrograma(InputText txtPrograma) {
         this.txtPrograma = txtPrograma;
     }    
 
@@ -446,10 +443,9 @@ public class AprendizVista {
         borrarAction();
     }
     
-    public void onRowSelect(SelectEvent event) {
+    public void onRowSelect(Aprendiz apre) {
         //System.out.println("Selecciono el Aprendiz");        
-        try {
-            Aprendiz apre = (Aprendiz) event.getObject();       
+        try {      
             txtIdentificacion.setValue(apre.getDocumentoaprendiz());
             txtNombre.setValue(apre.getPersonal().getNombre());
             txtApellido.setValue(apre.getPersonal().getApellido());

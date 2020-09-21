@@ -8,30 +8,45 @@ and open the template in the editor.
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
 
-    <f:view contentType="text/html">
-        <h:head>
-            <ui:include src="templates/head.xhtml"/>
-        </h:head>
+    <h:head>
+        <ui:include src="templates/head.xhtml" />
+    </h:head>
+
+    <h:body class="hold-transition sidebar-mini layout-fixed">
+        <div class="wrapper">
+            <ui:include src="templates/cabezote.xhtml" />
+            <ui:include src="templates/menuCoordinador.xhtml" />
         
-        <h:body>
-            <h:form id="formulario">
-                <ui:include src="templates/header.xhtml"/>
-                <p:panel>
-                    <p:messages showDetail="true" /> 
-                    <p:panelGrid id="pnlReporte" columns="2"> 
-                        <h5>selecciona un ID de la lista, para descargar tu reporte:</h5> 
-                        <p:selectOneMenu id="selectAprendiz" binding="#{reportesVista.selectAprendiz}" class="col-2" >
-                            <f:selectItems value="#{reportesVista.itemAprendiz}" />
-                        </p:selectOneMenu>
-                        <p:commandButton id="btnReporte" value="Imprimir felicitacion" action="#{reportesVista.generarReporteFelicitacion()}" update="formulario" />
-                    </p:panelGrid>
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <div class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-12">
 
-                </p:panel>
-                <ui:include src="templates/footer.xhtml"/>
-            </h:form>
-        </h:body>
+                                <h:form id="formulario">
+                                    <b:panel>
+                                        <b:messages showDetail="true" /> 
+                                        <b:panelGrid id="pnlReporte" columns="2"> 
+                                            <h5>selecciona un ID de la lista, para descargar tu reporte:</h5> 
+                                            <b:selectOneMenu id="selectAprendiz" binding="#{reportesVista.selectAprendiz}" class="col-5" >
+                                                <f:selectItems value="#{reportesVista.itemAprendiz}" />
+                                            </b:selectOneMenu>
+                                            <b:commandButton id="btnReporte" value="Imprimir felicitacion" action="#{reportesVista.generarReporteFelicitacion()}" update="formulario" />
+                                        </b:panelGrid>
 
-    </f:view>
+                                    </b:panel>
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ui:include src="templates/footer.xhtml" />
+        </div>
+    </h:body>
+    
 </html>

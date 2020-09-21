@@ -23,11 +23,9 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.servlet.ServletContext;
-import org.primefaces.component.commandbutton.CommandButton;
-import org.primefaces.component.inputtext.InputText;
-import org.primefaces.component.selectonemenu.SelectOneMenu;
-import org.primefaces.event.FileUploadEvent;
-import org.primefaces.event.SelectEvent;
+import net.bootsfaces.component.commandButton.CommandButton;
+import net.bootsfaces.component.inputText.InputText;
+import net.bootsfaces.component.selectOneMenu.SelectOneMenu;
 
 /**
  *
@@ -378,9 +376,8 @@ public class InstructorVista {
         
     }
 
-    public void onRowSelect(SelectEvent event) {
+    public void onRowSelect(Instructor instructor) {
         // System.out.println("Selecciono el Instructor");        
-        Instructor instructor = (Instructor) event.getObject();    
         txtIdentificacion.setValue(instructor.getDocumentoinstructor());
         txtNombre.setValue(instructor.getPersonal().getNombre());
         txtApellido.setValue(instructor.getPersonal().getApellido());
@@ -401,7 +398,7 @@ public class InstructorVista {
         borrarAction();
     }
     
-    public void handleFileUpload(FileUploadEvent event) {
+    /*public void handleFileUpload(FileUploadEvent event) {
         //System.out.println("Evento File upload!!!");
 
         ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
@@ -429,7 +426,7 @@ public class InstructorVista {
         } catch (Exception ex) {
             Logger.getLogger(InstructorVista.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    } */
 
     public void copyFile(String rutaDestino, String fileName, InputStream in) {
         try {

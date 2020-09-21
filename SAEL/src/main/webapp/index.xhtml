@@ -4,52 +4,48 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
    
-    <f:view contentType="text/html">
-        <h:head>
-            <f:facet name="first">
-                <ui:include src="templates/head.xhtml"/>
-                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <link rel="shortcut icon" href="favicon.ico"/>
-                <title>..:: SAEL ::..</title>
-            </f:facet>
-        </h:head>
+    <h:head>
+        <f:facet name="first">
+            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+            <link rel="shortcut icon" href="favicon.ico"/>
+            <title>..:: SAEL ::..</title>
+            <h:outputStylesheet name="css/estilos.css"/>
+        </f:facet>
+    </h:head>
 
-        <h:body>    
-            <ui:include src="templates/header.xhtml"/>
-            <h:form id="formLogin">  
-                <p:panel id="panel">                    
-                    <div align="center"> 
-                        <p:messages showDetail="true" /> 
-                        <p:panelGrid id="pnlCoordinador" columns="2"> 
-                            <f:facet name="header">  
-                                Ingreso de Usuarios  
-                            </f:facet> 
+    <h:body>    
+        <h:form id="formLogin">  
+            <p:panel id="panel">                    
+                <div class="centrado"> 
+                    <p:messages showDetail="true" /> 
+                    <p:panelGrid id="pnlCoordinador" columns="2"> 
+                        <f:facet name="header">  
+                            Ingreso de Usuarios  
+                        </f:facet> 
 
-                            <h:outputText value="Tipo:"/>                           
-                            <p:selectOneMenu id="cmbTipo"  binding="#{usuarioVista.cmbTipo}">
-                                <f:selectItems value="#{usuarioVista.listaTiposUsuario}" />                                  
-                            </p:selectOneMenu>                            
-                               
-                            <h:outputText value="Usuario:"/>
-                            <p:inputText id="txtUsuario"  binding="#{usuarioVista.txtUsuario}"/>
+                        <h:outputText value="Tipo:"/>                           
+                        <p:selectOneMenu id="cmbTipo"  binding="#{usuarioVista.cmbTipo}">
+                            <f:selectItems value="#{usuarioVista.listaTiposUsuario}" />                                  
+                        </p:selectOneMenu>                            
 
-                            <h:outputText value="Contraseña:"/>
-                            <p:password id="passUsuario" binding="#{usuarioVista.passUsuario}"  /> 
+                        <h:outputText value="Usuario:"/>
+                        <p:inputText id="txtUsuario"  binding="#{usuarioVista.txtUsuario}"/>
 
-                            <f:facet name="footer"> 
-                                <div align="center"> 
-                                    <p:commandButton id="btnIngresar" action="#{usuarioVista.ingresarAction}" value="Ingresar" update="panel" />  
-                                    <p:commandButton id="btnLimpiar" action="#{usuarioVista.limpiarAction}"  value="Limpiar" update="panel" />
-                                </div>
-                            </f:facet>  
-                        </p:panelGrid>                         
-                    </div>   
-                </p:panel>
-                <ui:include src="templates/footer.xhtml"/>
-            </h:form>
-        </h:body>
+                        <h:outputText value="Contraseña:"/>
+                        <p:password id="passUsuario" binding="#{usuarioVista.passUsuario}"  /> 
 
-    </f:view>
+                        <f:facet name="footer">
+                            <div align="center" >
+                                <b:commandButton id="btnIngresar" look="primary" action="#{usuarioVista.ingresarAction}" value="Ingresar" update="panel" />
+                                <b:commandButton id="btnLimpiar" look="danger" action="#{usuarioVista.limpiarAction}"  value="Limpiar" update="panel" />
+                            </div>
+                        </f:facet> 
+                    </p:panelGrid>                         
+                </div>   
+            </p:panel>
+        </h:form>
+    </h:body>
 </html>
