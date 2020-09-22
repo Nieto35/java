@@ -20,14 +20,14 @@ and open the template in the editor.
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>                
             </f:facet>
         </h:head>
-        <h:body>
+        <h:body class="hold-transition sidebar-mini layout-fixed">
             <div class="wrapper">
                 <ui:include src="templates/cabezote.xhtml" />
                 
                 <ui:include src="templates/menuCoordinador.xhtml" />
                 
                 <div class="content-wrapper">                    
-                    <section class="content-header">
+                    <div class="content-header">
                         <div class="container-fluid">
                             <div class="row mb-2">
                                 <div class="col-sm-12">
@@ -49,7 +49,7 @@ and open the template in the editor.
                                     <b:column>
                                         <h:form id="formulario">
                                             <!-- ingreso de datos --> 
-                                            <b:panel id="panelSeguimientos" title="Programar Seguimientos" collapsible="false" look="success">
+                                            <b:panel id="panelSeguimientos" title="Programar Seguimientos">
                                                 <p:messages id="mensajes" showDetail="true" /> 
                                                 <p:growl id="growl" showDetail="true" sticky="true" />
                                                 
@@ -119,58 +119,21 @@ and open the template in the editor.
 
                                                 <br/><br/><br/><br/>
                                                 <p:separator/>
-                                                <h:outputText value="Si Desea Buscar un Seguimiento digite el Dato en el Filtro Respectivo" />
 
                                                 <!-- Tabla -->
                                                 <div class="row"> 
                                                     <div class="col-md-12">
-                                                        <b:dataTable id="listaSeguimientos" var="seguimientos" >
-                                                                     selectionMode="single" paginator="true" rows="5" emptyMessage="No hay Seguimientos!">
-
-                                                            <!-- <p:ajax event="rowSelect" update=":formulario:panelSeguimientos" /> -->
-
-                                                            <p:column filterMatchMode="contains">
-                                                                <f:facet name="header">
-                                                                    <h:outputText  value="Código" />                            
-                                                                </f:facet>
-                                                                <h:outputText />                          
-                                                            </p:column>
-
-                                                            <p:column >
-                                                                <f:facet name="header" >
-                                                                    <h:outputText  value="Fecha" />                            
-                                                                </f:facet>
-                                                                <h:outputText />                          
-                                                            </p:column>
-
-                                                            <p:column >
-                                                                <f:facet name="header" >
-                                                                    <h:outputText  value="Hora" />                            
-                                                                </f:facet>
-                                                                <h:outputText />                          
-                                                            </p:column>
-
-                                                            <p:column >
-                                                                <f:facet name="header" >
-                                                                    <h:outputText  value="Lugar" />                            
-                                                                </f:facet>
-                                                                <h:outputText />                          
-                                                            </p:column>       
-
-                                                            <p:column >
-                                                                <f:facet name="header" >
-                                                                    <h:outputText  value="Estado" />                            
-                                                                </f:facet>
-                                                                <h:outputText />                          
-                                                            </p:column> 
-
-                                                            <p:column >
-                                                                <f:facet name="header" >
-                                                                    <h:outputText  value="Ficha" />                            
-                                                                </f:facet>
-                                                                <h:outputText />                          
-                                                            </p:column> 
-
+                                                        <b:dataTable id="listaSeguimientos" var="seguimientos" value="" searching="true"
+                                                                selection-mode="single" select="true" responsive="true" update=":formulario" 
+                                                                caption="Si desea buscar una ficha digite el dato en el filtro respectivo">
+                                                            
+                                                            <b:dataTableColumn label="Código" value="" style="text-align: center" /> 
+                                                            <b:dataTableColumn label="Fecha" value="" style="text-align: center" />
+                                                            <b:dataTableColumn label="Hora" value="" style="text-align: center" />
+                                                            <b:dataTableColumn label="Lugar" value="" style="text-align: center" />
+                                                            <b:dataTableColumn label="Estado" value="" style="text-align: center" />
+                                                            <b:dataTableColumn label="Ficha" value="" style="text-align: center" />
+                                                            
                                                         </b:dataTable>
                                                     </div>
                                                 </div>
@@ -193,12 +156,14 @@ and open the template in the editor.
                                                 </b:panel>
                                             
                                             </b:panel>
+                                            
+                                            
 
                                             <!-- Dialogo de confirmacion para el boton eliminar -->
                                             <h:form id="formDialog" > 
                                                 <p:confirmDialog id="confirmDialog" message="Está Seguro de Eliminar el Seguimiento?"  
                                                                  header="Confirmación" severity="alert" widgetVar="confirmation">  
-                                                    <p:commandButton id="confirm" value="Si" oncomplete="confirmation.hide()" update=":formulario:panel" />  
+                                                    <p:commandButton id="confirm" value="Si" oncomplete="confirmation.hide()" update=":formulario:panelSeguimientos" />  
                                                     <p:commandButton id="decline" value="No" onclick="PF('confirmation').hide()" type="button" />   
 
                                                 </p:confirmDialog> 
@@ -209,7 +174,7 @@ and open the template in the editor.
                                 </div>
                             </div>
                         </div><!-- /.container-fluid -->
-                    </section>
+                    </div>
                 
                 </div>
                 <ui:include src="templates/footer.xhtml"/>

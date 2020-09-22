@@ -37,6 +37,7 @@
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-12">
+                                
                                 <!-- dialogo de ayuda -->
                                 <p:dialog id="modalDialog" width="55%" header="Ayuda" widgetVar="helpDialog" showEffect="fade" hideEffect="bounce" modal="true" dynamic="true">  
                                     <p align="justify">                       
@@ -56,14 +57,15 @@
                                         el filtro por Nombre, Apellido, Ficha y Programa.<br/>                    
                                     </p>
                                 </p:dialog>
+                                
                                 <b:column>
                                     <h:form id="formulario"> 
                                         <b:panel id="panel" title="Gestion de aprendices">    
-                                        <b:commandLink style="text-align: left;" onclick="PF('helpDialog').show();" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default">
-                                            <h:outputText styleClass="nav-icon  fas fa-question" />
-                                        </b:commandLink>
-                                        <br/><br/>
-                                        <b:messages id="mensajes" showDetail="true" /> 
+                                            <b:commandLink style="text-align: left;" onclick="PF('helpDialog').show();" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default">
+                                                <h:outputText styleClass="nav-icon  fas fa-question" />
+                                            </b:commandLink>
+                                            <br/><br/>
+                                            <b:messages id="mensajes" showDetail="true" /> 
                                             <b:panelGrid  columns="4" style="width: 82%;"> 
                                                 <h:outputText value="Identificación:"/>
                                                 <b:inputText id="txtIdentificacion" binding="#{aprendizVista.txtIdentificacion}">

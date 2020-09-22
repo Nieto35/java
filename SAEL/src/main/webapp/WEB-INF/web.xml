@@ -59,7 +59,7 @@
         <location>/error_pages/404.xhtml</location>
     </error-page>
 
-    <!--<error-page>
+    <error-page>
         <error-code>500</error-code>
         <location>/error_pages/500.xhtml</location>
     </error-page>
@@ -67,8 +67,8 @@
     <error-page>
         <exception-type>java.lang.Throwable</exception-type>
         <location>/error_pages/500.xhtml</location>
-<<<<<<< HEAD
-    </error-page> -->
+
+    </error-page> 
 
     <error-page>
         <exception-type>javax.persistence.OptimisticLockException</exception-type>

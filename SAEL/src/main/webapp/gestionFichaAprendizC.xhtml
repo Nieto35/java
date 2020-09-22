@@ -15,7 +15,7 @@ and open the template in the editor.
         <h:head>
             <ui:include src="templates/head.xhtml"/>
         </h:head>
-        <h:body class="hold-transition sidebar-mini layout-fixed">
+        <h:body class="hold-transition sidebar-mini layout-fixed" >
             <div class="wrapper">
                 
                 <ui:include src="templates/cabezote.xhtml" />
@@ -25,86 +25,89 @@ and open the template in the editor.
                 <div class="content-wrapper">
                     
                     <h:form id="formulario">
-                        <section class="content">
+                        <div class="content-header">
                             <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="card card-success card-outline">                                      
-                                            
-                                            <b:panel id="panelFichas" title="Asignar estado de ficha a aprendiz" collapsible="false" look="success" >                                    
-                                                <!-- <p:messages id="mensajes" showDetail="true" closable="true" /> -->
+                                <div class="row mb-2">
+                                    <div class="col-sm-12">
+                                                                             
+                                        <b:column>
+                                            <h:form id="formulario">
                                                 
-                                                <b:commandLink style="text-align: left;" onclick="PF('helpDialog').show();" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default">
-                                                    <h:outputText styleClass="nav-icon  fas fa-question" />
-                                                </b:commandLink>
-                                                
-                                                <!-- kampos de eskritura -->
-                                                <b:panelGrid  columns="2" style="width: 100%;">   
-                                                    <b:panelGrid  columns="2" id="paFicha" style="width: 100%;"> 
-                                                        
-                                                        <h:outputText value="Ficha:"/>
-                                                        <b:inputText id="txtFicha" binding="#{fichaAprendizVista.txtFicha}" >
-                                                            <p:ajax listener="#{fichaAprendizVista.txtFichaListener}" update="paFicha" />
-                                                        </b:inputText>  
+                                                <b:panel id="panelFichas" title="Asignar estado de ficha a aprendiz">                                    
+                                                    <p:messages id="mensajes" showDetail="true" closable="true" />
 
-                                                        <h:outputText value="Programa:"/>
-                                                        <p:outputLabel id="txtPrograma" value="#{fichaAprendizVista.txtPrograma}" />
+                                                    <b:commandLink style="text-align: left;" onclick="PF('helpDialog').show();" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default">
+                                                        <h:outputText styleClass="nav-icon  fas fa-question" />
+                                                    </b:commandLink>
 
-                                                        <h:outputText value="Estado de formación:"/>
-                                                        
-                                                        <b:selectOneMenu id="cmbEstado" binding="#{fichaAprendizVista.cmbEstado}" style="width: 90%;">
-                                                            <f:selectItems value="#{fichaAprendizVista.listaEstados}" />
-                                                        </b:selectOneMenu>
+                                                    <!-- kampos de eskritura -->
+                                                    <b:panelGrid  columns="2" style="width: 100%;">   
+                                                        <b:panelGrid  columns="2" id="paFicha" style="width: 100%;"> 
+
+                                                            <h:outputText value="Ficha:"/>
+                                                            <b:inputText id="txtFicha" binding="#{fichaAprendizVista.txtFicha}" >
+                                                                <p:ajax listener="#{fichaAprendizVista.txtFichaListener}" update="paFicha" />
+                                                            </b:inputText>  
+
+                                                            <h:outputText value="Programa:"/>
+                                                            <p:outputLabel id="txtPrograma" value="#{fichaAprendizVista.txtPrograma}" />
+
+                                                            <h:outputText value="Estado de formación:"/>
+
+                                                            <b:selectOneMenu id="cmbEstado" binding="#{fichaAprendizVista.cmbEstado}" style="width: 90%;">
+                                                                <f:selectItems value="#{fichaAprendizVista.listaEstados}" />
+                                                            </b:selectOneMenu>
+                                                        </b:panelGrid>
+                                                        <b:panelGrid  columns="2" style="width: 100%;">                                               
+
+                                                            <h:outputText value="Identificación:"/>
+                                                            <b:inputText id="txtDocumento" binding="#{fichaAprendizVista.txtDocumento}" >
+                                                                <p:ajax listener="#{fichaAprendizVista.txtDocumentoListener}" update=":formulario:txtNombreAprendiz" />
+                                                            </b:inputText>
+
+                                                            <h:outputText value="Nombre:"/> 
+                                                            <p:outputLabel id="txtNombreAprendiz" value="#{fichaAprendizVista.txtNombreAprendiz}" />
+                                                        </b:panelGrid>                                                    
                                                     </b:panelGrid>
-                                                    <b:panelGrid  columns="2" style="width: 100%;">                                               
+                                                
 
-                                                        <h:outputText value="Identificación:"/>
-                                                        <b:inputText id="txtDocumento" binding="#{fichaAprendizVista.txtDocumento}" >
-                                                            <p:ajax listener="#{fichaAprendizVista.txtDocumentoListener}" update=":formulario:txtNombreAprendiz" />
-                                                        </b:inputText>
+                                                    <!-- botones -->
+                                                    <div align="center" style="position: relative; bottom: -20px;">
+                                                        <div class="col-md-2"></div>                                                     
+                                                        <div class="col-md-2">      
+                                                            <b:commandButton id="btnModificar" look="primary" disabled="true" value="Modificar" binding="#{fichaAprendizVista.btnModificar}" action="#{fichaAprendizVista.modificarAction}" update="formulario" />
+                                                        </div>
+                                                        <div class="col-md-2">    
+                                                            <b:commandButton id="btnLimpiar" look="info" value="Limpiar" binding="#{fichaAprendizVista.btnLimpiar}" action="#{fichaAprendizVista.limpiarAction}" update="formulario" />
+                                                        </div> 
+                                                    </div>
 
-                                                        <h:outputText value="Nombre:"/> 
-                                                        <p:outputLabel id="txtNombreAprendiz" value="#{fichaAprendizVista.txtNombreAprendiz}" />
-                                                    </b:panelGrid>                                                    
-                                                </b:panelGrid>
-                                            </b:panel>
-                                            
-                                            <!-- botones -->
-                                            <div class="row" align="center">
-                                                <div class="col-md-2"></div>                                                     
-                                                <div class="col-md-2">      
-                                                    <b:commandButton id="btnModificar" look="primary" disabled="true" value="Modificar" binding="#{fichaAprendizVista.btnModificar}" action="#{fichaAprendizVista.modificarAction}" update="formulario" />
-                                                </div>
-                                                <div class="col-md-2">    
-                                                    <b:commandButton id="btnLimpiar" look="info" value="Limpiar" binding="#{fichaAprendizVista.btnLimpiar}" action="#{fichaAprendizVista.limpiarAction}" update="formulario" />
-                                                </div> 
-                                            </div>
-                                            
-                                            <p:spacer />
-                                            <h:outputText value="Si desea buscar una ficha digite el dato en el filtro respectivo" />
-                                            
-                                            <!-- tabla -->
-                                            <div class="row"> 
-                                                <div class="col-md-12">
-                                                    <b:panel id="panelDatos" title="Resultados" collapsible="false" look="success">
-                                                        
-                                                        <b:dataTable id="listaFichas" var="ficha" value="#{fichaAprendizVista.listaFichas}" searching="true"
-                                                                     selection-mode="single" select="true" responsive="true" update=":formulario" 
-                                                                     caption="Si desea buscar una ficha digite el dato en el filtro respectivo">
+                                                    <br/><br/><br/><br/>
+                                                    <p:separator/>
+                                                    
+                                                    <!-- tabla -->
+                                                    <div class="row"> 
+                                                        <div class="col-md-12">
                                                             
-                                                            <b:dataTableColumn label="Ficha" value="#{ficha.numeroficha}" style="text-align: center" />
-                                                            <b:dataTableColumn label="Programa" value="#{ficha.codigoprograma.nombre}" style="text-align: center" />
+                                                            <b:dataTable id="listaFichas" var="ficha" value="#{fichaAprendizVista.listaFichas}" searching="true"
+                                                                         selection-mode="single" select="true" responsive="true" update=":formulario" 
+                                                                         caption="Si desea buscar una ficha digite el dato en el filtro respectivo">
+
+                                                                <b:dataTableColumn label="Ficha" value="#{ficha.numeroficha}" style="text-align: center" />
+                                                                <b:dataTableColumn label="Programa" value="#{ficha.codigoprograma.nombre}" style="text-align: center" />
+
+                                                            </b:dataTable>
                                                             
-                                                        </b:dataTable>
-                                                        
-                                                    </b:panel>
-                                                </div>
-                                            </div>
-                                        </div> 
+                                                        </div>
+                                                    </div>
+                                                </b:panel>
+                                            </h:form>
+                                        </b:column>
+                                        
                                     </div>
                                 </div>
                             </div><!-- /.container-fluid -->
-                        </section>                
+                        </div>                
                     </h:form>                    
                 </div>
                 <ui:include src="templates/footer.xhtml"/>
