@@ -4,9 +4,9 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:b="http://bootsfaces.net/ui">
-   
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
     <h:head>
         <f:facet name="first">
             <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
@@ -16,36 +16,52 @@
         </f:facet>
     </h:head>
 
-    <h:body>    
-        <h:form id="formLogin">  
-            <p:panel id="panel">                    
-                <div class="centrado"> 
-                    <p:messages showDetail="true" /> 
-                    <p:panelGrid id="pnlCoordinador" columns="2"> 
-                        <f:facet name="header">  
-                            Ingreso de Usuarios  
-                        </f:facet> 
+    <h:body>   
+        <p:graphicImage name="img/banner_sael.jpg"  />
+        <b:form id="formLogin">  
+            <div class="wrapper">
+                <div class="content-wrapper">                 
+                    <div class="content-header">
+                        <div class="container-fluid centrado">
+                            <div class="col-sm-15">
+                                <b:panel class="card-body login-card-body" id="panel" style="background: #1D3D45">
+                                    <b:messages showDetail="true" /> 
+                                    <b:panelGrid id="pnlCoordinador" columns="2"> 
+                                        <f:facet name="header">  
+                                            Ingreso de Usuarios  
+                                        </f:facet> 
 
-                        <h:outputText value="Tipo:"/>                           
-                        <p:selectOneMenu id="cmbTipo"  binding="#{usuarioVista.cmbTipo}">
-                            <f:selectItems value="#{usuarioVista.listaTiposUsuario}" />                                  
-                        </p:selectOneMenu>                            
+                                        <h:outputText value="Tipo:" style="color: #fff"/>                           
+                                        <b:selectOneMenu id="cmbTipo"  binding="#{usuarioVista.cmbTipo}">
+                                            <f:selectItems value="#{usuarioVista.listaTiposUsuario}" />                                  
+                                        </b:selectOneMenu>                            
 
-                        <h:outputText value="Usuario:"/>
-                        <p:inputText id="txtUsuario"  binding="#{usuarioVista.txtUsuario}"/>
+                                        <h:outputText value="Usuario:" style="color: #fff"/>
+                                        <b:inputText id="txtUsuario"  binding="#{usuarioVista.txtUsuario}"/>
 
-                        <h:outputText value="Contraseña:"/>
-                        <p:password id="passUsuario" binding="#{usuarioVista.passUsuario}"  /> 
+                                        <h:outputText value="Contraseña:" style="color: #fff"/>
+                                        <b:inputSecret id="passUsuario" binding="#{usuarioVista.passUsuario}"  />
 
-                        <f:facet name="footer">
-                            <div align="center" >
-                                <b:commandButton id="btnIngresar" look="primary" action="#{usuarioVista.ingresarAction}" value="Ingresar" update="panel" />
-                                <b:commandButton id="btnLimpiar" look="danger" action="#{usuarioVista.limpiarAction}"  value="Limpiar" update="panel" />
-                            </div>
-                        </f:facet> 
-                    </p:panelGrid>                         
-                </div>   
-            </p:panel>
-        </h:form>
+                                    </b:panelGrid>    
+                                    <div class="row"  align="center" >
+                                        <div class="col-sm-2"></div>
+                                        <div class="col-sm-2">
+                                           <b:commandButton id="btnIngresar" class="btn btn-success" action="#{usuarioVista.ingresarAction}" value="Ingresar" update="panel" />
+                                        </div>
+                                        <div class="col-sm-2"></div>
+                                        <div class="col-sm-2">
+                                            <b:commandButton id="btnLimpiar" class="btn btn-danger" action="#{usuarioVista.limpiarAction}"  value="Limpiar" update="panel" />
+                                        </div>
+                                    </div>   
+                                </b:panel>
+                            </div>  
+                        </div>
+                    </div>
+                </div>  
+                
+            </div>
+
+        </b:form>
+        
     </h:body>
 </html>

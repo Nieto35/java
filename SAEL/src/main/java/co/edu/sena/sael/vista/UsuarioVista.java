@@ -26,9 +26,8 @@ import javax.inject.Inject;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import net.bootsfaces.component.inputSecret.InputSecret;
-import org.primefaces.component.inputtext.InputText;
-import org.primefaces.component.password.Password;
-import org.primefaces.component.selectonemenu.SelectOneMenu;
+import net.bootsfaces.component.inputText.InputText;
+import net.bootsfaces.component.selectOneMenu.SelectOneMenu;
 
 /**
  *
@@ -50,7 +49,7 @@ public class UsuarioVista implements Serializable{
     private HttpServletRequest request;
     
     private InputText txtUsuario;
-    private Password passUsuario;
+    private InputSecret passUsuario;
     private SelectOneMenu cmbTipo;
     private String opcion;
     
@@ -76,14 +75,14 @@ public class UsuarioVista implements Serializable{
         this.txtUsuario = txtUsuario;
     }
 
-    public Password getPassUsuario() {
+    public InputSecret getPassUsuario() {
         return passUsuario;
     }
 
-    public void setPassUsuario(Password passUsuario) {
+    public void setPassUsuario(InputSecret passUsuario) {
         this.passUsuario = passUsuario;
     }
-
+    
     public SelectOneMenu getCmbTipo() {
         return cmbTipo;
     }
