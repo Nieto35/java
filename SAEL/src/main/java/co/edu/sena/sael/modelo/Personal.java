@@ -20,12 +20,14 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author dasak
+ * @author Asus s14
  */
 @Entity
 @Table(name = "personal")
@@ -52,10 +54,10 @@ public class Personal implements Serializable {
     @Column(name = "documentopersonal", nullable = false)
     private Long documentopersonal;
     @Basic(optional = false)
-    @Column(name = "nombre", nullable = false, length = 100)
+    @Column(name = "nombre",nullable = false, length = 100)
     private String nombre;
     @Basic(optional = false)
-    @Column(name = "apellido", nullable = false, length = 100)
+    @Column(name = "apellido",nullable = false, length = 100)
     private String apellido;
     @Column(name = "direccion", length = 100)
     private String direccion;
@@ -78,6 +80,8 @@ public class Personal implements Serializable {
     private Character sexo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "personal")
     private Collection<Comite> comiteCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "documentoPersonal")
+    private Collection<Programarseguimiento> programarseguimientoCollection;
     @OneToMany(mappedBy = "documentopersonal")
     private Collection<Usodeambiente> usodeambienteCollection;
     @OneToMany(mappedBy = "documentopersonal")
@@ -215,6 +219,15 @@ public class Personal implements Serializable {
 
     public void setComiteCollection(Collection<Comite> comiteCollection) {
         this.comiteCollection = comiteCollection;
+    }
+
+    @XmlTransient
+    public Collection<Programarseguimiento> getProgramarseguimientoCollection() {
+        return programarseguimientoCollection;
+    }
+
+    public void setProgramarseguimientoCollection(Collection<Programarseguimiento> programarseguimientoCollection) {
+        this.programarseguimientoCollection = programarseguimientoCollection;
     }
 
     @XmlTransient

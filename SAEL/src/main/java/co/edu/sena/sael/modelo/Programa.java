@@ -15,6 +15,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -30,6 +31,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Programa.findByCodigoprograma", query = "SELECT p FROM Programa p WHERE p.codigoprograma = :codigoprograma")
     , @NamedQuery(name = "Programa.findByNombre", query = "SELECT p FROM Programa p WHERE p.nombre = :nombre")})
 public class Programa implements Serializable {
+
+    @Column(name = "nombreprograma",length = 100)
+    private String nombreprograma;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -96,6 +100,14 @@ public class Programa implements Serializable {
     @Override
     public String toString() {
         return "co.edu.sena.sael.modelo.Programa[ codigoprograma=" + codigoprograma + " ]";
+    }
+
+    public String getNombreprograma() {
+        return nombreprograma;
+    }
+
+    public void setNombreprograma(String nombreprograma) {
+        this.nombreprograma = nombreprograma;
     }
     
 }

@@ -23,6 +23,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -41,13 +43,21 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Fichatitulacion.findByFechafin", query = "SELECT f FROM Fichatitulacion f WHERE f.fechafin = :fechafin")})
 public class Fichatitulacion implements Serializable {
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "numeroFicha")
+    private Collection<Programarseguimiento> programarseguimientoCollection;
+
+    @Column(name = "jornadaficha",length = 50)
+    private String jornadaficha;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "numeroficha", nullable = false)//@NotNull
+    @Column(name = "numeroficha", nullable = false)
     private Integer numeroficha;
-    @Column(name = "jornada", length = 50)//@Size
+    
+    @Column(name = "jornada", length = 50)
     private String jornada;
+    
     @Column(name = "fechainicio")
     @Temporal(TemporalType.DATE)
     private Date fechainicio;
@@ -210,6 +220,23 @@ public class Fichatitulacion implements Serializable {
     @Override
     public String toString() {
         return "co.edu.sena.sael.modelo.Fichatitulacion[ numeroficha=" + numeroficha + " ]";
+    }
+
+    public String getJornadaficha() {
+        return jornadaficha;
+    }
+
+    public void setJornadaficha(String jornadaficha) {
+        this.jornadaficha = jornadaficha;
+    }
+
+    @XmlTransient
+    public Collection<Programarseguimiento> getProgramarseguimientoCollection() {
+        return programarseguimientoCollection;
+    }
+
+    public void setProgramarseguimientoCollection(Collection<Programarseguimiento> programarseguimientoCollection) {
+        this.programarseguimientoCollection = programarseguimientoCollection;
     }
     
 }

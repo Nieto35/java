@@ -8,6 +8,7 @@ package co.edu.sena.sael.modelo;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,6 +18,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -33,13 +36,19 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Coordinador.findByTipo", query = "SELECT c FROM Coordinador c WHERE c.tipo = :tipo")})
 public class Coordinador implements Serializable {
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCoordinador")
+    private Collection<Programarseguimiento> programarseguimientoCollection;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "documentocoordinador", nullable = false)//@NotNull
+
+    @Column(name = "documentocoordinador", nullable = false)
     private Long documentocoordinador;
-    @Column(name = "tipo", length = 50)//@Size
+
+    @Column(name = "tipo", length = 50)
     private String tipo;
+    
     @OneToMany(mappedBy = "documentocoordinador")
     private Collection<Permiso> permisoCollection;
     @OneToMany(mappedBy = "documentocoordinador")
@@ -120,6 +129,15 @@ public class Coordinador implements Serializable {
     @Override
     public String toString() {
         return "co.edu.sena.sael.modelo.Coordinador[ documentocoordinador=" + documentocoordinador + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Programarseguimiento> getProgramarseguimientoCollection() {
+        return programarseguimientoCollection;
+    }
+
+    public void setProgramarseguimientoCollection(Collection<Programarseguimiento> programarseguimientoCollection) {
+        this.programarseguimientoCollection = programarseguimientoCollection;
     }
     
 }
