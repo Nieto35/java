@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <ui:include src="templates/head.xhtml"/> 
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>                
+            </f:facet>
+            <h:outputScript name="js/schedule_es.js"/>
+            <h:outputScript name="js/calendario_es.js"/>
+        </h:head>
+        <h:body class="hold-transition sidebar-mini layout-fixed">
+            <div class="wrapper">
+                <ui:include src="templates/cabezote.xhtml" />
+
+                <ui:include src="templates/menuCoordinador.xhtml" />
+
+
+                <div class="content-wrapper">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-12">
+                                <h:form>
+                                    <p:growl id="messages" showDetail="true"  />
+
+                                    <h:panelGrid columnClasses="value">
+                                        <h3 style="margin-top: 0">Calendario</h3>
+                                        <p:schedule id="schedule" value="#{programarSeguimientoVista.eventModel}"  locale="es" widgetVar="myschedule" 
+                                                    timeZone="America/Bogota" draggable="false"  >
+
+                                            <p:ajax event="dateSelect" listener="#{programarSeguimientoVista.onDateSelect}" update="eventDetails" 
+                                                    oncomplete="PF('eventDialog').initPosition(); PF('eventDialog').show(); return false;" />
+
+                                            <p:ajax event="eventSelect" listener="#{programarSeguimientoVista.onEventSelect}" update="eventDetails" 
+                                                    oncomplete="PF('eventDialog').initPosition(); PF('eventDialog').show(); return false;"  />
+
+                                        </p:schedule>
+                                    </h:panelGrid>
+
+                                    <p:dialog widgetVar="eventDialog" modal="true" header="Programar" showEffect="clip" hideEffect="clip"
+                                              blockScroll="true" responsive="true" resizable="false">
+                                        <h:panelGrid id="eventDetails"  columns="2" style="width: 500px" >
+
+                                            <p:outputLabel value="Ficha" />
+                                            <p:selectOneMenu id="selectFichas" binding="#{programarSeguimientoVista.selectFichas}"
+                                                             style="width: 100%;">
+                                                <f:selectItems value="#{programarSeguimientoVista.itemsFichas}"/>
+                                            </p:selectOneMenu>
+
+
+                                            <p:outputLabel value="Programado por: " />
+
+                                            <p:inputText id="txtProgramadoPor" binding="#{programarSeguimientoVista.txtProgramadoPor}" readonly="true" 
+                                                         style="width: 100%;"/> 
+
+
+
+                                            <p:outputLabel value="Fecha: " />  
+
+
+                                            <p:calendar id="calendarFecha"  pattern="yyyy/MM/dd" locale="es"
+                                                        timeZone="America/Bogota" binding="#{programarSeguimientoVista.calendarFecha}"
+                                                        showOn="false" readonly="true" inputStyle="width: 100%;" 
+                                                        value="#{programarSeguimientoVista.fechaObtenida}"/>
+
+                                            <p:outputLabel value="Hora Inicio: "/>
+                                            <p:calendar id="calendarHoraInicio"  pattern="HH:mm" timeOnly="true" locale="es"
+                                                        timeZone="America/Bogota"  value="#{programarSeguimientoVista.horaInicioObtenida}"
+                                                        binding="#{programarSeguimientoVista.calendarHoraInicio}"/>
+                                            
+                                            
+                                            <f:facet name="footer">
+
+                                                <div align="center">
+                                                    <p:commandButton type="reset" value="Limpiar" />
+                                                    <p:commandButton id="addButton" value="Guardar" actionListener="#{programarSeguimientoVista.addEvent}" 
+                                                                     oncomplete="PF('myschedule').update();PF('eventDialog').hide();" />
+                                                </div>
+                                            </f:facet>
+                                        </h:panelGrid>
+
+                                    </p:dialog>    
+                                </h:form>    
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+                <ui:include src="templates/footer.xhtml"/>
+            </div>
+        </h:body>
+
+    </f:view>
+</html>

@@ -46,9 +46,7 @@ public class Fichatitulacion implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "numeroFicha")
     private Collection<Programarseguimiento> programarseguimientoCollection;
 
-    @Column(name = "jornadaficha",length = 50)
-    private String jornadaficha;
-
+  
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -220,14 +218,6 @@ public class Fichatitulacion implements Serializable {
     @Override
     public String toString() {
         return "co.edu.sena.sael.modelo.Fichatitulacion[ numeroficha=" + numeroficha + " ]";
-    }
-
-    public String getJornadaficha() {
-        return jornadaficha;
-    }
-
-    public void setJornadaficha(String jornadaficha) {
-        this.jornadaficha = jornadaficha;
     }
 
     @XmlTransient

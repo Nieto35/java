@@ -33,4 +33,10 @@
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
     
+    <managed-bean>
+        <managed-bean-name>programarSeguimientoVista</managed-bean-name>
+        <managed-bean-class>co.edu.sena.sael.vista.ProgramarSeguimientoVista</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    
 </faces-config>

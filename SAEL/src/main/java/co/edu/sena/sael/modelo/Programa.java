@@ -32,9 +32,6 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Programa.findByNombre", query = "SELECT p FROM Programa p WHERE p.nombre = :nombre")})
 public class Programa implements Serializable {
 
-    @Column(name = "nombreprograma",length = 100)
-    private String nombreprograma;
-
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -100,14 +97,6 @@ public class Programa implements Serializable {
     @Override
     public String toString() {
         return "co.edu.sena.sael.modelo.Programa[ codigoprograma=" + codigoprograma + " ]";
-    }
-
-    public String getNombreprograma() {
-        return nombreprograma;
-    }
-
-    public void setNombreprograma(String nombreprograma) {
-        this.nombreprograma = nombreprograma;
     }
     
 }
