@@ -10,13 +10,15 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
  * @author Felipe
  */
 @Stateless
-public class CoordinadorDAO implements ICoordinadorDAO{
+public class CoordinadorDAO implements ICoordinadorDAO {
+
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -46,9 +48,12 @@ public class CoordinadorDAO implements ICoordinadorDAO{
 
     @Override
     public List<Coordinador> consultar() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            Query query = entityManager.createNamedQuery("Coordinador.findAll");
+            return query.getResultList();
+        } catch (RuntimeException e) {
+            throw e;
+        }
     }
-    
-    
-    
+
 }

@@ -79,7 +79,22 @@ and open the template in the editor.
                                             <p:outputLabel value="Hora Inicio: "/>
                                             <p:calendar id="calendarHoraInicio"  pattern="HH:mm" timeOnly="true" locale="es"
                                                         timeZone="America/Bogota"  value="#{programarSeguimientoVista.horaInicioObtenida}"
-                                                        binding="#{programarSeguimientoVista.calendarHoraInicio}"/>
+                                                        binding="#{programarSeguimientoVista.calendarHoraInicio}" inputStyle="width: 100%;"/>
+                                            
+                                            <p:outputLabel value="Hora Final "/>
+                                            <p:calendar id="calendarHoraFinal"  pattern="HH:mm" timeOnly="true" locale="es"
+                                                        timeZone="America/Bogota"  value="#{programarSeguimientoVista.horaFinalObtenida}"
+                                                        binding="#{programarSeguimientoVista.calendarHoraFinal}" inputStyle="width: 100%;"/>
+                                            
+                                            <p:outputLabel value="Coordinadores" />
+                                            <p:selectOneMenu id="selectCoordinadores" binding="#{programarSeguimientoVista.selectCoordinador}"
+                                                             style="width: 100%;">
+                                                <f:selectItems value="#{programarSeguimientoVista.itemsCoordinador}"/>
+                                            </p:selectOneMenu>
+                                            
+                                            <p:outputLabel value="Estado" />
+                                            <p:inputText id="txtEstado" binding="#{programarSeguimientoVista.txtEstado}" readonly="true" 
+                                                         style="width: 100%;" value="FALTA POR APROBAR"/> 
                                             
                                             
                                             <f:facet name="footer">
