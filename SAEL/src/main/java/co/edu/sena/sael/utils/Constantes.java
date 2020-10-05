@@ -25,7 +25,32 @@ public final class Constantes {
                                                           "APLAZAMIENTO", "POR CERTIFICAR", "CERTIFICADO"}; 
     public static final String[] LIST_TIPOS_USUARIO={ "COORDINADOR", "INSTRUCTOR" };
     public static final String[] LIST_JORNADAS_FICHAS={ "DIURNA", "NOCTURNA", "MIXTA" }; 
-    public static final String[] LIST_TIPO_INSTRUCTOR={ "CONTRATISTA", "PLANTA" }; 
+    public static final String[] LIST_TIPO_INSTRUCTOR={ "CONTRATISTA", "PLANTA" };
+    public static final String[] LIST_ESTADO_PROG_SEGUIMIENTO = {"POR APROBAR", "APROBADO", "CANCELADO"};
+    
+    public static final String[] LIST_PAGES_COORDINADOR={
+        "CambiaPassword",
+        "aprobar_seguimiento",
+        "gestionAprendicesC",
+        "gestionFichaAprendizC",
+        "gestionFichasC",
+        "gestionInstructoresC",
+        "gestionSeguimientosC",
+        "indexCoordinador",
+        "programar_seguimiento",
+        "reportes"
+    };
+    
+    public static final String[] LIST_PAGES_INSTRUCTOR = {
+        "CambiaPassword",
+        "gestionAprendicesIns",
+        "gestionInstructoresIns",
+        "gestionSeguimientosIns",
+        "indexInstructor",
+        "programar_seguimiento",
+        "reportes"
+    };
+    
     
     private Constantes(){
         //this prevents even the native class from 

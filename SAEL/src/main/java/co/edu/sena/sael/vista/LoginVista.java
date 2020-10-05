@@ -207,7 +207,7 @@ public class LoginVista implements Serializable {
         Instructor validarInstructor = null;
         Coordinador validarCoordinador = null;
         
-        System.out.println("Entreo en el metodo aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        
         
 	//si la pagina actual es el login o la configurada como inicial
 	if(url.endsWith (ctxPath + "/") || url.endsWith("/index.xhtml"))
@@ -221,19 +221,22 @@ public class LoginVista implements Serializable {
                 if (validarInstructor.getDocumentoinstructor() != null) {
                     context.redirect(ctxPath + "faces/indexInstructor.xhtml");
                 }
-                
-                Long coordinador=usuarioLogeado.getDocumentopersonal();
-                validarCoordinador = coordinadorLogica.consultarPorId(coordinador);
+                else
+                {
+                    Long coordinador=usuarioLogeado.getDocumentopersonal();
+                    validarCoordinador = coordinadorLogica.consultarPorId(coordinador);
 
-                if (validarCoordinador.getDocumentocoordinador() != null) {
-                    context.redirect(ctxPath + "faces/indexCoordinador.xhtml");
-                }
+                    if (validarCoordinador.getDocumentocoordinador() != null) {
+                        context.redirect(ctxPath + "faces/indexCoordinador.xhtml");
+                    }
+                }               
+                
             }
             
 	}
-	else if(usuarioLogeado==null)//si es otra pagina y  no hay sesion ·niciada abre sesion invalida
+	else if(usuarioLogeado==null)//si es otra pagina y  no hay sesion ·iniciada abre sesion invalida
 	{
-		context.redirect(ctxPath+ "/SesionInvalida.xhtml");
+            context.redirect(ctxPath+ "/SesionInvalida.xhtml");
 	}
       }catch (IOException e) {
 	Logger.getLogger(UsuarioVista.class.getName()).log(Level.SEVERE, null, e);
