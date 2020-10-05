@@ -19,4 +19,5 @@ public interface ProgramarSeguimientoLogicaLocal {
     public void insertar(Programarseguimiento programarSeguimiento) throws Exception;
     public Programarseguimiento consultarPorId(int id) throws Exception;
     public List<Programarseguimiento> consultar() throws Exception;
+    public List<Programarseguimiento> consultarPorEstado(String estado) throws Exception;  
 }

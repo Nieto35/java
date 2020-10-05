@@ -14,7 +14,6 @@ import co.edu.sena.sael.modelo.Fichatitulacion;
 import co.edu.sena.sael.modelo.Personal;
 import co.edu.sena.sael.modelo.Programarseguimiento;
 import java.io.Serializable;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -28,7 +27,6 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-import javax.faces.event.PhaseId;
 import javax.faces.model.SelectItem;
 import org.primefaces.component.inputtext.InputText;
 import org.primefaces.component.selectonemenu.SelectOneMenu;
@@ -392,6 +390,12 @@ public class ProgramarSeguimientoVista implements Serializable {
         Personal user = (Personal) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuarioLogeado");
         txtProgramadoPor.setValue(user.getDocumentopersonal() + " : " + user.getNombre() + " " + user.getApellido());
         calendarFecha.setValue(event.getStartDate());
+        
+        
+        calendarHoraFinal.setValue("");
+        calendarHoraInicio.setValue("");
+        selectCoordinador.setValue("");
+        selectFichas.setValue("");
     }
 
     private void addMessage(FacesMessage message) {
