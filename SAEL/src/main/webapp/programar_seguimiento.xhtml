@@ -79,12 +79,14 @@ and open the template in the editor.
                                             <p:outputLabel value="Hora Inicio: "/>
                                             <p:calendar id="calendarHoraInicio"  pattern="HH:mm" timeOnly="true" locale="es"
                                                         timeZone="America/Bogota"  value="#{programarSeguimientoVista.horaInicioObtenida}"
-                                                        binding="#{programarSeguimientoVista.calendarHoraInicio}" inputStyle="width: 100%;"/>
+                                                        binding="#{programarSeguimientoVista.calendarHoraInicio}" inputStyle="width: 100%;"
+                                                        required="true"/>
                                             
                                             <p:outputLabel value="Hora Final "/>
                                             <p:calendar id="calendarHoraFinal"  pattern="HH:mm" timeOnly="true" locale="es"
                                                         timeZone="America/Bogota"  value="#{programarSeguimientoVista.horaFinalObtenida}"
-                                                        binding="#{programarSeguimientoVista.calendarHoraFinal}" inputStyle="width: 100%;"/>
+                                                        binding="#{programarSeguimientoVista.calendarHoraFinal}" inputStyle="width: 100%;"
+                                                        required="true"/>
                                             
                                             <p:outputLabel value="Coordinadores" />
                                             <p:selectOneMenu id="selectCoordinadores" binding="#{programarSeguimientoVista.selectCoordinador}"

@@ -59,6 +59,20 @@ public class ProgramarSeguimientoDAO implements IProgramarSeguimientoDAO{
             throw e;
         }
     }
+
+    @Override
+    public List<Programarseguimiento> consultarPorEstado(String estado) throws Exception {
+        try {
+           
+            Query query = entityManager.createQuery("select ps from Programarseguimiento ps where "
+                    + "ps.estado LIKE :estado")
+                    .setParameter("estado", estado);
+            
+            return query.getResultList();
+        } catch (RuntimeException e) {
+            throw e;
+        }
+    }
     
     
 }

@@ -88,6 +88,7 @@ public class ProgramarSeguimientoLogica implements ProgramarSeguimientoLogicaLoc
         programarSeguimientoExistente.setHoraFinal(programarSeguimiento.getHoraFinal());
         programarSeguimientoExistente.setDocumentoPersonal(programarSeguimiento.getDocumentoPersonal());
         programarSeguimientoExistente.setIdCoordinador(programarSeguimiento.getIdCoordinador());
+        programarSeguimientoExistente.setEstado(programarSeguimiento.getEstado());
          
         programarSeguimientoDAO.modificar(programarSeguimientoExistente);
     }
@@ -106,6 +107,12 @@ public class ProgramarSeguimientoLogica implements ProgramarSeguimientoLogicaLoc
     @Override
     public List<Programarseguimiento> consultar() throws Exception {
         return programarSeguimientoDAO.consultar();
+    }
+
+    @Override
+    public List<Programarseguimiento> consultarPorEstado(String estado) throws Exception {
+        System.out.println("estado: " + estado );
+        return programarSeguimientoDAO.consultarPorEstado(estado);
     }
 
 

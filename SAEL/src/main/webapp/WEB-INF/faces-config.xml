@@ -39,4 +39,10 @@
         <managed-bean-scope>view</managed-bean-scope>
     </managed-bean>
     
+    <managed-bean>
+        <managed-bean-name>aprobarSeguimientoVista</managed-bean-name>
+        <managed-bean-class>co.edu.sena.sael.vista.AprobarSeguimientoVista</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    
 </faces-config>
