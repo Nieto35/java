@@ -5,6 +5,7 @@
  */
 package co.edu.sena.sael.reportes;
 
+import co.edu.sena.sael.vista.ReportesVista;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,6 +16,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import javax.ejb.EJB;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -46,51 +48,71 @@ public class ReporteFelicitaciones extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response, String Sexo)
             throws ServletException, IOException {
 
         Connection conn = null;
         
         try {
-            String rutaReporte = this.getServletContext().getRealPath("/reportes")
-                    + File.separator + "cartaFelicitacionHombre.jasper";
-            System.out.println("Ruta completa: " + rutaReporte);
-            //se abre el reporte
-            InputStream inputStream = new FileInputStream(rutaReporte);
-            if (inputStream == null) {
-                throw new ClassNotFoundException("Archivo jasper no se encontro");
+            // String rutaReporte = this.getServletContext().getRealPath("/reportes")
+            //          + File.separator + "cartaFelicitacionHombre.jasper";
+            // System.out.println("Ruta completa: " + rutaReporte);
+            //se abre el reporte   String DocumentoAprendiz
+          //  System.out.println("DocumentoAprendiz: " + DocumentoAprendiz , "Sexo: " + Sexo);
+            String DocumentoAprendiz = request.getParameter("DocumentoAprendiz") &
+             String Sexo = request.getParameter("Sexo");
+            
+            if (Sexo == "F" ) {
+
+                String rutaReporte = this.getServletContext().getRealPath("/reportes")
+                        + File.separator + "cartaFelicitacionMujer.jasper";
+
+                InputStream inputStream = new FileInputStream(rutaReporte);
+                if (inputStream == null) {
+                    throw new ClassNotFoundException("Archivo jasper no se encontro");
+                }
+
+                
+            } else {
+
+                String rutaReporte = this.getServletContext().getRealPath("/reportes")
+                        + File.separator + "cartaFelicitacionHombre.jasper";
+
+                InputStream inputStream = new FileInputStream(rutaReporte);
+                if (inputStream == null) {
+                    throw new ClassNotFoundException("Archivo jasper no se encontro");
+                }
+
             }
-
-            String DocumentoAprendiz = request.getParameter("DocumentoAprendiz");
-            System.out.println("DocumentoAprendiz: " + DocumentoAprendiz);
-
-            //parametros del reporte
-            Map params = new HashMap();
-            params.put("DocumentoAprendiz", DocumentoAprendiz);
-            params.put("icontec", this.getClass().getResourceAsStream("icontec.jpg"));
-            params.put("logoSena", this.getClass().getResourceAsStream("logoSena.jpg"));
-//            params.put("imagenParametro",this.getClass().getResourceAsStream("estudiante.png"));
+            
+             //se abre el reporte
+               // String DocumentoAprendiz = request.getParameter("DocumentoAprendiz");
+                System.out.println("DocumentoAprendiz: " + DocumentoAprendiz, "Sexo:" + Sexso);
+                
+               //parametros del reporte
+                Map params = new HashMap();
+                params.put("DocumentoAprendiz", DocumentoAprendiz);
+                params.put("icontec", this.getClass().getResourceAsStream("icontec.jpg"));
+                params.put("logoSena", this.getClass().getResourceAsStream("logoSena.jpg"));
+//          params.put("imagenParametro",this.getClass().getResourceAsStream("estudiante.png"));
 
             //se abre la cx
             Context initContext = new InitialContext();
             DataSource ds = (DataSource) initContext.lookup("jdbc/gepadBD");
             conn = ds.getConnection();
             //se llena el reporte
-            JasperPrint jasperPrint = JasperFillManager.fillReport(inputStream, params, conn);
-
-            
+//            JasperPrint jasperPrint = JasperFillManager.fillReport(inputStream, params, conn);
             JRDocxExporter docxExporter = new JRDocxExporter();
-            docxExporter.setExporterInput(new  SimpleExporterInput(jasperPrint));
+           // docxExporter.setExporterInput(new SimpleExporterInput(jasperPrint));
             ByteArrayOutputStream docxReportStream = new ByteArrayOutputStream();
-            docxExporter.setExporterOutput(new SimpleOutputStreamExporterOutput(docxReportStream));
-             docxExporter.exportReport();
-                    
-           // JRPdfExporter pdfExporter = new JRPdfExporter();
-           // pdfExporter.setExporterInput(new SimpleExporterInput(jasperPrint));
-           // ByteArrayOutputStream pdfReportStream = new ByteArrayOutputStream();
-        // pdfExporter.setExporterOutput(new SimpleOutputStreamExporterOutput(pdfReportStream));
-          //  pdfExporter.exportReport();
+            //docxExporter.setExporterOutput(new SimpleOutputStreamExporterOutput(docxReportStream));
+            docxExporter.exportReport();
 
+            JRPdfExporter pdfExporter = new JRPdfExporter();
+          //  pdfExporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+            // ByteArrayOutputStream pdfReportStream = new ByteArrayOutputStream();
+            // pdfExporter.setExporterOutput(new SimpleOutputStreamExporterOutput(pdfReportStream));
+            //pdfExporter.exportReport();
             response.setContentType("application/docx");
             response.setHeader("content-Length", String.valueOf(docxReportStream.size()));
             response.setHeader("Content-disposition", "attachment; filename=reporteFelicitaciones.docx");
