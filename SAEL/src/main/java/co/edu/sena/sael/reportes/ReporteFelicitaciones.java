@@ -48,21 +48,19 @@ public class ReporteFelicitaciones extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response, String Sexo)
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         Connection conn = null;
-        
+
         try {
-            // String rutaReporte = this.getServletContext().getRealPath("/reportes")
-            //          + File.separator + "cartaFelicitacionHombre.jasper";
-            // System.out.println("Ruta completa: " + rutaReporte);
-            //se abre el reporte   String DocumentoAprendiz
-          //  System.out.println("DocumentoAprendiz: " + DocumentoAprendiz , "Sexo: " + Sexo);
-            String DocumentoAprendiz = request.getParameter("DocumentoAprendiz") &
-             String Sexo = request.getParameter("Sexo");
-            
-            if (Sexo == "F" ) {
+
+            //se abre el reporte
+            String DocumentoAprendiz = request.getParameter("DocumentoAprendiz");
+            String Sexo = request.getParameter("Sexo");
+            System.out.println("DocumentoAprendiz: " + DocumentoAprendiz + "Sexo: " + Sexo);
+
+            if (Sexo == "F") {
 
                 String rutaReporte = this.getServletContext().getRealPath("/reportes")
                         + File.separator + "cartaFelicitacionMujer.jasper";
@@ -71,8 +69,6 @@ public class ReporteFelicitaciones extends HttpServlet {
                 if (inputStream == null) {
                     throw new ClassNotFoundException("Archivo jasper no se encontro");
                 }
-
-                
             } else {
 
                 String rutaReporte = this.getServletContext().getRealPath("/reportes")
@@ -84,16 +80,11 @@ public class ReporteFelicitaciones extends HttpServlet {
                 }
 
             }
-            
-             //se abre el reporte
-               // String DocumentoAprendiz = request.getParameter("DocumentoAprendiz");
-                System.out.println("DocumentoAprendiz: " + DocumentoAprendiz, "Sexo:" + Sexso);
-                
-               //parametros del reporte
-                Map params = new HashMap();
-                params.put("DocumentoAprendiz", DocumentoAprendiz);
-                params.put("icontec", this.getClass().getResourceAsStream("icontec.jpg"));
-                params.put("logoSena", this.getClass().getResourceAsStream("logoSena.jpg"));
+            //parametros del reporte
+            Map params = new HashMap();
+            params.put("DocumentoAprendiz", DocumentoAprendiz);
+            params.put("icontec", this.getClass().getResourceAsStream("icontec.jpg"));
+            params.put("logoSena", this.getClass().getResourceAsStream("logoSena.jpg"));
 //          params.put("imagenParametro",this.getClass().getResourceAsStream("estudiante.png"));
 
             //se abre la cx
@@ -103,13 +94,13 @@ public class ReporteFelicitaciones extends HttpServlet {
             //se llena el reporte
 //            JasperPrint jasperPrint = JasperFillManager.fillReport(inputStream, params, conn);
             JRDocxExporter docxExporter = new JRDocxExporter();
-           // docxExporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+            // docxExporter.setExporterInput(new SimpleExporterInput(jasperPrint));
             ByteArrayOutputStream docxReportStream = new ByteArrayOutputStream();
             //docxExporter.setExporterOutput(new SimpleOutputStreamExporterOutput(docxReportStream));
             docxExporter.exportReport();
 
             JRPdfExporter pdfExporter = new JRPdfExporter();
-          //  pdfExporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+            //  pdfExporter.setExporterInput(new SimpleExporterInput(jasperPrint));
             // ByteArrayOutputStream pdfReportStream = new ByteArrayOutputStream();
             // pdfExporter.setExporterOutput(new SimpleOutputStreamExporterOutput(pdfReportStream));
             //pdfExporter.exportReport();
