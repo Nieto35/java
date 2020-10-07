@@ -59,8 +59,8 @@
 
                                             <!--=================================formulario====================================-->
                                             <b:panel id="panelSeguimientos" title="Información Seguimiento"> 
-                                                <b:panelGrid  columns="2" style="width: 82%;">   
-                                                    <b:panelGrid  columns="2" id="paFicha"> 
+                                                <b:panelGrid  columns="2">   
+                                                    <b:panelGrid  columns="1" id="paFicha"> 
                                                         <h:outputText value="Ficha:"/>
                                                         <b:inputText id="txtFicha"  readonly="true"/>        
 
@@ -68,7 +68,7 @@
                                                         <b:inputText id="txtJornada"  disabled="true"/>
 
                                                         <h:outputText value="Programa:"/>
-                                                        <b:inputTextarea id="txtPrograma" rows="5" col-md="12"  disabled="true"></b:inputTextarea>
+                                                        <b:inputTextarea id="txtPrograma" rows="5" col-md="13"  disabled="true"></b:inputTextarea>
                                                     </b:panelGrid>
                                                     <b:panelGrid  columns="2"> 
                                                         <h:outputText value="Código:"/>
@@ -87,22 +87,22 @@
                                                         <b:inputText id="txtLugar"  disabled="true"/>
 
                                                         <h:outputText value="Estado:"/>
-                                                        <b:selectOneMenu disabled="true" id="cmbEstadoSeguimiento" >
+                                                        <b:selectOneMenu disabled="false" id="cmbEstadoSeguimiento" >
                                                             <f:selectItem itemLabel="PROGRAMADO" itemValue="PROGRAMADO" />
                                                             <f:selectItem itemLabel="EJECUTADO" itemValue="EJECUTADO" />
                                                         </b:selectOneMenu>
                                                     </b:panelGrid>
-                                                    <b:panelGrid  columns="2" id="paFase"> 
+                                                    <b:panelGrid  columns="1" id="paFase"> 
                                                         <h:outputText value="Fase de Proyecto:"/>
-                                                        <b:inputTextarea id="txtFase" rows="5" col-md="12"  ></b:inputTextarea>
+                                                        <b:inputTextarea id="txtFase" rows="5" col-md="13"  ></b:inputTextarea>
 
                                                         <h:outputText value="Competencias:"/>
-                                                        <b:inputTextarea id="txtCompetencias" rows="5" col-md="12" ></b:inputTextarea>
+                                                        <b:inputTextarea id="txtCompetencias" rows="5" col-md="13" ></b:inputTextarea>
 
                                                     </b:panelGrid>
-                                                    <b:panelGrid  columns="2" id="paObs"> 
+                                                    <b:panelGrid  columns="1" id="paObs"> 
                                                         <h:outputText value="Observaciones Generales respecto al grupo:"/>
-                                                        <b:inputTextarea id="txtObservaciones" rows="5" col-md="12"  ></b:inputTextarea>
+                                                        <b:inputTextarea id="txtObservaciones" rows="5" col-md="13"  ></b:inputTextarea>
                                                     </b:panelGrid>
                                                 </b:panelGrid> 
                                                 <!--=================================formulario====================================-->
@@ -146,10 +146,10 @@
                                                         <b:inputText id="txtNombreCompleto" disabled="true"/>        
 
                                                         <h:outputText value="Rendimiento Académico y Comportamiento:"/>
-                                                        <b:inputTextarea id="txtRendimiento" rows="5" col-md="12" ></b:inputTextarea>
+                                                        <b:inputTextarea id="txtRendimiento" rows="5" col-md="13" ></b:inputTextarea>
 
                                                         <h:outputText value="Estrategias o Alternativas:"/>
-                                                        <b:inputTextarea id="txtEstrategia" rows="5" col-md="12"  ></b:inputTextarea>
+                                                        <b:inputTextarea id="txtEstrategia" rows="5" col-md="13"  ></b:inputTextarea>
 
                                                         <h:outputText value="Tipo Novedad:"/>
                                                         <b:selectOneMenu id="cmbNovedad"  >
