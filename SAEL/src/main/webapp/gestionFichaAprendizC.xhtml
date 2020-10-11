@@ -41,8 +41,8 @@ and open the template in the editor.
                                                     </b:commandLink>
 
                                                     <!-- campos de escritura -->
-                                                    <b:panelGrid  columns="1" style="width: 100%;">   
-                                                        <b:panelGrid  columns="4" id="paFicha" style="width: 100%;"> 
+                                                    <b:panelGrid  columns="1">   
+                                                        <b:panelGrid  columns="4" id="paFicha"> 
 
                                                             <h:outputText value="Ficha:"/>
                                                             <b:inputText id="txtFicha" binding="#{fichaAprendizVista.txtFicha}" >
@@ -53,7 +53,7 @@ and open the template in the editor.
                                                             <b:inputText id="txtPrograma" value="#{fichaAprendizVista.txtPrograma}" readonly="true" />
                                                             <!--<p:outputLabel id="txtPrograma"  />-->
                                                         </b:panelGrid>
-                                                        <b:panelGrid  columns="4" style="width: 100%;"> 
+                                                        <b:panelGrid  columns="4"> 
                                                             <h:outputText value="Estado de formación:"/>
 
                                                             <b:selectOneMenu id="cmbEstado" binding="#{fichaAprendizVista.cmbEstado}">
