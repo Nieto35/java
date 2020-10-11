@@ -7,6 +7,7 @@ package co.edu.sena.sael.persistencia;
 
 import co.edu.sena.sael.modelo.Fichatitulacion;
 import co.edu.sena.sael.modelo.Instructor;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -84,6 +85,20 @@ public class FichaTitulacionDAO implements IFichaTitulacionDAO{
         try {
             Query query=entityManager.createQuery("Select f from Fichatitulacion f, Instructor i where i.documentoinstructor = :documento and f.numeroficha=i.fichatitulacionCollection.numeroficha")
                     .setParameter("documento", instructor.getDocumentoinstructor());
+            return query.getResultList();
+        } catch (RuntimeException e) {
+            throw e;
+        }
+    }
+
+    @Override
+    public List<Fichatitulacion> consultarFichasDisponibles(Date fechaActual) throws Exception {
+       try {
+           
+            Query query = entityManager.createQuery("select ft from Fichatitulacion ft where "
+                    + "ft.fechafin >= :fechafin")
+                    .setParameter("fechafin", fechaActual);
+            
             return query.getResultList();
         } catch (RuntimeException e) {
             throw e;

@@ -13,6 +13,7 @@ import co.edu.sena.sael.modelo.Coordinador;
 import co.edu.sena.sael.modelo.Fichatitulacion;
 import co.edu.sena.sael.modelo.Personal;
 import co.edu.sena.sael.modelo.Programarseguimiento;
+import static co.edu.sena.sael.utils.Constantes.LIST_ESTADO_PROG_SEGUIMIENTO;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -28,8 +29,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.model.SelectItem;
-import org.primefaces.component.inputtext.InputText;
-import org.primefaces.component.selectonemenu.SelectOneMenu;
+import net.bootsfaces.component.inputText.InputText;
+import net.bootsfaces.component.selectOneMenu.SelectOneMenu;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.DefaultScheduleModel;
@@ -58,6 +59,7 @@ public class ProgramarSeguimientoVista implements Serializable {
     private Date horaFinalObtenida;
     private org.primefaces.component.calendar.Calendar calendarHoraInicio;
     private InputText txtEstado;
+    private final String ESTADO_DEFECTO = LIST_ESTADO_PROG_SEGUIMIENTO[0];
 
     @EJB
     private ProgramarSeguimientoLogicaLocal programarSeguimientoLogica;
@@ -67,7 +69,9 @@ public class ProgramarSeguimientoVista implements Serializable {
     private CoordinadorLogicaLocal coordinadorLogica;
     @EJB
     private PersonalLogicaLocal PersonalLogica;
-
+    
+    
+    
     public org.primefaces.component.calendar.Calendar getCalendarHoraInicio() {
         return calendarHoraInicio;
     }
@@ -147,7 +151,9 @@ public class ProgramarSeguimientoVista implements Serializable {
             itemsCoordinador = new ArrayList<>();
 
             for (Coordinador coordinadores : listaCoordinardor) {
-                itemsCoordinador.add(new SelectItem(coordinadores.getDocumentocoordinador(), coordinadores.getDocumentocoordinador().toString()));
+                itemsCoordinador.add(new SelectItem(coordinadores.getDocumentocoordinador(), coordinadores.getDocumentocoordinador().toString() + 
+                                                    " : " + coordinadores.getPersonal().getNombre() + " " + coordinadores.getPersonal().getApellido()));
+                                                    
             }
 
         } catch (Exception ex) {
@@ -170,8 +176,10 @@ public class ProgramarSeguimientoVista implements Serializable {
 
     public List<SelectItem> getItemsFichas() {
         try {
+ 
+            Date fechaActual = new Date();
 
-            List<Fichatitulacion> listaFichas = fichaTitulacionLogica.consultar();
+            List<Fichatitulacion> listaFichas = fichaTitulacionLogica.consultarFichasDisponibles(fechaActual);
             itemsFichas = new ArrayList<>();
 
             for (Fichatitulacion fichas : listaFichas) {
@@ -276,11 +284,11 @@ public class ProgramarSeguimientoVista implements Serializable {
     public void setEvent(ScheduleEvent event) {
         this.event = event;
     }
-    public Programarseguimiento obtenerInformacion(Programarseguimiento programarSeguimiento){
+
+    public Programarseguimiento obtenerInformacion(Programarseguimiento programarSeguimiento) {
         String documento = txtProgramadoPor.getValue().toString();
         String[] recolectarDocumento = documento.split(" :");
-        
-        
+
         programarSeguimiento.setFecha(fechaObtenida);
         programarSeguimiento.setHoraInicio(horaInicioObtenida);
         programarSeguimiento.setHoraFinal(horaFinalObtenida);
@@ -297,7 +305,7 @@ public class ProgramarSeguimientoVista implements Serializable {
             programarSeguimiento.setNumeroFicha(fichaTitulacion);
 
             //FK
-            Coordinador coordinador  = coordinadorLogica.consultarPorId(Long.parseLong(selectCoordinador.getValue().toString()));
+            Coordinador coordinador = coordinadorLogica.consultarPorId(Long.parseLong(selectCoordinador.getValue().toString()));
             programarSeguimiento.setIdCoordinador(coordinador);
 
         } catch (Exception ex) {
@@ -305,7 +313,7 @@ public class ProgramarSeguimientoVista implements Serializable {
         }
         return programarSeguimiento;
     }
-    
+
     public void crear() {
         try {
             Programarseguimiento programarSeguimiento = new Programarseguimiento();
@@ -315,9 +323,9 @@ public class ProgramarSeguimientoVista implements Serializable {
             Logger.getLogger(ProgramarSeguimientoVista.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void modificar(int id){
-       try {
+
+    public void modificar(int id) {
+        try {
             Programarseguimiento programarSeguimiento = new Programarseguimiento();
             programarSeguimiento = obtenerInformacion(programarSeguimiento);
             programarSeguimiento.setId(id);
@@ -325,7 +333,7 @@ public class ProgramarSeguimientoVista implements Serializable {
         } catch (Exception ex) {
             Logger.getLogger(ProgramarSeguimientoVista.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
+
     }
 
     // encargado de guardar la info de la ventana modal
@@ -338,9 +346,10 @@ public class ProgramarSeguimientoVista implements Serializable {
             event = new DefaultScheduleEvent(selectFichas.getValue().toString(), obtenerFecha(fechaObtenida, horaInicioObtenida),
                     fechaObtenida, id);
             // encargado de crear el evento
-            
+
             eventModel.addEvent(event); // encargado de crear el evento
             crear();
+            
 
         } else { // llama el metodo de modificar
 
@@ -356,7 +365,7 @@ public class ProgramarSeguimientoVista implements Serializable {
             int idRecolectado = Integer.parseInt(id);
 
             modificar(idRecolectado);
-            
+
         }
 
         event = new DefaultScheduleEvent();
@@ -377,6 +386,7 @@ public class ProgramarSeguimientoVista implements Serializable {
             calendarHoraInicio.setValue(programarseguimiento.getHoraInicio());
             selectCoordinador.setValue(programarseguimiento.getIdCoordinador().getDocumentocoordinador());
             calendarHoraFinal.setValue(programarseguimiento.getHoraFinal());
+            txtEstado.setValue(programarseguimiento.getEstado());
         } catch (Exception ex) {
             System.out.println("El ID NO EXISTE");
         }
@@ -390,8 +400,7 @@ public class ProgramarSeguimientoVista implements Serializable {
         Personal user = (Personal) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuarioLogeado");
         txtProgramadoPor.setValue(user.getDocumentopersonal() + " : " + user.getNombre() + " " + user.getApellido());
         calendarFecha.setValue(event.getStartDate());
-        
-        
+        txtEstado.setValue(ESTADO_DEFECTO);
         calendarHoraFinal.setValue("");
         calendarHoraInicio.setValue("");
         selectCoordinador.setValue("");

@@ -33,84 +33,86 @@ and open the template in the editor.
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-12">
-                                <h:form>
+                                <b:form id="formulario">
                                     <p:growl id="messages" showDetail="true"  />
 
-                                    <h:panelGrid columnClasses="value">
+                                    <h:panelGrid columnClasses="value" id="calendario">
                                         <h3 style="margin-top: 0">Calendario</h3>
                                         <p:schedule id="schedule" value="#{programarSeguimientoVista.eventModel}"  locale="es" widgetVar="myschedule" 
-                                                    timeZone="America/Bogota" draggable="false"  >
+                                                    timeZone="America/Bogota" draggable="false" style="cursor:pointer;" >
 
                                             <p:ajax event="dateSelect" listener="#{programarSeguimientoVista.onDateSelect}" update="eventDetails" 
-                                                    oncomplete="PF('eventDialog').initPosition(); PF('eventDialog').show(); return false;" />
+                                                    oncomplete="PF('eventDialog').initPosition(); PF('eventDialog').show(); return false;"  
+                                                    />
 
                                             <p:ajax event="eventSelect" listener="#{programarSeguimientoVista.onEventSelect}" update="eventDetails" 
-                                                    oncomplete="PF('eventDialog').initPosition(); PF('eventDialog').show(); return false;"  />
-
+                                                    oncomplete="PF('eventDialog').initPosition(); PF('eventDialog').show(); return false;"  
+                                                    />
                                         </p:schedule>
                                     </h:panelGrid>
 
                                     <p:dialog widgetVar="eventDialog" modal="true" header="Programar" showEffect="clip" hideEffect="clip"
                                               blockScroll="true" responsive="true" resizable="false">
-                                        <h:panelGrid id="eventDetails"  columns="2" style="width: 500px" >
+                                        <h:panelGrid id="eventDetails"  columns="1"   >
 
-                                            <p:outputLabel value="Ficha" />
-                                            <p:selectOneMenu id="selectFichas" binding="#{programarSeguimientoVista.selectFichas}"
-                                                             style="width: 100%;">
+                                            <h:outputText value="Ficha" />
+
+
+                                            <b:selectOneMenu id="selectFichas" binding="#{programarSeguimientoVista.selectFichas}"
+                                                             select2="true" class="form-control">
                                                 <f:selectItems value="#{programarSeguimientoVista.itemsFichas}"/>
-                                            </p:selectOneMenu>
+                                            </b:selectOneMenu>
+
+                                            <h:outputText value="Programado por" />
+                                            <b:inputText id="txtProgramadoPor" binding="#{programarSeguimientoVista.txtProgramadoPor}" readonly="true" 
+                                                         /> 
 
 
-                                            <p:outputLabel value="Programado por: " />
-
-                                            <p:inputText id="txtProgramadoPor" binding="#{programarSeguimientoVista.txtProgramadoPor}" readonly="true" 
-                                                         style="width: 100%;"/> 
-
-
-
-                                            <p:outputLabel value="Fecha: " />  
-
+                                            <h:outputText value="Fecha" />  
 
                                             <p:calendar id="calendarFecha"  pattern="yyyy/MM/dd" locale="es"
                                                         timeZone="America/Bogota" binding="#{programarSeguimientoVista.calendarFecha}"
                                                         showOn="false" readonly="true" inputStyle="width: 100%;" 
                                                         value="#{programarSeguimientoVista.fechaObtenida}"/>
 
-                                            <p:outputLabel value="Hora Inicio: "/>
+                                            <br/>
+                                            <h:outputText value="Hora inicio " />
                                             <p:calendar id="calendarHoraInicio"  pattern="HH:mm" timeOnly="true" locale="es"
                                                         timeZone="America/Bogota"  value="#{programarSeguimientoVista.horaInicioObtenida}"
                                                         binding="#{programarSeguimientoVista.calendarHoraInicio}" inputStyle="width: 100%;"
                                                         required="true"/>
-                                            
-                                            <p:outputLabel value="Hora Final "/>
-                                            <p:calendar id="calendarHoraFinal"  pattern="HH:mm" timeOnly="true" locale="es"
+
+                                            <br/>
+                                            <h:outputText value="Hora final "/>
+                                            <p:calendar id="calendarHoraFinal"  pattern="HH:mm" timeOnly="true"  locale="es"
                                                         timeZone="America/Bogota"  value="#{programarSeguimientoVista.horaFinalObtenida}"
                                                         binding="#{programarSeguimientoVista.calendarHoraFinal}" inputStyle="width: 100%;"
                                                         required="true"/>
-                                            
-                                            <p:outputLabel value="Coordinadores" />
-                                            <p:selectOneMenu id="selectCoordinadores" binding="#{programarSeguimientoVista.selectCoordinador}"
-                                                             style="width: 100%;">
-                                                <f:selectItems value="#{programarSeguimientoVista.itemsCoordinador}"/>
-                                            </p:selectOneMenu>
-                                            
-                                            <p:outputLabel value="Estado" />
-                                            <p:inputText id="txtEstado" binding="#{programarSeguimientoVista.txtEstado}" readonly="true" 
-                                                         style="width: 100%;" value="FALTA POR APROBAR"/> 
-                                            
-                                            
-                                            <f:facet name="footer">
 
-                                                <div align="center">
-                                                    <p:commandButton type="reset" value="Limpiar" />
-                                                    <p:commandButton id="addButton" value="Guardar" actionListener="#{programarSeguimientoVista.addEvent}" 
-                                                                     oncomplete="PF('myschedule').update();PF('eventDialog').hide();" />
-                                                </div>
-                                            </f:facet>
+                                            <br/>
+                                            <h:outputText value="Coordinador" />
+                                            <b:selectOneMenu id="selectCoordinadores" binding="#{programarSeguimientoVista.selectCoordinador}"
+                                                             select2="true">
+                                                <f:selectItems value="#{programarSeguimientoVista.itemsCoordinador}"/>
+                                            </b:selectOneMenu>
+
+                                            <h:outputText value="Estado" />
+                                            <b:inputText id="txtEstado" binding="#{programarSeguimientoVista.txtEstado}" readonly="true" 
+                                                         /> 
+
                                         </h:panelGrid>
 
+                                        <f:facet name="footer">
+
+                                            <div align="center">
+                                                <p:commandButton type="reset" value="Limpiar" />
+                                                <p:commandButton id="addButton" value="Guardar" actionListener="#{programarSeguimientoVista.addEvent}" 
+                                                                 oncomplete="PF('myschedule').update();PF('eventDialog').hide();" 
+                                                                 />
+                                            </div>
+                                        </f:facet>
                                     </p:dialog>    
-                                </h:form>    
+                                </b:form>    
                             </div>
                         </div>    
                     </div>

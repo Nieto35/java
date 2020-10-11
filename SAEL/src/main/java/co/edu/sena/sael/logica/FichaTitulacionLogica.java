@@ -8,6 +8,7 @@ package co.edu.sena.sael.logica;
 import co.edu.sena.sael.modelo.Fichatitulacion;
 import co.edu.sena.sael.modelo.Instructor;
 import co.edu.sena.sael.persistencia.IFichaTitulacionDAO;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -109,6 +110,11 @@ public class FichaTitulacionLogica implements FichaTitulacionLogicaLocal {
     @Override
     public List<Fichatitulacion> consultarAsignadas(Instructor instructor) throws Exception {
         return fichaDAO.consultarAsignadas(instructor);
+    }
+
+    @Override
+    public List<Fichatitulacion> consultarFichasDisponibles(Date fechaActual) throws Exception {
+        return fichaDAO.consultarFichasDisponibles(fechaActual);
     }
 
     

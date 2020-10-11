@@ -6,6 +6,7 @@ package co.edu.sena.sael.logica;
 
 import co.edu.sena.sael.modelo.Fichatitulacion;
 import co.edu.sena.sael.modelo.Instructor;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -24,4 +25,5 @@ public interface FichaTitulacionLogicaLocal {
     public List<Fichatitulacion> consultar() throws Exception;
     public List<Fichatitulacion> consultarDisponibles(Instructor instructor) throws Exception;
     public List<Fichatitulacion> consultarAsignadas(Instructor instructor) throws Exception;
+    public List<Fichatitulacion> consultarFichasDisponibles(Date fechaActual) throws Exception;
 }

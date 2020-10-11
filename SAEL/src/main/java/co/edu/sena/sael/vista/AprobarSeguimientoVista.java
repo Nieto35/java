@@ -13,6 +13,7 @@ import co.edu.sena.sael.modelo.Coordinador;
 import co.edu.sena.sael.modelo.Fichatitulacion;
 import co.edu.sena.sael.modelo.Personal;
 import co.edu.sena.sael.modelo.Programarseguimiento;
+import static co.edu.sena.sael.utils.Constantes.LIST_ESTADO_PROG_SEGUIMIENTO;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -41,7 +42,8 @@ public class AprobarSeguimientoVista implements Serializable {
     private Date fechaObtenida;
     private Date horaFinalObtenida;
     private Date horaInicioObtenida;
-    
+    private String[] estados = LIST_ESTADO_PROG_SEGUIMIENTO;
+     
     @EJB
     private ProgramarSeguimientoLogicaLocal programarSeguimientoLogica;
     @EJB
@@ -50,11 +52,19 @@ public class AprobarSeguimientoVista implements Serializable {
     private CoordinadorLogicaLocal coordinadorLogica;
     @EJB
     private PersonalLogicaLocal PersonalLogica;
-    
+
+    public String[] getEstados() {
+        return estados;
+    }
+
+    public void setEstados(String[] estados) {
+        this.estados = estados;
+    }
+     
     public List<Programarseguimiento> getListaAprobarSegumiento() {
         if (listaAprobarSegumiento == null) {
             try {
-                listaAprobarSegumiento = programarSeguimientoLogica.consultarPorEstado("FALTA POR APROBAR");
+                listaAprobarSegumiento = programarSeguimientoLogica.consultarPorEstado(estados[0]);
             } catch (Exception ex) {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", ex.getMessage()));
             }
@@ -168,7 +178,7 @@ public class AprobarSeguimientoVista implements Serializable {
         try {
             Programarseguimiento programarSeguimiento = obtenerInformacion();
             programarSeguimiento.setId(Integer.parseInt(txtId.getValue().toString()));
-            programarSeguimiento.setEstado("APROBADO");
+            programarSeguimiento.setEstado(estados[1]);
             programarSeguimientoLogica.modificar(programarSeguimiento);
         } catch (Exception ex) {
             Logger.getLogger(AprobarSeguimientoVista.class.getName()).log(Level.SEVERE, null, ex);
@@ -179,7 +189,7 @@ public class AprobarSeguimientoVista implements Serializable {
         try {
             Programarseguimiento programarSeguimiento = obtenerInformacion();
             programarSeguimiento.setId(Integer.parseInt(txtId.getValue().toString()));
-            programarSeguimiento.setEstado("DESAPROBAR");
+            programarSeguimiento.setEstado(estados[2]);
             programarSeguimientoLogica.modificar(programarSeguimiento);
         } catch (Exception ex) {
             Logger.getLogger(AprobarSeguimientoVista.class.getName()).log(Level.SEVERE, null, ex);
