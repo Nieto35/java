@@ -170,8 +170,6 @@ public class AprobarSeguimientoVista implements Serializable {
         calendarFecha.setValue(programarSeguimiento.getFecha());
         calendarHoraInicio.setValue(programarSeguimiento.getHoraInicio());
         calendarHoraFinal.setValue(programarSeguimiento.getHoraFinal());
-        System.out.println("entre");
-        
     }
     
     public void aprobarSeguimiento(){

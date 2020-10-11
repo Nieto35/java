@@ -294,11 +294,9 @@ public class FichasVista {
         setSelectedFicha(null);
     }
 
-    public void onRowSelect(SelectEvent event) {
+    public void onSelect(Fichatitulacion fichatitulacion) {
         
-        try {
-            Fichatitulacion fichatitulacion = (Fichatitulacion) event.getObject();           
-           
+        try {           
             txtDocumento.setValue(fichatitulacion.getDocumentoinstructor().getDocumentoinstructor());
             txtNombreInstructor=fichatitulacion.getDocumentoinstructor().getPersonal().getNombre()+" "+
                     fichatitulacion.getDocumentoinstructor().getPersonal().getApellido();

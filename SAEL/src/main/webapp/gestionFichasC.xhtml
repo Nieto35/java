@@ -76,13 +76,13 @@
 
 
                                                 <h:outputText value="Jornada:"/>
-                                                <b:selectOneMenu id="cmbJornada" binding="#{fichasVista.cmbJornada}" style="width: 90%;">
+                                                <b:selectOneMenu id="cmbJornada" binding="#{fichasVista.cmbJornada}">
                                                     <f:selectItems value="#{fichasVista.listaJornadas}" />
                                                 </b:selectOneMenu>
 
 
                                                 <h:outputText value="Programa:"/>
-                                                <b:selectOneMenu id="cmbPrograma" binding="#{fichasVista.cmbPrograma}" style="width: 90%;">
+                                                <b:selectOneMenu id="cmbPrograma" binding="#{fichasVista.cmbPrograma}">
                                                     <f:selectItems value="#{fichasVista.itemsProgramas}" />
                                                 </b:selectOneMenu>
 
@@ -104,7 +104,6 @@
                                                 <h:outputText value="Nombre:"/> 
                                                 <b:inputText id="txtNombreInstructor" value="#{fichasVista.txtNombreInstructor}" readonly="true" />
                                                 <!--<p:outputLabel id="txtNombreInstructor" value="" />-->
-
 
 
                                             </b:panelGrid>
@@ -130,22 +129,18 @@
                                             <br/><br/><br/><br/>
                                             <p:separator/>
 
-
-
-
+                                            
                                             <b:dataTable id="listaFichas" searching="true" value="#{fichasVista.listaFichas}" 
                                                          selection-mode="single" var="ficha" select="true" responsive="true"
-                                                         update=":formulario" caption="Si desea buscar una ficha digite el dato en el filtro respectivo">
+                                                         update=":formulario" caption="Si desea buscar una ficha digite el dato en el filtro respectivo" 
+                                                         onselect="ajax:fichasVista.onSelect(ficha)">
 
                                                 <b:dataTableColumn label="Ficha" value="#{ficha.numeroficha}" style="text-align: center" />
                                                 <b:dataTableColumn label="Programa" value="#{ficha.codigoprograma.nombre}" style="text-align: center" />
                                                 <b:dataTableColumn label="Documento" value="#{ficha.documentoinstructor.documentoinstructor}" style="text-align: center" />
                                                 <b:dataTableColumn label="Nombres y Apellidos" value="#{ficha.documentoinstructor.personal.nombre}  #{ficha.documentoinstructor.personal.apellido}" style="text-align: center" />
 
-
-
                                             </b:dataTable>
-
 
                                             <!--Panel Exportar -->
                                             <b:panel  title="Exportar">   

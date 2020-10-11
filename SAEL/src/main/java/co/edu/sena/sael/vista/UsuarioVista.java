@@ -205,8 +205,6 @@ public class UsuarioVista implements Serializable{
         Instructor validarInstructor = null;
         Coordinador validarCoordinador = null;
         
-        System.out.println("Entreo en el metodo aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-        
 	//si la pagina actual es el login o la configurada como inicial
 	if(url.endsWith (ctxPath + "/") || url.endsWith("/index.xhtml"))
 	{
