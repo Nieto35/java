@@ -25,7 +25,7 @@
                             <div class="col-sm-12">
                                 <b:column>
                                     <b:form id="formulario"> 
-                                        <b:panel id="panelAprobarSegumientos" title="Seguimiento por aprobar">                            
+                                        <b:panel id="panelAprobarSegumientos" title="Seguimiento por aprobar" style="cursor:pointer;">                            
                                             <b:dataTable id="listaAprobarSeguimientos" var="aprobarSeguimiento" searching="true" 
                                                          value="#{aprobarSeguimientoVista.listaAprobarSegumiento}" 
                                                          selection-mode="single" select="true" responsive="true"
@@ -35,14 +35,10 @@
 
                                                 <b:dataTableColumn label="Id" value="#{aprobarSeguimiento.id}" style="text-align: center" />
 
-                                                <b:dataTableColumn label="Coordinador" 
+                                                <b:dataTableColumn label="Nombre" 
                                                                    value="#{aprobarSeguimiento.idCoordinador.documentocoordinador}" 
                                                                    style="text-align: center" />
-
-                                                <b:dataTableColumn label="programado por" value="#{aprobarSeguimiento.documentoPersonal.nombre} 
-                                                                   #{aprobarSeguimiento.documentoPersonal.apellido}" 
-                                                                   style="text-align: center" />
-
+                                                
                                                 <b:dataTableColumn label="Ficha" value="#{aprobarSeguimiento.numeroFicha.numeroficha} : 
                                                                    #{aprobarSeguimiento.numeroFicha.codigoprograma.nombre}"  
                                                                    style="text-align: center" />
@@ -53,16 +49,10 @@
 
                                                 </b:dataTableColumn>
 
-                                                <b:dataTableColumn label="hora de inicio" style="text-align: center;">
+                                                <b:dataTableColumn label="Hora de inicio" style="text-align: center;">
                                                     <b:dateTimePicker   disabled="true" value="#{aprobarSeguimiento.horaInicio}" 
                                                                         mode="none" format="HH:mm " show-icon="false"
                                                                         />
-
-                                                </b:dataTableColumn>
-
-                                                <b:dataTableColumn label="hora de finalización" style="text-align: center;">
-                                                    <b:dateTimePicker   disabled="true" value="#{aprobarSeguimiento.horaFinal}" 
-                                                                        mode="none" format="HH:mm " show-icon="false"/>
 
                                                 </b:dataTableColumn>
 
@@ -77,18 +67,18 @@
                 <!-- /.content-header -->
 
                 <!-- dialogo para eliminar -->
-                <b:modal id="modalAprobar" title="Aprobar o desaprobar Seguimiento" 
-                         closable="false" closeOnEscape="true" size="modal-lg" >
+                <b:modal id="modalAprobar" title="Aprobar o Desaprobar Seguimiento" 
+                         closable="false" closeOnEscape="true" size="modal-md" >
                     <b:form id="formularioAprobar"> 
 
                         <b:row>
                             <b:column>
-                                <b:panelGrid columns="4" id="panelInfoSegumiento" >
+                                <b:panelGrid columns="2" id="panelInfoSegumiento"  >
                                     
                                     <h:outputText value="Id:" />    
-                                    <b:inputText id="txtID" readonly="true" binding="#{aprobarSeguimientoVista.txtId}" /> 
+                                    <b:inputText id="txtID" readonly="true" binding="#{aprobarSeguimientoVista.txtId}"/> 
 
-                                    <h:outputText value="ficha"/>    
+                                    <h:outputText value="Ficha:"/>    
                                     <b:inputText id="txtFichas" readonly="true" binding="#{aprobarSeguimientoVista.txtFicha}"/> 
 
                                     <h:outputText value="Programado Por:" />    
@@ -98,12 +88,14 @@
                                     <h:outputText value="Fecha:" />    
                                     <p:calendar id="calendarFecha"  pattern="yyyy/MM/dd" locale="es"
                                                 timeZone="America/Bogota" binding="#{aprobarSeguimientoVista.calendarFecha}"
-                                                showOn="false" readonly="true" inputStyle="width: 100%;" value="#{aprobarSeguimientoVista.fechaObtenida}"/>
-
-                                    <h:outputText value="coordiandor:" />    
+                                                showOn="false" readonly="true" inputStyle="width: 100%;" value="#{aprobarSeguimientoVista.fechaObtenida}" />
+                                    
+                                    
+                                    <h:outputText value="Coordinador:" />    
                                     <b:inputText id="txtCoordinador" readonly="true" binding="#{aprobarSeguimientoVista.txtCoordinador}" /> 
 
-                                    <h:outputText value="Hora de Inicio" />  
+                                    
+                                    <h:outputText value="Hora de Inicio:" />  
                                     <p:calendar id="calendarHoraInicio"  pattern="HH:mm" locale="es"
                                                 timeZone="America/Bogota" binding="#{aprobarSeguimientoVista.calendarHoraInicio}"
                                                 showOn="false" readonly="true" inputStyle="width: 100%;"
@@ -120,14 +112,14 @@
 
                                 <b:panelGrid columns="3" id="panelBotones" >
 
-                                    <b:commandButton largeScreen="half" value="Aprobar" 
+                                    <b:commandButton col-lg="80" value="Aprobar" 
                                                      action="#{aprobarSeguimientoVista.aprobarSeguimiento()}" update="formulario"
-                                                     oncomplete="$('#modalAprobar').modal('hide')" look="success"/> 
-                                    <b:commandButton largeScreen="half" value="Desaprobar" 
+                                                     oncomplete="$('#modalAprobar').modal('hide')" look="success" /> 
+                                    <b:commandButton col-lg="80" value="Desaprobar" 
                                                      action="#{aprobarSeguimientoVista.desaprobarSeguimiento()}" update="formulario"
-                                                     oncomplete="$('#modalAprobar').modal('hide')" look="danger"/>  
-                                    <b:button largeScreen="half"  value="Cancelar"
-                                              dismiss="modal"/>
+                                                     oncomplete="$('#modalAprobar').modal('hide')" look="danger"  />  
+                                    <b:button col-lg="80"  value="Cancelar"
+                                              dismiss="modal" look="info"/>
 
                                 </b:panelGrid>
 
