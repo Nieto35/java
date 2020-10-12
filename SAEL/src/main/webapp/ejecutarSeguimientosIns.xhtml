@@ -82,7 +82,7 @@
                                                                    lang="es" />
 
                                                     <h:outputText value="Hora:"/>
-                                                    
+
                                                     <b:datepicker id="txtHora"  mode="icon-toggle" change-month="true" change-year="true"  
                                                                   lang="es" /> 
 
@@ -123,39 +123,42 @@
                                                         <b:dataTableColumn label="Apellido" value="#{asistentes.apellido}" style="text-align: center" />
 
                                                     </b:dataTable>
-                                                    
-                                                    <b:panelGrid  columns="2" id="panelAsistente"> 
-                                                        <h:outputText value="Documento:"/>
-                                                        <p:inputText id="txtDocumento"  disabled="true"/>        
+                                                    <b:panelGrid  columns="1" > 
+                                                        <b:panelGrid  columns="2" id="panelAsistente"> 
+                                                            <h:outputText value="Documento:"/>
+                                                            <p:inputText id="txtDocumento"  disabled="true"/>        
 
-                                                        <h:outputText value="Nombre:"/>
-                                                        <p:inputText id="txtNombreCompleto"  disabled="true"/>        
+                                                            <h:outputText value="Nombre:"/>
+                                                            <p:inputText id="txtNombreCompleto"  disabled="true"/>        
 
-                                                        <h:outputText value="Tipo Novedad:"/>
-                                                        <b:selectOneMenu id="cmbCargo"  >
-                                                            <f:selectItem itemLabel="Seleccione" itemValue="" noSelectionOption="true"/>
-                                                            <f:selectItem itemLabel="Instructor Líder" itemValue="Instructor Líder" noSelectionOption="true"/>
-                                                            <f:selectItem itemLabel="Instructor Técnico" itemValue="Instructor Técnico" noSelectionOption="true"/>
-                                                            <f:selectItem itemLabel="Coordinador Académico" itemValue="Coordinador Académico" noSelectionOption="true"/>
-                                                            <f:selectItem itemLabel="Vocero (a)" itemValue="Vocero (a)" noSelectionOption="true"/>
-                                                            <f:selectItem itemLabel="Representante Bienestar" itemValue="Representante Bienestar" noSelectionOption="true"/>
-                                                            <f:selectItem itemLabel="Capellán" itemValue="Capellán" noSelectionOption="true"/>
-                                                        </b:selectOneMenu>
+                                                            <h:outputText value="Tipo Novedad:"/>
+                                                            <b:selectOneMenu id="cmbCargo"  >
+                                                                <f:selectItem itemLabel="Seleccione" itemValue="" noSelectionOption="true"/>
+                                                                <f:selectItem itemLabel="Instructor Líder" itemValue="Instructor Líder" noSelectionOption="true"/>
+                                                                <f:selectItem itemLabel="Instructor Técnico" itemValue="Instructor Técnico" noSelectionOption="true"/>
+                                                                <f:selectItem itemLabel="Coordinador Académico" itemValue="Coordinador Académico" noSelectionOption="true"/>
+                                                                <f:selectItem itemLabel="Vocero (a)" itemValue="Vocero (a)" noSelectionOption="true"/>
+                                                                <f:selectItem itemLabel="Representante Bienestar" itemValue="Representante Bienestar" noSelectionOption="true"/>
+                                                                <f:selectItem itemLabel="Capellán" itemValue="Capellán" noSelectionOption="true"/>
+                                                            </b:selectOneMenu>
 
+
+                                                        </b:panelGrid>
                                                         
-                                                            <div align="center">
-                                                                <b:commandButton id="btnRegistrarAsistente" class="btn-success" value="Registrar"  action="#{gestionarSeguimientoVista.registrar_action_asistente}" disabled="true" update="panelAsistentes" />
-                                                                <b:commandButton id="btnRetirarAsistente" class="btn-warning" value="Retirar"  action="#{gestionarSeguimientoVista.retirar_action_asistente}" disabled="true" update="panelAsistentes" />
-                                                                <b:commandButton id="btnLimpiarAsistente" class="btn-info" value="Limpiar"  action="#{gestionarSeguimientoVista.limpiar_actionAsistente}" update="panelAsistentes" />
-                                                            </div>
+                                                        <b:panelGrid columns="3"> 
+                                                            <b:commandButton id="btnRegistrarAsistente" class="btn-success" value="Registrar"  action="#{gestionarSeguimientoVista.registrar_action_asistente}" disabled="true" update="panelAsistentes" />
+                                                            <b:commandButton id="btnRetirarAsistente" class="btn-warning" value="Retirar"  action="#{gestionarSeguimientoVista.retirar_action_asistente}" disabled="true" update="panelAsistentes" />
+                                                            <b:commandButton id="btnLimpiarAsistente" class="btn-info" value="Limpiar"  action="#{gestionarSeguimientoVista.limpiar_actionAsistente}" update="panelAsistentes" />
+                                                        </b:panelGrid>
                                                         
                                                     </b:panelGrid>
+                                                    
                                                     <b:panelGrid  columns="2" id="panelFS">
-                                                        
-                                                            <div align="center">
-                                                                <b:commandButton id="btnEjecutarSeguimiento" class="btn-success" look="success" value="Finalizar Seguimiento"  action="#{gestionarSeguimientoVista.finalizar_seguimiento_action}" disabled="true" update="panelAsistentes" />
-                                                            </div>
-                                                        
+
+                                                        <div align="right">
+                                                            <b:commandButton id="btnEjecutarSeguimiento" class="btn-success" look="success" value="Finalizar Seguimiento"  action="#{gestionarSeguimientoVista.finalizar_seguimiento_action}" disabled="true" update="panelAsistentes" />
+                                                        </div>
+
                                                     </b:panelGrid>
                                                 </b:panelGrid>
                                             </b:panel>
