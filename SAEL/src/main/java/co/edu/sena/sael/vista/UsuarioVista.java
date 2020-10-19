@@ -165,7 +165,7 @@ public class UsuarioVista implements Serializable{
                 validarInstructor = instructorLogica.consultarPorId(documento);
 
                 if (validarInstructor.getDocumentoinstructor() != null) {
-                    pagina = "faces/indexInstructor.xhtml";
+                    pagina = "instructor/indexInstructor.xhtml";
                 }
 
             } else if ("COORDINADOR".equals(opcion)) {
@@ -173,12 +173,11 @@ public class UsuarioVista implements Serializable{
                 validarCoordinador = coordinadorLogica.consultarPorId(documento);
 
                 if (validarCoordinador.getDocumentocoordinador() != null) {
-                    pagina = "faces/indexCoordinador.xhtml";
+                    pagina = "coordinador/indexCoordinador.xhtml";
                 }
                 
             }
 
-            //FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioLogeado", usuarioLogeado);
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("tipoUsuario", opcion);
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioLogeado", this.usuarioLogeado);
             FacesContext.getCurrentInstance().getExternalContext().redirect(pagina);
@@ -215,27 +214,60 @@ public class UsuarioVista implements Serializable{
                 validarInstructor = instructorLogica.consultarPorId(instructor);
 
                 if (validarInstructor.getDocumentoinstructor() != null) {
-                    context.redirect(ctxPath + "faces/indexInstructor.xhtml");
+                    context.redirect(ctxPath + "instructor/indexInstructor.xhtml");
                 }
                 
                 Long coordinador=usuarioLogeado.getDocumentopersonal();
                 validarCoordinador = coordinadorLogica.consultarPorId(coordinador);
 
                 if (validarCoordinador.getDocumentocoordinador() != null) {
-                    context.redirect(ctxPath + "faces/indexCoordinador.xhtml");
+                    context.redirect(ctxPath + "coordinador/indexCoordinador.xhtml");
                 }
             }
             
 	}
 	else if(usuarioLogeado==null)//si es otra pagina y  no hay sesion ·niciada abre sesion invalida
 	{
-		context.redirect(ctxPath+ "/SesionInvalida.xhtml");
+            context.redirect(ctxPath+ "/SesionInvalida.xhtml");
 	}
+        /*else    //es otra pagina pero si hay sesión activa, se valida el perfil
+        {
+            boolean permiso=false; 
+            opcion = (String) context.getSessionMap().get("tipoUsuario"); 
+            System.out.println("opcion: "+opcion);
+                
+            if("COORDINADOR".equals(opcion))
+            {   
+                for (String page : Constantes.LIST_PAGES_COORDINADOR) {
+                    if(url.endsWith("/coordinador/"+page+".xhtml"))
+                    {
+                        permiso=true;
+                        break;
+                    }                        
+                }
+            }
+            else if("INSTRUCTOR".equals(opcion))
+            {
+                for (String page : Constantes.LIST_PAGES_INSTRUCTOR) {
+                    if(url.endsWith("/instructor/"+page+".xhtml"))
+                    {
+                        permiso=true;
+                        break;
+                    }                        
+                }
+            }
+            
+            if(!permiso)
+            {
+                context.invalidateSession();
+                context.redirect(ctxPath + "/error_pages/403.xhtml");
+            }
+        }*/
       }catch (IOException e) {
 	Logger.getLogger(UsuarioVista.class.getName()).log(Level.SEVERE, null, e);
-	} catch (Exception ex) {
-            Logger.getLogger(UsuarioVista.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    } catch (Exception ex) {
+        Logger.getLogger(UsuarioVista.class.getName()).log(Level.SEVERE, null, ex);
+    }
 }
 
     
@@ -278,7 +310,7 @@ public class UsuarioVista implements Serializable{
             FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
             ExternalContext ctx = FacesContext.getCurrentInstance().getExternalContext();
             String ctxPath = ((ServletContext) ctx.getContext()).getContextPath();
-            ctx.redirect(ctxPath + "/faces/index.xhtml");
+            ctx.redirect(ctxPath + "/index.xhtml");
         } catch (IOException ex) {            
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: ", ex.getMessage()));
         }

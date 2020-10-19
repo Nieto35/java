@@ -2,44 +2,49 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        
-        <ui:include src="../templates/head.xhtml" />
-        
+        <f:facet name="first">
+            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+            <title>SAEL - ERROR 500</title>
+            <link rel="shortcut icon" href="favicon.ico"/>
+            <h:outputStylesheet name="css/estilos.css"/>
+        </f:facet>
     </h:head>
-    
+
     <h:body>
         <div style="margin: 8px;">
             <img src="../resources/img/banner_sael.jpg" width="100%" height="100%" alt="LogoAspera" style="vertical-align: top;" />
-        
-        <div align="center">
-            
-            <h1> Error 500 </h1>
-            <p><b> User agent: </b> #{header['user-agent']}</p>
-            
-            <p><b> Request URI:</b>
-                
-            </p>
-            
-            <p><b>Ajax request:</b> #{facesContext.partialViewContext.ajaxRequest ? 'Si' : 'No'}</p>
-            <p><b>Código de estado:</b> #{requestScope['javax.servlet.error.status_code']}</p>
-            <p><b>Tipo de excepción:</b> #{requestScope['javax.servlet.error.exception_type']}</p>
-            <p><b>Mensaje:</b> #{requestScope['javax.servlet.error.message']}</p>
-            
-            <h4>Detalles</h4>
-            
-            <pre>
-                
-                #{errorVista.printStackTrace(requestScope['javax.servlet.error.exception'])}
 
-            </pre>
-            
-        </div>
-        
-        <br></br>
-        <br></br>
-        <img src="../resources/img/pie_sael.jpg" width="100%" height="100%" alt="LogoAspera" style="vertical-align: top;" />
+            <div align="center">
+
+                <h1> Error 500 </h1>
+                <p><b> User agent: </b> #{header['user-agent']}</p>
+
+                <p><b> Request URI:</b>
+
+                </p>
+
+                <p><b>Ajax request:</b> #{facesContext.partialViewContext.ajaxRequest ? 'Si' : 'No'}</p>
+                <p><b>Código de estado:</b> #{requestScope['javax.servlet.error.status_code']}</p>
+                <p><b>Tipo de excepción:</b> #{requestScope['javax.servlet.error.exception_type']}</p>
+                <p><b>Mensaje:</b> #{requestScope['javax.servlet.error.message']}</p>
+
+                <h4>Detalles</h4>
+
+                <pre>
+                
+                    #{errorVista.printStackTrace(requestScope['javax.servlet.error.exception'])}
+
+                </pre>
+
+            </div>
+
+            <br></br>
+            <br></br>
+            <img src="../resources/img/pie_sael.jpg" width="100%" height="100%" alt="LogoAspera" style="vertical-align: top;" />
 
 
         </div>

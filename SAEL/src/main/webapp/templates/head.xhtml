@@ -14,61 +14,62 @@ and open the template in the editor.
 
     <body>
         <ui:composition>
+            <f:facet name="first">
+                <!-- Required meta tags -->
+                <meta charset="utf-8"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+                <title>.::SAEL::. Seguimiento de Aprendices</title>
+                <link rel="shortcut icon" href="favicon.ico"/>
+                <f:event type="preRenderView" listener="#{usuarioVista.validarSesion()}" /> 
 
-            <!-- Required meta tags -->
-            <meta charset="utf-8"/>
-            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-            <title>.::SAEL::. Seguimiento de Aprendices</title>
-            <link rel="shortcut icon" href="favicon.ico"/>
-            <f:event type="preRenderView" listener="#{usuarioVista.validarSesion()}" /> 
-
-            <!-- Tell the browser to be responsive to screen width -->
-            <!--=============================================================================-->
-            <!--LOS CSS-->
-            <!--=======================================================================-->
-            <meta name="viewport" content="width=device-width, initial-scale=1"/>
-            <!-- Font Awesome -->
-            <h:outputStylesheet library="webjars" name="font-awesome/5.13.1/css/all.min-jsf.css" />
-            <h:outputStylesheet library="webjars" name="font-awesome/5.13.1/css/v4-shims.min-jsf.css" />        
-            <!-- Theme style -->
-            <h:outputStylesheet name="css/adminlte.min.css"/>
-            <!-- overlayScrollbars -->
-            <h:outputStylesheet name="plugins/overlayScrollbars/css/OverlayScrollbars.min.css"/>
-            <!--data table-->
-            <h:outputStylesheet name="css/datatables.min.css"/>
-            <!--primefaces-->
-            <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
-            <!-- Google Font: Source Sans Pro -->
-            <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"/>
+                <!-- Tell the browser to be responsive to screen width -->
+                <!--=============================================================================-->
+                <!--LOS CSS-->
+                <!--=======================================================================-->
+                <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                <!-- Font Awesome -->
+                <h:outputStylesheet library="webjars" name="font-awesome/5.13.1/css/all.min-jsf.css" />
+                <h:outputStylesheet library="webjars" name="font-awesome/5.13.1/css/v4-shims.min-jsf.css" />        
+                <!-- Theme style -->
+                <h:outputStylesheet name="css/adminlte.min.css"/>
+                <!-- overlayScrollbars -->
+                <h:outputStylesheet name="plugins/overlayScrollbars/css/OverlayScrollbars.min.css"/>
+                <!--data table-->
+                <h:outputStylesheet name="css/datatables.min.css"/>
+                <!--primefaces-->
+                <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+                <h:outputStylesheet name="css/estilos.css"/>
+                <!-- Google Font: Source Sans Pro -->
+                <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"/>
 
 
-            <!--=============================================================================-->
-            <!--LOS JS-->
-            <!--=======================================================================-->
+                <!--=============================================================================-->
+                <!--LOS JS-->
+                <!--=======================================================================-->
 
-            <!-- jQuery -->
-            <h:outputScript name="plugins/jquery/jquery.min.js" />
-            <!-- jQuery UI 1.11.4 -->
-            <h:outputScript name="plugins/jquery-ui/jquery-ui.min.js" />
-            <!--calendario--> 
-            <h:outputScript name="js/calendario_es.js"/>
-            <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-            <script>
-                $.widget.bridge('uibutton', $.ui.button)
-            </script>
-            <!-- Bootstrap 4 -->
-            <h:outputScript name="plugins/bootstrap/js/bootstrap.bundle.min.js"/>
-            <!-- overlayScrollbars -->
-            <h:outputScript name="js/datatables.min.js"/>
-            <!-- overlayScrollbars -->
-            <h:outputScript name="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js" />
-            <!-- AdminLTE App -->
-            <h:outputScript name="js/adminlte.js" />
-            
-            <h:outputScript name="js/moment.min.js" />
-            
-            <h:outputScript name="js/select2.min.js" />
-            
+                <!-- jQuery -->
+                <h:outputScript name="plugins/jquery/jquery.min.js" />
+                <!-- jQuery UI 1.11.4 -->
+                <h:outputScript name="plugins/jquery-ui/jquery-ui.min.js" />
+                <!--calendario--> 
+                <h:outputScript name="js/calendario_es.js"/>
+                <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+                <script>
+                    $.widget.bridge('uibutton', $.ui.button)
+                </script>
+                <!-- Bootstrap 4 -->
+                <h:outputScript name="plugins/bootstrap/js/bootstrap.bundle.min.js"/>
+                <!-- overlayScrollbars -->
+                <h:outputScript name="js/datatables.min.js"/>
+                <!-- overlayScrollbars -->
+                <h:outputScript name="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js" />
+                <!-- AdminLTE App -->
+                <h:outputScript name="js/adminlte.js" />
+
+                <h:outputScript name="js/moment.min.js" />
+
+                <h:outputScript name="js/select2.min.js" />
+            </f:facet>
             
         </ui:composition>
 

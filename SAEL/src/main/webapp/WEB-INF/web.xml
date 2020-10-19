@@ -30,14 +30,16 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </servlet-mapping>
+    
     <servlet>
         <servlet-name>ReporteFelicitaciones</servlet-name>
         <servlet-class>co.edu.sena.sael.reportes.ReporteFelicitaciones</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>Faces Servlet</servlet-name>
-        <url-pattern>/faces/*</url-pattern>
-    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ReporteFelicitaciones</servlet-name>
         <url-pattern>/ReporteFelicitaciones.do</url-pattern>
@@ -48,7 +50,7 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>faces/index.xhtml</welcome-file>
+        <welcome-file>index.xhtml</welcome-file>
     </welcome-file-list>
     <error-page>
         <error-code>403</error-code>
@@ -67,65 +69,12 @@
     <error-page>
         <exception-type>java.lang.Throwable</exception-type>
         <location>/error_pages/500.xhtml</location>
-
     </error-page> 
 
     <error-page>
         <exception-type>javax.persistence.OptimisticLockException</exception-type>
         <location>/error_pages/optimistic.xhtml</location>
     </error-page>
-    <!-- registro de servlets para reportes -->
-    <servlet>
-        <servlet-name>ReporteAprendiz</servlet-name>
-        <servlet-class>co.edu.senaclem.aspera.reportes.ReporteAprendiz</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ReporteFechas</servlet-name>
-        <servlet-class>co.edu.senaclem.aspera.reportes.ReporteFechas</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ReporteTotalAprendices</servlet-name>
-        <servlet-class>co.edu.senaclem.aspera.reportes.ReporteTotalAprendices</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ReporteDependencia</servlet-name>
-        <servlet-class>co.edu.senaclem.atus.reportes.ReporteDependencia</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ReporteArea</servlet-name>
-        <servlet-class>co.edu.senaclem.atus.reportes.ReporteArea</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ReporteTotalDependencias</servlet-name>
-        <servlet-class>co.edu.senaclem.atus.reportes.ReporteTotalDependencias</servlet-class>
-    </servlet>
-    <!--  -->
-    <!-- mappin para servlets de reportes -->
-    <!--servlet-mapping>
-        <servlet-name>ReporteAprendiz</servlet-name>
-        <url-pattern>/ReporteAprendiz.do</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ReporteFechas</servlet-name>
-        <url-pattern>/ReporteFechas.do</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ReporteTotalAprendices</servlet-name>
-        <url-pattern>/ReporteTotalAprendices.do</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ReporteDependencia</servlet-name>
-        <url-pattern>/ReporteDependencia.do</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ReporteArea</servlet-name>
-        <url-pattern>/ReporteArea.do</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ReporteTotalDependencias</servlet-name>
-        <url-pattern>/ReporteTotalDependencias.do</url-pattern>
-    </servlet-mapping-->
-    <!--  -->
     
     <mime-mapping>
         <extension>docx</extension>

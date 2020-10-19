@@ -8,29 +8,31 @@
     <h:head>
         <f:facet name="first">
             <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-            <title>SAEL- ERROR 403</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+            <title>SAEL - ERROR 403</title>
             <link rel="shortcut icon" href="favicon.ico"/>
+            <h:outputStylesheet name="css/estilos.css"/>
         </f:facet>
 
     </h:head>
 
     <h:body>
         <div style="margin: 8px;">
-            <img src="../resources/img/banner_sael.jpg" width="100%" height="100%" alt="LogoAspera" style="vertical-align: top;" />
-        
+            <p:graphicImage name="img/banner_sael.jpg" />
+
             <div align="center">
 
                 <p:panel header="Error 403">
                     <h3> Acceso denegado,no tienes permiso para acceder este recurso</h3>
 
                     <p>
-                        <!-- Regresar <p:linkButton style="text-decoration: underline" href="login.xhtml" value="Regresar" escape="false" /> -->
+                        <p:link href="../index.xhtml" value="Regresar" escape="false"/>
                     </p>  
                 </p:panel>      
             </div>
             <br></br>
             <br></br>
-            <img src="../resources/img/pie_sael.jpg" width="100%" height="100%" alt="LogoAspera" style="vertical-align: top;" />
+            <p:graphicImage name="img/pie_sael.jpg" width="100%" height="100%" alt="LogoSAEL" style="vertical-align: top;" />
 
         </div>
 
