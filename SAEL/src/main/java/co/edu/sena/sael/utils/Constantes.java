@@ -43,8 +43,8 @@ public final class Constantes {
     
     public static final String[] LIST_PAGES_INSTRUCTOR = {
         "CambiaPassword",
-        "gestionAprendicesIns",
-        "gestionInstructoresIns",
+        "gestionAprendices",
+        "gestionInstructores",
         "gestionSeguimientosIns",
         "indexInstructor",
         "programar_seguimiento",

@@ -1,37 +1,20 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <h:head>
-        <f:facet name="first">
-            <ui:include src="templates/head.xhtml"/> 
-            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-            <title>.::SAEL::. Seguimiento de Aprendices</title>
-            <link rel="shortcut icon" href="favicon.ico"/>
-        </f:facet>
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
 
-    </h:head>
-    <h:body class="hold-transition sidebar-mini layout-fixed">
-        <div class="wrapper">
-            <!--        ============================================
-                            CABEZOTE
-                    ============================================-->
-            <ui:include src="templates/cabezote.xhtml" />
-            <!--        ============================================
-                    MENU LATERAL
-            ============================================-->
-            <ui:include src="templates/menuInstructor.xhtml" />
-            <!--        ============================================
-                   CONTENIDO
-           ============================================-->  
+    <body>
+        <ui:composition>
 
-
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
+           <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <div class="content-header">
                     <div class="container-fluid">
@@ -180,16 +163,8 @@
                 </div>   
 
             </div>
-
-            <!--        ============================================
-                FOOTER
-         ============================================-->
-            <ui:include src="templates/footer.xhtml" />
-
-
-        </div>
-
-
-    </h:body>
+                
+        </ui:composition>  
+    </body>
 </html>
 

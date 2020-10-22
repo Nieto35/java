@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!--
 To change this template, choose Tools | Templates
 and open the template in the editor.
 -->
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
@@ -13,23 +11,10 @@ and open the template in the editor.
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:b="http://bootsfaces.net/ui">
 
-    <f:view contentType="text/html">
-        <h:head>
-            <f:facet name="first">
-                <ui:include src="templates/head.xhtml"/> 
-                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>                
-            </f:facet>
-            <h:outputScript name="js/schedule_es.js"/>
-            <h:outputScript name="js/calendario_es.js"/>
-        </h:head>
-        <h:body class="hold-transition sidebar-mini layout-fixed">
-            <div class="wrapper">
-                <ui:include src="templates/cabezote.xhtml" />
+    <body>
+        <ui:composition>
 
-                <ui:include src="templates/menuCoordinador.xhtml" />
-
-
-                <div class="content-wrapper">
+          <div class="content-wrapper">
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-12">
@@ -117,9 +102,8 @@ and open the template in the editor.
                         </div>    
                     </div>
                 </div>
-                <ui:include src="templates/footer.xhtml"/>
-            </div>
-        </h:body>
-
-    </f:view>
+                
+        </ui:composition>  
+    </body>
 </html>
+

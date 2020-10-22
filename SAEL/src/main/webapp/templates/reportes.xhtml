@@ -11,16 +11,10 @@ and open the template in the editor.
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:b="http://bootsfaces.net/ui">
 
-    <h:head>
-        <ui:include src="templates/head.xhtml" />
-    </h:head>
+    <body>
+        <ui:composition>
 
-    <h:body class="hold-transition sidebar-mini layout-fixed">
-        <div class="wrapper">
-            <ui:include src="templates/cabezote.xhtml" />
-            <ui:include src="templates/menuCoordinador.xhtml" />
-
-            <div class="content-wrapper">
+             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <div class="content-header">
                     <div class="container-fluid">
@@ -46,8 +40,8 @@ and open the template in the editor.
                     </div>
                 </div>
             </div>
-            <ui:include src="templates/footer.xhtml" />
-        </div>
-    </h:body>
-
+                
+        </ui:composition>  
+    </body>
 </html>
+
