@@ -1,0 +1,203 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:body>
+        <ui:composition>
+            <div class="wrapper">
+
+                <!-- Content Wrapper. Contains page content -->
+                <div class="content-wrapper">
+                    <!-- Content Header (Page header) -->
+                    <div class="content-header">
+                        <div class="container-fluid">
+                            <div class="row mb-2">
+                                <div class="col-sm-12">
+
+
+                                    <!-- dialogo de ayuda -->
+                                    <p:dialog id="modalDialog" width="80%" header="Ayuda" widgetVar="helpDialog" showEffect="fade" hideEffect="bounce" modal="true" dynamic="true">  
+                                        <p align="justify">                       
+                                            En esta página usted podrá:<br/><br/>
+                                            <b>-Crear, modificar, eliminar y consultar aprendices:</b> ésta opción solo está disponible para usuarios de tipo Coordinador. 
+                                            Para crear un aprendiz basta con digitar su documento de identificación y luego presionar la tecla TAB(Tabulación) o Enter. 
+                                            SAEL verificará que no exista un aprendiz con ese mismo documento. Si existe cargará sus datos y sino usted deberá continuar
+                                            llenando el formulario. Luego de clic en el botón Crear. Para modificar o eliminar un aprendiz existente seleccionelo 
+                                            de la tabla inferior.
+                                            <br/><br/>
+                                            <b>-Cargue masivo de aprendices:</b> para crear varios aprendices masivamente desde un archivo de Excel de clic en el botón Selecccionar. 
+                                            Luego busque el archivo el cual deberá tener extensión <strong>.XLS</strong>. SAEL leerá el archivo y luego mostrará el resultado del cargue masivo. 
+                                            También indicará en que filas del archivo hay errores. Para ver un ejemplo de la estructura que debe tener el archivo de clic en el enlace Ver Ejemplo. 
+                                            <br/><br/> 
+                                            <b>-Consultar y filtrar aprendices:</b> en la tabla de resultados se pueden visualizar todos los aprendices existentes. 
+                                            Si desea filtrar los resultados basta con digitar en la columna Identificación un número especifico, de igual forma se puede utilizar 
+                                            el filtro por Nombre, Apellido, Ficha y Programa.<br/>                    
+                                        </p>
+                                    </p:dialog>
+
+                                    <!-- dialogo de ejemplo cargue -->
+                                    <p:dialog id="modalDialogEjemplo" header="Ejemplo Archivo de Cargue" widgetVar="cargueDialog" showEffect="fade" hideEffect="bounce" modal="true" dynamic="true">  
+                                        <p align="justify">                       
+                                            El archivo de Excel para cargar masivamente los aprendices debe tener la extensión .XLS y debe tener la siguiente estructura:<br/><br/>
+                                            <div align="center">
+                                                <h:graphicImage url="/images/ejemploCargueAprendices.JPG" alt="Cargue Aprendices"/>
+                                            </div>                    
+                                            <br/>                    
+                                        </p>
+                                    </p:dialog>
+
+                                    <b:column>
+                                        <b:form id="formulario"> 
+                                            <b:panel id="panelAprendices" title="Aprendices">                            
+                                                <b:messages id="mensajes" showDetail="true" /> 
+                                                <b:growl id="growl" showDetail="true" severity="Error" /> 
+                                                <f:facet name="actions">
+                                                    <b:commandLink onclick="PF('helpDialog').show();" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon ui-icon-help" /></b:commandLink>
+                                                </f:facet>
+                                                <!--=============================== inicio paneGrid Datos Personales===============================-->
+
+                                                <b:panelGrid  columns="3" style="width: 100%;">
+
+                                                    <b:panelGrid columns="1">
+
+                                                        <h:outputText value="Identificación:"/>
+                                                        <b:inputText id="txtIdentificacion" binding="#{aprendizVista.txtIdentificacion}">
+                                                            <p:ajax listener="#{aprendizVista.txtIdentificacionListener}" update="panelAprendices,pnlBotones" />
+                                                        </b:inputText>
+
+                                                        <h:outputText value="Nombres:" />
+                                                        <b:inputText id="txtNombre" binding="#{aprendizVista.txtNombre}"  />
+
+                                                        <h:outputText value="Apellidos:"/>
+                                                        <b:inputText id="txtApellido" binding="#{aprendizVista.txtApellido}" />
+
+
+                                                        <h:outputText value="Sexo:"/>
+                                                        <b:selectOneMenu id="selectSexo" binding="#{aprendizVista.selectSexo}" >
+                                                            <f:selectItem itemLabel="MASCULINO" itemValue="M" />
+                                                            <f:selectItem itemLabel="FEMENINO" itemValue="F" />
+                                                        </b:selectOneMenu>                                                                                     
+
+                                                    </b:panelGrid>
+                                                    <b:panelGrid  columns="1"> 
+                                                        <h:outputText value="Teléfono"/>
+                                                        <b:inputText id="txtTelefono" binding="#{aprendizVista.txtTelefono}" />
+
+                                                        <h:outputText value="Correo personal:"/>
+                                                        <b:inputText id="txtCorreo" binding="#{aprendizVista.txtCorreo}" /> 
+
+                                                        <h:outputText value="Correo institucional:"/>
+                                                        <b:inputText id="txtCorreoInstitucional" binding="#{aprendizVista.txtCorreoInstitucional}" /> 
+                                                    </b:panelGrid>
+                                                    <b:panelGrid  columns="1" id="paFicha"> 
+                                                        <h:outputText value="Ficha:"/>
+                                                        <b:inputText id="txtFicha" binding="#{aprendizVista.txtFicha}" update="paFicha,pnlBotones,formulario">
+                                                            <f:ajax listener="#{aprendizVista.txtFichaListener}"  />
+                                                        </b:inputText>            
+
+                                                        <h:outputText value="Jornada:"/>
+                                                        <b:inputText id="txtJornada" binding="#{aprendizVista.txtJornada}" disabled="true"/>
+
+                                                        <h:outputText value="Programa:"/>
+                                                        <b:inputText id="txtPrograma" col-sm="14" maxlength="0" binding="#{aprendizVista.txtPrograma}"  disabled="true"/>
+
+                                                    </b:panelGrid>
+                                                </b:panelGrid>
+                                                <!--=============================== fin paneGrid Datos Personales===============================-->
+
+                                                <!--================================== Botones =============================================-->
+
+                                                <b:panel id="pnlBotones">
+                                                    <div class="row" align="center">
+                                                        <div class="col-md-2"></div> 
+                                                        <div class="col-md-2">                                                       
+                                                            <b:commandButton class="btn-success" id="btnCrear" value="Crear" binding="#{aprendizVista.btnCrear}" action="#{aprendizVista.crearAction}" update="formulario" />
+                                                        </div>
+                                                        <div class="col-md-2">      
+                                                            <b:commandButton class="btn-warning" id="btnModificar" value="Modificar" binding="#{aprendizVista.btnModificar}" action="#{aprendizVista.modificarAction}" update="formulario" disabled="true" />
+                                                        </div>
+                                                        <div class="col-md-2">    
+                                                            <b:commandButton class="btn-danger" id="btnEliminar" value="Eliminar" binding="#{aprendizVista.btnEliminar}" onclick="PF('confirmation').show();" type="button" disabled="true" >
+                                                                <f:ajax event="click"/>
+                                                            </b:commandButton>
+                                                        </div>
+                                                        <div class="col-md-2">    
+                                                            <b:commandButton class="btn-info" id="btnLimpiar" value="Limpiar" binding="#{aprendizVista.btnLimpiar}" action="#{aprendizVista.limpiarAction}" update="formulario" />
+                                                        </div>
+                                                        <div class="col-md-2"></div> 
+                                                    </div>
+                                                </b:panel> 
+                                                <!--=============================== fin Botones===============================-->
+
+                                                <b:panel id="panelUpload" title="Cargue masivo de aprendices">
+                                                    <b:commandLink id="linkEjemplo" update="panelUpload" onclick="PF('cargueDialog').show();" style="cursor: help;" >  
+                                                        <h:outputText value="Ver ejemplo" style="color: #168216; font-weight: bold;"/> 
+                                                    </b:commandLink>
+                                                    <p:fileUpload label="Seleccionar" invalidFileMessage="El archivo deber ser de extensión .XLS" fileUploadListener="#{aprendizVista.handleFileUpload}" mode="advanced"  update="mensajeArchivo" auto="true" allowTypes="/(\.|\/)(xls)$/"/> 
+                                                    <b:messages id="mensajeArchivo" showDetail="true" /> 
+                                                </b:panel>
+                                                <br />
+                                                <h:outputText value="Si desea buscar un aprendiz digite el dato en el filtro respectivo" />
+                                                <br /><br />
+                                                <p:separator/>
+
+                                                <b:dataTable id="listaAprendices" var="aprendices" searching="true" value="#{aprendizVista.listaAprendices}" selectionInfo="#{aprendizVista.selectedAprendiz}" selection-mode="single" select="true" responsive="true"
+                                                             onselect="ajax:aprendizVistaonRowSelect(aprendices)"   update=":formulario:pnlBotones,:formulario:panelAprendices,:paFicha" paginated="true"  >
+
+                                                    <b:dataTableColumn label="Identificación" value="#{aprendices.documentoaprendiz}" style="text-align: center" />
+                                                    <b:dataTableColumn label="Nombre" value="#{aprendices.personal.nombre}" style="text-align: center" />
+                                                    <b:dataTableColumn label="Apellido" value="#{aprendices.personal.apellido}" style="text-align: center" />
+                                                    <!--<b:dataTableColumn label="Ficha" value="+aprendices.fichaTitulacion.ficha}" style="text-align: center" />-->
+
+                                                </b:dataTable>
+
+                                                <!--Panel Exportar -->
+                                                <b:panel title="Exportar">   
+                                                    <h:commandLink>
+                                                        <!--PDF-->
+                                                        <h:outputText value="PDF" />
+                                                        <p:dataExporter type="pdf" fileName="ListadoAprendices" target="listaAprendices"/>
+                                                    </h:commandLink>
+
+                                                    <h:outputText value=" | " />
+
+                                                    <h:commandLink>
+                                                        <!--EXCEL-->
+                                                        <h:outputText value="XLS" />
+                                                        <p:dataExporter type="xls" fileName="ListadoAprendices" target="listaAprendices"/>
+                                                    </h:commandLink>
+                                                </b:panel>
+
+                                            </b:panel>
+                                        </b:form>
+                                    </b:column>
+
+                                    <!-- Dialogo de confirmacion para el boton eliminar -->
+                                    <b:form id="formDialog" > 
+                                        <p:confirmDialog id="confirmDialog" message="Está seguro de eliminar el aprendiz?"  
+                                                         header="Confirmación" severity="alert" widgetVar="confirmation">  
+                                            <b:commandButton id="confirm" value="Si" oncomplete="confirmation.hide()" update=":formulario:panelAprendices"  
+                                                             actionListener="#{aprendizVista.onEliminacionConfirm}" />  
+                                            <b:commandButton id="decline" value="No" onclick="PF('confirmation').hide()" type="button" />   
+
+                                        </p:confirmDialog> 
+                                    </b:form>
+
+
+                                </div><!-- /.col -->          
+                            </div><!-- /.row -->
+                        </div><!-- /.container-fluid -->
+                    </div>  
+
+                </div>
+            </div>
+        </ui:composition>
+            
+    </h:body>
+</html>
+
