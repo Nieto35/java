@@ -11,16 +11,9 @@ and open the template in the editor.
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:b="http://bootsfaces.net/ui">
 
-    <f:view contentType="text/html">
-        <h:head>
-            <ui:include src="templates/head.xhtml"/>
-        </h:head>
-        <h:body class="hold-transition sidebar-mini layout-fixed" >
+    <h:body >
+        <ui:composition>
             <div class="wrapper">
-
-                <ui:include src="templates/cabezote.xhtml" />
-
-                <ui:include src="templates/menuCoordinador.xhtml" />
 
                 <div class="content-wrapper">
 
@@ -59,7 +52,7 @@ and open the template in the editor.
                                                             <b:selectOneMenu id="cmbEstado" binding="#{fichaAprendizVista.cmbEstado}">
                                                                 <f:selectItems value="#{fichaAprendizVista.listaEstados}" />
                                                             </b:selectOneMenu>
-                                              
+
 
                                                             <h:outputText value="Identificación:"/>
                                                             <b:inputText id="txtDocumento" binding="#{fichaAprendizVista.txtDocumento}" >
@@ -112,9 +105,7 @@ and open the template in the editor.
                         </div>                
                     </h:form>                    
                 </div>
-                <ui:include src="templates/footer.xhtml"/>
             </div>
-        </h:body>
-
-    </f:view>
+        </ui:composition>
+    </h:body>
 </html>

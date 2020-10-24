@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+
+        <h:body>
+            <ui:composition>
+            
+                <div class="wrapper">
+                    <div class="content-wrapper">                   
+                        <div class="content-header">
+                            <div class="container-fluid">
+                                <div class="row mb-2">
+                                    <div class="col-sm-12">
+
+                                        <!-- dialogo de ayuda -->
+                                        <p:dialog id="modalDialog" width="55%" header="Ayuda" widgetVar="helpDialog" showEffect="fade" hideEffect="bounce" modal="true" dynamic="true">
+                                            <p align="justify">                       
+                                                En esta página usted podrá:<br/><br/>
+                                                <b>-Crear, Modificar, Cancelar y Consultar Seguimientos:</b> ésta opción solo está disponible para usuarios de tipo Coordinador. 
+                                                Para crear un seguimiento basta con digitar la ficha y luego presionar la tecla TAB(Tabulación) o Enter. 
+                                                ASPERA verificará la existencia de la ficha y posteriormente se deberá ingresar la fecha de programación, la hora, la ciudad y el lugar. Luego de clic en el botón Registrar. Para modificar o cancelar un seguimiento existente seleccionelo 
+                                                de la tabla inferior.
+                                                <br/><br/>
+                                                <b>-Consultar y Filtrar Seguimientos:</b> en la tabla de resultados se pueden visualizar todos los seguimientos programados, cancelados y/o ejecutados. 
+                                                Si desea filtrar los resultados basta con digitar en la columna respectiva un dato especifico.<br/>                    
+                                            </p>
+                                        </p:dialog>
+
+                                        <b:column>
+                                            <h:form id="formulario">
+                                                <!-- ingreso de datos --> 
+                                                <b:panel id="panelSeguimientos" title="Programar Seguimientos">
+                                                    <p:messages id="mensajes" showDetail="true" /> 
+                                                    <p:growl id="growl" showDetail="true" sticky="true" />
+
+                                                    <b:commandLink style="text-align: left;" onclick="PF('helpDialog').show();" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default">
+                                                        <h:outputText styleClass="nav-icon  fas fa-question" />
+                                                    </b:commandLink>
+
+                                                    <br/><br/>
+
+                                                    <!-- kampos de eskritura -->
+                                                    <b:panelGrid  columns="2">   
+                                                        <b:panelGrid  columns="2" id="paFicha">
+
+                                                            <h:outputText value="Ficha:"/>
+                                                            <b:inputText id="txtFicha" >
+                                                                <p:ajax update="formulario" />
+                                                            </b:inputText>            
+
+                                                            <h:outputText value="Jornada:"/>
+                                                            <b:inputText id="txtJornada" disabled="true"/>
+
+                                                            <h:outputText value="Programa:"/>
+                                                            <b:inputTextarea id="txtPrograma" rows="5" span="25" disabled="true"></b:inputTextarea>
+                                                        </b:panelGrid>
+                                                        <b:panelGrid  columns="2"> 
+                                                            <h:outputText value="Código:"/>
+                                                            <b:inputText id="txtCodigo" disabled="true"/>
+
+                                                            <h:outputText value="Fecha:"/> 
+                                                            <b:datepicker  id="txtFecha" mode="icon-popup" change-month="true" change-year="true"  value="#{fichasVista.fechaInicio}" 
+                                                                  lang="es" tooltip="Digite o seleccione la fecha de inicio de la ficha, en formato DD/MM/AAAA. Ej: 02/10/2019" />
+
+                                                            <h:outputText value="Hora:"/>
+                                                            <b:dateTimePicker id="txtHora"  />
+
+                                                            <h:outputText value="Ciudad:"/>
+                                                            <b:inputText id="txtCiudad" />
+
+                                                            <h:outputText value="Lugar:"/>
+                                                            <b:inputText id="txtLugar" />
+
+                                                            <h:outputText value="Estado:"/>
+                                                            <b:selectOneMenu disabled="true" id="cmbEstadoSeguimiento" >
+                                                                    <f:selectItem itemLabel="PROGRAMADO" itemValue="PROGRAMADO" />
+                                                                    <f:selectItem itemLabel="EJECUTADO" itemValue="EJECUTADO" />
+                                                            </b:selectOneMenu>
+                                                        </b:panelGrid>                        
+                                                    </b:panelGrid>   
+
+
+                                                    <!-- Botones -->
+                                                    <div align="center" style="position: relative; bottom: -20px;"> 
+                                                        <div class="col-md-2"></div>                                                     
+                                                        <div class="col-md-2">      
+                                                            <b:commandButton id="btnCrear" look="success" value="Crear" update="formulario" />
+                                                        </div>
+                                                        <div class="col-md-2">    
+                                                            <b:commandButton id="btnModificar" look="primary" value="Modificar" update="formulario" disabled="true" />
+                                                        </div>
+                                                        <div class="col-md-2">    
+                                                            <b:commandButton id="btnEliminar" look="danger" value="Cancelar" onclick="PF('confirmation').show();" type="button" disabled="true" />
+                                                        </div> 
+                                                        <div class="col-md-2">    
+                                                            <b:commandButton id="btnLimpiar" look="info" value="Limpiar" update="formulario" />
+                                                        </div> 
+                                                    </div>
+
+                                                    <br/><br/><br/><br/>
+                                                    <p:separator/>
+
+                                                    <!-- Tabla -->
+                                                    <div class="row"> 
+                                                        <div class="col-md-12">
+                                                            <b:dataTable id="listaSeguimientos" var="seguimientos" value="" searching="true"
+                                                                    selection-mode="single" select="true" responsive="true" update=":formulario" 
+                                                                    caption="Si desea buscar una ficha digite el dato en el filtro respectivo">
+
+                                                                <b:dataTableColumn label="Código" value="" style="text-align: center" /> 
+                                                                <b:dataTableColumn label="Fecha" value="" style="text-align: center" />
+                                                                <b:dataTableColumn label="Hora" value="" style="text-align: center" />
+                                                                <b:dataTableColumn label="Lugar" value="" style="text-align: center" />
+                                                                <b:dataTableColumn label="Estado" value="" style="text-align: center" />
+                                                                <b:dataTableColumn label="Ficha" value="" style="text-align: center" />
+
+                                                            </b:dataTable>
+                                                        </div>
+                                                    </div>
+
+                                                    <!--Panel Exportar -->
+                                                    <b:panel title="Exportar"  collapsible="false" look="success">   
+                                                        <h:commandLink>
+                                                            <!--PDF-->
+                                                            <h:outputText value="PDF" />
+                                                            <p:dataExporter type="pdf" fileName="listaSeguimientos" target="listaSeguimientos"/>
+                                                        </h:commandLink>
+
+                                                        <h:outputText value=" | " />
+
+                                                        <h:commandLink>
+                                                            <!--EXCEL-->
+                                                            <h:outputText value="XLS" />
+                                                            <p:dataExporter type="xls" fileName="listaSeguimientos" target="listaSeguimientos"/>
+                                                        </h:commandLink>
+                                                    </b:panel>
+
+                                                </b:panel>
+
+
+
+                                                <!-- Dialogo de confirmacion para el boton eliminar -->
+                                                <h:form id="formDialog" > 
+                                                    <p:confirmDialog id="confirmDialog" message="Está Seguro de Eliminar el Seguimiento?"  
+                                                                     header="Confirmación" severity="alert" widgetVar="confirmation">  
+                                                        <p:commandButton id="confirm" value="Si" oncomplete="confirmation.hide()" update=":formulario:panelSeguimientos" />  
+                                                        <p:commandButton id="decline" value="No" onclick="PF('confirmation').hide()" type="button" />   
+
+                                                    </p:confirmDialog> 
+                                                </h:form>
+                                            </h:form>
+                                        </b:column>    
+
+                                    </div>
+                                </div>
+                            </div><!-- /.container-fluid -->
+                        </div>
+                    </div> 
+                </div> 
+                
+            </ui:composition>
+        </h:body>
+
+</html>
