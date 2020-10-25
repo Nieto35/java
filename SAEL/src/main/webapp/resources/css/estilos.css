@@ -16,3 +16,35 @@ and open the template in the editor.
     transform: translate(-50%, -50%);
 }
 
+/** style="vertical-align: top;" */
+.vertical {
+    vertical-align: top;
+}
+
+/** style="text-align: center" */
+.textoCentrado {
+    text-align: center;
+}
+
+/** style="width: 100%;" */
+.anchoTotal {
+    width: 100%;
+}
+
+/** style="cursor: help;" */
+.cursorAyuda{
+    cursor: help;
+}
+
+/** style="text-align: left;" */
+.textoIzquierda {
+    text-align: left;
+}
+
+/** style="color: #fff" */
+.colorBlanco {
+    color: #fff;
+}
+.cursorMano{
+  a:hover { cursor: pointer; }  
+}
