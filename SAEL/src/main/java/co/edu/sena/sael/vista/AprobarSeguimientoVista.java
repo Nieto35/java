@@ -30,10 +30,10 @@ import org.primefaces.component.calendar.Calendar;
  * @author dasak
  */
 public class AprobarSeguimientoVista implements Serializable {
-    
+
     private List<Programarseguimiento> listaAprobarSegumiento = null;
     private InputText txtId;
-    private InputText txtFicha;    
+    private InputText txtFicha;
     private InputText txtProgramadoPor;
     private Calendar calendarFecha;
     private InputText txtCoordinador;
@@ -43,7 +43,7 @@ public class AprobarSeguimientoVista implements Serializable {
     private Date horaFinalObtenida;
     private Date horaInicioObtenida;
     private String[] estados = LIST_ESTADO_PROG_SEGUIMIENTO;
-     
+
     @EJB
     private ProgramarSeguimientoLogicaLocal programarSeguimientoLogica;
     @EJB
@@ -60,7 +60,7 @@ public class AprobarSeguimientoVista implements Serializable {
     public void setEstados(String[] estados) {
         this.estados = estados;
     }
-     
+
     public List<Programarseguimiento> getListaAprobarSegumiento() {
         if (listaAprobarSegumiento == null) {
             try {
@@ -71,7 +71,7 @@ public class AprobarSeguimientoVista implements Serializable {
         }
         return listaAprobarSegumiento;
     }
-    
+
     public void setListaAprobarSegumiento(List<Programarseguimiento> listaAprobarSegumiento) {
         this.listaAprobarSegumiento = listaAprobarSegumiento;
     }
@@ -99,80 +99,80 @@ public class AprobarSeguimientoVista implements Serializable {
     public void setHoraInicioObtenida(Date horaInicioObtenida) {
         this.horaInicioObtenida = horaInicioObtenida;
     }
-    
-    
-    
+
     public InputText getTxtId() {
         return txtId;
     }
-    
+
     public void setTxtId(InputText txtId) {
         this.txtId = txtId;
     }
-    
+
     public InputText getTxtFicha() {
         return txtFicha;
     }
-    
+
     public void setTxtFicha(InputText txtFicha) {
         this.txtFicha = txtFicha;
     }
-    
+
     public InputText getTxtProgramadoPor() {
         return txtProgramadoPor;
     }
-    
+
     public void setTxtProgramadoPor(InputText txtProgramadoPor) {
         this.txtProgramadoPor = txtProgramadoPor;
     }
-    
+
     public Calendar getCalendarFecha() {
         return calendarFecha;
     }
-    
+
     public void setCalendarFecha(Calendar calendarFecha) {
         this.calendarFecha = calendarFecha;
     }
-    
+
     public InputText getTxtCoordinador() {
         return txtCoordinador;
     }
-    
+
     public void setTxtCoordinador(InputText txtCoordinador) {
         this.txtCoordinador = txtCoordinador;
     }
-    
+
     public Calendar getCalendarHoraInicio() {
         return calendarHoraInicio;
     }
-    
+
     public void setCalendarHoraInicio(Calendar calendarHoraInicio) {
         this.calendarHoraInicio = calendarHoraInicio;
     }
-    
+
     public Calendar getCalendarHoraFinal() {
         return calendarHoraFinal;
     }
-    
+
     public void setCalendarHoraFinal(Calendar calendarHoraFinal) {
         this.calendarHoraFinal = calendarHoraFinal;
     }
-    
+
     public void onSelect(Programarseguimiento programarSeguimiento) {
-        
+
         txtId.setValue(programarSeguimiento.getId());
-        txtCoordinador.setValue(programarSeguimiento.getIdCoordinador().getDocumentocoordinador());
-        txtFicha.setValue(programarSeguimiento.getNumeroFicha().getNumeroficha() + " : " + 
-                          programarSeguimiento.getNumeroFicha().getCodigoprograma().getNombre());
-        txtProgramadoPor.setValue(programarSeguimiento.getDocumentoPersonal().getDocumentopersonal() + " : " +
-                                  programarSeguimiento.getDocumentoPersonal().getNombre() + " " + 
-                                  programarSeguimiento.getDocumentoPersonal().getApellido());
+        txtCoordinador.setValue(programarSeguimiento.getDocumentoPersonal().getDocumentopersonal() + " : "
+                + programarSeguimiento.getDocumentoPersonal().getNombre() + " "
+                + programarSeguimiento.getDocumentoPersonal().getApellido());
+        txtFicha.setValue(programarSeguimiento.getNumeroFicha().getNumeroficha() + " : "
+                + programarSeguimiento.getNumeroFicha().getCodigoprograma().getNombre());
+        txtProgramadoPor.setValue(programarSeguimiento.getDocumentoPersonal().getDocumentopersonal() + " : "
+                + programarSeguimiento.getDocumentoPersonal().getNombre() + " "
+                + programarSeguimiento.getDocumentoPersonal().getApellido());
         calendarFecha.setValue(programarSeguimiento.getFecha());
         calendarHoraInicio.setValue(programarSeguimiento.getHoraInicio());
         calendarHoraFinal.setValue(programarSeguimiento.getHoraFinal());
     }
-    
-    public void aprobarSeguimiento(){
+
+    public void aprobarSeguimiento() {
         try {
             Programarseguimiento programarSeguimiento = obtenerInformacion();
             programarSeguimiento.setId(Integer.parseInt(txtId.getValue().toString()));
@@ -182,8 +182,8 @@ public class AprobarSeguimientoVista implements Serializable {
             Logger.getLogger(AprobarSeguimientoVista.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void desaprobarSeguimiento(){
+
+    public void desaprobarSeguimiento() {
         try {
             Programarseguimiento programarSeguimiento = obtenerInformacion();
             programarSeguimiento.setId(Integer.parseInt(txtId.getValue().toString()));
@@ -192,19 +192,19 @@ public class AprobarSeguimientoVista implements Serializable {
         } catch (Exception ex) {
             Logger.getLogger(AprobarSeguimientoVista.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
+
     }
-    
-    public Programarseguimiento obtenerInformacion(){
-        Programarseguimiento programarSeguimiento= new Programarseguimiento();
+
+    public Programarseguimiento obtenerInformacion() {
+        Programarseguimiento programarSeguimiento = new Programarseguimiento();
         String[] recolectarDocumentoPersonal = txtProgramadoPor.getValue().toString().split(" : ");
         String[] recolectarDocumentoCoordiandor = txtCoordinador.getValue().toString().split(" : ");
         String[] recolectarFichas = txtFicha.getValue().toString().split(" : ");
-           
+
         programarSeguimiento.setFecha(fechaObtenida);
         programarSeguimiento.setHoraInicio(horaInicioObtenida);
         programarSeguimiento.setHoraFinal(horaFinalObtenida);
-        
+
         try {
             //FK
             Personal personal = PersonalLogica.consultarPorId(Long.parseLong(recolectarDocumentoPersonal[0]));
@@ -216,7 +216,7 @@ public class AprobarSeguimientoVista implements Serializable {
             programarSeguimiento.setNumeroFicha(fichaTitulacion);
 
             //FK
-            Coordinador coordinador  = coordinadorLogica.consultarPorId(Long.parseLong(recolectarDocumentoCoordiandor[0]));
+            Coordinador coordinador = coordinadorLogica.consultarPorId(Long.parseLong(recolectarDocumentoCoordiandor[0]));
             programarSeguimiento.setIdCoordinador(coordinador);
 
         } catch (Exception ex) {

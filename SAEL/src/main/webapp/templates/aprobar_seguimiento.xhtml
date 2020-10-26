@@ -28,8 +28,8 @@
 
                                                     <b:dataTableColumn label="Id" value="#{aprobarSeguimiento.id}" style="text-align: center" />
 
-                                                    <b:dataTableColumn label="Nombre" 
-                                                                       value="#{aprobarSeguimiento.idCoordinador.documentocoordinador}" 
+                                                    <b:dataTableColumn label="Programado por" 
+                                                                       value="#{aprobarSeguimiento.documentoPersonal.nombre} #{aprobarSeguimiento.documentoPersonal.apellido}" 
                                                                        style="text-align: center" />
 
                                                     <b:dataTableColumn label="Ficha" value="#{aprobarSeguimiento.numeroFicha.numeroficha} : 
@@ -38,7 +38,7 @@
 
                                                     <b:dataTableColumn label="Fecha" style="text-align: center" >
                                                         <b:dateTimePicker   disabled="true" value="#{aprobarSeguimiento.fecha}" 
-                                                                            mode="none" format="dd/MM/yyyy" show-icon="false"/>
+                                                                            mode="none" format="yyyy/MM/dd" show-icon="false"/>
 
                                                     </b:dataTableColumn>
 
