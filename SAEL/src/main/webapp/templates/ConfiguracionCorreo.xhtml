@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <body>
+        <ui:composition>
+            
+            <f:event type="preRenderView" listener="#{configCorreoVista.cargarDatos()}" />
+
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <div class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-12">
+
+                                <!-- dialogo de ayuda -->
+                                <p:dialog id="modalDialog" header="Ayuda" widgetVar="helpDialog" showEffect="fade" hideEffect="bounce" modal="true" dynamic="true">  
+                                    
+                                </p:dialog>
+
+                                <b:column>
+                                    <h:form id="formulario"> 
+                                        <b:panel id="panel" title="Configuracion de correo">    
+                                            <b:commandLink style="text-align: left;" onclick="PF('helpDialog').show();" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default">
+                                                <h:outputText styleClass="nav-icon  fas fa-question" />
+                                            </b:commandLink>
+                                            <br/><br/>
+                                            <b:messages id="mensajes" showDetail="true" /> 
+                                            <b:panelGrid  columns="4" style="width: 82%;">
+                                                <h:outputText value="Id:"/>
+                                                <b:inputText id="txtIdConfigCorreo" binding="#{configCorreoVista.txtIdConfigCorreo}">
+                                                    <p:ajax listener="#{configCorreoVista.txtIdConfigCorreoListener()}" update="panel"/>
+                                                </b:inputText>
+
+                                                <h:outputText value="Smtp:"/>
+                                                <b:inputText id="txtTipoCorreo" binding="#{configCorreoVista.txtSmpt}" />
+
+                                                <h:outputText value="Starttls:"/>
+                                                <b:inputText id="txtStarttls" binding="#{configCorreoVista.txtStarttls}" />
+                                                 
+                                                <h:outputText value="Puerto:"/>
+                                                <b:inputText id="txtPuerto" binding="#{configCorreoVista.txtPuerto}" />
+
+                                                <h:outputText value="Usuario:"/>
+                                                <b:inputText id="txtUsuario" binding="#{configCorreoVista.txtUsuario}" />
+                                                    
+                                                <h:outputText value="Clave:"/>
+                                                <b:inputText id="txtClave" binding="#{configCorreoVista.txtClave}" />
+                                                
+                                                <h:outputText value="Auth:"/>
+                                                <b:inputText id="txtCredenciales" binding="#{configCorreoVista.txtAuth}" />
+                                                
+                                            </b:panelGrid>
+                                            <div align="center" style="position: relative; bottom: -20px;"> 
+                                                <div class="col-md-2"></div> 
+                                                <div class="col-md-2">
+                                                    <b:commandButton id="btnModificar"  look="warning" disabled="true" value="Modificar" binding="#{configCorreoVista.btnModificar}" action="#{configCorreoVista.modificarAction()}" update="formulario" />
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <b:commandButton id="btnLimpiar"  look="info" value="Limpiar" binding="#{configCorreoVista.btnLimpiar}" action="#{configCorreoVista.limpiarAction()}" update="formulario" />
+                                                </div>
+                                                <div class="col-md-2"></div> 
+                                            </div>  
+
+                                            <br/><br/><br/><br/>
+                                            <p:separator/>
+                                            
+                                            
+                                        </b:panel> 
+                                    </h:form>
+                                    
+                                </b:column>
+
+                            </div><!-- /.col -->          
+                        </div><!-- /.row -->
+                    </div><!-- /.container-fluid -->
+                </div>
+                <!-- /.content-header -->
+            </div>
+                
+        </ui:composition>  
+    </body>
+</html>
+

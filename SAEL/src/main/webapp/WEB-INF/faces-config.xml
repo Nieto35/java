@@ -11,8 +11,8 @@
     <managed-bean>
         <managed-bean-name>aprendizVista</managed-bean-name>
         <managed-bean-class>co.edu.sena.sael.vista.AprendizVista</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
+    
+        <managed-bean-scope>request</managed-bean-scope></managed-bean>
     <managed-bean>
         <managed-bean-name>instructorVista</managed-bean-name>
         <managed-bean-class>co.edu.sena.sael.vista.InstructorVista</managed-bean-class>
@@ -42,6 +42,12 @@
     <managed-bean>
         <managed-bean-name>aprobarSeguimientoVista</managed-bean-name>
         <managed-bean-class>co.edu.sena.sael.vista.AprobarSeguimientoVista</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>configCorreoVista</managed-bean-name>
+        <managed-bean-class>co.edu.sena.sael.vista.ConfigCorreoVista</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
     

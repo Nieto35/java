@@ -17,7 +17,7 @@ import javax.persistence.Query;
  * @author g2
  */
 @Stateless
-public class Config_correoDAO implements IConfig_correoDAO{
+public class ConfigCorreoDAO implements IConfigCorreoDAO{
     @PersistenceContext
     private EntityManager entityManager;
     
@@ -25,20 +25,12 @@ public class Config_correoDAO implements IConfig_correoDAO{
     @Override
     public void modificar(ConfigCorreo configCorreo) throws Exception {
         try {
-            entityManager.persist(configCorreo);
-        } catch (RuntimeException e) {
-            throw e;
-        }
-    }
-
-    @Override
-    public void insertar(ConfigCorreo configCorreo) throws Exception {
-        try {
             entityManager.merge(configCorreo);
         } catch (RuntimeException e) {
             throw e;
         }
     }
+
 
     @Override
     public ConfigCorreo consultarPorId(int idCorreo) throws Exception {

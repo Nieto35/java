@@ -14,9 +14,8 @@ import javax.ejb.Local;
  * @author g2
  */
 @Local
-public interface Config_correoLogicaLocalLocal {
+public interface ConfigCorreoLogicaLocal {
     public void modificar(ConfigCorreo configCorreo) throws Exception;
-    public void insertar(ConfigCorreo configCorreo) throws Exception;
     public ConfigCorreo consultarPorId(int idCorreo) throws Exception;
     public List<ConfigCorreo> consultar() throws Exception;
 }
