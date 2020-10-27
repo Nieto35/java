@@ -31,9 +31,9 @@ public final class Constantes {
     public static final String[] LIST_PAGES_COORDINADOR={
         "CambiaPassword",
         "aprobar_seguimiento",
-        "gestionAprendicesC",
+        "gestionAprendices",
         "gestionFichaAprendizC",
-        "gestionFichasC",
+        "gestionFichas",
         "gestionInstructoresC",
         "gestionSeguimientosC",
         "indexCoordinador",

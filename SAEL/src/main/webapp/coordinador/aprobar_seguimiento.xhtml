@@ -7,7 +7,9 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
 
     <f:view contentType="text/html">
         <h:head>            
@@ -16,15 +18,128 @@ and open the template in the editor.
 
         <h:body class="hold-transition sidebar-mini layout-fixed">
             <div class="wrapper">
-            
+
                 <ui:include src="../templates/cabezote.xhtml" />
 
                 <ui:include src="../templates/menuCoordinador.xhtml" />
-                
-                <ui:include src="../templates/aprobar_seguimiento.xhtml" />                
-                
+
+                <div class="wrapper">
+                    <div class="content-wrapper">
+                        <!-- Content Header (Page header) -->
+                        <div class="content-header">
+                            <div class="container-fluid">
+                                <div class="row mb-2">
+                                    <div class="col-sm-12">
+                                        <b:column>
+                                            <b:form id="formulario"> 
+                                                <b:panel id="panelAprobarSegumientos" title="Seguimiento por aprobar" style="cursor:pointer;">                            
+                                                    <b:dataTable id="listaAprobarSeguimientos" var="aprobarSeguimiento" searching="true" 
+                                                                 value="#{aprobarSeguimientoVista.listaAprobarSegumiento}" 
+                                                                 selection-mode="single" select="true" responsive="true"
+                                                                 onselect="ajax:aprobarSeguimientoVista.onSelect(aprobarSeguimiento)"
+                                                                 onclick="$('#modalAprobar').modal('show')"
+                                                                 update=":formularioAprobar" paginated="true"   >
+
+                                                        <b:dataTableColumn label="Id" value="#{aprobarSeguimiento.id}" style="text-align: center" />
+
+                                                        <b:dataTableColumn label="Programado por" 
+                                                                           value="#{aprobarSeguimiento.documentoPersonal.nombre} #{aprobarSeguimiento.documentoPersonal.apellido}" 
+                                                                           style="text-align: center" />
+
+                                                        <b:dataTableColumn label="Ficha" value="#{aprobarSeguimiento.numeroFicha.numeroficha} : 
+                                                                           #{aprobarSeguimiento.numeroFicha.codigoprograma.nombre}"  
+                                                                           style="text-align: center" />
+
+                                                        <b:dataTableColumn label="Fecha" style="text-align: center" >
+                                                            <b:dateTimePicker   disabled="true" value="#{aprobarSeguimiento.fecha}" 
+                                                                                mode="none" format="DD/MM/YYYY" show-icon="false"/>
+
+                                                        </b:dataTableColumn>
+
+                                                        <b:dataTableColumn label="Hora de inicio" style="text-align: center;">
+                                                            <b:dateTimePicker   disabled="true" value="#{aprobarSeguimiento.horaInicio}" 
+                                                                                mode="none" format="HH:mm " show-icon="false"
+                                                                                />
+
+                                                        </b:dataTableColumn>
+
+                                                    </b:dataTable>
+                                                </b:panel>
+                                            </b:form>
+                                        </b:column>
+                                    </div><!-- /.col -->          
+                                </div><!-- /.row -->
+                            </div><!-- /.container-fluid -->
+                        </div>
+                        <!-- /.content-header -->
+
+                        <!-- dialogo para eliminar -->
+                        <b:modal id="modalAprobar" title="Aprobar o Desaprobar Seguimiento" 
+                                 closable="false" closeOnEscape="true" size="modal-md" >
+                            <b:form id="formularioAprobar"> 
+
+                                <b:row>
+                                    <b:column>
+                                        <b:panelGrid columns="2" id="panelInfoSegumiento"  >
+
+                                            <h:outputText value="Id:" />    
+                                            <b:inputText id="txtID" readonly="true" binding="#{aprobarSeguimientoVista.txtId}"/> 
+
+                                            <h:outputText value="Ficha:"/>    
+                                            <b:inputText id="txtFichas" readonly="true" binding="#{aprobarSeguimientoVista.txtFicha}"/> 
+
+                                            <h:outputText value="Programado Por:" />    
+                                            <b:inputText id="txtProgramadoPor" readonly="true" binding="#{aprobarSeguimientoVista.txtProgramadoPor}"/> 
+
+
+                                            <h:outputText value="Fecha:" />    
+                                            <p:calendar id="calendarFecha"  pattern="dd/MM/yyyy" locale="es"
+                                                        timeZone="America/Bogota" binding="#{aprobarSeguimientoVista.calendarFecha}"
+                                                        showOn="false" readonly="true" inputStyle="width: 100%;" value="#{aprobarSeguimientoVista.fechaObtenida}" />
+
+
+                                            <h:outputText value="Coordinador:" />    
+                                            <b:inputText id="txtCoordinador" readonly="true" binding="#{aprobarSeguimientoVista.txtCoordinador}" /> 
+
+
+                                            <h:outputText value="Hora de Inicio:" />  
+                                            <p:calendar id="calendarHoraInicio"  pattern="HH:mm" locale="es"
+                                                        timeZone="America/Bogota" binding="#{aprobarSeguimientoVista.calendarHoraInicio}"
+                                                        showOn="false" readonly="true" inputStyle="width: 100%;"
+                                                        value="#{aprobarSeguimientoVista.horaInicioObtenida}"/>
+
+
+                                            <h:outputText value="Hora de Finalización: " />  
+                                            <p:calendar id="calendarHoraFinal"  pattern="HH:mm" locale="es"
+                                                        timeZone="America/Bogota"  binding="#{aprobarSeguimientoVista.calendarHoraFinal}"
+                                                        showOn="false" readonly="true" inputStyle="width: 100%;"
+                                                        value="#{aprobarSeguimientoVista.horaFinalObtenida}"/>
+                                        </b:panelGrid>
+                                        <p:separator></p:separator>
+
+                                        <b:panelGrid columns="3" id="panelBotones" >
+
+                                            <b:commandButton col-lg="80" value="Aprobar" 
+                                                             action="#{aprobarSeguimientoVista.aprobarSeguimiento()}" update="formulario"
+                                                             oncomplete="$('#modalAprobar').modal('hide')" look="success" /> 
+                                            <b:commandButton col-lg="80" value="Desaprobar" 
+                                                             action="#{aprobarSeguimientoVista.desaprobarSeguimiento()}" update="formulario"
+                                                             oncomplete="$('#modalAprobar').modal('hide')" look="danger"  />  
+                                            <b:button col-lg="80"  value="Cancelar"
+                                                      dismiss="modal" look="info"/>
+
+                                        </b:panelGrid>
+
+
+                                    </b:column>
+                                </b:row>
+                            </b:form>
+                        </b:modal>
+                    </div>
+                </div>
+
                 <ui:include src="../templates/footer.xhtml" />
-                
+
             </div>
 
         </h:body>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>            
+            <ui:include src="../templates/head.xhtml"/>            
+        </h:head>
+
+        <h:body class="hold-transition sidebar-mini layout-fixed">
+            <div class="wrapper">
+
+                <ui:include src="../templates/cabezote.xhtml" />
+
+                <ui:include src="../templates/menuCoordinador.xhtml" />
+
+                <div class="wrapper">
+
+                    <!-- Content Wrapper. Contains page content -->
+                    <div class="content-wrapper">
+                        <!-- Content Header (Page header) -->
+                        <div class="content-header">
+                            <div class="container-fluid">
+                                <div class="row mb-2">
+                                    <div class="col-sm-12">
+
+
+                                        <!-- dialogo de ayuda -->
+                                        <p:dialog id="modalDialog" width="55%" header="Ayuda" widgetVar="helpDialog" showEffect="fade" hideEffect="bounce" modal="true" dynamic="true">  
+                                            <p align="justify">                       
+                                                En esta página usted podrá:<br/><br/>
+                                                <b>-Crear, modificar, eliminar y consultar aprendices:</b> ésta opción solo está disponible para usuarios de tipo Coordinador. 
+                                                Para crear un aprendiz basta con digitar su documento de identificación y luego presionar la tecla TAB(Tabulación) o Enter. 
+                                                SAEL verificará que no exista un aprendiz con ese mismo documento. Si existe cargará sus datos y sino usted deberá continuar
+                                                llenando el formulario. Luego de clic en el botón Crear. Para modificar o eliminar un aprendiz existente seleccionelo 
+                                                de la tabla inferior.
+                                                <br/><br/>
+                                                <b>-Cargue masivo de aprendices:</b> para crear varios aprendices masivamente desde un archivo de Excel de clic en el botón Selecccionar. 
+                                                Luego busque el archivo el cual deberá tener extensión <strong>.XLS</strong>. SAEL leerá el archivo y luego mostrará el resultado del cargue masivo. 
+                                                También indicará en que filas del archivo hay errores. Para ver un ejemplo de la estructura que debe tener el archivo de clic en el enlace Ver Ejemplo. 
+                                                <br/><br/> 
+                                                <b>-Consultar y filtrar aprendices:</b> en la tabla de resultados se pueden visualizar todos los aprendices existentes. 
+                                                Si desea filtrar los resultados basta con digitar en la columna Identificación un número especifico, de igual forma se puede utilizar 
+                                                el filtro por Nombre, Apellido, Ficha y Programa.<br/>                    
+                                            </p>
+                                        </p:dialog>
+
+                                        <b:column>
+                                            <h:form id="formulario"> 
+                                                <b:panel id="panelFichas"  title="Fichas Titulación">  
+                                                    <b:commandLink style="text-align: left;" onclick="PF('helpDialog').show();" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default">
+                                                        <h:outputText styleClass="nav-icon  fas fa-question" />
+                                                    </b:commandLink>
+
+                                                    <!--                               <p:messages id="mensajes" showDetail="true" closable="true" />  -->
+                                                    <br/><br/>
+
+                                                    <b:panelGrid  columns="4" id="paFicha" style="width: 100%;"> 
+                                                        <h:outputText value="Ficha:"/>
+                                                        <b:inputText id="txtFicha" binding="#{fichasVista.txtFicha}" />
+
+
+                                                        <h:outputText value="Jornada:"/>
+                                                        <b:selectOneMenu id="cmbJornada" binding="#{fichasVista.cmbJornada}">
+                                                            <f:selectItems value="#{fichasVista.listaJornadas}" />
+                                                        </b:selectOneMenu>
+
+
+                                                        <h:outputText value="Programa:"/>
+                                                        <b:selectOneMenu id="cmbPrograma" binding="#{fichasVista.cmbPrograma}">
+                                                            <f:selectItems value="#{fichasVista.itemsProgramas}" />
+                                                        </b:selectOneMenu>
+
+
+                                                        <h:outputText value="Fecha de inicio:"/>    
+                                                        <b:datepicker id="calFechaInicio" mode="icon-toggle" change-month="true" change-year="true"  value="#{fichasVista.fechaInicio}" 
+                                                                      lang="es" tooltip="Digite o seleccione la fecha de inicio de la ficha, en formato DD/MM/AAAA. Ej: 02/10/2019"/>
+
+
+                                                        <h:outputText value="Fecha de finalización:"/>
+                                                        <b:datepicker id="calFechaFin" mode="icon-toggle" change-month="true" change-year="true"  value="#{fichasVista.fechaFin}" lang="es"
+                                                                      tooltip="Digite o seleccione la fecha de finalización de la ficha, en formato DD/MM/AAAA. Ej: 02/10/2021"/>
+
+
+                                                        <h:outputText value="Cédula instructor líder:"/>
+                                                        <b:inputText id="txtDocumento" binding="#{fichasVista.txtDocumento}" />
+
+
+                                                        <h:outputText value="Nombre:"/> 
+                                                        <b:inputText id="txtNombreInstructor" value="#{fichasVista.txtNombreInstructor}" readonly="true" />
+                                                        <!--<p:outputLabel id="txtNombreInstructor" value="" />-->
+
+
+                                                    </b:panelGrid>
+                                                    <div align="center" style="position: relative; bottom: -20px;"> 
+
+                                                        <div class="col-md-2"></div> 
+                                                        <div class="col-md-2">
+                                                            <b:commandButton id="btnCrear" look="success" value="Crear" binding="#{fichasVista.btnRegistrar}" action="#{fichasVista.crearAction}" update="formulario" />
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <b:commandButton id="btnModificar"  class="btn-warning" disabled="true" value="Modificar" binding="#{fichasVista.btnModificar}" action="#{fichasVista.modificarAction}" update="formulario" />
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <b:commandButton id="btnEliminar" look="danger"  value="Eliminar" binding="#{fichasVista.btnEliminar}" onclick="PF('confirmation').show();" type="button" disabled="true" process="@this" update="formulario"/>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <b:commandButton id="btnLimpiar"  look="info" value="Limpiar" binding="#{fichasVista.btnLimpiar}" action="#{fichasVista.limpiarAction}" update="formulario" />
+                                                        </div>
+                                                        <div class="col-md-2"></div> 
+                                                    </div>
+
+
+                                                    <br/><br/><br/><br/>
+                                                    <p:separator/>
+
+
+                                                    <b:dataTable id="listaFichas" searching="true" value="#{fichasVista.listaFichas}" 
+                                                                 selection-mode="single" var="ficha" select="true" responsive="true"
+                                                                 update=":formulario" caption="Si desea buscar una ficha digite el dato en el filtro respectivo" 
+                                                                 onselect="ajax:fichasVista.onSelect(ficha)">
+
+                                                        <b:dataTableColumn label="Ficha" value="#{ficha.numeroficha}" style="text-align: center" />
+                                                        <b:dataTableColumn label="Programa" value="#{ficha.codigoprograma.nombre}" style="text-align: center" />
+                                                        <b:dataTableColumn label="Documento" value="#{ficha.documentoinstructor.documentoinstructor}" style="text-align: center" />
+                                                        <b:dataTableColumn label="Nombres y Apellidos" value="#{ficha.documentoinstructor.personal.nombre}  #{ficha.documentoinstructor.personal.apellido}" style="text-align: center" />
+
+                                                    </b:dataTable>
+
+                                                    <!--Panel Exportar -->
+                                                    <b:panel  title="Exportar">   
+                                                        <h:commandLink>
+                                                            <!--PDF-->
+                                                            <h:outputText value="PDF" />
+                                                            <p:dataExporter type="pdf" fileName="listaFichas" target="listaFichas"/>
+                                                        </h:commandLink>
+
+                                                        <h:outputText value=" | " />
+
+                                                        <h:commandLink>
+                                                            <!--EXCEL-->
+                                                            <h:outputText value="XLS" />
+                                                            <p:dataExporter type="xls" fileName="listaFichas" target="listaFichas"/>
+                                                        </h:commandLink>
+                                                    </b:panel>
+
+                                                </b:panel>
+                                                <!-- Dialogo de confirmacion para el boton eliminar -->
+                                                <p:confirmDialog id="confirmDialog" message="Está seguro de eliminar la ficha?"  
+                                                                 header="Confirmación" severity="alert" widgetVar="confirmation">  
+                                                    <p:commandButton id="confirm" process="@this" value="Si" oncomplete="PF('confirmation').hide()" update="formulario"  
+                                                                     actionListener="#{fichasVista.onEliminacionConfirm(actionEvent)}" />  
+                                                    <p:commandButton id="decline" value="No" onclick="PF('confirmation').hide()" type="button" />   
+
+                                                </p:confirmDialog> 
+
+                                            </h:form>
+                                        </b:column>
+
+
+                                    </div><!-- /.col -->          
+                                </div><!-- /.row -->
+                            </div><!-- /.container-fluid -->
+                        </div>
+                        <!-- /.content-header -->
+
+                        <div align="center">
+
+
+                        </div>   
+
+                    </div>
+
+                </div>
+
+                <ui:include src="../templates/footer.xhtml" />
+
+            </div>
+
+        </h:body>
+    </f:view>
+</html>
+
