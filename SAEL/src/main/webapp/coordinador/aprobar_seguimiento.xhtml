@@ -32,13 +32,12 @@ and open the template in the editor.
                                     <div class="col-sm-12">
                                         <b:column>
                                             <b:form id="formulario"> 
-                                                <b:panel id="panelAprobarSegumientos" title="Seguimiento por aprobar" style="cursor:pointer;">                            
+                                                <b:panel id="panelAprobarSegumientos" title="Seguimiento por aprobar">                            
                                                     <b:dataTable id="listaAprobarSeguimientos" var="aprobarSeguimiento" searching="true" 
                                                                  value="#{aprobarSeguimientoVista.listaAprobarSegumiento}" 
                                                                  selection-mode="single" select="true" responsive="true"
                                                                  onselect="ajax:aprobarSeguimientoVista.onSelect(aprobarSeguimiento)"
-                                                                 onclick="$('#modalAprobar').modal('show')"
-                                                                 update=":formularioAprobar" paginated="true"   >
+                                                                 update=":formularioAprobar" paginated="true">
 
                                                         <b:dataTableColumn label="Id" value="#{aprobarSeguimiento.id}" style="text-align: center" />
 
@@ -52,14 +51,33 @@ and open the template in the editor.
 
                                                         <b:dataTableColumn label="Fecha" style="text-align: center" >
                                                             <b:dateTimePicker   disabled="true" value="#{aprobarSeguimiento.fecha}" 
-                                                                                mode="none" format="DD/MM/YYYY" show-icon="false"/>
+                                                                                mode="none" format="DD/MM/YYYY" show-icon="false" class=""/>
 
                                                         </b:dataTableColumn>
 
                                                         <b:dataTableColumn label="Hora de inicio" style="text-align: center;">
                                                             <b:dateTimePicker   disabled="true" value="#{aprobarSeguimiento.horaInicio}" 
-                                                                                mode="none" format="HH:mm " show-icon="false"
+                                                                                mode="none" format="HH:mm " show-icon="false" class=""
                                                                                 />
+
+                                                        </b:dataTableColumn>
+                                                        <b:dataTableColumn label="Estado" value="#{aprobarSeguimiento.estado} "  
+                                                                           style="text-align: center" />
+                                                        
+                                                        <b:dataTableColumn label="Acciones" style="text-align: center;">
+                                                            
+                                                            <b:commandButton id="btnAprobar" type="button" look="success" 
+                                                                             binding="#{aprobarSeguimientoVista.btnAprobar}"
+                                                                             onclick="$('#modalAprobar').modal('show')" 
+                                                                             disabled="#{aprobarSeguimientoVista.validarBoton(aprobarSeguimiento.estado)}"> 
+                                                                <i class="fas fa-check"></i>
+                                                            </b:commandButton>
+                                                            
+                                                            <b:commandLink id="btnAprobado" href="programar_seguimiento.xhtml" look="primary"
+                                                                           disabled="#{aprobarSeguimientoVista.botonAprobado(aprobarSeguimiento.estado)}"> 
+                                                                <i class="fas fa-calendar-check"></i>
+                                                            
+                                                            </b:commandLink>
 
                                                         </b:dataTableColumn>
 
@@ -125,7 +143,7 @@ and open the template in the editor.
                                             <b:commandButton col-lg="80" value="Desaprobar" 
                                                              action="#{aprobarSeguimientoVista.desaprobarSeguimiento()}" update="formulario"
                                                              oncomplete="$('#modalAprobar').modal('hide')" look="danger"  />  
-                                            <b:button col-lg="80"  value="Cancelar"
+                                            <b:button col-lg="80"  value="Regresar"
                                                       dismiss="modal" look="info"/>
 
                                         </b:panelGrid>

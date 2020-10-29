@@ -35,7 +35,7 @@ public class ProgramarSeguimientoLogica implements ProgramarSeguimientoLogicaLoc
             throw new Exception("La hora final es obligatorio");
         }
         if(programarSeguimiento.getIdCoordinador()== null){
-            throw new Exception("el id programarSeguimientor es obligatorio");
+            throw new Exception("el id programarSeguimiento es obligatorio");
         }
         if(programarSeguimiento.getDocumentoPersonal()== null){
             throw new Exception("el documento personal es obligatorio");
@@ -63,7 +63,7 @@ public class ProgramarSeguimientoLogica implements ProgramarSeguimientoLogicaLoc
             throw new Exception("La hora final es obligatorio");
         }
         if(programarSeguimiento.getIdCoordinador()== null){
-            throw new Exception("el id programarSeguimientor es obligatorio");
+            throw new Exception("el id programarSeguimiento es obligatorio");
         }
         if(programarSeguimiento.getDocumentoPersonal()== null){
             throw new Exception("el documento personal es obligatorio");

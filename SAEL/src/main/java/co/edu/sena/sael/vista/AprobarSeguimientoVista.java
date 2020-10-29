@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import net.bootsfaces.component.commandButton.CommandButton;
 import net.bootsfaces.component.inputText.InputText;
 import org.primefaces.component.calendar.Calendar;
 
@@ -37,6 +38,8 @@ public class AprobarSeguimientoVista implements Serializable {
     private InputText txtProgramadoPor;
     private Calendar calendarFecha;
     private InputText txtCoordinador;
+    private CommandButton btnAprobar;
+    private CommandButton btnAprobado;
     private Calendar calendarHoraInicio;
     private Calendar calendarHoraFinal;
     private Date fechaObtenida;
@@ -64,7 +67,7 @@ public class AprobarSeguimientoVista implements Serializable {
     public List<Programarseguimiento> getListaAprobarSegumiento() {
         if (listaAprobarSegumiento == null) {
             try {
-                listaAprobarSegumiento = programarSeguimientoLogica.consultarPorEstado(estados[0]);
+                listaAprobarSegumiento = programarSeguimientoLogica.consultar();
             } catch (Exception ex) {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", ex.getMessage()));
             }
@@ -100,6 +103,22 @@ public class AprobarSeguimientoVista implements Serializable {
         this.horaInicioObtenida = horaInicioObtenida;
     }
 
+    public CommandButton getBtnAprobar() {
+        return btnAprobar;
+    }
+
+    public void setBtnAprobar(CommandButton btnAprobar) {
+        this.btnAprobar = btnAprobar;
+    }
+
+    public CommandButton getBtnAprobado() {
+        return btnAprobado;
+    }
+
+    public void setBtnAprobado(CommandButton btnAprobado) {
+        this.btnAprobado = btnAprobado;
+    }
+    
     public InputText getTxtId() {
         return txtId;
     }
@@ -171,7 +190,25 @@ public class AprobarSeguimientoVista implements Serializable {
         calendarHoraInicio.setValue(programarSeguimiento.getHoraInicio());
         calendarHoraFinal.setValue(programarSeguimiento.getHoraFinal());
     }
-
+//    valida boton de aprobar seguimiento para desactivarlo
+    public boolean validarBoton(String valorEstado) {
+        
+        if(!valorEstado.equals(estados[0])){
+            return true;
+        }
+        
+        return false;
+    }
+//    valida el boton de aprobado lo activa
+    public boolean botonAprobado(String valorEstado) {
+        
+        if(!valorEstado.equals(estados[1])){
+            return true;
+        }
+        
+        return false;
+    }
+    
     public void aprobarSeguimiento() {
         try {
             Programarseguimiento programarSeguimiento = obtenerInformacion();
@@ -200,7 +237,7 @@ public class AprobarSeguimientoVista implements Serializable {
         String[] recolectarDocumentoPersonal = txtProgramadoPor.getValue().toString().split(" : ");
         String[] recolectarDocumentoCoordiandor = txtCoordinador.getValue().toString().split(" : ");
         String[] recolectarFichas = txtFicha.getValue().toString().split(" : ");
-
+        
         programarSeguimiento.setFecha(fechaObtenida);
         programarSeguimiento.setHoraInicio(horaInicioObtenida);
         programarSeguimiento.setHoraFinal(horaFinalObtenida);
