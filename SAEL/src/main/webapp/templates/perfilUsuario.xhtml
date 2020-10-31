@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <body>
+        <ui:composition>
+
+          <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <div class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-12">
+                                
+                                
+                                <!-- dialogo de ayuda -->
+                                
+                                <b:column>
+                                    <h:form id="formulario"> 
+                                        <b:panel id="panel" title="Perfil Usuario">
+                                            <b:messages id="mensajes" showDetail="true" />
+                                            <b:commandLink style="text-align: left;" onclick="PF('helpDialog').show();" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default">
+                                                <h:outputText styleClass="nav-icon  fas fa-question" />
+                                            </b:commandLink>
+
+                                            <br/><br/>
+
+                                            <b:panelGrid columns="4" style="width: 82%;">
+                                                <h:outputText value="Documento:"/> 
+                                                <b:inputText id="txtDocumento" binding="#{instructorVista.txtIdentificacion}" size="30"  value="#{usuarioVista.usuarioLogeado.documentopersonal}">
+                                                    <p:ajax listener="#{instructorVista.txtIdentificacionListener()}" update="panel" />
+                                                </b:inputText>
+                                                    
+                                                <h:outputText value="Nombre:"/>
+                                                <b:inputText id="txtNombre" binding="#{instructorVista.txtNombre}" size="30" value="#{usuarioVista.usuarioLogeado.nombre}"/>
+
+                                                <h:outputText value="Apellido:"/>
+                                                <b:inputText id="txtApellido" binding="#{instructorVista.txtApellido}" size="30" value="#{usuarioVista.usuarioLogeado.apellido}"/>
+                                                        
+                                                <h:outputText value="Sexo:"/>
+                                                <p:column colspan="3">
+                                                    <div align="left">
+                                                        <b:selectOneMenu id="selectSexo" binding="#{instructorVista.selectSexo}"  >
+                                                            <f:selectItem itemLabel="MASCULINO" itemValue="M" />
+                                                            <f:selectItem itemLabel="FEMENINO" itemValue="F" />
+                                                        </b:selectOneMenu>
+                                                    </div>                                      
+                                                </p:column>
+                                                
+                                                <h:outputText value="Correo:"/>
+                                                <b:inputText id="txtCorreo" binding="#{instructorVista.txtCorreo}" size="30" value="#{usuarioVista.usuarioLogeado.correo}"/>
+                                                        
+                                                <h:outputText value="Teléfono:"/>
+                                                <b:inputText id="txttelefono" binding="#{instructorVista.txtTelefono}" size="30" value="#{usuarioVista.usuarioLogeado.telefono}"/>
+                                                        
+                                                <h:outputText value="Tipo:"/>
+                                                <p:column colspan="3">
+                                                    <div align="left">
+                                                        <b:selectOneMenu id="cmbTipo" binding="#{instructorVista.cmbTipoInstructor}" >
+                                                            <f:selectItem itemLabel="CONTRATISTA" itemValue="CONTRATISTA" />
+                                                            <f:selectItem itemLabel="PLANTA" itemValue="PLANTA" />
+                                                        </b:selectOneMenu>
+                                                    </div>                                      
+                                                </p:column> 
+
+                                            </b:panelGrid>
+                                            
+                                            <div align="center" style="position: relative; bottom: -20px;"> 
+                                                <div class="col-md-2"></div> 
+                                               
+                                                <div class="col-md-2">
+                                                    <b:commandButton id="btnModificar"  look="primary" disabled="true" value="Modificar" binding="#{instructorVista.btnModificar}" action="#{instructorVista.modificarAction()}" update="formulario" />
+                                                </div>
+                                                
+                                                <div class="col-md-2"></div> 
+                                            </div>
+                                            
+                                            <br/><br/><br/><br/>
+                                           
+                                        </b:panel>
+                                        <!--Panel Exportar -->
+                                        
+                                    </h:form>
+                                </b:column>
+
+
+                            </div><!-- /.col -->          
+                        </div><!-- /.row -->
+                    </div><!-- /.container-fluid -->
+                </div>
+                <!-- /.content-header -->
+
+                <div align="center">
+
+
+                </div>   
+
+            </div>
+                
+        </ui:composition>  
+    </body>
+</html>
+
