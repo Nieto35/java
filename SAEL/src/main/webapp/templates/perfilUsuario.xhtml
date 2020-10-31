@@ -37,7 +37,7 @@ and open the template in the editor.
 
                                             <b:panelGrid columns="4" style="width: 82%;">
                                                 <h:outputText value="Documento:"/> 
-                                                <b:inputText id="txtDocumento" binding="#{instructorVista.txtIdentificacion}" size="30"  value="#{usuarioVista.usuarioLogeado.documentopersonal}">
+                                                <b:inputText id="txtDocumento" binding="#{instructorVista.txtIdentificacion}" size="30"  value="#{usuarioVista.usuarioLogeado.documentopersonal}" disabled="true">
                                                     <p:ajax listener="#{instructorVista.txtIdentificacionListener()}" update="panel" />
                                                 </b:inputText>
                                                     
@@ -50,7 +50,7 @@ and open the template in the editor.
                                                 <h:outputText value="Sexo:"/>
                                                 <p:column colspan="3">
                                                     <div align="left">
-                                                        <b:selectOneMenu id="selectSexo" binding="#{instructorVista.selectSexo}"  >
+                                                        <b:selectOneMenu id="selectSexo" binding="#{instructorVista.selectSexo}" >
                                                             <f:selectItem itemLabel="MASCULINO" itemValue="M" />
                                                             <f:selectItem itemLabel="FEMENINO" itemValue="F" />
                                                         </b:selectOneMenu>
@@ -62,16 +62,6 @@ and open the template in the editor.
                                                         
                                                 <h:outputText value="Teléfono:"/>
                                                 <b:inputText id="txttelefono" binding="#{instructorVista.txtTelefono}" size="30" value="#{usuarioVista.usuarioLogeado.telefono}"/>
-                                                        
-                                                <h:outputText value="Tipo:"/>
-                                                <p:column colspan="3">
-                                                    <div align="left">
-                                                        <b:selectOneMenu id="cmbTipo" binding="#{instructorVista.cmbTipoInstructor}" >
-                                                            <f:selectItem itemLabel="CONTRATISTA" itemValue="CONTRATISTA" />
-                                                            <f:selectItem itemLabel="PLANTA" itemValue="PLANTA" />
-                                                        </b:selectOneMenu>
-                                                    </div>                                      
-                                                </p:column> 
 
                                             </b:panelGrid>
                                             
