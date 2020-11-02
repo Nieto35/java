@@ -37,31 +37,31 @@ and open the template in the editor.
 
                                             <b:panelGrid columns="4" style="width: 82%;">
                                                 <h:outputText value="Documento:"/> 
-                                                <b:inputText id="txtDocumento" binding="#{instructorVista.txtIdentificacion}" size="30"  value="#{usuarioVista.usuarioLogeado.documentopersonal}" disabled="true">
-                                                    <p:ajax listener="#{instructorVista.txtIdentificacionListener()}" update="panel" />
-                                                </b:inputText>
+                                                <b:inputText id="txtIdentificacion"  size="30" binding="#{perfilUsuarioVista.txtIdentificacion}" value="#{usuarioVista.usuarioLogeado.documentopersonal}" disabled="true"/>
+                                                  
                                                     
                                                 <h:outputText value="Nombre:"/>
-                                                <b:inputText id="txtNombre" binding="#{instructorVista.txtNombre}" size="30" value="#{usuarioVista.usuarioLogeado.nombre}"/>
+                                                <b:inputText id="txtNombre"  size="30" binding="#{perfilUsuarioVista.txtNombre}" value="#{usuarioVista.usuarioLogeado.nombre}"/>
 
                                                 <h:outputText value="Apellido:"/>
-                                                <b:inputText id="txtApellido" binding="#{instructorVista.txtApellido}" size="30" value="#{usuarioVista.usuarioLogeado.apellido}"/>
+                                                <b:inputText id="txtApellido" binding="#{perfilUsuarioVista.txtApellido}" size="30" value="#{usuarioVista.usuarioLogeado.apellido}"/>
                                                         
                                                 <h:outputText value="Sexo:"/>
                                                 <p:column colspan="3">
                                                     <div align="left">
-                                                        <b:selectOneMenu id="selectSexo" binding="#{instructorVista.selectSexo}" >
+                                                        <b:selectOneMenu id="selectSexo" binding="#{perfilUsuarioVista.selectSexo}" >
                                                             <f:selectItem itemLabel="MASCULINO" itemValue="M" />
                                                             <f:selectItem itemLabel="FEMENINO" itemValue="F" />
                                                         </b:selectOneMenu>
                                                     </div>                                      
                                                 </p:column>
+                                               
                                                 
                                                 <h:outputText value="Correo:"/>
-                                                <b:inputText id="txtCorreo" binding="#{instructorVista.txtCorreo}" size="30" value="#{usuarioVista.usuarioLogeado.correo}"/>
+                                                <b:inputText id="txtCorreo" binding="#{perfilUsuarioVista.txtCorreo}" size="30" value="#{usuarioVista.usuarioLogeado.correo}"/>
                                                         
                                                 <h:outputText value="Teléfono:"/>
-                                                <b:inputText id="txttelefono" binding="#{instructorVista.txtTelefono}" size="30" value="#{usuarioVista.usuarioLogeado.telefono}"/>
+                                                <b:inputText id="txttelefono" binding="#{perfilUsuarioVista.txtTelefono}" size="30" value="#{usuarioVista.usuarioLogeado.telefono}"/>
 
                                             </b:panelGrid>
                                             
@@ -69,7 +69,10 @@ and open the template in the editor.
                                                 <div class="col-md-2"></div> 
                                                
                                                 <div class="col-md-2">
-                                                    <b:commandButton id="btnModificar"  look="primary" disabled="true" value="Modificar" binding="#{instructorVista.btnModificar}" action="#{instructorVista.modificarAction()}" update="formulario" />
+                                                    <b:commandButton id="btnModificar"  look="primary"  value="Modificar" binding="#{perfilUsuarioVista.btnModificar}" action="#{perfilUsuarioVista.modificarAction()}" update="formulario" />
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <b:commandButton id="btnLimpiar"  look="success"  value="Limpiar" binding="#{perfilUsuarioVista.btnLimpiar}" action="#{perfilUsuarioVista.limpiarAction()}" update="formulario" />
                                                 </div>
                                                 
                                                 <div class="col-md-2"></div> 
