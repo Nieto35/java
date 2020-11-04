@@ -5,10 +5,13 @@
  */
 package co.edu.sena.sael.vista;
 
+import co.edu.sena.sael.logica.ConfigCorreoLogicaLocal;
 import co.edu.sena.sael.logica.CoordinadorLogicaLocal;
 import co.edu.sena.sael.logica.FichaTitulacionLogicaLocal;
 import co.edu.sena.sael.logica.PersonalLogicaLocal;
 import co.edu.sena.sael.logica.ProgramarSeguimientoLogicaLocal;
+import co.edu.sena.sael.modelo.ConfigCorreo;
+import static co.edu.sena.sael.modelo.ConfigCorreo_.clave;
 import co.edu.sena.sael.modelo.Coordinador;
 import co.edu.sena.sael.modelo.Fichatitulacion;
 import co.edu.sena.sael.modelo.Personal;
@@ -20,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +33,12 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.model.SelectItem;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import net.bootsfaces.component.inputText.InputText;
 import net.bootsfaces.component.selectOneMenu.SelectOneMenu;
 import org.primefaces.event.SelectEvent;
@@ -69,6 +79,8 @@ public class ProgramarSeguimientoVista implements Serializable {
     private CoordinadorLogicaLocal coordinadorLogica;
     @EJB
     private PersonalLogicaLocal PersonalLogica;
+    @EJB
+    private ConfigCorreoLogicaLocal configCorreoLogica;
     
     
     
@@ -313,12 +325,115 @@ public class ProgramarSeguimientoVista implements Serializable {
         }
         return programarSeguimiento;
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    public void enviarConGMail(String destinatario, String asunto, String cuerpo) { 
+        // Esto es lo que va delante de @gmail.com en tu cuenta de correo. Es el remitente también. 
+  
+        
+        
+        ConfigCorreo configCorreo = new ConfigCorreo();
+        try {
+           configCorreo = configCorreoLogica.consultarPorId(1);
+        } catch (Exception ex) {
+            Logger.getLogger(ProgramarSeguimientoVista.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        String remitente = configCorreo.getUsuario();  //Para la dirección nomcuenta@gmail.com 
+        String clave = configCorreo.getClave();
+        String smtp = configCorreo.getSmtp();
+        String auth = configCorreo.getAuth();
+        String starttls = configCorreo.getStarttls();
+        int puerto = configCorreo.getPuerto();
+        
+        
+        Properties props = System.getProperties(); 
+        props.put("mail.smtp.host", smtp);  //El servidor SMTP de Google 
+        props.put("mail.smtp.user", remitente); 
+        props.put("mail.smtp.clave", clave);    //La clave de la cuenta 
+        props.put("mail.smtp.auth", auth);    //Usar autenticación mediante usuario y clave 
+        props.put("mail.smtp.starttls.enable", starttls); //Para conectar de manera segura al servidor SMTP 
+        props.put("mail.smtp.port", puerto); //El puerto SMTP seguro de Google 
+        Session session = Session.getDefaultInstance(props); 
+        MimeMessage message = new MimeMessage(session); 
+        try { 
+            message.setFrom(new InternetAddress(remitente)); 
+            message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(destinatario));//Se podrían añadir varios de la misma manera 
+            message.setSubject(asunto); 
+            message.setText(cuerpo); 
+            Transport transport = session.getTransport("smtp"); 
+            transport.connect("smtp.gmail.com", remitente, clave); 
+            transport.sendMessage(message, message.getAllRecipients()); 
+            transport.close(); 
+        } 
+        catch (MessagingException me) { 
+            me.printStackTrace();   //Si se produce un error 
+        } 
+    }
 
-    public void crear() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public void crear() {      
         try {
             Programarseguimiento programarSeguimiento = new Programarseguimiento();
+            
+             String correos = programarSeguimiento.getIdCoordinador().getPersonal().getCorreoinstitucional();
+            //System.out.println(correos);
+                    
+            String destinatario =  correos; //A quien le quieres escribir. 
+            String asunto = "Validacion para una programacion de seguimiento"; 
+            String cuerpo = "se solicita tu aprobaciòn en SAEL para un seguimiento"; 
+            
+            
+            ProgramarSeguimientoVista programarSeguimientoVista = new ProgramarSeguimientoVista();
+            programarSeguimientoVista.enviarConGMail(destinatario, asunto, cuerpo);
+            
+            
             programarSeguimiento = obtenerInformacion(programarSeguimiento);
             programarSeguimientoLogica.insertar(programarSeguimiento);
+
+            //enviarConGMail(destinatario, asunto, cuerpo); 
+            
         } catch (Exception ex) {
             Logger.getLogger(ProgramarSeguimientoVista.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -338,9 +453,9 @@ public class ProgramarSeguimientoVista implements Serializable {
 
     // encargado de guardar la info de la ventana modal
     public void addEvent(ActionEvent actionEvent) {
-
+        
         if (event.getId() == null) { // llama el metodo de crear
-
+            
             contadorId++;
             String id = String.valueOf(contadorId);
             event = new DefaultScheduleEvent(selectFichas.getValue().toString(), obtenerFecha(fechaObtenida, horaInicioObtenida),
@@ -349,7 +464,6 @@ public class ProgramarSeguimientoVista implements Serializable {
 
             eventModel.addEvent(event); // encargado de crear el evento
             crear();
-            
 
         } else { // llama el metodo de modificar
 
@@ -410,4 +524,6 @@ public class ProgramarSeguimientoVista implements Serializable {
     private void addMessage(FacesMessage message) {
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
+    
+    
 }
